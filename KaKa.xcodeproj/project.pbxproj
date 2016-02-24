@@ -11,6 +11,7 @@
 		DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932A941C7DAE7C00651712 /* AppDelegate.m */; };
 		DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE932A961C7DAE7C00651712 /* Assets.xcassets */; };
 		DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE932A981C7DAE7C00651712 /* LaunchScreen.storyboard */; };
+		DE932AAD1C7DC24D00651712 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932AAC1C7DC24D00651712 /* MainPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		DE932A991C7DAE7C00651712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE932A9B1C7DAE7C00651712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE932AA11C7DAE8F00651712 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		DE932AAB1C7DC24D00651712 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
+		DE932AAC1C7DC24D00651712 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +57,7 @@
 		DE932A8F1C7DAE7C00651712 /* KaKa */ = {
 			isa = PBXGroup;
 			children = (
+				DE932AA21C7DC1FA00651712 /* Classes */,
 				DE932A931C7DAE7C00651712 /* AppDelegate.h */,
 				DE932A941C7DAE7C00651712 /* AppDelegate.m */,
 				DE932A961C7DAE7C00651712 /* Assets.xcassets */,
@@ -71,6 +75,79 @@
 				DE932AA11C7DAE8F00651712 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE932AA21C7DC1FA00651712 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DE932AA31C7DC1FA00651712 /* MainPage */,
+				DE932AA71C7DC1FA00651712 /* VoiceLibrary */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		DE932AA31C7DC1FA00651712 /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				DE932AA41C7DC1FA00651712 /* Controller */,
+				DE932AA51C7DC1FA00651712 /* Model */,
+				DE932AA61C7DC1FA00651712 /* View */,
+			);
+			path = MainPage;
+			sourceTree = "<group>";
+		};
+		DE932AA41C7DC1FA00651712 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE932AAB1C7DC24D00651712 /* MainPageViewController.h */,
+				DE932AAC1C7DC24D00651712 /* MainPageViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DE932AA51C7DC1FA00651712 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE932AA61C7DC1FA00651712 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE932AA71C7DC1FA00651712 /* VoiceLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				DE932AA81C7DC1FA00651712 /* Controller */,
+				DE932AA91C7DC1FA00651712 /* Model */,
+				DE932AAA1C7DC1FA00651712 /* View */,
+			);
+			path = VoiceLibrary;
+			sourceTree = "<group>";
+		};
+		DE932AA81C7DC1FA00651712 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DE932AA91C7DC1FA00651712 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE932AAA1C7DC1FA00651712 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +222,7 @@
 			files = (
 				DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */,
 				DE932A921C7DAE7C00651712 /* main.m in Sources */,
+				DE932AAD1C7DC24D00651712 /* MainPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
