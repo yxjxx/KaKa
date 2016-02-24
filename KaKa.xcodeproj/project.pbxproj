@@ -32,6 +32,7 @@
 		DE932AAC1C7DC24D00651712 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 		DE932AAE1C7DC39A00651712 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		DE932AAF1C7DC39A00651712 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		DE932AB11C7DD09400651712 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +103,7 @@
 				DE932AAE1C7DC39A00651712 /* UIView+Additions.h */,
 				DE932AAF1C7DC39A00651712 /* UIView+Additions.m */,
 				DE932AA11C7DAE8F00651712 /* PrefixHeader.pch */,
+				DE932AB11C7DD09400651712 /* Constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
