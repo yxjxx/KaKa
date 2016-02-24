@@ -12,6 +12,7 @@
 		DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE932A961C7DAE7C00651712 /* Assets.xcassets */; };
 		DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE932A981C7DAE7C00651712 /* LaunchScreen.storyboard */; };
 		DE932AAD1C7DC24D00651712 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932AAC1C7DC24D00651712 /* MainPageViewController.m */; };
+		DE932AB01C7DC39A00651712 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932AAF1C7DC39A00651712 /* UIView+Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		DE932AA11C7DAE8F00651712 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		DE932AAB1C7DC24D00651712 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
 		DE932AAC1C7DC24D00651712 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
+		DE932AAE1C7DC39A00651712 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		DE932AAF1C7DC39A00651712 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				DE932A911C7DAE7C00651712 /* main.m */,
+				DE932AAE1C7DC39A00651712 /* UIView+Additions.h */,
+				DE932AAF1C7DC39A00651712 /* UIView+Additions.m */,
 				DE932AA11C7DAE8F00651712 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
@@ -220,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE932AB01C7DC39A00651712 /* UIView+Additions.m in Sources */,
 				DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */,
 				DE932A921C7DAE7C00651712 /* main.m in Sources */,
 				DE932AAD1C7DC24D00651712 /* MainPageViewController.m in Sources */,
