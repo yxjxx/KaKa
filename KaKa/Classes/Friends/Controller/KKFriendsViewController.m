@@ -10,4 +10,12 @@
 
 @implementation KKFriendsViewController
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor blueColor];
+}
+
+
+
 @end

@@ -10,4 +10,13 @@
 
 @implementation KKCameraViewController
 
+
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor blackColor];
+}
+
+
+
 @end

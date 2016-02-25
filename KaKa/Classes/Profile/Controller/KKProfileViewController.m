@@ -10,4 +10,12 @@
 
 @implementation KKProfileViewController
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor purpleColor];
+}
+
+
+
 @end

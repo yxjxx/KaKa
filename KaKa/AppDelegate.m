@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "KKMainTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[UIViewController alloc]init];
+    self.window.rootViewController = [[KKMainTabBarViewController alloc]init];
     [self.window makeKeyAndVisible];
     return YES;
 }
