@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D506E5C5A75570164E83C760 /* libPods-KaKa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF1B133E1C018C1092F575B /* libPods-KaKa.a */; };
+		DE1AD0E71C7EE7CA00945AF1 /* KKMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */; };
+		DE1AD0EA1C7EE7E600945AF1 /* KKVoiceLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E91C7EE7E600945AF1 /* KKVoiceLibraryViewController.m */; };
+		DE1AD0ED1C7EE7FA00945AF1 /* KKCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0EC1C7EE7FA00945AF1 /* KKCameraViewController.m */; };
+		DE1AD0F01C7EE80C00945AF1 /* KKFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0EF1C7EE80C00945AF1 /* KKFriendsViewController.m */; };
+		DE1AD0F31C7EE81800945AF1 /* KKProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0F21C7EE81800945AF1 /* KKProfileViewController.m */; };
 		DE932A921C7DAE7C00651712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932A911C7DAE7C00651712 /* main.m */; };
 		DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932A941C7DAE7C00651712 /* AppDelegate.m */; };
 		DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE932A961C7DAE7C00651712 /* Assets.xcassets */; };
 		DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE932A981C7DAE7C00651712 /* LaunchScreen.storyboard */; };
-		DE932AAD1C7DC24D00651712 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932AAC1C7DC24D00651712 /* MainPageViewController.m */; };
 		DE932AB01C7DC39A00651712 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932AAF1C7DC39A00651712 /* UIView+Additions.m */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +24,16 @@
 		3CF1B133E1C018C1092F575B /* libPods-KaKa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KaKa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58859CDCD39C028723358FBF /* Pods-KaKa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaKa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaKa/Pods-KaKa.debug.xcconfig"; sourceTree = "<group>"; };
 		7165136B30A2177DB001C348 /* Pods-KaKa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaKa.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaKa/Pods-KaKa.release.xcconfig"; sourceTree = "<group>"; };
+		DE1AD0E51C7EE7CA00945AF1 /* KKMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMainPageViewController.h; sourceTree = "<group>"; };
+		DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainPageViewController.m; sourceTree = "<group>"; };
+		DE1AD0E81C7EE7E600945AF1 /* KKVoiceLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKVoiceLibraryViewController.h; sourceTree = "<group>"; };
+		DE1AD0E91C7EE7E600945AF1 /* KKVoiceLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKVoiceLibraryViewController.m; sourceTree = "<group>"; };
+		DE1AD0EB1C7EE7FA00945AF1 /* KKCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCameraViewController.h; sourceTree = "<group>"; };
+		DE1AD0EC1C7EE7FA00945AF1 /* KKCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCameraViewController.m; sourceTree = "<group>"; };
+		DE1AD0EE1C7EE80C00945AF1 /* KKFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKFriendsViewController.h; sourceTree = "<group>"; };
+		DE1AD0EF1C7EE80C00945AF1 /* KKFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKFriendsViewController.m; sourceTree = "<group>"; };
+		DE1AD0F11C7EE81800945AF1 /* KKProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKProfileViewController.h; sourceTree = "<group>"; };
+		DE1AD0F21C7EE81800945AF1 /* KKProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKProfileViewController.m; sourceTree = "<group>"; };
 		DE932A8D1C7DAE7C00651712 /* KaKa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaKa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE932A911C7DAE7C00651712 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DE932A931C7DAE7C00651712 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,8 +42,6 @@
 		DE932A991C7DAE7C00651712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE932A9B1C7DAE7C00651712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE932AA11C7DAE8F00651712 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		DE932AAB1C7DC24D00651712 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
-		DE932AAC1C7DC24D00651712 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 		DE932AAE1C7DC39A00651712 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		DE932AAF1C7DC39A00651712 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		DE932AB11C7DD09400651712 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -62,6 +74,143 @@
 				3CF1B133E1C018C1092F575B /* libPods-KaKa.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE1AD0D41C7EE79A00945AF1 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				DE1AD0D51C7EE79A00945AF1 /* Controller */,
+				DE1AD0D61C7EE79A00945AF1 /* Model */,
+				DE1AD0D71C7EE79A00945AF1 /* View */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		DE1AD0D51C7EE79A00945AF1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE1AD0EB1C7EE7FA00945AF1 /* KKCameraViewController.h */,
+				DE1AD0EC1C7EE7FA00945AF1 /* KKCameraViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DE1AD0D61C7EE79A00945AF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE1AD0D71C7EE79A00945AF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE1AD0D81C7EE79A00945AF1 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				DE1AD0D91C7EE79A00945AF1 /* Controller */,
+				DE1AD0DA1C7EE79A00945AF1 /* Model */,
+				DE1AD0DB1C7EE79A00945AF1 /* View */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		DE1AD0D91C7EE79A00945AF1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE1AD0EE1C7EE80C00945AF1 /* KKFriendsViewController.h */,
+				DE1AD0EF1C7EE80C00945AF1 /* KKFriendsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DE1AD0DA1C7EE79A00945AF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE1AD0DB1C7EE79A00945AF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE1AD0DC1C7EE79A00945AF1 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		DE1AD0DD1C7EE79A00945AF1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DE1AD0DE1C7EE79A00945AF1 /* Controller */,
+				DE1AD0DF1C7EE79A00945AF1 /* Model */,
+				DE1AD0E01C7EE79A00945AF1 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		DE1AD0DE1C7EE79A00945AF1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE1AD0F11C7EE81800945AF1 /* KKProfileViewController.h */,
+				DE1AD0F21C7EE81800945AF1 /* KKProfileViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DE1AD0DF1C7EE79A00945AF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE1AD0E01C7EE79A00945AF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE1AD0E11C7EE79A00945AF1 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				DE1AD0E21C7EE79A00945AF1 /* Controller */,
+				DE1AD0E31C7EE79A00945AF1 /* Model */,
+				DE1AD0E41C7EE79A00945AF1 /* View */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		DE1AD0E21C7EE79A00945AF1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DE1AD0E31C7EE79A00945AF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE1AD0E41C7EE79A00945AF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		DE932A841C7DAE7C00651712 = {
@@ -111,6 +260,11 @@
 		DE932AA21C7DC1FA00651712 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DE1AD0D41C7EE79A00945AF1 /* Camera */,
+				DE1AD0D81C7EE79A00945AF1 /* Friends */,
+				DE1AD0DC1C7EE79A00945AF1 /* Others */,
+				DE1AD0DD1C7EE79A00945AF1 /* Profile */,
+				DE1AD0E11C7EE79A00945AF1 /* Setting */,
 				DE932AA31C7DC1FA00651712 /* MainPage */,
 				DE932AA71C7DC1FA00651712 /* VoiceLibrary */,
 			);
@@ -130,8 +284,8 @@
 		DE932AA41C7DC1FA00651712 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DE932AAB1C7DC24D00651712 /* MainPageViewController.h */,
-				DE932AAC1C7DC24D00651712 /* MainPageViewController.m */,
+				DE1AD0E51C7EE7CA00945AF1 /* KKMainPageViewController.h */,
+				DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -163,6 +317,8 @@
 		DE932AA81C7DC1FA00651712 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DE1AD0E81C7EE7E600945AF1 /* KKVoiceLibraryViewController.h */,
+				DE1AD0E91C7EE7E600945AF1 /* KKVoiceLibraryViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -302,10 +458,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1AD0ED1C7EE7FA00945AF1 /* KKCameraViewController.m in Sources */,
 				DE932AB01C7DC39A00651712 /* UIView+Additions.m in Sources */,
+				DE1AD0EA1C7EE7E600945AF1 /* KKVoiceLibraryViewController.m in Sources */,
 				DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */,
+				DE1AD0F01C7EE80C00945AF1 /* KKFriendsViewController.m in Sources */,
 				DE932A921C7DAE7C00651712 /* main.m in Sources */,
-				DE932AAD1C7DC24D00651712 /* MainPageViewController.m in Sources */,
+				DE1AD0E71C7EE7CA00945AF1 /* KKMainPageViewController.m in Sources */,
+				DE1AD0F31C7EE81800945AF1 /* KKProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
