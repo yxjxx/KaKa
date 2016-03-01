@@ -21,4 +21,11 @@
 
 #define kBtnFont [UIFont systemFontOfSize:15.0f]
 
+#define kLoginServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/login/"
+#define kSignupServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/register/"
+
+#define kUsernameKey @"username"
+#define kPasswordKey @"password"
+#define kMobileKey   @"mobile"
+
 #endif /* Constants_h */
