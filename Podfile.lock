@@ -15,16 +15,19 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - CYLTabBarController (1.2.1)
+  - KRVideoPlayer (1.0.1)
   - MD5Digest (1.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - CYLTabBarController
+  - KRVideoPlayer
   - MD5Digest
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   CYLTabBarController: 62ee700d59dc1f42777053e6254933f499ab4564
+  KRVideoPlayer: 08918da1b99cae35fd4c15b2ec2b49358d4c985f
   MD5Digest: fea371215507cfcdc3c9633d02cffc7fd075ebc3
 
 COCOAPODS: 0.39.0

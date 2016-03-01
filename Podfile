@@ -8,6 +8,7 @@ target 'KaKa' do
 pod 'AFNetworking', '~> 3.0'
 pod 'CYLTabBarController'
 pod 'MD5Digest'
+pod 'KRVideoPlayer'
 
 end
 
