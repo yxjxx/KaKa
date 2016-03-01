@@ -43,13 +43,13 @@
     return _voiceLibraryVC;
 }
 
-- (KKCameraViewController *)cameraVC{
-    if (_cameraVC == nil) {
-        _cameraVC = [[KKCameraViewController alloc] init];
-        _cameraVC.tabBarItem.title = @"Camera";
-    }
-    return _cameraVC;
-}
+//- (KKCameraViewController *)cameraVC{
+//    if (_cameraVC == nil) {
+//        _cameraVC = [[KKCameraViewController alloc] init];
+//        _cameraVC.tabBarItem.title = @"Camera";
+//    }
+//    return _cameraVC;
+//}
 
 - (KKFriendsViewController *)friendsVC{
     if (_friendsVC == nil) {

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CYLPlusButton.h"
 
-@interface KKCameraViewController : UIViewController
+@interface KKCameraViewController : CYLPlusButton <CYLPlusButtonSubclassing>
 
 @end

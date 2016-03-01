@@ -6,6 +6,7 @@
 target 'KaKa' do
 
 pod 'AFNetworking', '~> 3.0'
+pod 'CYLTabBarController'
 
 end
 
