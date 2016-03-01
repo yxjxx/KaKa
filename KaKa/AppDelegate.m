@@ -78,19 +78,19 @@
                             };
     NSDictionary *dict2 = @{
                             CYLTabBarItemTitle : @"Voice",
-//                            CYLTabBarItemImage : @"mycity_normal",
-//                            CYLTabBarItemSelectedImage : @"mycity_highlight",
+                            CYLTabBarItemImage : @"mycity_normal",
+                            CYLTabBarItemSelectedImage : @"mycity_highlight",
                             };
     
     NSDictionary *dict3 = @{
                             CYLTabBarItemTitle : @"Friends",
-                            //                            CYLTabBarItemImage : @"home_normal",
-                            //                            CYLTabBarItemSelectedImage : @"home_highlight",
+                            CYLTabBarItemImage : @"home_normal",
+                            CYLTabBarItemSelectedImage : @"home_highlight",
                             };
     NSDictionary *dict4 = @{
                             CYLTabBarItemTitle : @"Profile",
-                            //                            CYLTabBarItemImage : @"mycity_normal",
-                            //                            CYLTabBarItemSelectedImage : @"mycity_highlight",
+                            CYLTabBarItemImage : @"mycity_normal",
+                            CYLTabBarItemSelectedImage : @"mycity_highlight",
                             };
     
     NSArray *tabBarItemsAttributes = @[ dict1, dict2, dict3, dict4 ];
