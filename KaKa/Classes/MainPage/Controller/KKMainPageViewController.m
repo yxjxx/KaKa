@@ -7,6 +7,7 @@
 //
 
 #import "KKMainPageViewController.h"
+#import "KKPlayVideoViewController.h"
 
 @interface KKMainPageViewController()
 
@@ -41,6 +42,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSNumber *badgeNumber = @(indexPath.row + 1);
     [self.navigationController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%@", badgeNumber]];
+    
+    KKPlayVideoViewController *playVideoVC = [[KKPlayVideoViewController alloc] init];
+    [self.navigationController pushViewController:playVideoVC animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

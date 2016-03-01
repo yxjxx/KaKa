@@ -16,6 +16,8 @@
 		DE1AD0F61C7EE8E100945AF1 /* KKMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */; };
 		DE34B0EA1C853CE400CAFD12 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0E91C853CE400CAFD12 /* KKLoginViewController.m */; };
 		DE34B0ED1C853F0700CAFD12 /* KKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0EC1C853F0700CAFD12 /* KKSignupViewController.m */; };
+		DE34B0F01C85867100CAFD12 /* KKPlayVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0EF1C85867100CAFD12 /* KKPlayVideoViewController.m */; };
+		DE34B0F21C8589D700CAFD12 /* hehe.mov in Resources */ = {isa = PBXBuildFile; fileRef = DE34B0F11C8589D700CAFD12 /* hehe.mov */; };
 		DE932A921C7DAE7C00651712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932A911C7DAE7C00651712 /* main.m */; };
 		DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932A941C7DAE7C00651712 /* AppDelegate.m */; };
 		DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE932A961C7DAE7C00651712 /* Assets.xcassets */; };
@@ -43,6 +45,9 @@
 		DE34B0E91C853CE400CAFD12 /* KKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewController.m; sourceTree = "<group>"; };
 		DE34B0EB1C853F0700CAFD12 /* KKSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSignupViewController.h; sourceTree = "<group>"; };
 		DE34B0EC1C853F0700CAFD12 /* KKSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSignupViewController.m; sourceTree = "<group>"; };
+		DE34B0EE1C85867100CAFD12 /* KKPlayVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKPlayVideoViewController.h; sourceTree = "<group>"; };
+		DE34B0EF1C85867100CAFD12 /* KKPlayVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKPlayVideoViewController.m; sourceTree = "<group>"; };
+		DE34B0F11C8589D700CAFD12 /* hehe.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = hehe.mov; sourceTree = "<group>"; };
 		DE932A8D1C7DAE7C00651712 /* KaKa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaKa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE932A911C7DAE7C00651712 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DE932A931C7DAE7C00651712 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -264,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				DE932A911C7DAE7C00651712 /* main.m */,
+				DE34B0F11C8589D700CAFD12 /* hehe.mov */,
 				DE932AAE1C7DC39A00651712 /* UIView+Additions.h */,
 				DE932AAF1C7DC39A00651712 /* UIView+Additions.m */,
 				DE932AA11C7DAE8F00651712 /* PrefixHeader.pch */,
@@ -301,6 +307,8 @@
 			children = (
 				DE1AD0E51C7EE7CA00945AF1 /* KKMainPageViewController.h */,
 				DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */,
+				DE34B0EE1C85867100CAFD12 /* KKPlayVideoViewController.h */,
+				DE34B0EF1C85867100CAFD12 /* KKPlayVideoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -413,6 +421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE34B0F21C8589D700CAFD12 /* hehe.mov in Resources */,
 				DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */,
 				DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -481,6 +490,7 @@
 				DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */,
 				DE1AD0F01C7EE80C00945AF1 /* KKFriendsViewController.m in Sources */,
 				DE1AD0F61C7EE8E100945AF1 /* KKMainTabBarViewController.m in Sources */,
+				DE34B0F01C85867100CAFD12 /* KKPlayVideoViewController.m in Sources */,
 				DE932A921C7DAE7C00651712 /* main.m in Sources */,
 				DE1AD0E71C7EE7CA00945AF1 /* KKMainPageViewController.m in Sources */,
 				DE1AD0F31C7EE81800945AF1 /* KKProfileViewController.m in Sources */,
@@ -590,7 +600,7 @@
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = KaKa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx.KaKa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -604,7 +614,7 @@
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = KaKa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx.KaKa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
