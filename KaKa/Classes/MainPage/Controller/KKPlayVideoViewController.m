@@ -25,7 +25,7 @@
     
 //    NSURL *videoURL = [NSURL URLWithString:@"http://krtv.qiniudn.com/150522nextapp"];
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
-    NSLog(@"%@", videoURL);
+//    NSLog(@"%@", videoURL);
 
     [self playVideoWithURL:videoURL];
 }
@@ -35,7 +35,10 @@
         _videoController = [[KRVideoPlayerController alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth*(9.0/16.0))];
         __weak typeof(self)weakSelf = self;
         [self.videoController setDimissCompleteBlock:^{
+            [weakSelf.videoController pause];
             weakSelf.videoController = nil;
+            // NavigationController pop when _videoController dismiss
+            [weakSelf.navigationController popViewControllerAnimated:YES];
         }];
 
     }
@@ -47,6 +50,12 @@
 {
     self.videoController.contentURL = url;
     [self.videoController showInWindow];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+//    NSLog(@"%s", __func__);
+    // 切换控制器的时候，dismiss 掉 videoController
+    [self.videoController dismiss];
 }
 
 
