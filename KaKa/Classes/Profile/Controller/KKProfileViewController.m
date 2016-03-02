@@ -17,22 +17,15 @@
 
 @implementation KKProfileViewController
 
-- (BOOL )isLogin{
-    return _isLogin;
-}
-
-
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor purpleColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    NSLog(@"will appear:%s", __func__);
+    [super viewWillAppear:animated];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //self.isLogin = FALSE;
     self.isLogin = [defaults boolForKey:@"isLog"];
     
     if (self.isLogin) {
@@ -124,6 +117,8 @@
 
 - (void) clickLoginOut {
      KKLoginViewController *loginVc = [[KKLoginViewController alloc]init];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUsernameKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLog"];
 //   [self presentViewController:loginVc animated:YES completion:^{
 //    
 //     }];

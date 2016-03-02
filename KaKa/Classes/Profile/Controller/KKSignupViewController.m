@@ -11,14 +11,14 @@
 #import "AFNetworking.h"
 #import <SVProgressHUD.h>
 @interface KKSignupViewController ()
+
 @property (nonatomic, strong) UITextField * userNameTextField;
-@property (nonatomic, strong) UITextField *     passwordTextField;
-@property (nonatomic, strong) UITextField *
-    phoneTextField;
-@property (nonatomic, strong) UIButton    *
-    SignUpBtn;
+@property (nonatomic, strong) UITextField * passwordTextField;
+@property (nonatomic, strong) UITextField * phoneTextField;
+@property (nonatomic, strong) UIButton    * SignUpBtn;
 
 @end
+
 @implementation KKSignupViewController
 
 - (void)viewDidLoad{
@@ -51,7 +51,6 @@
     [session POST:kSignupServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //        NSLog(@"JSON: %@", responseObject);
         if ([responseObject[@"errmsg"]  isEqual: @"service success"]) {
-            responseObject[@"ext_data"] = NULL;
             /*
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:responseObject[@"ext_data"][kUsernameKey] forKey:kUsernameKey];
@@ -66,7 +65,7 @@
     }];
 }
 - (void) SignUpSuccess {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"SignUpSuccess");
 }
 - (void) settingButtons {
@@ -148,9 +147,9 @@
     [self.phoneTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
     
 #warning testing
-    self.userNameTextField.text = @"13125197350";
+    self.userNameTextField.text = @"13125197322";
     self.passwordTextField.text = @"123456";
-    self.phoneTextField.text    = @"13125197350";
+    self.phoneTextField.text    = @"13125197333";
 }
 
 
