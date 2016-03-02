@@ -19,6 +19,9 @@
 
 - (BOOL *)isLogin{
     _isLogin = FALSE;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
     return _isLogin;
 }
 
@@ -27,8 +30,9 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor purpleColor];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-//    self.isLogin = FALSE;
+    //    self.isLogin = FALSE;
     if (self.isLogin) {
 //        [self setProfileView]
         NSLog(@"%@", @"is login");
@@ -36,10 +40,10 @@
     } else{
         KKLoginViewController *loginVC = [[KKLoginViewController alloc] init];
         [self.navigationController pushViewController:loginVC  animated:NO];
+        [self setProfileView];
     }
     
-//    [self settingButtons];
-//    [self setTopInformation];
+
 }
 
 - (void) setTopInformation {
@@ -105,22 +109,22 @@
     
     
 }
-- (void)settingButtons {
+- (void)setProfileView {
+    [self setTopInformation ];
     UIButton *btnLoginIn = [[UIButton alloc]initWithFrame:CGRectMake(50, 500, 150, 50)];
-    [btnLoginIn setTitle:@"AddAccount" forState:UIControlStateNormal];
+    [btnLoginIn setTitle:@"Login Out" forState:UIControlStateNormal];
     [btnLoginIn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [btnLoginIn addTarget:self action:@selector(clickLoginIn) forControlEvents:UIControlEventTouchUpInside];
+    [btnLoginIn addTarget:self action:@selector(clickLoginOut) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnLoginIn];
     
 }
 
 
-- (void) clickLoginIn {
-//    KKLoginInVC *loginInVc = [[KKLoginInVC alloc]init];
-//    [self presentViewController:loginInVc animated:YES completion:^{
+- (void) clickLoginOut {
+   KKLoginViewController *loginVc = [[KKLoginViewController alloc]init];
+   [self presentViewController:loginVc animated:YES completion:^{
     
-        
-//    }];
+     }];
 }
 
 - (void) clickOptions {

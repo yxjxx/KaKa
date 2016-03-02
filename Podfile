@@ -9,6 +9,7 @@ pod 'AFNetworking', '~> 3.0'
 pod 'CYLTabBarController'
 pod 'MD5Digest'
 pod 'KRVideoPlayer'
+pod 'SVProgressHUD', '~> 2.0-beta8'
 
 end
 

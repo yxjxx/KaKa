@@ -11,7 +11,7 @@
 #import "KKMainPageViewController.h"
 #import "AFNetworking.h"
 #import "NSString+MD5.h"
-
+#import <SVProgressHUD.h>
 
 @interface KKLoginViewController()
 
@@ -50,6 +50,8 @@
     self.userNameTextField.backgroundColor = [UIColor whiteColor];
     self.userNameTextField.textColor = [UIColor blackColor];
     self.userNameTextField.layer.cornerRadius = 3;
+    self.userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.userNameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:self.userNameTextField];
     
     self.passwordTextField = [[UITextField alloc] init];
@@ -60,6 +62,8 @@
     self.passwordTextField.textColor = [UIColor blackColor];
     self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.layer.cornerRadius = 3;
+    self.passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:self.passwordTextField];
     
     self.loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -77,12 +81,16 @@
     [self.registerButton addTarget:self action:@selector(signupClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.registerButton];
 
-    
+    [self.userNameTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
+    [self.passwordTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
 #warning testing
     self.userNameTextField.text = @"13125197350";
     self.passwordTextField.text = @"123456";
 }
 
+- (void) textChange {
+    self.loginButton.enabled = self.userNameTextField.text.length && self.passwordTextField.text.length ;
+}
 - (void)signupClicked {
     
     KKSignupViewController *signUpVc = [[KKSignupViewController alloc] init];
@@ -91,17 +99,9 @@
 }
 
 - (void)loginClicked {
-    NSLog(@"%s", __func__);
+
+    [self sendLoginRequest];
     
-
-    if ([[self.userNameTextField text] isEqualToString:@""] || [[self.passwordTextField text] isEqualToString:@""]) {
-        alert(@"Please enter Email and password");
-        return;
-    }else{
-        [self sendLoginRequest];
-    }
-
-   
 }
 
 - (void)sendLoginRequest{
@@ -120,7 +120,10 @@
             [defaults setObject:responseObject[@"ext_data"][kUsernameKey] forKey:kUsernameKey];
             [defaults synchronize];
             
+            
             [self loginSuccess];
+        }  else {
+            [SVProgressHUD showErrorWithStatus:@"密码或帖号错了"];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Fail, Error: %@", error);
@@ -133,6 +136,8 @@
     [self.tabBarController setSelectedIndex:0];
 }
 
-
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
 
 @end
