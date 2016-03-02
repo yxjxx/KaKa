@@ -18,11 +18,15 @@
 		DE34B0ED1C853F0700CAFD12 /* KKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0EC1C853F0700CAFD12 /* KKSignupViewController.m */; };
 		DE34B0F01C85867100CAFD12 /* KKPlayVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0EF1C85867100CAFD12 /* KKPlayVideoViewController.m */; };
 		DE34B0F21C8589D700CAFD12 /* hehe.mov in Resources */ = {isa = PBXBuildFile; fileRef = DE34B0F11C8589D700CAFD12 /* hehe.mov */; };
+		DE34B0F51C86D99D00CAFD12 /* KKVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0F41C86D99D00CAFD12 /* KKVideoCell.m */; };
+		DE34B0F81C86DA6400CAFD12 /* KKVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0F71C86DA6400CAFD12 /* KKVideoModel.m */; };
 		DE932A921C7DAE7C00651712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932A911C7DAE7C00651712 /* main.m */; };
 		DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932A941C7DAE7C00651712 /* AppDelegate.m */; };
 		DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE932A961C7DAE7C00651712 /* Assets.xcassets */; };
 		DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE932A981C7DAE7C00651712 /* LaunchScreen.storyboard */; };
 		DE932AB01C7DC39A00651712 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932AAF1C7DC39A00651712 /* UIView+Additions.m */; };
+		DEA4D1911C87064C005F7059 /* KKNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA4D1901C87064C005F7059 /* KKNetwork.m */; };
+		DEA4D1981C8724B5005F7059 /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA4D1971C8724B5005F7059 /* NSArray+Log.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		DE34B0EE1C85867100CAFD12 /* KKPlayVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKPlayVideoViewController.h; sourceTree = "<group>"; };
 		DE34B0EF1C85867100CAFD12 /* KKPlayVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKPlayVideoViewController.m; sourceTree = "<group>"; };
 		DE34B0F11C8589D700CAFD12 /* hehe.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = hehe.mov; sourceTree = "<group>"; };
+		DE34B0F31C86D99D00CAFD12 /* KKVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKVideoCell.h; sourceTree = "<group>"; };
+		DE34B0F41C86D99D00CAFD12 /* KKVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKVideoCell.m; sourceTree = "<group>"; };
+		DE34B0F61C86DA6400CAFD12 /* KKVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKVideoModel.h; sourceTree = "<group>"; };
+		DE34B0F71C86DA6400CAFD12 /* KKVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKVideoModel.m; sourceTree = "<group>"; };
 		DE932A8D1C7DAE7C00651712 /* KaKa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaKa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE932A911C7DAE7C00651712 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DE932A931C7DAE7C00651712 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,6 +67,10 @@
 		DE932AAE1C7DC39A00651712 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		DE932AAF1C7DC39A00651712 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		DE932AB11C7DD09400651712 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		DEA4D18F1C87064C005F7059 /* KKNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNetwork.h; sourceTree = "<group>"; };
+		DEA4D1901C87064C005F7059 /* KKNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNetwork.m; sourceTree = "<group>"; };
+		DEA4D1961C8724B5005F7059 /* NSArray+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Log.h"; path = "Tools/NSArray+Log.h"; sourceTree = "<group>"; };
+		DEA4D1971C8724B5005F7059 /* NSArray+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Log.m"; path = "Tools/NSArray+Log.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +280,7 @@
 		DE932A901C7DAE7C00651712 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DEA4D1951C87249B005F7059 /* Tools */,
 				DE932A911C7DAE7C00651712 /* main.m */,
 				DE34B0F11C8589D700CAFD12 /* hehe.mov */,
 				DE932AAE1C7DC39A00651712 /* UIView+Additions.h */,
@@ -316,6 +329,10 @@
 		DE932AA51C7DC1FA00651712 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DE34B0F61C86DA6400CAFD12 /* KKVideoModel.h */,
+				DE34B0F71C86DA6400CAFD12 /* KKVideoModel.m */,
+				DEA4D18F1C87064C005F7059 /* KKNetwork.h */,
+				DEA4D1901C87064C005F7059 /* KKNetwork.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,6 +340,8 @@
 		DE932AA61C7DC1FA00651712 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DE34B0F31C86D99D00CAFD12 /* KKVideoCell.h */,
+				DE34B0F41C86D99D00CAFD12 /* KKVideoCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -358,6 +377,15 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DEA4D1951C87249B005F7059 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				DEA4D1961C8724B5005F7059 /* NSArray+Log.h */,
+				DEA4D1971C8724B5005F7059 /* NSArray+Log.m */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,7 +515,11 @@
 				DE34B0ED1C853F0700CAFD12 /* KKSignupViewController.m in Sources */,
 				DE932AB01C7DC39A00651712 /* UIView+Additions.m in Sources */,
 				DE1AD0EA1C7EE7E600945AF1 /* KKVoiceLibraryViewController.m in Sources */,
+				DEA4D1981C8724B5005F7059 /* NSArray+Log.m in Sources */,
+				DE34B0F51C86D99D00CAFD12 /* KKVideoCell.m in Sources */,
 				DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */,
+				DE34B0F81C86DA6400CAFD12 /* KKVideoModel.m in Sources */,
+				DEA4D1911C87064C005F7059 /* KKNetwork.m in Sources */,
 				DE1AD0F01C7EE80C00945AF1 /* KKFriendsViewController.m in Sources */,
 				DE1AD0F61C7EE8E100945AF1 /* KKMainTabBarViewController.m in Sources */,
 				DE34B0F01C85867100CAFD12 /* KKPlayVideoViewController.m in Sources */,

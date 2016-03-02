@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKMainPageViewController : UITableViewController
+@interface KKMainPageViewController : UIViewController
 
 @end
