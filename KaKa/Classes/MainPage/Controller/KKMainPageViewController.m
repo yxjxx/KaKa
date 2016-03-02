@@ -36,7 +36,7 @@
     [self.navigationController.tabBarItem setBadgeValue:@"3"];
     
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
-    session.responseSerializer = [AFHTTPResponseSerializer serializer];
+    session.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [session GET:kGetIndexServerAddress parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@", responseObject);
