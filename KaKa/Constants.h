@@ -23,6 +23,7 @@
 
 #define kLoginServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/login/"
 #define kSignupServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/register/"
+#define kGetIndexServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/index/"
 
 #define kUsernameKey @"username"
 #define kPasswordKey @"password"

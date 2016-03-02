@@ -8,6 +8,7 @@
 
 #import "KKMainPageViewController.h"
 #import "KKPlayVideoViewController.h"
+#import "AFNetworking.h"
 
 @interface KKMainPageViewController()
 
@@ -33,6 +34,15 @@
 
     self.navigationItem.title = self.username;
     [self.navigationController.tabBarItem setBadgeValue:@"3"];
+    
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [session GET:kGetIndexServerAddress parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Fail, Error: %@", error);
+    }];
     
     
     //self.tabBarController.selectedIndex = 3;
