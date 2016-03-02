@@ -12,6 +12,7 @@
 @interface KKPlayVideoViewController()
 
 @property (nonatomic, strong) KRVideoPlayerController *videoController;
+//@property (nonatomic, strong) NSURL *videoFullPath;
 
 @end
 
@@ -24,10 +25,11 @@
     self.view.backgroundColor = [UIColor purpleColor];
     
 //    NSURL *videoURL = [NSURL URLWithString:@"http://krtv.qiniudn.com/150522nextapp"];
-    NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
+//    NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
 //    NSLog(@"%@", videoURL);
 
-    [self playVideoWithURL:videoURL];
+//    [self playVideoWithURL:videoURL];
+    [self playVideoWithURL:self.videoFullPath];
 }
 
 - (KRVideoPlayerController *)videoController{
