@@ -143,7 +143,11 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     NSLog(@"%s", __func__);
-    [self.navigationController popViewControllerAnimated:YES];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL isLogin = [defaults boolForKey:@"isLog"];
+    if (isLogin) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end
