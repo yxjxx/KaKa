@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68E262B61C86D348006E9DB3 /* KKOptionsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E262B51C86D348006E9DB3 /* KKOptionsTableVC.m */; };
 		D506E5C5A75570164E83C760 /* libPods-KaKa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF1B133E1C018C1092F575B /* libPods-KaKa.a */; };
 		DE1AD0E71C7EE7CA00945AF1 /* KKMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */; };
 		DE1AD0EA1C7EE7E600945AF1 /* KKVoiceLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E91C7EE7E600945AF1 /* KKVoiceLibraryViewController.m */; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		3CF1B133E1C018C1092F575B /* libPods-KaKa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KaKa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58859CDCD39C028723358FBF /* Pods-KaKa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaKa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaKa/Pods-KaKa.debug.xcconfig"; sourceTree = "<group>"; };
+		68E262B41C86D348006E9DB3 /* KKOptionsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKOptionsTableVC.h; sourceTree = "<group>"; };
+		68E262B51C86D348006E9DB3 /* KKOptionsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKOptionsTableVC.m; sourceTree = "<group>"; };
 		7165136B30A2177DB001C348 /* Pods-KaKa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaKa.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaKa/Pods-KaKa.release.xcconfig"; sourceTree = "<group>"; };
 		DE1AD0E51C7EE7CA00945AF1 /* KKMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMainPageViewController.h; sourceTree = "<group>"; };
 		DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainPageViewController.m; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				DE34B0E91C853CE400CAFD12 /* KKLoginViewController.m */,
 				DE34B0EB1C853F0700CAFD12 /* KKSignupViewController.h */,
 				DE34B0EC1C853F0700CAFD12 /* KKSignupViewController.m */,
+				68E262B41C86D348006E9DB3 /* KKOptionsTableVC.h */,
+				68E262B51C86D348006E9DB3 /* KKOptionsTableVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 				DE1AD0F61C7EE8E100945AF1 /* KKMainTabBarViewController.m in Sources */,
 				DE34B0F01C85867100CAFD12 /* KKPlayVideoViewController.m in Sources */,
 				DE932A921C7DAE7C00651712 /* main.m in Sources */,
+				68E262B61C86D348006E9DB3 /* KKOptionsTableVC.m in Sources */,
 				DE1AD0E71C7EE7CA00945AF1 /* KKMainPageViewController.m in Sources */,
 				DE1AD0F31C7EE81800945AF1 /* KKProfileViewController.m in Sources */,
 			);

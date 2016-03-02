@@ -8,7 +8,8 @@
 
 #import "KKProfileViewController.h"
 #import "KKLoginViewController.h"
-
+#import "KKOptionsTableVC.h"
+#import "Constants.h"
 @interface KKProfileViewController()
 
 @property (nonatomic, assign) BOOL isLogin;
@@ -45,7 +46,7 @@
     
     UIView *settingMyIcon = [[UIView alloc]init];
     settingMyIcon.size = CGSizeMake(self.view.width, 140);
-    settingMyIcon.center = CGPointMake(self.view.width / 2, 80);
+    settingMyIcon.center = CGPointMake(kScreenWidth / 2, 80 + kStatusBarHeight);
     settingMyIcon.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:settingMyIcon];
     //icon
@@ -65,7 +66,7 @@
     // 右上角，setting Button
     UIButton *btnOptions = [[UIButton alloc]init];
     btnOptions.size = CGSizeMake(45, 45);
-    btnOptions.center = CGPointMake(self.view.width -  22.5, 22.5);
+    btnOptions.center = CGPointMake(self.view.width -  22.5, 55);
     [btnOptions setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
     [settingMyIcon addSubview:btnOptions];
     [btnOptions addTarget:self action:@selector(clickOptions) forControlEvents:UIControlEventTouchUpInside];
@@ -126,13 +127,11 @@
 }
 
 - (void) clickOptions {
-//    NSLog(@"click options");
-//    KKOptionTableVC *optionVc = [[KKOptionTableVC alloc]init];
-//    // [self.navigationController pushViewController:optionVc animated:YES];
-//    [self presentViewController:optionVc animated:YES completion:^{
-//        
+
+    KKOptionsTableVC *optionVc = [[KKOptionsTableVC alloc]init];
+    [self.navigationController pushViewController:optionVc animated:YES];
+ 
     
-//    }];
 }
 -(void)saveNSUserDefaults
 {
