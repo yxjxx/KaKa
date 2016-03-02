@@ -141,4 +141,9 @@
     [self.view endEditing:YES];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    NSLog(@"%s", __func__);
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end
