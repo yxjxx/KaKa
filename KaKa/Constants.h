@@ -14,6 +14,8 @@
 
 #define kStatusBarHeight 20
 #define kMagicNumber 44
+#define kNavgationBarHeight 44
+#define kMagicZero 0
 
 #define kNormalHeight 44
 #define kIconW 50
@@ -24,6 +26,10 @@
 #define kLoginServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/login/"
 #define kSignupServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/register/"
 #define kGetIndexServerAddress @"http://www.linzerlee.cn:8080/kakaweb/mobile/circle/"
+#define kVideoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_video_info/"
+#define kPathOfVideoInServer @"http://www.linzerlee.cn/kakadata/video/"
+
+#define kPageSize 10
 
 #define kUsernameKey @"username"
 #define kPasswordKey @"password"
