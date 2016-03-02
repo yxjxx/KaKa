@@ -11,39 +11,41 @@
 
 @interface KKProfileViewController()
 
-@property (nonatomic, assign) BOOL *isLogin;
+@property (nonatomic, assign) BOOL isLogin;
 
 @end
 
 @implementation KKProfileViewController
 
-- (BOOL *)isLogin{
-    _isLogin = FALSE;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
+- (BOOL )isLogin{
     return _isLogin;
 }
 
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor purpleColor];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
-    //    self.isLogin = FALSE;
-    if (self.isLogin) {
-//        [self setProfileView]
-        NSLog(@"%@", @"is login");
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"will appear:%s", __func__);
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //self.isLogin = FALSE;
+    self.isLogin = [defaults boolForKey:@"isLog"];
+    
+    if (self.isLogin) {
+        
+        [self setProfileView];
+        NSLog(@"%@", @"is login");
+        
     } else{
         KKLoginViewController *loginVC = [[KKLoginViewController alloc] init];
         [self.navigationController pushViewController:loginVC  animated:NO];
-        [self setProfileView];
     }
-    
 
+    
 }
 
 - (void) setTopInformation {
@@ -121,10 +123,11 @@
 
 
 - (void) clickLoginOut {
-   KKLoginViewController *loginVc = [[KKLoginViewController alloc]init];
-   [self presentViewController:loginVc animated:YES completion:^{
-    
-     }];
+     KKLoginViewController *loginVc = [[KKLoginViewController alloc]init];
+//   [self presentViewController:loginVc animated:YES completion:^{
+//    
+//     }];
+    [self.navigationController pushViewController:loginVc animated:YES];
 }
 
 - (void) clickOptions {

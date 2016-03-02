@@ -117,6 +117,7 @@
 //        NSLog(@"JSON: %@", responseObject);
         if ([responseObject[@"errmsg"]  isEqual: @"service success"]) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setBool:YES forKey:@"isLog"];
             [defaults setObject:responseObject[@"ext_data"][kUsernameKey] forKey:kUsernameKey];
             [defaults synchronize];
             
