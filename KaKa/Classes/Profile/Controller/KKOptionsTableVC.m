@@ -10,6 +10,7 @@
 #import <SVProgressHUD.h>
 #import "KKLoginViewController.h"
 #import "KKSignupViewController.h"
+#import "KKMainPageViewController.h"
 @interface KKOptionsTableVC () <UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -37,7 +38,7 @@
             switch (row) {
                 case 0:
                     NSLog(@" 1-1 section:%d,row:%d",section,row);
-
+                    
                     break;
                 case 1:
                     NSLog(@" 1-2 section:%d,row:%d",section,row);
@@ -56,20 +57,20 @@
         case 1: //Account 2个
             switch (row) {
                 case 0:  //重新注册1个号
-                    [self  ReSignUpClick];
-                   // NSLog(@" 2-1 section:%d,row:%d",section,row);
+                    //          [self  ReSignUpClick];
+                    // NSLog(@" 2-1 section:%d,row:%d",section,row);
                     
                     break;
                 case 1: //退出登陆
                     [self loginOutClick];
-                   // NSLog(@" 2-2 section:%d,row:%d",section,row);
+                    // NSLog(@" 2-2 section:%d,row:%d",section,row);
                     
                     break;
                     
                 default:
                     break;
             }
-
+            
             break;
             
         case 2: //support  清空缓存
@@ -90,7 +91,7 @@
                 default:
                     break;
             }
-
+            
             break;
             
         case 3:
@@ -115,9 +116,9 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLog"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kMobileKey];
     
-    KKLoginViewController *loginVc = [[KKLoginViewController alloc]init];
-    [self.navigationController pushViewController:loginVc animated:YES];
-
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.tabBarController setSelectedIndex:0];
+    
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -212,35 +213,6 @@
     [self.view setBackgroundColor:[UIColor clearColor]];   //(1)
     self.tableView.opaque = NO; //(2) (1,2)两行不要也行，背景图片也能显示
     self.tableView.backgroundView = imageView;
-    // method2
-    //    UIImage *imageBack = [UIImage imageNamed:@"KaBackground"];
-    //
-    //    self.view.backgroundColor=[UIColor colorWithPatternImage:imageBack];
-    
-    
-    //    UIImage *imageBack = [UIImage imageNamed:@"KaBackground"];
-    //    [self.view addSubview:imageBack];
-    //    UIView * viewTemp=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 480, 320)];
-    //    UITableView * tableTemp=self.tableView;
-    //    self.view=viewTemp;
-    //    [self.view addSubview:imageBack];
-    //    [self.view addSubview:tableTemp];
-    //  [imageBack release];
-    //method3
-    //    为何无法加进去
-    //    UIView *settingMyIcon = [[UIView alloc]init];
-    //    settingMyIcon.size = CGSizeMake(self.view.width, 300);
-    //    settingMyIcon.center = CGPointMake(self.view.width / 2, 160);
-    //    settingMyIcon.backgroundColor = [UIColor blueColor];
-    //    [self.view addSubview:settingMyIcon];
-    //
-    //    UILabel *lblTitle = [[UILabel alloc]init];
-    //    lblTitle.size = CGSizeMake(210, 81);
-    //    lblTitle.center = CGPointMake(self.view.width / 2, 60);
-    //    lblTitle.text = @"my Name and Icon";
-    //    lblTitle.backgroundColor = [UIColor grayColor];
-    //    [settingMyIcon addSubview:lblTitle];
-    //    [self.view addSubview:settingMyIcon];
     
 }
 

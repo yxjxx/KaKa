@@ -20,12 +20,14 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self.navigationItem setHidesBackButton:NO];
+
     self.view.backgroundColor = [UIColor purpleColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+   
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.isLogin = [defaults boolForKey:@"isLog"];
     
@@ -46,7 +48,7 @@
     
     UIView *settingMyIcon = [[UIView alloc]init];
     settingMyIcon.size = CGSizeMake(self.view.width, 140);
-    settingMyIcon.center = CGPointMake(kScreenWidth / 2, 80 + kStatusBarHeight);
+    settingMyIcon.center = CGPointMake(kScreenWidth / 2, 130 + kStatusBarHeight);
     settingMyIcon.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:settingMyIcon];
     //icon
@@ -66,9 +68,9 @@
     // 右上角，setting Button
     UIButton *btnOptions = [[UIButton alloc]init];
     btnOptions.size = CGSizeMake(45, 45);
-    btnOptions.center = CGPointMake(self.view.width -  22.5, 55);
+    btnOptions.center = CGPointMake(self.view.width -  22.5, 75);
     [btnOptions setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
-    [settingMyIcon addSubview:btnOptions];
+    [self.view addSubview:btnOptions];
     [btnOptions addTarget:self action:@selector(clickOptions) forControlEvents:UIControlEventTouchUpInside];
     
     UILabel *lblNumbersOfFollowings = [[UILabel alloc]init];
@@ -93,25 +95,13 @@
     [settingMyIcon addSubview:text1post];
     [settingMyIcon addSubview:text2followers];
     [settingMyIcon addSubview:text3following];
-    //
-    //    //
-    //    UILabel *lblTitle = [[UILabel alloc]init];
-    //    lblTitle.size = CGSizeMake(210, 51);
-    //    lblTitle.center = CGPointMake(self.view.width / 2, 160);
-    //    lblTitle.text = @"my Name and Icon";
-    //    lblTitle.backgroundColor = [UIColor grayColor];
-    //    [settingMyIcon addSubview:lblTitle];
-    
     
     
 }
 - (void)setProfileView {
+    
     [self setTopInformation ];
-    UIButton *btnLoginIn = [[UIButton alloc]initWithFrame:CGRectMake(50, 500, 150, 50)];
-    [btnLoginIn setTitle:@"Login Out" forState:UIControlStateNormal];
-    [btnLoginIn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [btnLoginIn addTarget:self action:@selector(clickLoginOut) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnLoginIn];
+   
     
 }
 
@@ -130,7 +120,6 @@
 
     KKOptionsTableVC *optionVc = [[KKOptionsTableVC alloc]init];
     [self.navigationController pushViewController:optionVc animated:YES];
- 
     
 }
 -(void)saveNSUserDefaults
@@ -163,10 +152,6 @@
     //读取整型int类型的数据
     NSInteger myInteger = [userDefaultes integerForKey:@"myInteger"];
 //    NSLog(@"acquire:int:%d",myInteger);
-    
 }
-
-
-
 
 @end
