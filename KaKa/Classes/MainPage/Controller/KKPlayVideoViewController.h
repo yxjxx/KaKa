@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface KKPlayVideoViewController : UIViewController
-
+@property (nonatomic, strong) NSURL *videoFullPath;
 @end
