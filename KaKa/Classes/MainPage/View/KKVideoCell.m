@@ -7,6 +7,7 @@
 //
 
 #import "KKVideoCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface KKVideoCell()
 
@@ -53,7 +54,7 @@
 }
 
 - (void)setData{
-    self.snapImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.aVideoModel.videoSnapshot]]];
+    [self.snapImageView sd_setImageWithURL:[NSURL URLWithString:self.aVideoModel.videoSnapshot] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     self.videoNameLabel.text = self.aVideoModel.videoVName;
     self.videoTimeLabel.text = @"2 hours ago";
 }
