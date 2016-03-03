@@ -18,6 +18,7 @@ PODS:
   - HMSegmentedControl (1.5.2)
   - KRVideoPlayer (1.0.1)
   - MD5Digest (1.1.0)
+  - MJRefresh (3.1.0)
   - SVProgressHUD (2.0-beta8)
 
 DEPENDENCIES:
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - HMSegmentedControl
   - KRVideoPlayer
   - MD5Digest
+  - MJRefresh
   - SVProgressHUD (~> 2.0-beta8)
 
 SPEC CHECKSUMS:
@@ -34,6 +36,7 @@ SPEC CHECKSUMS:
   HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   KRVideoPlayer: 08918da1b99cae35fd4c15b2ec2b49358d4c985f
   MD5Digest: fea371215507cfcdc3c9633d02cffc7fd075ebc3
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   SVProgressHUD: 6e48a1dda09ce3b58adc41d013baed3a8e8980ff
 
 COCOAPODS: 0.39.0

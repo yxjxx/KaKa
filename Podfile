@@ -11,6 +11,7 @@ pod 'MD5Digest'
 pod 'KRVideoPlayer'
 pod 'SVProgressHUD', '~> 2.0-beta8'
 pod 'HMSegmentedControl'
+pod 'MJRefresh'
 
 end
 
