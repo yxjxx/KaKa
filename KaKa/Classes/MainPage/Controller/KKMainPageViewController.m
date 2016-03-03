@@ -52,11 +52,8 @@ static NSString *ID = @"videoCell";
     [self.hotVideoCollectionView1 registerClass:[KKVideoCell class] forCellWithReuseIdentifier:ID];
     [self.recommendVideoCollectionView0 registerClass:[KKVideoCell class] forCellWithReuseIdentifier:ID];
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self pullDownRefresh:0];
-        [self pullDownRefresh:1];
-    });
+    [self pullDownRefresh:0];
+    [self pullDownRefresh:1];
     
     __weak typeof(self) weakSelf = self;
     self.recommendVideoCollectionView0.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -196,7 +193,7 @@ static NSString *ID = @"videoCell";
 
 - (UICollectionView *)hotVideoCollectionView1{
     if (_hotVideoCollectionView1 == nil) {
-        _hotVideoCollectionView1 = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
+        _hotVideoCollectionView1 = [[UICollectionView alloc] initWithFrame:CGRectMake(kScreenWidth, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
         _hotVideoCollectionView1.delegate = self;
         _hotVideoCollectionView1.dataSource = self;
         _hotVideoCollectionView1.backgroundColor = [UIColor blackColor];
@@ -234,10 +231,16 @@ static NSString *ID = @"videoCell";
 
 //    [self.videoTableView reloadData];
     if (self.segIndex == 0) {
+        
+        self.recommendVideoCollectionView0.frame = CGRectMake(kMagicZero, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh);
+        self.hotVideoCollectionView1.frame = CGRectMake(kScreenWidth, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh);
         self.recommendVideoCollectionView0.hidden = NO;
         self.hotVideoCollectionView1.hidden = YES;
 //        [self.recommendVideoCollectionView0 reloadData];
     } else{
+        
+        self.recommendVideoCollectionView0.frame = CGRectMake(-kScreenWidth, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh);
+        self.hotVideoCollectionView1.frame = CGRectMake(kMagicZero, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh);
         self.recommendVideoCollectionView0.hidden = YES;
         self.hotVideoCollectionView1.hidden = NO;
         static dispatch_once_t onceToken;
@@ -261,8 +264,8 @@ static NSString *ID = @"videoCell";
     if (_segmentedControl == nil) {
         _segmentedControl = [[HMSegmentedControl alloc] init];
         _segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"推荐", @"热门"]];
-        _segmentedControl.frame = CGRectMake(kMagicZero, kStatusBarHeight + kNavgationBarHeight, kScreenWidth, 60);
-        _segmentedControl.backgroundColor = [UIColor redColor];
+        _segmentedControl.frame = CGRectMake(kMagicZero, kStatusBarHeight + kNavgationBarHeight, kScreenWidth, kSegementControlHeight);
+//        _segmentedControl.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:1];
         _segmentedControl.selectionStyle = HMSegmentedControlBorderTypeTop;
         [_segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
     }
