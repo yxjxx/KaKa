@@ -14,6 +14,7 @@
 #import "KKNetwork.h"
 #import "KKVideoCell.h"
 #import <SVProgressHUD.h>
+#import "MJRefresh.h"
 
 
 @interface KKMainPageViewController() <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -26,6 +27,8 @@
 @property (nonatomic, strong) NSMutableArray *hotVideoArray1;
 @property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 @property (nonatomic, assign) NSInteger segIndex;
+@property (nonatomic, assign) NSInteger recommendVideoPageNum;
+@property (nonatomic, assign) NSInteger hotVideoPageNum;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
@@ -51,35 +54,101 @@ static NSString *ID = @"videoCell";
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self pullToRefresh:0];
-        [self pullToRefresh:1];
+        [self pullDownRefresh:0];
+        [self pullDownRefresh:1];
     });
+    
+    __weak typeof(self) weakSelf = self;
+    self.recommendVideoCollectionView0.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf pullDownRefresh:0];
+    }];
+    
+    self.hotVideoCollectionView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf pullDownRefresh:1];
+    }];
+    
+    self.recommendVideoPageNum = 0;
+    self.hotVideoPageNum = 0;
+    self.recommendVideoCollectionView0.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        self.recommendVideoPageNum++;
+        [weakSelf pullUpRefresh:0 withPageNum:self.recommendVideoPageNum];
+    }];
+    self.hotVideoCollectionView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        self.hotVideoPageNum++;
+        [weakSelf pullUpRefresh:1 withPageNum:self.hotVideoPageNum];
+    }];
 }
 
-- (void)pullToRefresh:(NSInteger)segIndex{
+- (void)pullUpRefresh:(NSInteger)segIndex withPageNum:(NSInteger)pageNum{
+    __weak typeof(self) weakSelf = self;
+    pageNum = segIndex == 0 ? self.recommendVideoPageNum : self.hotVideoPageNum;
+    [[KKNetwork sharedInstance] getVideoArrayDictWithOrder:[NSString stringWithFormat:@"%ld", segIndex + 1] page:[NSString stringWithFormat:@"%ld", pageNum] completeSuccessed:^(NSDictionary *responseJson) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf pullUpRefreshSuccess:responseJson withSegIndex:segIndex andPageNum:pageNum];
+            [weakSelf.recommendVideoCollectionView0.mj_footer endRefreshing];
+            [weakSelf.hotVideoCollectionView1.mj_footer endRefreshing];
+             });
+    } completeFailed:^(NSString *failedStr) {
+        [SVProgressHUD showInfoWithStatus:failedStr];
+    }];
+}
+                       
+- (void)pullUpRefreshSuccess:(NSDictionary *)responseJson withSegIndex:(NSInteger)segIndex andPageNum:(NSInteger)pageNum{
+    NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
+    
+    if (segIndex == 0) {
+//        [self.recommendVideosArray0 removeAllObjects];
+        
+        for (NSDictionary *dict in arr) {
+            KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
+            [self.recommendVideosArray0 addObject:theVideo];
+        }
+        [self.recommendVideoCollectionView0 reloadData];
+        
+    } else{
+//        [self.hotVideoArray1 removeAllObjects];
+        
+        for (NSDictionary *dict in arr) {
+            KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
+            [self.hotVideoArray1 addObject:theVideo];
+        }
+        [self.hotVideoCollectionView1 reloadData];
+    }
+    
+
+}
+
+
+- (void)pullDownRefresh:(NSInteger)segIndex{
     __weak KKMainPageViewController *weakSelf = self;
     [[KKNetwork sharedInstance] getVideoArrayDictWithOrder:[NSString stringWithFormat:@"%ld", segIndex + 1]
-                                                      page:@"2"
+                                                      page:@"0"
                                          completeSuccessed:^(NSDictionary *responseJson) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf pullToRefreshSuccess:responseJson withSegIndex:segIndex];
+            [weakSelf pullDownRefreshSuccess:responseJson withSegIndex:segIndex];
+            [weakSelf.recommendVideoCollectionView0.mj_header endRefreshing];
+            [weakSelf.hotVideoCollectionView1.mj_header endRefreshing];
         });
     } completeFailed:^(NSString *failedStr) {
         [SVProgressHUD showInfoWithStatus:failedStr];
     }];
 }
 
-- (void)pullToRefreshSuccess:(NSDictionary *)responseJson withSegIndex:(NSInteger)segIndex{
-//    [self.recommendVideosArray0 removeAllObjects];
+- (void)pullDownRefreshSuccess:(NSDictionary *)responseJson withSegIndex:(NSInteger)segIndex{
     NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
     
     if (segIndex == 0) {
+        [self.recommendVideosArray0 removeAllObjects];
+
         for (NSDictionary *dict in arr) {
             KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
             [self.recommendVideosArray0 addObject:theVideo];
         }
         [self.recommendVideoCollectionView0 reloadData];
+        
     } else{
+        [self.hotVideoArray1 removeAllObjects];
+
         for (NSDictionary *dict in arr) {
             KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
             [self.hotVideoArray1 addObject:theVideo];
