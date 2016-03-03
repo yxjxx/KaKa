@@ -20,6 +20,11 @@
 #define kNormalHeight 44
 #define kIconW 50
 #define kIconH 50
+//#define kMainPageTableViewHeigh 667-20-44-60-49
+#define kSegementControlHeight 40
+#define kTabBarHeight 49
+#define kMainPageTableViewHeigh kScreenHeight-kStatusBarHeight-kNavgationBarHeight-kSegementControlHeight-kTabBarHeight
+#define kSnapshotWidth (kScreenWidth-1)/2
 
 #define kBtnFont [UIFont systemFontOfSize:15.0f]
 
@@ -29,7 +34,7 @@
 #define kVideoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_video_info/"
 #define kPathOfVideoInServer @"http://www.linzerlee.cn/kakadata/video/"
 
-#define kPageSize 10
+#define kPageSize 2
 
 #define kUsernameKey @"username"
 #define kPasswordKey @"password"
