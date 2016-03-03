@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "KKVideoModel.h"
 
-@interface KKVideoCell : UITableViewCell
+@interface KKVideoCell : UICollectionViewCell
 
 @property (nonatomic, strong) KKVideoModel *aVideoModel;
 

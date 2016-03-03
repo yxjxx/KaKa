@@ -21,7 +21,7 @@
 - (UIImageView *)snapImageView{
     if (_snapImageView == nil) {
         _snapImageView = [[UIImageView alloc] init];
-        _snapImageView.frame = CGRectMake(0, 0, 60, 60);
+        _snapImageView.frame = CGRectMake(0, 0, kSnapshotWidth, kSnapshotWidth);
         [self.contentView addSubview:_snapImageView];
     }
     return _snapImageView;
