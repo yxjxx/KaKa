@@ -15,18 +15,24 @@
 #import "KKVideoCell.h"
 
 
-@interface KKMainPageViewController() <UITableViewDataSource, UITableViewDelegate>
+@interface KKMainPageViewController() <UICollectionViewDelegate, UICollectionViewDataSource>
 
 
 @property (nonatomic, copy) NSString *username;
-@property (nonatomic, strong) UITableView *videoTableView;
+@property (nonatomic, strong) UICollectionView *recommendVideoCollectionView0;
+@property (nonatomic, strong) UICollectionView *hotVideoCollectionView1;
+@property (nonatomic, strong) NSMutableArray *recommendVideosArray0;
+@property (nonatomic, strong) NSMutableArray *hotVideoArray1;
 @property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 @property (nonatomic, assign) NSInteger segIndex;
-@property (nonatomic, strong) NSMutableArray *videosArray;
+
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
 @end
 
 @implementation KKMainPageViewController
+
+static NSString *ID = @"videoCell";
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -35,33 +41,51 @@
     self.navigationItem.title = self.username;
     [self.navigationController.tabBarItem setBadgeValue:@"3"];
     [self.view addSubview:self.segmentedControl];
-    [self.view addSubview:self.videoTableView];
+    [self.view addSubview:self.hotVideoCollectionView1];
+    [self.view addSubview:self.recommendVideoCollectionView0];
     
-    [self pullToRefresh];
+    
+    [self.hotVideoCollectionView1 registerClass:[KKVideoCell class] forCellWithReuseIdentifier:ID];
+    [self.recommendVideoCollectionView0 registerClass:[KKVideoCell class] forCellWithReuseIdentifier:ID];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self pullToRefresh:0];
+        [self pullToRefresh:1];
+    });
 }
 
-- (void)pullToRefresh{
+- (void)pullToRefresh:(NSInteger)segIndex{
     __weak KKMainPageViewController *weakSelf = self;
-    [[KKNetwork sharedInstance] getVideoArrayDictWithOrder:[NSString stringWithFormat:@"%ld", self.segIndex + 1]
+    [[KKNetwork sharedInstance] getVideoArrayDictWithOrder:[NSString stringWithFormat:@"%ld", segIndex + 1]
                                                       page:@"2"
                                          completeSuccessed:^(NSDictionary *responseJson) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf pullToRefreshSuccess:responseJson];
+            [weakSelf pullToRefreshSuccess:responseJson withSegIndex:segIndex];
         });
     } completeFailed:^(NSString *failedStr) {
 
     }];
 }
 
-- (void)pullToRefreshSuccess:(NSDictionary *)responseJson{
-    [self.videosArray removeAllObjects];
+- (void)pullToRefreshSuccess:(NSDictionary *)responseJson withSegIndex:(NSInteger)segIndex{
+//    [self.recommendVideosArray0 removeAllObjects];
     NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
-    for (NSDictionary *dict in arr) {
-        KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
-        [self.videosArray addObject:theVideo];
+    
+    if (segIndex == 0) {
+        for (NSDictionary *dict in arr) {
+            KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
+            [self.recommendVideosArray0 addObject:theVideo];
+        }
+        [self.recommendVideoCollectionView0 reloadData];
+    } else{
+        for (NSDictionary *dict in arr) {
+            KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
+            [self.hotVideoArray1 addObject:theVideo];
+        }
+        [self.hotVideoCollectionView1 reloadData];
     }
-    NSLog(@"self.videosArray %@", self.videosArray);
-    [self.videoTableView reloadData];
+
 }
 
 
@@ -70,31 +94,91 @@
 }
 
 
-- (NSArray *)videosArray{
-    if (_videosArray == nil) {
-        _videosArray = [NSMutableArray array];
+- (NSMutableArray *)recommendVideosArray0{
+    if (_recommendVideosArray0 == nil) {
+        _recommendVideosArray0 = [NSMutableArray array];
     }
-    return _videosArray;
+    return _recommendVideosArray0;
 }
 
-- (UITableView *)videoTableView{
-    if (_videoTableView == nil) {
-        _videoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.segmentedControl.frame), 375, 667-80) style:UITableViewStylePlain];
-
-        self.videoTableView.delegate = self;
-        self.videoTableView.dataSource = self;
+- (NSMutableArray *)hotVideoArray1{
+    if (_hotVideoArray1 == nil) {
+        _hotVideoArray1 = [NSMutableArray array];
     }
-    return _videoTableView;
+    return _hotVideoArray1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.videosArray count];
+- (UICollectionViewFlowLayout *)flowLayout{
+    if (_flowLayout == nil) {
+        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _flowLayout.itemSize = CGSizeMake(kSnapshotWidth, kSnapshotWidth);
+        _flowLayout.minimumLineSpacing = 1;
+        _flowLayout.minimumInteritemSpacing = 0;
+        _flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+
+    }
+    return _flowLayout;
+}
+
+
+- (UICollectionView *)recommendVideoCollectionView0{
+    if (_recommendVideoCollectionView0 == nil) {
+        _recommendVideoCollectionView0 = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
+        _recommendVideoCollectionView0.delegate = self;
+        _recommendVideoCollectionView0.dataSource = self;
+        _recommendVideoCollectionView0.backgroundColor = [UIColor blackColor];
+    }
+    return _recommendVideoCollectionView0;
+}
+
+- (UICollectionView *)hotVideoCollectionView1{
+    if (_hotVideoCollectionView1 == nil) {
+        _hotVideoCollectionView1 = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
+        _hotVideoCollectionView1.delegate = self;
+        _hotVideoCollectionView1.dataSource = self;
+        _hotVideoCollectionView1.backgroundColor = [UIColor blackColor];
+    }
+    return _hotVideoCollectionView1;
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    if (self.segIndex == 0) {
+        return self.recommendVideosArray0.count;
+    } else{
+        return self.hotVideoArray1.count;
+    }
+}
+
+- (KKVideoCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    KKVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    
+    if (self.segIndex == 0) {
+        KKVideoModel *videoModel = self.recommendVideosArray0[indexPath.item];
+        cell.aVideoModel = videoModel;
+    } else{
+        KKVideoModel *videoModel = self.hotVideoArray1[indexPath.item];
+        cell.aVideoModel = videoModel;
+    }
+    return cell;
 }
 
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segment{
     self.segIndex = segment.selectedSegmentIndex;
-    [self pullToRefresh];
+
 //    [self.videoTableView reloadData];
+    if (self.segIndex == 0) {
+        self.recommendVideoCollectionView0.hidden = NO;
+        self.hotVideoCollectionView1.hidden = YES;
+        [self.recommendVideoCollectionView0 reloadData];
+    } else{
+        self.recommendVideoCollectionView0.hidden = YES;
+        self.hotVideoCollectionView1.hidden = NO;
+        [self.hotVideoCollectionView1 reloadData];
+    }
     
 }
 
@@ -120,38 +204,12 @@
 }
 
 
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *ID = @"Cell";
-    KKVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[KKVideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    }
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    KKVideoModel *videoModel = self.recommendVideosArray0[indexPath.item];
     
-    
-    KKVideoModel *videoModel = self.videosArray[indexPath.row];
-    
-    cell.aVideoModel = videoModel;
-    
-    return cell;
-}
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSNumber *badgeNumber = @(indexPath.row + 1);
-    [self.navigationController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%@", badgeNumber]];
-    
-    KKVideoModel *videoModel = self.videosArray[indexPath.row];
-//    videoModel.videoPath
     KKPlayVideoViewController *playVideoVC = [[KKPlayVideoViewController alloc] init];
-    playVideoVC.videoFullPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kPathOfVideoInServer, videoModel.videoPath]];
+    playVideoVC.videoModel = videoModel;
     [self.navigationController pushViewController:playVideoVC animated:YES];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
 }
 
 @end
