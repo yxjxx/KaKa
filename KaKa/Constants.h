@@ -28,6 +28,7 @@
 #define kGetIndexServerAddress @"http://www.linzerlee.cn:8080/kakaweb/mobile/circle/"
 #define kVideoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_video_info/"
 #define kPathOfVideoInServer @"http://www.linzerlee.cn/kakadata/video/"
+#define kAudioServerAddress @"http://www.linzerlee.cn:8080/kakaweb/mobile/get_audio/?page=0-10"
 
 #define kPageSize 10
 

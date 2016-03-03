@@ -24,7 +24,12 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor yellowColor];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"logBg.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
     [self settingButtons];
 }
 
@@ -69,75 +74,85 @@
     NSLog(@"SignUpSuccess");
 }
 - (void) settingButtons {
-    UILabel *lblTitle = [[UILabel alloc]init];
-    lblTitle.size = CGSizeMake(150, 70);
-    lblTitle.center = CGPointMake(self.view.center.x +20, 70);
-    lblTitle.text = @"欢迎注册";
-    [self.view addSubview:lblTitle];
+//    UILabel *lblTitle = [[UILabel alloc]init];
+//    lblTitle.size = CGSizeMake(150, 70);
+//    lblTitle.center = CGPointMake(self.view.center.x +20, 70);
+//    lblTitle.text = @"欢迎注册";
+//    [self.view addSubview:lblTitle];
+//
     
     //accout field
-    UILabel *lblAccount = [[UILabel alloc]initWithFrame:CGRectMake(25, 110, 90, 40)];
+    UILabel *lblAccount = [[UILabel alloc]initWithFrame:CGRectMake(25, 180, 90, 40)];
     lblAccount.text = @"account:";
     
     [self.view addSubview:lblAccount];
-    self.userNameTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 110, 230, 40)];
+    self.userNameTextField = [[UITextField alloc]initWithFrame:CGRectMake(110,185, 230, 40)];
     self.userNameTextField.backgroundColor = [UIColor whiteColor];
     self.userNameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.userNameTextField.layer.cornerRadius = 12;
+    self.userNameTextField.alpha = 0.3;
+    self.userNameTextField.layer.cornerRadius = 3;
     self.userNameTextField.layer.masksToBounds = YES;
     self.userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
     [self.view addSubview:self.userNameTextField];
     //code1
     UILabel *lblCode1 = [[UILabel alloc]init];
     lblCode1.size = CGSizeMake(90, 40);
-    lblCode1.center = CGPointMake(68, 190);
+    lblCode1.center = CGPointMake(68, 260);
     lblCode1.text = @"code:";
     [self.view addSubview:lblCode1];
     
     self.passwordTextField = [[UITextField alloc]init];
     self.passwordTextField.size = CGSizeMake(230, 40);
-    self.passwordTextField.center = CGPointMake(225, 190);
+    self.passwordTextField.center = CGPointMake(225, 260);
     self.passwordTextField.backgroundColor = [UIColor whiteColor];
     self.passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
-    self.passwordTextField.layer.cornerRadius = 12;
+    self.passwordTextField.layer.cornerRadius =3 ;
+    self.passwordTextField.alpha = 0.3;
     self.passwordTextField.layer.masksToBounds = YES;
     [self.view addSubview:self.passwordTextField];
     //code2,telePhone
     UILabel *lblTelePhone = [[UILabel alloc]init];
     lblTelePhone.size = CGSizeMake(90, 40);
-    lblTelePhone.center = CGPointMake(68, 250);
+    lblTelePhone.center = CGPointMake(68, 320);
     lblTelePhone.text = @"telephone:";
     [self.view addSubview:lblTelePhone];
     
     self.phoneTextField = [[UITextField alloc]init];
     self.phoneTextField.size = CGSizeMake(230, 40);
-    self.phoneTextField.center = CGPointMake(225, 250);
+    self.phoneTextField.center = CGPointMake(225, 320);
     self.phoneTextField.backgroundColor = [UIColor whiteColor];
     self.phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
-    self.phoneTextField.layer.cornerRadius = 12;
+    self.phoneTextField.layer.cornerRadius = 3;
+    self.phoneTextField.alpha = 0.3;
     self.phoneTextField.layer.masksToBounds = YES;
     [self.view addSubview:self.phoneTextField];
     
     
     // 注册验证 afnetworking :verifyAFN
     self.SignUpBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.SignUpBtn.size = CGSizeMake(100, 50);
-    self.SignUpBtn.center = CGPointMake(self.view.center.x, 310);
+    self.SignUpBtn.size = CGSizeMake(150, 30);
+    self.SignUpBtn.center = CGPointMake(self.view.center.x, 380);
     
     [self.SignUpBtn setTitle:@"确认注册" forState:UIControlStateNormal];
-    [self.SignUpBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+     [self.SignUpBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.SignUpBtn.backgroundColor = [UIColor colorWithRed:217/256.0 green:99/256.0 blue:91/256.0 alpha:1];
+    self.SignUpBtn.layer.masksToBounds = YES;
+    self.SignUpBtn.layer.cornerRadius = 3;
     [self.SignUpBtn addTarget:self action:@selector(clickSignupNow) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.SignUpBtn];
     
     
     //back
     UIButton *btnFinishSignUp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btnFinishSignUp.size = CGSizeMake(110, 55);
-    btnFinishSignUp.center = CGPointMake(self.view.center.x, 360);
+    btnFinishSignUp.size = CGSizeMake(150, 30);
+    btnFinishSignUp.center = CGPointMake(self.view.center.x, 430);
+    btnFinishSignUp.backgroundColor = [UIColor colorWithRed:217/256.0 green:99/256.0 blue:91/256.0 alpha:1];
+    btnFinishSignUp.layer.cornerRadius = 3;
+    btnFinishSignUp.layer.masksToBounds = YES;
     [btnFinishSignUp setTitle:@"okLogin!" forState:UIControlStateNormal];
-    [btnFinishSignUp setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+     [btnFinishSignUp setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     [btnFinishSignUp addTarget:self action:@selector(backToLoginIn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnFinishSignUp];
