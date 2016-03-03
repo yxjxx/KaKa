@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KKVideoModel.h"
 
 @interface KKVideoCell : UITableViewCell
+
+@property (nonatomic, strong) KKVideoModel *aVideoModel;
 
 @end

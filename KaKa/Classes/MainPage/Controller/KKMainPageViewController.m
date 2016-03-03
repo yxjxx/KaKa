@@ -12,6 +12,7 @@
 #import "HMSegmentedControl.h"
 #import "KKVideoModel.h"
 #import "KKNetwork.h"
+#import "KKVideoCell.h"
 
 
 @interface KKMainPageViewController() <UITableViewDataSource, UITableViewDelegate>
@@ -123,15 +124,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *ID = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    KKVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[KKVideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     
     
     KKVideoModel *videoModel = self.videosArray[indexPath.row];
     
-    cell.textLabel.text = videoModel.videoVName;
+    cell.aVideoModel = videoModel;
     
     return cell;
 }
@@ -147,6 +148,10 @@
     KKPlayVideoViewController *playVideoVC = [[KKPlayVideoViewController alloc] init];
     playVideoVC.videoFullPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kPathOfVideoInServer, videoModel.videoPath]];
     [self.navigationController pushViewController:playVideoVC animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
 }
 
 @end
