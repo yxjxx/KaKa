@@ -23,6 +23,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor purpleColor];
+    self.title = self.videoModel.videoVName;
     
 //    NSURL *videoURL = [NSURL URLWithString:@"http://krtv.qiniudn.com/150522nextapp"];
 //    NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
@@ -35,7 +36,7 @@
 
 - (KRVideoPlayerController *)videoController{
     if (_videoController == nil) {
-        _videoController = [[KRVideoPlayerController alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth*(9.0/16.0))];
+        _videoController = [[KRVideoPlayerController alloc] initWithFrame:CGRectMake(0, kStatusBarHeight+kNavgationBarHeight, kScreenWidth, kScreenWidth)];
         __weak typeof(self)weakSelf = self;
         [self.videoController setDimissCompleteBlock:^{
             [weakSelf.videoController pause];
