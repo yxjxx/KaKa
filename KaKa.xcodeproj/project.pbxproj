@@ -15,6 +15,7 @@
 		DE1AD0F01C7EE80C00945AF1 /* KKFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0EF1C7EE80C00945AF1 /* KKFriendsViewController.m */; };
 		DE1AD0F31C7EE81800945AF1 /* KKProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0F21C7EE81800945AF1 /* KKProfileViewController.m */; };
 		DE1AD0F61C7EE8E100945AF1 /* KKMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */; };
+		DE2F88191C88767700F4A9C2 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2F88181C88767700F4A9C2 /* placeholder.png */; };
 		DE34B0EA1C853CE400CAFD12 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0E91C853CE400CAFD12 /* KKLoginViewController.m */; };
 		DE34B0ED1C853F0700CAFD12 /* KKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0EC1C853F0700CAFD12 /* KKSignupViewController.m */; };
 		DE34B0F01C85867100CAFD12 /* KKPlayVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0EF1C85867100CAFD12 /* KKPlayVideoViewController.m */; };
@@ -48,6 +49,7 @@
 		DE1AD0F21C7EE81800945AF1 /* KKProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKProfileViewController.m; sourceTree = "<group>"; };
 		DE1AD0F41C7EE8E100945AF1 /* KKMainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMainTabBarViewController.h; sourceTree = "<group>"; };
 		DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainTabBarViewController.m; sourceTree = "<group>"; };
+		DE2F88181C88767700F4A9C2 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		DE34B0E81C853CE400CAFD12 /* KKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewController.h; sourceTree = "<group>"; };
 		DE34B0E91C853CE400CAFD12 /* KKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewController.m; sourceTree = "<group>"; };
 		DE34B0EB1C853F0700CAFD12 /* KKSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSignupViewController.h; sourceTree = "<group>"; };
@@ -250,6 +252,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DE2F88171C88765600F4A9C2 /* LocalImages */ = {
+			isa = PBXGroup;
+			children = (
+				DE2F88181C88767700F4A9C2 /* placeholder.png */,
+			);
+			name = LocalImages;
+			sourceTree = "<group>";
+		};
 		DE932A841C7DAE7C00651712 = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +295,7 @@
 		DE932A901C7DAE7C00651712 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DE2F88171C88765600F4A9C2 /* LocalImages */,
 				DEA4D1951C87249B005F7059 /* Tools */,
 				DE932A911C7DAE7C00651712 /* main.m */,
 				DE34B0F11C8589D700CAFD12 /* hehe.mov */,
@@ -455,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE34B0F21C8589D700CAFD12 /* hehe.mov in Resources */,
+				DE2F88191C88767700F4A9C2 /* placeholder.png in Resources */,
 				DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */,
 				DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */,
 			);

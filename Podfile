@@ -12,6 +12,7 @@ pod 'KRVideoPlayer'
 pod 'SVProgressHUD', '~> 2.0-beta8'
 pod 'HMSegmentedControl'
 pod 'MJRefresh'
+pod 'SDWebImage', '~>3.7'
 
 end
 
