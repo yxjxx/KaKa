@@ -12,7 +12,6 @@
 @interface KKPlayVideoViewController()
 
 @property (nonatomic, strong) KRVideoPlayerController *videoController;
-//@property (nonatomic, strong) NSURL *videoFullPath;
 
 @end
 
@@ -27,7 +26,6 @@
     
 //    NSURL *videoURL = [NSURL URLWithString:@"http://krtv.qiniudn.com/150522nextapp"];
 //    NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
-//    NSLog(@"%@", videoURL);
 
     NSURL *videoFullPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kPathOfVideoInServer, self.videoModel.videoPath]];
 
@@ -59,6 +57,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
 //    NSLog(@"%s", __func__);
     // 切换控制器的时候，dismiss 掉 videoController
+    [self.videoController pause];
     [self.videoController dismiss];
 }
 

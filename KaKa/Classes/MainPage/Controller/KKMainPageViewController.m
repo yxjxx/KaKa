@@ -114,7 +114,7 @@ static NSString *ID = @"videoCell";
     [[KKNetwork sharedInstance] getVideoArrayDictWithOrder:[NSString stringWithFormat:@"%ld", segIndex + 1]
                                                       page:@"0"
                                          completeSuccessed:^(NSDictionary *responseJson) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [weakSelf pullDownRefreshSuccess:responseJson withSegIndex:segIndex];
             [weakSelf.recommendVideoCollectionView0.mj_header endRefreshing];
             [weakSelf.hotVideoCollectionView1.mj_header endRefreshing];
@@ -128,6 +128,8 @@ static NSString *ID = @"videoCell";
     NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
     
     if (segIndex == 0) {
+        //TODO:  在本地缓存最新的一页数据
+//        [self cacheJsonData:arr withSegIndex:0];
         [self.recommendVideosArray0 removeAllObjects];
 
         for (NSDictionary *dict in arr) {
