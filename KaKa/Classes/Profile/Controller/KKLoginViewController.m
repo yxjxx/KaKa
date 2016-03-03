@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor redColor];
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
     
     [self settingButtons];
 }
@@ -71,6 +71,22 @@
     self.loginButton.center = CGPointMake(self.view.center.x, 250);
     [self.loginButton setTitle:@"Log in now!" forState:UIControlStateNormal];
     [self.loginButton addTarget:self action:@selector(loginClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    self.loginButton.layer.shadowOffset = CGSizeMake(.0f,2.5f);
+    self.loginButton.layer.shadowRadius = 1.1f;
+    self.loginButton.layer.shadowOpacity =214.2f;
+    self.loginButton.layer.shadowColor = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    //self.loginButton.layer.shadowPath = [UIBezierPath bezierPathWithRect:viewCheck.bounds].CGPath;
+    
+    
+//    self.loginButton.layer.shadowOffset = CGSizeMake(.0f,2.5f);
+//    self.loginButton.layer.shadowRadius = 1.5f;
+//    self.loginButton.layer.shadowOpacity = .9f;
+//    self.loginButton.layer.shadowColor = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+//    //self.loginButton.layer.shadowPath = [UIBezierPath bezierPathWithRect:viewCheck.bounds].CGPath;
+    
+    
     [self.view addSubview:self.loginButton];
     
     self.registerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

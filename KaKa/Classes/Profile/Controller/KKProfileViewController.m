@@ -8,7 +8,8 @@
 
 #import "KKProfileViewController.h"
 #import "KKLoginViewController.h"
-
+#import "KKOptionsTableVC.h"
+#import "Constants.h"
 @interface KKProfileViewController()
 
 @property (nonatomic, assign) BOOL isLogin;
@@ -19,12 +20,13 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor purpleColor];
+    [self.navigationItem setHidesBackButton:NO];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+   
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.isLogin = [defaults boolForKey:@"isLog"];
     
@@ -45,7 +47,7 @@
     
     UIView *settingMyIcon = [[UIView alloc]init];
     settingMyIcon.size = CGSizeMake(self.view.width, 140);
-    settingMyIcon.center = CGPointMake(self.view.width / 2, 80);
+    settingMyIcon.center = CGPointMake(kScreenWidth / 2, 130 + kStatusBarHeight);
     settingMyIcon.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:settingMyIcon];
     //icon
@@ -62,14 +64,11 @@
     lblNickName.text = @"welcome, here is your nick name";
     [settingMyIcon addSubview:lblNickName];
     
-    // 右上角，setting Button
-    UIButton *btnOptions = [[UIButton alloc]init];
-    btnOptions.size = CGSizeMake(45, 45);
-    btnOptions.center = CGPointMake(self.view.width -  22.5, 22.5);
-    [btnOptions setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
-    [settingMyIcon addSubview:btnOptions];
-    [btnOptions addTarget:self action:@selector(clickOptions) forControlEvents:UIControlEventTouchUpInside];
-    
+    // 右上角，setting Button.写到navigationItem.rightBarButtonItem中
+    self.view.backgroundColor = [UIColor purpleColor];
+    UIBarButtonItem *btnOptions = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStylePlain target:self action:@selector(clickOptions) ];
+    self.navigationItem.rightBarButtonItem = btnOptions;
+   
     UILabel *lblNumbersOfFollowings = [[UILabel alloc]init];
     lblNumbersOfFollowings.size = CGSizeMake(260, 30);
     lblNumbersOfFollowings.center = CGPointMake(self.view.width / 2 + 30, 70);
@@ -92,25 +91,13 @@
     [settingMyIcon addSubview:text1post];
     [settingMyIcon addSubview:text2followers];
     [settingMyIcon addSubview:text3following];
-    //
-    //    //
-    //    UILabel *lblTitle = [[UILabel alloc]init];
-    //    lblTitle.size = CGSizeMake(210, 51);
-    //    lblTitle.center = CGPointMake(self.view.width / 2, 160);
-    //    lblTitle.text = @"my Name and Icon";
-    //    lblTitle.backgroundColor = [UIColor grayColor];
-    //    [settingMyIcon addSubview:lblTitle];
-    
     
     
 }
 - (void)setProfileView {
+    
     [self setTopInformation ];
-    UIButton *btnLoginIn = [[UIButton alloc]initWithFrame:CGRectMake(50, 500, 150, 50)];
-    [btnLoginIn setTitle:@"Login Out" forState:UIControlStateNormal];
-    [btnLoginIn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [btnLoginIn addTarget:self action:@selector(clickLoginOut) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnLoginIn];
+   
     
 }
 
@@ -126,13 +113,10 @@
 }
 
 - (void) clickOptions {
-//    NSLog(@"click options");
-//    KKOptionTableVC *optionVc = [[KKOptionTableVC alloc]init];
-//    // [self.navigationController pushViewController:optionVc animated:YES];
-//    [self presentViewController:optionVc animated:YES completion:^{
-//        
+
+    KKOptionsTableVC *optionVc = [[KKOptionsTableVC alloc]init];
+    [self.navigationController pushViewController:optionVc animated:YES];
     
-//    }];
 }
 -(void)saveNSUserDefaults
 {
@@ -164,10 +148,6 @@
     //读取整型int类型的数据
     NSInteger myInteger = [userDefaultes integerForKey:@"myInteger"];
 //    NSLog(@"acquire:int:%d",myInteger);
-    
 }
-
-
-
 
 @end
