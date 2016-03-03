@@ -22,7 +22,6 @@
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:NO];
 
-    self.view.backgroundColor = [UIColor purpleColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,14 +64,11 @@
     lblNickName.text = @"welcome, here is your nick name";
     [settingMyIcon addSubview:lblNickName];
     
-    // 右上角，setting Button
-    UIButton *btnOptions = [[UIButton alloc]init];
-    btnOptions.size = CGSizeMake(45, 45);
-    btnOptions.center = CGPointMake(self.view.width -  22.5, 75);
-    [btnOptions setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
-    [self.view addSubview:btnOptions];
-    [btnOptions addTarget:self action:@selector(clickOptions) forControlEvents:UIControlEventTouchUpInside];
-    
+    // 右上角，setting Button.写到navigationItem.rightBarButtonItem中
+    self.view.backgroundColor = [UIColor purpleColor];
+    UIBarButtonItem *btnOptions = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStylePlain target:self action:@selector(clickOptions) ];
+    self.navigationItem.rightBarButtonItem = btnOptions;
+   
     UILabel *lblNumbersOfFollowings = [[UILabel alloc]init];
     lblNumbersOfFollowings.size = CGSizeMake(260, 30);
     lblNumbersOfFollowings.center = CGPointMake(self.view.width / 2 + 30, 70);

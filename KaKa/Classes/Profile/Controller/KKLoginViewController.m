@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor redColor];
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
     
     [self settingButtons];
 }
