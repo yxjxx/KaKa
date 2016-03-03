@@ -34,7 +34,9 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              successBlock(responseObject);
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+#warning debuging
              NSLog(@"Fail, Error: %@", error);
+             failedBlock(@"Network error");
          }];
 }
 

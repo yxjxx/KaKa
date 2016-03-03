@@ -13,6 +13,7 @@
 #import "KKVideoModel.h"
 #import "KKNetwork.h"
 #import "KKVideoCell.h"
+#import <SVProgressHUD.h>
 
 
 @interface KKMainPageViewController() <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -64,7 +65,7 @@ static NSString *ID = @"videoCell";
             [weakSelf pullToRefreshSuccess:responseJson withSegIndex:segIndex];
         });
     } completeFailed:^(NSString *failedStr) {
-
+        [SVProgressHUD showInfoWithStatus:failedStr];
     }];
 }
 
