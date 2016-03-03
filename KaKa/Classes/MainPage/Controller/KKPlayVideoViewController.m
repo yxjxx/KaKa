@@ -28,8 +28,9 @@
 //    NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
 //    NSLog(@"%@", videoURL);
 
-//    [self playVideoWithURL:videoURL];
-    [self playVideoWithURL:self.videoFullPath];
+    NSURL *videoFullPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kPathOfVideoInServer, self.videoModel.videoPath]];
+
+    [self playVideoWithURL:videoFullPath];
 }
 
 - (KRVideoPlayerController *)videoController{

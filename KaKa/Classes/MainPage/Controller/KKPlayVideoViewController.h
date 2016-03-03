@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KKVideoModel.h"
 
 @interface KKPlayVideoViewController : UIViewController
-@property (nonatomic, strong) NSURL *videoFullPath;
+
+@property (nonatomic, strong) KKVideoModel *videoModel;
 @end
