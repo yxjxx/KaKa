@@ -83,7 +83,7 @@ static NSString *ID = @"videoCell";
     __weak typeof(self) weakSelf = self;
     pageNum = segIndex == 0 ? self.recommendVideoPageNum : self.hotVideoPageNum;
     [[KKNetwork sharedInstance] getVideoArrayDictWithOrder:[NSString stringWithFormat:@"%ld", segIndex + 1] page:[NSString stringWithFormat:@"%ld", pageNum] completeSuccessed:^(NSDictionary *responseJson) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [weakSelf pullUpRefreshSuccess:responseJson withSegIndex:segIndex andPageNum:pageNum];
             [weakSelf.recommendVideoCollectionView0.mj_footer endRefreshing];
             [weakSelf.hotVideoCollectionView1.mj_footer endRefreshing];
@@ -97,25 +97,18 @@ static NSString *ID = @"videoCell";
     NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
     
     if (segIndex == 0) {
-//        [self.recommendVideosArray0 removeAllObjects];
-        
         for (NSDictionary *dict in arr) {
             KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
             [self.recommendVideosArray0 addObject:theVideo];
         }
         [self.recommendVideoCollectionView0 reloadData];
-        
     } else{
-//        [self.hotVideoArray1 removeAllObjects];
-        
         for (NSDictionary *dict in arr) {
             KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
             [self.hotVideoArray1 addObject:theVideo];
         }
         [self.hotVideoCollectionView1 reloadData];
     }
-    
-
 }
 
 
@@ -243,11 +236,14 @@ static NSString *ID = @"videoCell";
     if (self.segIndex == 0) {
         self.recommendVideoCollectionView0.hidden = NO;
         self.hotVideoCollectionView1.hidden = YES;
-        [self.recommendVideoCollectionView0 reloadData];
+//        [self.recommendVideoCollectionView0 reloadData];
     } else{
         self.recommendVideoCollectionView0.hidden = YES;
         self.hotVideoCollectionView1.hidden = NO;
-        [self.hotVideoCollectionView1 reloadData];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [self.hotVideoCollectionView1 reloadData];
+        });
     }
     
 }
