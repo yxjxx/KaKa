@@ -52,9 +52,6 @@ static NSString *ID = @"videoCell";
     [self.hotVideoCollectionView1 registerClass:[KKVideoCell class] forCellWithReuseIdentifier:ID];
     [self.recommendVideoCollectionView0 registerClass:[KKVideoCell class] forCellWithReuseIdentifier:ID];
     
-    [self pullDownRefresh:0];
-    [self pullDownRefresh:1];
-    
     __weak typeof(self) weakSelf = self;
     self.recommendVideoCollectionView0.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf pullDownRefresh:0];
@@ -74,6 +71,9 @@ static NSString *ID = @"videoCell";
         self.hotVideoPageNum++;
         [weakSelf pullUpRefresh:1 withPageNum:self.hotVideoPageNum];
     }];
+    
+    [self.recommendVideoCollectionView0.mj_header beginRefreshing];
+    [self.hotVideoCollectionView1.mj_header beginRefreshing];
 }
 
 - (void)pullUpRefresh:(NSInteger)segIndex withPageNum:(NSInteger)pageNum{
@@ -114,7 +114,8 @@ static NSString *ID = @"videoCell";
     [[KKNetwork sharedInstance] getVideoArrayDictWithOrder:[NSString stringWithFormat:@"%ld", segIndex + 1]
                                                       page:@"0"
                                          completeSuccessed:^(NSDictionary *responseJson) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //???:  这里使用 dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) 会使首次加载变慢
+        dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf pullDownRefreshSuccess:responseJson withSegIndex:segIndex];
             [weakSelf.recommendVideoCollectionView0.mj_header endRefreshing];
             [weakSelf.hotVideoCollectionView1.mj_header endRefreshing];
@@ -188,7 +189,7 @@ static NSString *ID = @"videoCell";
         _recommendVideoCollectionView0 = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
         _recommendVideoCollectionView0.delegate = self;
         _recommendVideoCollectionView0.dataSource = self;
-        _recommendVideoCollectionView0.backgroundColor = [UIColor blackColor];
+        _recommendVideoCollectionView0.backgroundColor = [UIColor whiteColor];
     }
     return _recommendVideoCollectionView0;
 }
@@ -198,7 +199,7 @@ static NSString *ID = @"videoCell";
         _hotVideoCollectionView1 = [[UICollectionView alloc] initWithFrame:CGRectMake(kScreenWidth, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
         _hotVideoCollectionView1.delegate = self;
         _hotVideoCollectionView1.dataSource = self;
-        _hotVideoCollectionView1.backgroundColor = [UIColor blackColor];
+        _hotVideoCollectionView1.backgroundColor = [UIColor whiteColor];
     }
     return _hotVideoCollectionView1;
 }
