@@ -11,10 +11,12 @@
 @implementation KKAudioModel
 - (instancetype) initWithDict:(NSDictionary *)dict {
     if (self = [super init]) {
-        self.audioAName = dict[@"audioAName"];
-        self.audioPath = dict[@"audioPath"];
-        self.audioSnapshow = dict[@"audioSnapshow"];
-        
+        self.audioCid = dict[@"cid"];
+        self.audioCName = dict[@"cname"];
+        self.audioMid = dict[@"mid"];
+        self.audioPath = dict[@"path"];
+        self.audioSubject = dict[@"subject"];
+        self.audioTimestamp = dict[@"timestamp"];
     }
     return self;
 }
@@ -24,6 +26,6 @@
 
 // 对象描述方法，类似于 Java 中的 toString() 方法
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<%@: %p> {audioPath: %@, audioName: %@}",self.class, self, self.audioPath, self.audioAName];
+    return [NSString stringWithFormat:@"<%@: %p> {audioPath: %@, audioName: %@}",self.class, self, self.audioPath, self.audioCName];
 }
 @end
