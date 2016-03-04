@@ -45,15 +45,15 @@
         case 0: //个人 3个
             switch (row) {
                 case 0:
-                    NSLog(@" 1-1 section:%d,row:%d",section,row);
+                    NSLog(@" 1-1 section:%ld,row:%ld",section,row);
                     
                     break;
                 case 1:
-                    NSLog(@" 1-2 section:%d,row:%d",section,row);
+                    NSLog(@" 1-2 section:%ld,row:%ld",section,row);
                     
                     break;
                 case 2:
-                    NSLog(@" 1-3 section:%d,row:%d",section,row);
+                    NSLog(@" 1-3 section:%ld,row:%ld",section,row);
                     
                     break;
                     
@@ -84,15 +84,15 @@
         case 2: //support  清空缓存
             switch (row) {
                 case 0:
-                    NSLog(@" 3-1 section:%d,row:%d",section,row);
+                    NSLog(@" 3-1 section:%ld,row:%ld",section,row);
                     
                     break;
                 case 1:
-                    NSLog(@" 3-2 section:%d,row:%d",section,row);
+                    NSLog(@" 3-2 section:%ld,row:%ld",section,row);
                     
                     break;
                 case 2:
-                    NSLog(@" 3-3 section:%d,row:%d",section,row);
+                    NSLog(@" 3-3 section:%ld,row:%ld",section,row);
                     
                     break;
                     
@@ -103,11 +103,11 @@
             break;
             
         case 3:
-            NSLog(@"section:%d,row:%d",section,row);
+            NSLog(@"section:%ld,row:%ld",section,row);
             break;
             
         case 4:
-            NSLog(@"section:%d,row:%d",section,row);
+            NSLog(@"section:%ld,row:%ld",section,row);
             break;
             
         default:
@@ -186,7 +186,7 @@
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Linked Accounts";
         } else if (indexPath.row == 1) {
-            cell.textLabel.text == @"Push"; //Notification Settings
+            cell.textLabel.text = @"Push"; //Notification Settings
         } else if (indexPath.row == 2) {
             cell.textLabel.text = @"Cellular Data Use";
         } else {

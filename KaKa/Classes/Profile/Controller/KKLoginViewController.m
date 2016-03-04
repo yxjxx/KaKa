@@ -56,7 +56,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
     
-    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden = YES;
    // [self.view addSubview:self.backgroundLogin];
     [self settingButtons];
 }
@@ -109,7 +109,7 @@
     rememberPasswordBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [rememberPasswordBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [rememberPasswordBtn setTitle:@"记住密码" forState:UIControlStateNormal];
-    [rememberPasswordBtn addTarget:self action:@selector(rememberPasswordClick) forControlEvents:UIControlEventTouchUpInside];
+//    [rememberPasswordBtn addTarget:self action:@selector(rememberPasswordClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rememberPasswordBtn];
     
 

@@ -71,6 +71,7 @@
 }
 - (void) SignUpSuccess {
     [self.navigationController popViewControllerAnimated:YES];
+#warning debuging
     NSLog(@"SignUpSuccess");
 }
 - (void) settingButtons {

@@ -10,7 +10,7 @@
 #import "KKLoginViewController.h"
 #import "KKOptionsTableVC.h"
 #import "Constants.h"
-@interface KKProfileViewController()
+@interface KKProfileViewController() <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, assign) BOOL isLogin;
 @property (nonatomic, strong) UICollectionView *myVideoCollectionView1;
@@ -166,36 +166,4 @@
     [self.navigationController pushViewController:optionVc animated:YES];
     
 }
--(void)saveNSUserDefaults
-{
-    BOOL haveAccount = NO;
-    NSString *account = @"kqy";
-    NSString *code = @"kqy";
-    
-    //将上述数据全部存储到NSUserDefaults中
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    //存储时，除NSNumber类型使用对应的类型意外，其他的都是使用setObject:forKey:
-    [userDefaults setBool:haveAccount forKey:@"ifHaveAccount"];
-    [userDefaults setObject:account forKey:@"AccountKqy"];
-    [userDefaults setObject:code forKey:@"CodeKqy"];
-    
-    //这里建议同步存储到磁盘中，但是不是必须的
-    [userDefaults synchronize];
-    
-}
-
-//从NSUserDefaults中读取数据
--(void)readNSUserDefaults
-{
-    NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
-    
-    //my kqy 1
-    NSString *myString1 = [userDefaultes stringForKey:@"myString"];
-    NSLog(@"acquire mystring1:%@",myString1);
-    //读取数据到各个label中
-    //读取整型int类型的数据
-    NSInteger myInteger = [userDefaultes integerForKey:@"myInteger"];
-//    NSLog(@"acquire:int:%d",myInteger);
-}
-
 @end
