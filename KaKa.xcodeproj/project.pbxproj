@@ -10,7 +10,6 @@
 		688B16F71C87DE7A007573F6 /* logBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 688B16F61C87DE7A007573F6 /* logBg.jpg */; };
 		688B16FA1C8814BF007573F6 /* KKAudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688B16F91C8814BF007573F6 /* KKAudioCell.m */; };
 		688B16FD1C881504007573F6 /* KKAudioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 688B16FC1C881504007573F6 /* KKAudioModel.m */; };
-		688B17031C8829E4007573F6 /* KKNetworkAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 688B17021C8829E4007573F6 /* KKNetworkAudio.m */; };
 		68E262B61C86D348006E9DB3 /* KKOptionsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E262B51C86D348006E9DB3 /* KKOptionsTableVC.m */; };
 		D506E5C5A75570164E83C760 /* libPods-KaKa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF1B133E1C018C1092F575B /* libPods-KaKa.a */; };
 		DE1AD0E71C7EE7CA00945AF1 /* KKMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */; };
@@ -43,8 +42,6 @@
 		688B16F91C8814BF007573F6 /* KKAudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAudioCell.m; sourceTree = "<group>"; };
 		688B16FB1C881504007573F6 /* KKAudioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAudioModel.h; sourceTree = "<group>"; };
 		688B16FC1C881504007573F6 /* KKAudioModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAudioModel.m; sourceTree = "<group>"; };
-		688B17011C8829E4007573F6 /* KKNetworkAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNetworkAudio.h; sourceTree = "<group>"; };
-		688B17021C8829E4007573F6 /* KKNetworkAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNetworkAudio.m; sourceTree = "<group>"; };
 		68E262B41C86D348006E9DB3 /* KKOptionsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKOptionsTableVC.h; sourceTree = "<group>"; };
 		68E262B51C86D348006E9DB3 /* KKOptionsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKOptionsTableVC.m; sourceTree = "<group>"; };
 		7165136B30A2177DB001C348 /* Pods-KaKa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaKa.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaKa/Pods-KaKa.release.xcconfig"; sourceTree = "<group>"; };
@@ -398,8 +395,6 @@
 			children = (
 				688B16FB1C881504007573F6 /* KKAudioModel.h */,
 				688B16FC1C881504007573F6 /* KKAudioModel.m */,
-				688B17011C8829E4007573F6 /* KKNetworkAudio.h */,
-				688B17021C8829E4007573F6 /* KKNetworkAudio.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -547,7 +542,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE34B0EA1C853CE400CAFD12 /* KKLoginViewController.m in Sources */,
-				688B17031C8829E4007573F6 /* KKNetworkAudio.m in Sources */,
 				DE1AD0ED1C7EE7FA00945AF1 /* KKCameraViewController.m in Sources */,
 				DE34B0ED1C853F0700CAFD12 /* KKSignupViewController.m in Sources */,
 				DE932AB01C7DC39A00651712 /* UIView+Additions.m in Sources */,
