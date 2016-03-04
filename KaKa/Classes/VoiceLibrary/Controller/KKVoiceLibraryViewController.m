@@ -34,9 +34,7 @@
     self.navigationItem.title = self.username;
     [self.navigationController.tabBarItem setBadgeValue:@"233"];
     
-    [self.view addSubview:self.audioTableView];
-    NSLog(@"%@", self.audioTableView);
-    
+    [self.view addSubview:self.audioTableView];    
 
     self.audioPageNum = 0;
     

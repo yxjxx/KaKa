@@ -72,25 +72,25 @@
 - (void)customizeTabBarForController:(CYLTabBarController *)tabBarController {
     
     NSDictionary *dict1 = @{
-                            CYLTabBarItemTitle : @"MainPage",
-                            CYLTabBarItemImage : @"home_normal",
-                            CYLTabBarItemSelectedImage : @"home_highlight",
+//                            CYLTabBarItemTitle : @"MainPage",
+                            CYLTabBarItemImage : @"home",
+                            CYLTabBarItemSelectedImage : @"home_selected",
                             };
     NSDictionary *dict2 = @{
-                            CYLTabBarItemTitle : @"Voice",
-                            CYLTabBarItemImage : @"mycity_normal",
-                            CYLTabBarItemSelectedImage : @"mycity_highlight",
+//                            CYLTabBarItemTitle : @"Voice",
+                            CYLTabBarItemImage : @"voice",
+                            CYLTabBarItemSelectedImage : @"voice_selected",
                             };
     
     NSDictionary *dict3 = @{
-                            CYLTabBarItemTitle : @"Friends",
-                            CYLTabBarItemImage : @"home_normal",
-                            CYLTabBarItemSelectedImage : @"home_highlight",
+//                            CYLTabBarItemTitle : @"Friends",
+                            CYLTabBarItemImage : @"friends",
+                            CYLTabBarItemSelectedImage : @"friends_selected",
                             };
     NSDictionary *dict4 = @{
-                            CYLTabBarItemTitle : @"Profile",
-                            CYLTabBarItemImage : @"mycity_normal",
-                            CYLTabBarItemSelectedImage : @"mycity_highlight",
+//                            CYLTabBarItemTitle : @"Profile",
+                            CYLTabBarItemImage : @"friends",
+                            CYLTabBarItemSelectedImage : @"friends_selected",
                             };
     
     NSArray *tabBarItemsAttributes = @[ dict1, dict2, dict3, dict4 ];
