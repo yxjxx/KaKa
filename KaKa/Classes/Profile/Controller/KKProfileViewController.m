@@ -22,6 +22,13 @@
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:NO];
 
+    
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"logBg.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -31,7 +38,6 @@
     self.isLogin = [defaults boolForKey:@"isLog"];
     
     if (self.isLogin) {
-        
         [self setProfileView];
         NSLog(@"%@", @"is login");
         
