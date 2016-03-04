@@ -13,6 +13,10 @@
 @interface KKProfileViewController()
 
 @property (nonatomic, assign) BOOL isLogin;
+@property (nonatomic, strong) UICollectionView *myVideoCollectionView1;
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) NSMutableArray *myVideoArray;
+
 
 @end
 
@@ -47,6 +51,44 @@
     }
 
     
+}
+- (UICollectionView *) myVideoCollectionView1 {
+    if (_myVideoCollectionView1 == nil) {
+        _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kScreenWidth, 150, kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
+        _myVideoCollectionView1.delegate = self;
+        _myVideoCollectionView1.dataSource = self;
+        _myVideoCollectionView1.backgroundColor = [UIColor yellowColor];
+    }
+    return _myVideoCollectionView1;
+}
+
+
+- (UICollectionViewFlowLayout *)flowLayout {
+    if (_flowLayout == nil) {
+        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _flowLayout.itemSize = CGSizeMake(kSnapshotWidth, kSnapshotWidth);
+        _flowLayout.minimumLineSpacing = 1;
+        _flowLayout.minimumInteritemSpacing = 0;
+        _flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }
+    return _flowLayout;
+}
+
+
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *) collectionView {
+    return 1;
+}
+ 
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.myVideoArray.count;
+    
+}
+
+- (NSMutableArray *)myVideoArray {
+    if (_myVideoArray == nil) {
+        _myVideoArray = [NSMutableArray array];
+    }
+    return _myVideoArray;
 }
 
 - (void) setTopInformation {
