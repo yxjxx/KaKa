@@ -9,38 +9,38 @@
 #import "KKAudioCell.h"
 
 @interface KKAudioCell ()
-@property (nonatomic, strong) UIImageView *snapImageView;
-@property (nonatomic, strong) UILabel *audioNameLabel;
-@property (nonatomic, strong) UILabel *audioTimeLabel;
+@property (nonatomic, strong) UIImageView *leftLmageView;
+@property (nonatomic, strong) UILabel *audioCNameLabel;
+@property (nonatomic, strong) UILabel *audioSubjectLabel;
  
 @end
 
 @implementation KKAudioCell
-- (UIImageView *)snapImageView {
-    if (_snapImageView == nil) {
-        _snapImageView = [[UIImageView alloc]init];
-        _snapImageView.frame = CGRectMake(0, 0, 60, 60);
-        [self.contentView addSubview:_snapImageView];
+- (UIImageView *)leftLmageView {
+    if (_leftLmageView == nil) {
+        _leftLmageView = [[UIImageView alloc]init];
+        _leftLmageView.frame = CGRectMake(0, 0, 60, 60);
+        [self.contentView addSubview:_leftLmageView];
     }
-    return _snapImageView;
+    return _leftLmageView;
 }
 
-- (UILabel *)audioNameLabel {
-    if (_audioNameLabel == nil) {
-        _audioNameLabel = [[UILabel alloc]init];
-        _audioNameLabel.frame = CGRectMake(60, 0, 200, 30);
-        [self.contentView addSubview:_audioNameLabel];
+- (UILabel *)audioCNameLabel {
+    if (_audioCNameLabel == nil) {
+        _audioCNameLabel = [[UILabel alloc]init];
+        _audioCNameLabel.frame = CGRectMake(60, 30, 200, 30);
+        [self.contentView addSubview:_audioCNameLabel];
     }
-    return _audioNameLabel;
+    return _audioCNameLabel;
 }
 
-- (UILabel *)audioTimeLabel {
-    if (_audioTimeLabel == nil) {
-        _audioTimeLabel = [[UILabel alloc]init];
-        _audioTimeLabel.frame = CGRectMake(60, 30, 200, 30);
-        [self.contentView addSubview:_audioTimeLabel];
+- (UILabel *)audioSubjectLabel {
+    if (_audioSubjectLabel == nil) {
+        _audioSubjectLabel = [[UILabel alloc]init];
+        _audioSubjectLabel.frame = CGRectMake(60, 0, 200, 30);
+        [self.contentView addSubview:_audioSubjectLabel];
     }
-    return _audioTimeLabel;
+    return _audioSubjectLabel;
 }
 
 - (void)setAAudioModel:(KKAudioModel *)aAudioModel {
@@ -50,9 +50,10 @@
 
 
 - (void)setData {
-    self.snapImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.aAudioModel.audioSnapshow] ]];
-    self.audioNameLabel.text = self.aAudioModel.audioAName;
-    self.audioTimeLabel.text = @"6 minutes ago";
+//    self.leftLmageView.image = [UIImage imageWithContentsOfFile:<#(nonnull NSString *)#>];
+    self.leftLmageView.image = [UIImage imageNamed:@"home_highlight"];
+    self.audioCNameLabel.text = self.aAudioModel.audioCName;
+    self.audioSubjectLabel.text = self.aAudioModel.audioSubject;
 }
 
 @end
