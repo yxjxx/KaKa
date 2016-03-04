@@ -10,15 +10,17 @@
 #import "KKAudioModel.h"
 #import "KKAudioCell.h"    
 #import "AFNetworking.h"
-#import "KKNetworkAudio.h"
-#import "HMSegmentedControl.h"
+#import "KKNetwork.h"
+#import <SVProgressHUD.h>
+#import "MJRefresh.h"
 
-@interface KKVoiceLibraryViewController()
+
+@interface KKVoiceLibraryViewController() <UITableViewDelegate, UITableViewDataSource>
+
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, strong) UITableView *audioTableView;
 @property (nonatomic, strong) NSMutableArray *audioArrays;
-@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
-@property (nonatomic, assign) NSInteger *segIndex;
+@property (nonatomic, assign) NSInteger audioPageNum;
 
 @end
 
@@ -28,50 +30,84 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor yellowColor];
+//    self.view.backgroundColor = [UIColor yellowColor];
     self.navigationItem.title = self.username;
-    [self.navigationController.tabBarItem setBadgeValue:@"22"];
+    [self.navigationController.tabBarItem setBadgeValue:@"233"];
     
     [self.view addSubview:self.audioTableView];
-    [self pullToRefresh];
+    NSLog(@"%@", self.audioTableView);
+    
+
+    self.audioPageNum = 0;
+    
+    __weak typeof(self) weakSelf = self;
+    self.audioTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf pullDownRefresh];
+    }];
+    self.audioTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        self.audioPageNum++;
+        [weakSelf pullUpRefreshWithPageNum:self.audioPageNum];
+    }];
+    
+    [self.audioTableView.mj_header beginRefreshing];
     
 }
 
-- (void)pullToRefresh{
-    __weak KKVoiceLibraryViewController *weakSelf = self;
-    [[KKNetworkAudio  sharedInstance] getVideoArrayDictWithOrder:[NSString stringWithFormat:@"%ld", self.segIndex + 1]
-                                                      page:@"2"
-                                         completeSuccessed:^(NSDictionary *responseJson) {
-                                             dispatch_async(dispatch_get_main_queue(), ^{
-                                                 [weakSelf pullToRefreshSuccess:responseJson];
-                                             });
-                                         } completeFailed:^(NSString *failedStr) {
-                                             
-                                         }];
+- (void)pullUpRefreshWithPageNum:(NSInteger)pageNum{
+    __weak typeof(self) weakSelf = self;
+    [[KKNetwork sharedInstance] getAudioArrayDictWithPageNum:[NSString stringWithFormat:@"%ld", pageNum] completeSuccessed:^(NSDictionary *responseJson) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf pullUpRefreshSuccess:responseJson];
+            [weakSelf.audioTableView.mj_footer endRefreshing];
+        });
+    } completeFailed:^(NSString *failedStr) {
+        [SVProgressHUD showInfoWithStatus:failedStr];
+    }];
 }
 
-- (void) pullToRefreshSuccess:(NSDictionary *)responseJson {
+- (void)pullUpRefreshSuccess:(NSDictionary *)responseJson{
+    NSArray *arr = [(NSArray *) responseJson[@"data"] mutableCopy];
+    for (NSDictionary *dict in arr) {
+        KKAudioModel *theAudio = [KKAudioModel audioWithDict:dict];
+        [self.audioArrays addObject:theAudio];
+    }
+#warning debuging
+//    NSLog(@"self.audiosArray : %@",self.audioArrays);
+    [self.audioTableView reloadData];
+}
+
+- (void)pullDownRefresh{
+    __weak typeof(self) weakSelf = self;
+    [[KKNetwork sharedInstance] getAudioArrayDictWithPageNum:@"0" completeSuccessed:^(NSDictionary *responseJson) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf pullDownRefreshSuccess:responseJson];
+            [weakSelf.audioTableView.mj_header endRefreshing];
+        });
+    } completeFailed:^(NSString *failedStr) {
+        [SVProgressHUD showInfoWithStatus:failedStr];
+    }];
+}
+
+- (void) pullDownRefreshSuccess:(NSDictionary *)responseJson {
     [self.audioArrays removeAllObjects];
     NSArray *arr = [(NSArray *) responseJson[@"data"] mutableCopy];
     for (NSDictionary *dict in arr) {
         KKAudioModel *theAudio = [KKAudioModel audioWithDict:dict];
         [self.audioArrays addObject:theAudio];
     }
-    NSLog(@"self.audiosArray : %@",self.audioArrays);
+#warning debuging
+//    NSLog(@"self.audiosArray : %@",self.audioArrays);
     [self.audioTableView reloadData];
 }
 
-- (NSInteger *)segIndex {
-    return _segmentedControl.selectedSegmentIndex;
-}
-
-
-
 - (UITableView *)audioTableView {
     if (_audioTableView == nil) {
-        _audioTableView == [[UITableView alloc] initWithFrame:CGRectMake(0, 33, 375, 667-80) style:UITableViewStylePlain];
+        //???: why 0?
+//        CGFloat tableviewFrameY = kStatusBarHeight + kNavgationBarHeight;
+        CGFloat tableviewFrameY = 0;
+        _audioTableView = [[UITableView alloc] initWithFrame:CGRectMake(kMagicZero, tableviewFrameY, kScreenWidth, kScreenHeight-tableviewFrameY-kTabBarHeight) style:UITableViewStylePlain];
         _audioTableView.delegate = self;
-        _audioTableView.dataSource = self; //并不是self.audioTableView
+        _audioTableView.dataSource = self;
     }
     return _audioTableView;
 }
@@ -86,7 +122,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.audioArrays count];
-}   ///这个并不会自动补全
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *ID = @"CELL";
@@ -100,23 +136,11 @@
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    NSNumber *badgeNumber = @(indexPath.row + 1);
-//    [self.navigationController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%@", badgeNumber]];
-//    
-//    KKVideoModel *videoModel = self.videosArray[indexPath.row];
-//    //    videoModel.videoPath
-//    KKPlayVideoViewController *playVideoVC = [[KKPlayVideoViewController alloc] init];
-//    playVideoVC.videoFullPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kPathOfVideoInServer, videoModel.videoPath]];
-//    [self.navigationController pushViewController:playVideoVC animated:YES];
-//}这有playVideo界面
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSNumber *badgeNumber = @(indexPath.row + 1);
-//    [self.navigationController.tabBarItem setBadgeValue:[NSString   stringWithFormat:@"%@%@", kPathOfVideoInServer,videoModel.videoPath]];
-//    [self.navigationController pushViewController:playVideoVC animated:YES];  这有playVideo界面，这里要改为play Audio
+    [self.navigationController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%@", badgeNumber]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
