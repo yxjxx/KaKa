@@ -99,12 +99,8 @@
     settingMyIcon.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:settingMyIcon];
     //icon
-    UIImageView *imgIcon = [[UIImageView alloc]init];
-    imgIcon.image = [UIImage imageNamed:@"panda"];
-    imgIcon.size = CGSizeMake(50, 50);
-    imgIcon.center = CGPointMake(35, 70);
-    [settingMyIcon addSubview:imgIcon];
-    
+   
+    //nickName
     UILabel *lblNickName = [[UILabel alloc]init];
     lblNickName.size = CGSizeMake(260, 40);
     lblNickName.center = CGPointMake(self.view.width / 2, 40);

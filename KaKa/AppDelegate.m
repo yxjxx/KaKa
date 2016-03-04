@@ -27,6 +27,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    [NSThread sleepForTimeInterval:1];
 //    self.window.rootViewController = [[KKMainTabBarViewController alloc]init];
     [self setupViewControllers];
     [self.window setRootViewController:self.tabBarController];
@@ -73,24 +75,25 @@
     
     NSDictionary *dict1 = @{
                             CYLTabBarItemTitle : @"MainPage",
-                            CYLTabBarItemImage : @"home_normal",
-                            CYLTabBarItemSelectedImage : @"home_highlight",
+                            CYLTabBarItemImage : @"MainPage",
+                            CYLTabBarItemSelectedImage : @"MainPage-1",
+                            
                             };
     NSDictionary *dict2 = @{
                             CYLTabBarItemTitle : @"Voice",
-                            CYLTabBarItemImage : @"mycity_normal",
-                            CYLTabBarItemSelectedImage : @"mycity_highlight",
+                            CYLTabBarItemImage : @"Voice",
+                            CYLTabBarItemSelectedImage : @"Voice-1",
                             };
     
     NSDictionary *dict3 = @{
                             CYLTabBarItemTitle : @"Friends",
-                            CYLTabBarItemImage : @"home_normal",
-                            CYLTabBarItemSelectedImage : @"home_highlight",
+                            CYLTabBarItemImage : @"Friends",
+                            CYLTabBarItemSelectedImage : @"Friends-1",
                             };
     NSDictionary *dict4 = @{
                             CYLTabBarItemTitle : @"Profile",
-                            CYLTabBarItemImage : @"mycity_normal",
-                            CYLTabBarItemSelectedImage : @"mycity_highlight",
+                            CYLTabBarItemImage : @"Profile",
+                            CYLTabBarItemSelectedImage : @"Profile-1",
                             };
     
     NSArray *tabBarItemsAttributes = @[ dict1, dict2, dict3, dict4 ];

@@ -19,8 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.view.backgroundColor = [UIColor greenColor];
-    //1.self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"logBg.jpg"]];
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"logBg.jpg"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
