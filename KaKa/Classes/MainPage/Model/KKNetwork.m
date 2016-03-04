@@ -40,4 +40,20 @@
          }];
 }
 
+- (void)getAudioArrayDictWithPageNum:(NSString *)pageNum completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"page"] = [NSString stringWithFormat:@"%@-%d", pageNum, kPageSize];
+    
+    [session GET:kAudioServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        successBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+#warning debuging
+        NSLog(@"Fail, Error: %@", error);
+        failedBlock(@"Network error");
+    }];
+}
+
 @end

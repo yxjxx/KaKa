@@ -22,4 +22,8 @@ typedef void(^requestFailed)(NSString *failedStr);
                  completeSuccessed:(requestSuccessed)successBlock
                     completeFailed:(requestFailed)failedBlock;
 
+- (void)getAudioArrayDictWithPageNum:(NSString *)pageNum
+                   completeSuccessed:(requestSuccessed)successBlock
+                      completeFailed:(requestFailed)failedBlock;
+
 @end
