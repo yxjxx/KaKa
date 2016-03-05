@@ -11,6 +11,7 @@
 typedef void(^requestSuccessed)(NSDictionary *responseJson);
 //定义了一个requestSuccessed类型的代码块，返回值void，接受一个NSDictionary*类型的参数
 typedef void(^requestFailed)(NSString *failedStr);
+typedef void(^downloadAudioSuccessed)(NSString *successStr);
 
 
 @interface KKNetwork : NSObject
@@ -25,5 +26,10 @@ typedef void(^requestFailed)(NSString *failedStr);
 - (void)getAudioArrayDictWithPageNum:(NSString *)pageNum
                    completeSuccessed:(requestSuccessed)successBlock
                       completeFailed:(requestFailed)failedBlock;
+
+
+- (void)downloadRemoteAudioWithURL:(NSString *)remoteAudioURL
+                 completeSuccessed:(downloadAudioSuccessed)successBlock
+                    completeFailed:(requestFailed)failedBlock;
 
 @end
