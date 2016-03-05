@@ -18,6 +18,7 @@
 		6887BADE1C897610001C4EE1 /* Voice-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6887BAD61C897610001C4EE1 /* Voice-1.png */; };
 		6887BADF1C897610001C4EE1 /* Voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 6887BAD71C897610001C4EE1 /* Voice.png */; };
 		6887BAE11C8984A3001C4EE1 /* 启动界面最终版3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6887BAE01C8984A3001C4EE1 /* 启动界面最终版3.png */; };
+		6887BB221C8ABCFA001C4EE1 /* loginBackGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6887BB211C8ABCFA001C4EE1 /* loginBackGround.jpg */; };
 		688B16F71C87DE7A007573F6 /* logBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 688B16F61C87DE7A007573F6 /* logBg.jpg */; };
 		688B16FA1C8814BF007573F6 /* KKAudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688B16F91C8814BF007573F6 /* KKAudioCell.m */; };
 		688B16FD1C881504007573F6 /* KKAudioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 688B16FC1C881504007573F6 /* KKAudioModel.m */; };
@@ -61,6 +62,7 @@
 		6887BAD61C897610001C4EE1 /* Voice-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Voice-1.png"; sourceTree = "<group>"; };
 		6887BAD71C897610001C4EE1 /* Voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Voice.png; sourceTree = "<group>"; };
 		6887BAE01C8984A3001C4EE1 /* 启动界面最终版3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动界面最终版3.png"; sourceTree = "<group>"; };
+		6887BB211C8ABCFA001C4EE1 /* loginBackGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = loginBackGround.jpg; path = Assets.xcassets/loginBackGround.imageset/loginBackGround.jpg; sourceTree = "<group>"; };
 		688B16F61C87DE7A007573F6 /* logBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logBg.jpg; sourceTree = "<group>"; };
 		688B16F81C8814BF007573F6 /* KKAudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAudioCell.h; sourceTree = "<group>"; };
 		688B16F91C8814BF007573F6 /* KKAudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAudioCell.m; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				6887BAE01C8984A3001C4EE1 /* 启动界面最终版3.png */,
+				6887BB211C8ABCFA001C4EE1 /* loginBackGround.jpg */,
 				6887BAD01C897610001C4EE1 /* Friends-1.png */,
 				6887BAD11C897610001C4EE1 /* Friends.png */,
 				6887BAD21C897610001C4EE1 /* MainPage-1.png */,
@@ -518,6 +521,7 @@
 				DE34B0F21C8589D700CAFD12 /* hehe.mov in Resources */,
 				6887BADA1C897610001C4EE1 /* MainPage-1.png in Resources */,
 				6887BADF1C897610001C4EE1 /* Voice.png in Resources */,
+				6887BB221C8ABCFA001C4EE1 /* loginBackGround.jpg in Resources */,
 				6887BAD81C897610001C4EE1 /* Friends-1.png in Resources */,
 				6887BADB1C897610001C4EE1 /* MainPage.png in Resources */,
 				6887BAD91C897610001C4EE1 /* Friends.png in Resources */,

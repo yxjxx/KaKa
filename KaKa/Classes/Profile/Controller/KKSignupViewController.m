@@ -61,6 +61,7 @@
             [defaults setObject:responseObject[@"ext_data"][kUsernameKey] forKey:kUsernameKey];
             [defaults synchronize]; */
             
+            [SVProgressHUD showSuccessWithStatus:@"恭喜注册成功"];
             [self SignUpSuccess];
         } else {
             [SVProgressHUD showErrorWithStatus:@"wrong"];
@@ -85,8 +86,9 @@
    // self.userNameTextField.layer.cornerRadius = 3;
     self.userNameTextField.layer.masksToBounds = YES;
     self.userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.userNameTextField.textColor = [UIColor colorWithRed:230/256.0 green:230/256.0 blue:230/256.0 alpha:1] ;
     [self.userNameTextField setPlaceholder:@"请输入帐号"];
-    [self.userNameTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.userNameTextField setValue:[UIColor colorWithRed:190/256.0 green:190/256.0 blue:190/256.0 alpha:1] forKeyPath:@"_placeholderLabel.textColor"];
     //设置光标颜色
     [self.userNameTextField setTintColor:[UIColor whiteColor]];
     //设置输入字体颜色
@@ -104,7 +106,7 @@
     self.passwordTextField = [[UITextField alloc]init];
     self.passwordTextField.size = CGSizeMake(250, 30);
     self.passwordTextField.center = CGPointMake(self.view.center.x, 260);
-    //self.passwordTextField.backgroundColor = [UIColor whiteColor];
+    self.passwordTextField.textColor = [UIColor colorWithRed:230/256.0 green:230/256.0 blue:230/256.0 alpha:1] ;
     self.passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
     //self.passwordTextField.layer.cornerRadius =3 ;
@@ -113,7 +115,7 @@
   //  self.passwordTextField.placeholder = @"请输入密码";
     
     [self.passwordTextField setPlaceholder:@"请输入密码"];
-    [self.passwordTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.passwordTextField setValue:[UIColor colorWithRed:190/256.0 green:190/256.0 blue:190/256.0 alpha:1] forKeyPath:@"_placeholderLabel.textColor"];
     //设置光标颜色
     [self.passwordTextField setTintColor:[UIColor whiteColor]];
     //设置输入字体颜色
@@ -132,7 +134,7 @@
     self.phoneTextField = [[UITextField alloc]init];
     self.phoneTextField.size = CGSizeMake(250, 30);
     self.phoneTextField.center = CGPointMake(self.view.center.x, 310);
-    //self.phoneTextField.backgroundColor = [UIColor whiteColor];
+    self.phoneTextField.textColor = [UIColor colorWithRed:230/256.0 green:230/256.0 blue:230/256.0 alpha:1] ;
     self.phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
    // self.phoneTextField.layer.cornerRadius = 3;
@@ -141,7 +143,7 @@
    // self.phoneTextField.placeholder = @"请输入手机号";
     
     [self.phoneTextField setPlaceholder:@"请输入手机号"];
-    [self.phoneTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.phoneTextField setValue:[UIColor colorWithRed:190/256.0 green:190/256.0 blue:190/256.0 alpha:1] forKeyPath:@"_placeholderLabel.textColor"];
     //设置光标颜色
     [self.phoneTextField setTintColor:[UIColor whiteColor]];
     //设置输入字体颜色
@@ -177,7 +179,7 @@
    // btnFinishSignUp.backgroundColor = [UIColor colorWithRed:217/256.0 green:99/256.0 blue:91/256.0 alpha:1];
    // btnFinishSignUp.layer.cornerRadius = 3;
     btnFinishSignUp.layer.masksToBounds = YES;
-    [btnFinishSignUp setTitle:@"okLogin!" forState:UIControlStateNormal];
+    [btnFinishSignUp setTitle:@"现在登陆0" forState:UIControlStateNormal];
      [btnFinishSignUp setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     [btnFinishSignUp setTitleColor:[UIColor colorWithRed:217/256.0 green:99/256.0 blue:91/256.0 alpha:1] forState:UIControlStateNormal];

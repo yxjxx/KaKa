@@ -121,7 +121,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUsernameKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLog"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kMobileKey];
-    
+    //TODO: 向服务端发送logout请求
     [self.navigationController popViewControllerAnimated:YES];
     [self.tabBarController setSelectedIndex:0];
     
