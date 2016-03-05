@@ -17,6 +17,7 @@ PODS:
   - CYLTabBarController (1.2.1)
   - HMSegmentedControl (1.5.2)
   - KRVideoPlayer (1.0.1)
+  - Masonry (0.6.4)
   - MD5Digest (1.1.0)
   - MJRefresh (3.1.0)
   - SDWebImage (3.7.5):
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - CYLTabBarController
   - HMSegmentedControl
   - KRVideoPlayer
+  - Masonry
   - MD5Digest
   - MJRefresh
   - SDWebImage (~> 3.7)
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   CYLTabBarController: 62ee700d59dc1f42777053e6254933f499ab4564
   HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   KRVideoPlayer: 08918da1b99cae35fd4c15b2ec2b49358d4c985f
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MD5Digest: fea371215507cfcdc3c9633d02cffc7fd075ebc3
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
