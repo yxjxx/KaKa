@@ -37,7 +37,7 @@
 		DE2F882D1C8ACCC900F4A9C2 /* KKCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2F88271C8ACCC900F4A9C2 /* KKCameraView.xib */; };
 		DE2F882E1C8ACCC900F4A9C2 /* KKSoundLibraryItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F88291C8ACCC900F4A9C2 /* KKSoundLibraryItemView.m */; };
 		DE2F882F1C8ACCC900F4A9C2 /* KKSoundLibraryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F882C1C8ACCC900F4A9C2 /* KKSoundLibraryScrollView.m */; };
-		DE2F88311C8ACEF500F4A9C2 /* post_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2F88301C8ACEF500F4A9C2 /* post_normal.png */; };
+		DE2F88311C8ACEF500F4A9C2 /* KK_Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2F88301C8ACEF500F4A9C2 /* KK_Camera.png */; };
 		DE2F88371C8AD08100F4A9C2 /* KKSegueToCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F88351C8AD08100F4A9C2 /* KKSegueToCameraViewController.m */; };
 		DE34B0EA1C853CE400CAFD12 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0E91C853CE400CAFD12 /* KKLoginViewController.m */; };
 		DE34B0ED1C853F0700CAFD12 /* KKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0EC1C853F0700CAFD12 /* KKSignupViewController.m */; };
@@ -104,7 +104,7 @@
 		DE2F882A1C8ACCC900F4A9C2 /* KKSoundLibraryScrollDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSoundLibraryScrollDelegate.h; sourceTree = "<group>"; };
 		DE2F882B1C8ACCC900F4A9C2 /* KKSoundLibraryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSoundLibraryScrollView.h; sourceTree = "<group>"; };
 		DE2F882C1C8ACCC900F4A9C2 /* KKSoundLibraryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSoundLibraryScrollView.m; sourceTree = "<group>"; };
-		DE2F88301C8ACEF500F4A9C2 /* post_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_normal.png; sourceTree = "<group>"; };
+		DE2F88301C8ACEF500F4A9C2 /* KK_Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KK_Camera.png; sourceTree = "<group>"; };
 		DE2F88351C8AD08100F4A9C2 /* KKSegueToCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSegueToCameraViewController.m; sourceTree = "<group>"; };
 		DE2F88361C8AD08100F4A9C2 /* KKSegueToCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSegueToCameraViewController.h; sourceTree = "<group>"; };
 		DE34B0E81C853CE400CAFD12 /* KKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewController.h; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 				6887BAD01C897610001C4EE1 /* Friends-1.png */,
 				6887BAD11C897610001C4EE1 /* Friends.png */,
 				6887BAD21C897610001C4EE1 /* MainPage-1.png */,
-				DE2F88301C8ACEF500F4A9C2 /* post_normal.png */,
+				DE2F88301C8ACEF500F4A9C2 /* KK_Camera.png */,
 				6887BAD31C897610001C4EE1 /* MainPage.png */,
 				6887BAD41C897610001C4EE1 /* Profile-1.png */,
 				6887BAD51C897610001C4EE1 /* Profile.png */,
@@ -575,7 +575,7 @@
 				6887BAE11C8984A3001C4EE1 /* 启动界面最终版3.png in Resources */,
 				DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */,
 				DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */,
-				DE2F88311C8ACEF500F4A9C2 /* post_normal.png in Resources */,
+				DE2F88311C8ACEF500F4A9C2 /* KK_Camera.png in Resources */,
 				DE2F882D1C8ACCC900F4A9C2 /* KKCameraView.xib in Resources */,
 				6887BADD1C897610001C4EE1 /* Profile.png in Resources */,
 				688B16F71C87DE7A007573F6 /* logBg.jpg in Resources */,

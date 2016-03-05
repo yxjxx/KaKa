@@ -28,8 +28,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
 
-    [NSThread sleepForTimeInterval:1];
-//    self.window.rootViewController = [[KKMainTabBarViewController alloc]init];
+//    [NSThread sleepForTimeInterval:0.1];
     [self setupViewControllers];
     [self.window setRootViewController:self.tabBarController];
     [self.window makeKeyAndVisible];
@@ -121,6 +120,7 @@
                                            thirdNavigationController,
                                            fourthNavigationController
                                            ]];
+    [[self class] customizeTabBarAppearance:tabBarController];
     self.tabBarController = tabBarController;
 }
 
@@ -157,6 +157,72 @@
     NSArray *tabBarItemsAttributes = @[ dict1, dict2, dict3, dict4 ];
     tabBarController.tabBarItemsAttributes = tabBarItemsAttributes;
 }
+
+/**
+ *  更多TabBar自定义设置：比如：tabBarItem 的选中和不选中文字和背景图片属性、tabbar 背景图片属性
+ */
++ (void)customizeTabBarAppearance:(CYLTabBarController *)tabBarController {
+    
+    //去除 TabBar 自带的顶部阴影
+//    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    // set the text color for unselected state
+    // 普通状态下的文字属性
+    NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
+    normalAttrs[NSForegroundColorAttributeName] = [UIColor grayColor];
+    
+    // set the text color for selected state
+    // 选中状态下的文字属性
+    NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
+    selectedAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    
+    // set the text Attributes
+    // 设置文字属性
+    UITabBarItem *tabBar = [UITabBarItem appearance];
+    [tabBar setTitleTextAttributes:normalAttrs forState:UIControlStateNormal];
+    [tabBar setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
+    
+    // Set the dark color to selected tab (the dimmed background)
+    // TabBarItem选中后的背景颜色
+    NSUInteger allItemsInTabBarCount = [CYLTabBarController allItemsInTabBarCount];
+    //TODO: TabBarItem选中后的背景颜色
+    [[UITabBar appearance] setSelectionIndicatorImage:[self imageFromColor:[UIColor colorWithRed:0.07 green:0.07 blue:0.07 alpha:1] forSize:CGSizeMake([UIScreen mainScreen].bounds.size.width / allItemsInTabBarCount, 49.f) withCornerRadius:0]];
+    
+    // set the bar background color
+    // 设置背景图片
+    // UITabBar *tabBarAppearance = [UITabBar appearance];
+    // [tabBarAppearance setBackgroundImage:[UIImage imageNamed:@"tabbar_background_ios7"]];
+}
+
++ (UIImage *)imageFromColor:(UIColor *)color forSize:(CGSize)size withCornerRadius:(CGFloat)radius {
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Begin a new image that will be the new image with the rounded corners
+    // (here with the size of an UIImageView)
+    UIGraphicsBeginImageContext(size);
+    
+    // Add a clip before drawing anything, in the shape of an rounded rect
+    [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius] addClip];
+    // Draw your image
+    [image drawInRect:rect];
+    
+    // Get the image, here setting the UIImageView image
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // Lets forget about that we were drawing
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

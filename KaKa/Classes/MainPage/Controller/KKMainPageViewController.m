@@ -44,7 +44,7 @@ static NSString *ID = @"videoCell";
     self.tabBarController.selectedIndex = 1;
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.navigationItem.title = self.username;
+    self.navigationItem.title = self.username ? self.username : @"Welcome";
     [self.navigationController.tabBarItem setBadgeValue:@"3"];
     [self.view addSubview:self.segmentedControl];
     [self.view addSubview:self.hotVideoCollectionView1];

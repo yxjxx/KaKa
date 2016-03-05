@@ -33,8 +33,8 @@
 + (instancetype)plusButton{
     KKSegueToCameraViewController *button = [[KKSegueToCameraViewController alloc] init];
     
-    [button setImage:[UIImage imageNamed:@"post_normal"] forState:UIControlStateNormal];
-//    [button setTitle:@"Publish" forState:UIControlStateNormal];
+    //TODO: KK_Camera.png 替换
+    [button setImage:[UIImage imageNamed:@"KK_Camera"] forState:UIControlStateNormal];
     
     [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:9.5];

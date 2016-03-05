@@ -92,7 +92,6 @@
 
 
 - (void)viewWillDisappear:(BOOL)animated{
-    NSLog(@"%s", __func__);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL isLogin = [defaults boolForKey:@"isLog"];
     if (isLogin) {
