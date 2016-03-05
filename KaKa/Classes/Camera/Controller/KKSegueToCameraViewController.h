@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CYLPlusButton.h"
 
-@interface KKCameraViewController : UIViewController
+@interface KKSegueToCameraViewController : CYLPlusButton <CYLPlusButtonSubclassing>
 
--(void) clickSoundLibraryItem:(id)sender;
 @end

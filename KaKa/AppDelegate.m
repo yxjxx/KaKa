@@ -33,6 +33,64 @@
     [self setupViewControllers];
     [self.window setRootViewController:self.tabBarController];
     [self.window makeKeyAndVisible];
+    
+    
+    /* Append By Linzer At 2016/03/01 */
+    NSString *document_dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true) lastObject];
+    
+    self.video_dir = [document_dir stringByAppendingPathComponent: VIDEO_PATH];
+    self.audio_dir = [document_dir stringByAppendingPathComponent: AUDIO_PATH];
+    self.snapshot_dir = [document_dir stringByAppendingPathComponent: SNAPSHOT_PATH];
+    self.data_dir = [document_dir stringByAppendingPathComponent: DATA_PATH];
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    BOOL ret = [fm createDirectoryAtPath:self.video_dir withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    NSAssert(ret,@"创建目录失败 : %@", self.video_dir);
+    
+    ret = [fm createDirectoryAtPath:self.audio_dir withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    NSAssert(ret,@"创建目录失败 : %@", self.audio_dir);
+    
+    ret = [fm createDirectoryAtPath:self.snapshot_dir withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    NSAssert(ret,@"创建目录失败 : %@", self.snapshot_dir);
+    
+    ret = [fm createDirectoryAtPath:self.data_dir withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    NSAssert(ret,@"创建目录失败 : %@", self.data_dir);
+    
+    self.audio_library = [self.data_dir stringByAppendingPathComponent: AUDIO_LIBRARY];
+    self.video_library = [self.data_dir stringByAppendingPathComponent: VIDEO_LIBRARY];
+    
+    // 加载本地视频库
+    if ([fm fileExistsAtPath:self.audio_library]) {
+        
+        self.audio_library_data = [NSKeyedUnarchiver unarchiveObjectWithFile:self.audio_library];
+        
+        NSLog(@"KaKa:%lu", self.audio_library_data.count);
+        
+    }
+    
+    
+    if(!self.audio_library_data){
+        self.audio_library_data = [[NSMutableArray alloc]init];
+    }
+    
+    if ([fm fileExistsAtPath:self.video_library]) {
+        
+        self.video_library_data = [NSKeyedUnarchiver unarchiveObjectWithFile:self.video_library];
+        
+        NSLog(@"KaKa:%lu", self.video_library_data.count);
+        
+    }
+    
+    
+    if(!self.video_library_data){
+        self.video_library_data = [[NSMutableArray alloc]init];
+    }
+    
     return YES;
 }
 

@@ -46,4 +46,14 @@
  /Users/yxj/Library/Developer/CoreSimulator/Devices/60DD9105-A013-449A-A21E-4E170BCA105F/data/Containers/Data/Application/D9D3D81E-6DA3-4192-A5A6-86514D4BE0FF/Documents
 */
 
+
+
+/* Append By Linzer At 2016/03/01 */
+#define VIDEO_PATH @"video"
+#define AUDIO_PATH @"audio"
+#define SNAPSHOT_PATH @"snapshot"
+#define DATA_PATH @"data"
+#define AUDIO_LIBRARY @"audio_library.data"
+#define VIDEO_LIBRARY @"video_library.data"
+
 #endif /* Constants_h */

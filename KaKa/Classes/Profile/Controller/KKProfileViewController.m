@@ -35,6 +35,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.isLogin = [defaults boolForKey:@"isLog"];
