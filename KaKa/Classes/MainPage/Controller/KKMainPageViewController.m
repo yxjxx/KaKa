@@ -40,6 +40,8 @@ static NSString *ID = @"videoCell";
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+#warning testing
+    self.tabBarController.selectedIndex = 1;
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.title = self.username;

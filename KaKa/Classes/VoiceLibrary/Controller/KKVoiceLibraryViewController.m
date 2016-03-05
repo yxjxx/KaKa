@@ -13,6 +13,7 @@
 #import "KKNetwork.h"
 #import <SVProgressHUD.h>
 #import "MJRefresh.h"
+#import "KKLocalAudioModel.h"
 
 
 @interface KKVoiceLibraryViewController() <UITableViewDelegate, UITableViewDataSource>
@@ -139,6 +140,31 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSNumber *badgeNumber = @(indexPath.row + 1);
     [self.navigationController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%@", badgeNumber]];
+    
+    KKAudioModel *audioModel = self.audioArrays[indexPath.row];
+    NSString *audioLocalName = [audioModel.audioPath lastPathComponent];
+
+    if ([[KKLocalAudioModel sharedInstance] isLocalAudioExistWithFileName:audioLocalName]) {
+        //Play audio
+    } else{
+        [self downloadSelectedAudioWithKKAudioModel:audioModel];
+    }
+}
+
+- (void)downloadSelectedAudioWithKKAudioModel:(KKAudioModel *)audioModel{
+    NSString *audioRemoteURL = audioModel.audioPath;
+    [SVProgressHUD showWithStatus:@"downloading audio"];
+    
+    [[KKNetwork sharedInstance] downloadRemoteAudioWithURL:audioRemoteURL completeSuccessed:^(NSString *successStr) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showSuccessWithStatus:@"download success"];
+        });
+    } completeFailed:^(NSString *failedStr) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:@"download error"];
+        });
+    }];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

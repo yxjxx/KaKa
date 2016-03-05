@@ -29,6 +29,7 @@
 		DE1AD0F31C7EE81800945AF1 /* KKProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0F21C7EE81800945AF1 /* KKProfileViewController.m */; };
 		DE1AD0F61C7EE8E100945AF1 /* KKMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */; };
 		DE2F88191C88767700F4A9C2 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2F88181C88767700F4A9C2 /* placeholder.png */; };
+		DE2F881D1C89704D00F4A9C2 /* KKLocalAudioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F881C1C89704D00F4A9C2 /* KKLocalAudioModel.m */; };
 		DE34B0EA1C853CE400CAFD12 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0E91C853CE400CAFD12 /* KKLoginViewController.m */; };
 		DE34B0ED1C853F0700CAFD12 /* KKSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0EC1C853F0700CAFD12 /* KKSignupViewController.m */; };
 		DE34B0F01C85867100CAFD12 /* KKPlayVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0EF1C85867100CAFD12 /* KKPlayVideoViewController.m */; };
@@ -80,6 +81,8 @@
 		DE1AD0F41C7EE8E100945AF1 /* KKMainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMainTabBarViewController.h; sourceTree = "<group>"; };
 		DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainTabBarViewController.m; sourceTree = "<group>"; };
 		DE2F88181C88767700F4A9C2 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		DE2F881B1C89704D00F4A9C2 /* KKLocalAudioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKLocalAudioModel.h; path = Model/KKLocalAudioModel.h; sourceTree = "<group>"; };
+		DE2F881C1C89704D00F4A9C2 /* KKLocalAudioModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKLocalAudioModel.m; path = Model/KKLocalAudioModel.m; sourceTree = "<group>"; };
 		DE34B0E81C853CE400CAFD12 /* KKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewController.h; sourceTree = "<group>"; };
 		DE34B0E91C853CE400CAFD12 /* KKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewController.m; sourceTree = "<group>"; };
 		DE34B0EB1C853F0700CAFD12 /* KKSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSignupViewController.h; sourceTree = "<group>"; };
@@ -206,6 +209,7 @@
 		DE1AD0DC1C7EE79A00945AF1 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				DE2F881A1C896FEA00F4A9C2 /* Model */,
 				DE1AD0F41C7EE8E100945AF1 /* KKMainTabBarViewController.h */,
 				DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */,
 			);
@@ -300,6 +304,15 @@
 				DE2F88181C88767700F4A9C2 /* placeholder.png */,
 			);
 			name = LocalImages;
+			sourceTree = "<group>";
+		};
+		DE2F881A1C896FEA00F4A9C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE2F881B1C89704D00F4A9C2 /* KKLocalAudioModel.h */,
+				DE2F881C1C89704D00F4A9C2 /* KKLocalAudioModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		DE932A841C7DAE7C00651712 = {
@@ -589,6 +602,7 @@
 				DE34B0ED1C853F0700CAFD12 /* KKSignupViewController.m in Sources */,
 				DE932AB01C7DC39A00651712 /* UIView+Additions.m in Sources */,
 				DE1AD0EA1C7EE7E600945AF1 /* KKVoiceLibraryViewController.m in Sources */,
+				DE2F881D1C89704D00F4A9C2 /* KKLocalAudioModel.m in Sources */,
 				DEA4D1981C8724B5005F7059 /* NSArray+Log.m in Sources */,
 				DE34B0F51C86D99D00CAFD12 /* KKVideoCell.m in Sources */,
 				682EB0D31C895D88003AA10C /* KKProfileVideoCell.m in Sources */,
