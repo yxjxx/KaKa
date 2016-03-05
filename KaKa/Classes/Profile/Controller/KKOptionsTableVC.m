@@ -19,8 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.view.backgroundColor = [UIColor greenColor];
-    //1.self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"logBg.jpg"]];
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"logBg.jpg"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -123,7 +121,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUsernameKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLog"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kMobileKey];
-    
+    //TODO: 向服务端发送logout请求
     [self.navigationController popViewControllerAnimated:YES];
     [self.tabBarController setSelectedIndex:0];
     

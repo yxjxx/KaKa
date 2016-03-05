@@ -30,7 +30,8 @@
     if (_mainPageVC == nil) {
         _mainPageVC = [[KKMainPageViewController alloc] init];
         _mainPageVC.tabBarItem.title = @"Main Page";
-//        _mainPageVC.tabBarItem.image = 
+        _mainPageVC.tabBarItem.image =  [UIImage imageNamed:@"MainPage-1"];
+        _mainPageVC.tabBarItem.selectedImage = @"MainPage";
     }
     return _mainPageVC;
 }
@@ -39,6 +40,8 @@
     if (_voiceLibraryVC == nil) {
         _voiceLibraryVC = [[KKVoiceLibraryViewController alloc] init];
         _voiceLibraryVC.tabBarItem.title = @"Voice Lib";
+        _voiceLibraryVC.tabBarItem.image = [UIImage imageNamed:@"Voice-1"];
+        _voiceLibraryVC.tabBarItem.selectedImage = [UIImage imageNamed:@"Voice"];
     }
     return _voiceLibraryVC;
 }
@@ -55,6 +58,9 @@
     if (_friendsVC == nil) {
         _friendsVC = [[KKFriendsViewController alloc] init];
         _friendsVC.tabBarItem.title = @"Friend";
+        _friendsVC.tabBarItem.image = [UIImage imageNamed:@"Friends-1"];
+        _friendsVC.tabBarItem.selectedImage = [UIImage imageNamed:@"Friends"];
+        
     }
     return _friendsVC;
 }
@@ -63,6 +69,8 @@
     if (_profileVC == nil) {
         _profileVC = [[KKProfileViewController alloc] init];
         _profileVC.tabBarItem.title = @"Profile";
+        _profileVC.tabBarItem.image = [UIImage imageNamed:@"Profile-1"];
+        _profileVC.tabBarItem.selectedImage = [UIImage imageNamed:@"Profile"];
     }
     return _profileVC;
 }

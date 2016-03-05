@@ -27,6 +27,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+
+    [NSThread sleepForTimeInterval:1];
 //    self.window.rootViewController = [[KKMainTabBarViewController alloc]init];
     [self setupViewControllers];
     [self.window setRootViewController:self.tabBarController];
@@ -38,23 +40,23 @@
     KKMainPageViewController *firstViewController = [[KKMainPageViewController alloc] init];
     UIViewController *firstNavigationController = [[UINavigationController alloc]
                                                    initWithRootViewController:firstViewController];
-    
+
     KKVoiceLibraryViewController *secondViewController = [[KKVoiceLibraryViewController alloc] init];
     UIViewController *secondNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:secondViewController];
-    
+
     KKFriendsViewController *thirdViewController = [[KKFriendsViewController alloc] init];
     UIViewController *thirdNavigationController = [[UINavigationController alloc]
                                                    initWithRootViewController:thirdViewController];
-    
+
     KKProfileViewController *fourthViewController = [[KKProfileViewController alloc] init];
     UIViewController *fourthNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:fourthViewController];
-    
-    
+
+
     CYLTabBarController *tabBarController = [[CYLTabBarController alloc] init];
     [self customizeTabBarForController:tabBarController];
-    
+
     [tabBarController setViewControllers:@[
                                            firstNavigationController,
                                            secondNavigationController,
@@ -70,29 +72,30 @@
  *
  */
 - (void)customizeTabBarForController:(CYLTabBarController *)tabBarController {
-    
+
     NSDictionary *dict1 = @{
-//                            CYLTabBarItemTitle : @"MainPage",
-                            CYLTabBarItemImage : @"home",
-                            CYLTabBarItemSelectedImage : @"home_selected",
+                            // CYLTabBarItemTitle : @"MainPage",
+                            CYLTabBarItemImage : @"MainPage",
+                            CYLTabBarItemSelectedImage : @"MainPage-1",
+
                             };
     NSDictionary *dict2 = @{
-//                            CYLTabBarItemTitle : @"Voice",
-                            CYLTabBarItemImage : @"voice",
-                            CYLTabBarItemSelectedImage : @"voice_selected",
+                            // CYLTabBarItemTitle : @"Voice",
+                            CYLTabBarItemImage : @"Voice",
+                            CYLTabBarItemSelectedImage : @"Voice-1",
                             };
-    
+
     NSDictionary *dict3 = @{
-//                            CYLTabBarItemTitle : @"Friends",
-                            CYLTabBarItemImage : @"friends",
-                            CYLTabBarItemSelectedImage : @"friends_selected",
+                            // CYLTabBarItemTitle : @"Friends",
+                            CYLTabBarItemImage : @"Friends",
+                            CYLTabBarItemSelectedImage : @"Friends-1",
                             };
     NSDictionary *dict4 = @{
-//                            CYLTabBarItemTitle : @"Profile",
-                            CYLTabBarItemImage : @"friends",
-                            CYLTabBarItemSelectedImage : @"friends_selected",
+                            // CYLTabBarItemTitle : @"Profile",
+                            CYLTabBarItemImage : @"Profile",
+                            CYLTabBarItemSelectedImage : @"Profile-1",
                             };
-    
+
     NSArray *tabBarItemsAttributes = @[ dict1, dict2, dict3, dict4 ];
     tabBarController.tabBarItemsAttributes = tabBarItemsAttributes;
 }

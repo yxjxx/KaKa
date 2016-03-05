@@ -24,15 +24,13 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self.navigationItem setHidesBackButton:NO];
+    //[self.navigationItem setHidesBackButton:NO];
 
-    
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"logBg.jpg"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,9 +47,21 @@
         KKLoginViewController *loginVC = [[KKLoginViewController alloc] init];
         [self.navigationController pushViewController:loginVC  animated:NO];
     }
+}
 
+- (void)setProfileView {
+    
+    [self setProfileCollectionView];
+    
+    [self setTopInformation ];
+}
+
+- (void) setProfileCollectionView {
+    [self.view addSubview:self.myVideoCollectionView1];
+    
     
 }
+
 - (UICollectionView *) myVideoCollectionView1 {
     if (_myVideoCollectionView1 == nil) {
         _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kScreenWidth, 150, kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
@@ -99,12 +109,8 @@
     settingMyIcon.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:settingMyIcon];
     //icon
-    UIImageView *imgIcon = [[UIImageView alloc]init];
-    imgIcon.image = [UIImage imageNamed:@"panda"];
-    imgIcon.size = CGSizeMake(50, 50);
-    imgIcon.center = CGPointMake(35, 70);
-    [settingMyIcon addSubview:imgIcon];
-    
+   
+    //nickName
     UILabel *lblNickName = [[UILabel alloc]init];
     lblNickName.size = CGSizeMake(260, 40);
     lblNickName.center = CGPointMake(self.view.width / 2, 40);
@@ -142,23 +148,7 @@
     
     
 }
-- (void)setProfileView {
-    
-    [self setTopInformation ];
-   
-    
-}
 
-
-- (void) clickLoginOut {
-     KKLoginViewController *loginVc = [[KKLoginViewController alloc]init];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUsernameKey];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLog"];
-//   [self presentViewController:loginVc animated:YES completion:^{
-//    
-//     }];
-    [self.navigationController pushViewController:loginVc animated:YES];
-}
 
 - (void) clickOptions {
 
