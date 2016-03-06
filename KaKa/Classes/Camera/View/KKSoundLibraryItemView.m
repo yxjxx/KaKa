@@ -53,7 +53,7 @@
         self.label.text = self.model.subject;
         self.label.textColor = [UIColor whiteColor];
         self.label.font = [UIFont systemFontOfSize:10];
-        self.label.textAlignment = UITextAlignmentCenter;
+        self.label.textAlignment = NSTextAlignmentCenter;
         [self addSubview: self.button];
         [self addSubview: self.label];
         

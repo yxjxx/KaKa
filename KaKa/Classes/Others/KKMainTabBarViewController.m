@@ -31,7 +31,7 @@
         _mainPageVC = [[KKMainPageViewController alloc] init];
         _mainPageVC.tabBarItem.title = @"Main Page";
         _mainPageVC.tabBarItem.image =  [UIImage imageNamed:@"MainPage-1"];
-        _mainPageVC.tabBarItem.selectedImage = @"MainPage";
+        _mainPageVC.tabBarItem.selectedImage = [UIImage imageNamed:@"MainPage"];
     }
     return _mainPageVC;
 }
