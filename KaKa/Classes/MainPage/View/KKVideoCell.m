@@ -8,6 +8,7 @@
 
 #import "KKVideoCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "Masonry.h"
 
 @interface KKVideoCell()
 
@@ -31,8 +32,20 @@
 - (UILabel *)videoNameLabel{
     if (_videoNameLabel == nil) {
         _videoNameLabel = [[UILabel alloc] init];
-        _videoNameLabel.frame = CGRectMake(60, 0, 200, 30);
+//        _videoNameLabel.frame = CGRectMake(60, 0, 200, 30);
+        _videoNameLabel.textAlignment = NSTextAlignmentCenter;
+//TODO: text color and font size
+        _videoNameLabel.textColor = [UIColor whiteColor];
+        _videoNameLabel.font = [UIFont systemFontOfSize:12];
         [self.contentView addSubview:_videoNameLabel];
+        [_videoNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.contentView.centerX);
+            make.height.equalTo(@30);
+            make.bottom.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).with.offset(10);
+            make.right.equalTo(self.contentView).with.offset(-10);
+        }];
+        [_videoNameLabel showPlaceHolder];
     }
     return _videoNameLabel;
 }
@@ -57,7 +70,7 @@
     //TODO: 换一张 placeholder.png
     [self.snapImageView sd_setImageWithURL:[NSURL URLWithString:self.aVideoModel.videoSnapshot] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     self.videoNameLabel.text = self.aVideoModel.videoVName;
-    self.videoTimeLabel.text = @"2 hours ago";
+//    self.videoTimeLabel.text = @"2 hours ago";
 }
 
 
