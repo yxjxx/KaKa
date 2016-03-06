@@ -20,6 +20,7 @@ PODS:
   - Masonry (0.6.4)
   - MD5Digest (1.1.0)
   - MJRefresh (3.1.0)
+  - MMPlaceHolder (1.9)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - Masonry
   - MD5Digest
   - MJRefresh
+  - MMPlaceHolder
   - SDWebImage (~> 3.7)
   - SVProgressHUD (~> 2.0-beta8)
 
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MD5Digest: fea371215507cfcdc3c9633d02cffc7fd075ebc3
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  MMPlaceHolder: 40212b9dfe8760134b1b2fce3232f0d46200178f
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: 6e48a1dda09ce3b58adc41d013baed3a8e8980ff
 

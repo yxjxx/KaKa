@@ -14,6 +14,7 @@ pod 'HMSegmentedControl'
 pod 'MJRefresh'
 pod 'SDWebImage', '~>3.7'
 pod 'Masonry'
+pod 'MMPlaceHolder'
 
 end
 
