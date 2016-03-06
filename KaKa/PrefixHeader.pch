@@ -17,6 +17,7 @@
 
 #define RGBA_COLOR(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
 #define alert(msg) [[[UIAlertView alloc]initWithTitle:nil message:msg delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] show];
-
+#define MAS_SHORTHAND
+#import "MMPlaceHolder.h"
 
 #endif /* PrefixHeader_pch */
