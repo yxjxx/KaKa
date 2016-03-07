@@ -43,6 +43,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (IBAction)closeView:(id)sender {
     // 显示Tabbar
     self.tabBarController.tabBar.hidden=NO;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

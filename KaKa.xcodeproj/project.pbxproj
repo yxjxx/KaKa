@@ -43,6 +43,7 @@
 		DE34B0F21C8589D700CAFD12 /* hehe.mov in Resources */ = {isa = PBXBuildFile; fileRef = DE34B0F11C8589D700CAFD12 /* hehe.mov */; };
 		DE34B0F51C86D99D00CAFD12 /* KKVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0F41C86D99D00CAFD12 /* KKVideoCell.m */; };
 		DE34B0F81C86DA6400CAFD12 /* KKVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE34B0F71C86DA6400CAFD12 /* KKVideoModel.m */; };
+		DE35EC1F1C8D6339009061E0 /* KKUploadVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE35EC1E1C8D6339009061E0 /* KKUploadVideoViewController.m */; };
 		DE932A921C7DAE7C00651712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932A911C7DAE7C00651712 /* main.m */; };
 		DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE932A941C7DAE7C00651712 /* AppDelegate.m */; };
 		DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE932A961C7DAE7C00651712 /* Assets.xcassets */; };
@@ -113,6 +114,8 @@
 		DE34B0F41C86D99D00CAFD12 /* KKVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKVideoCell.m; sourceTree = "<group>"; };
 		DE34B0F61C86DA6400CAFD12 /* KKVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKVideoModel.h; sourceTree = "<group>"; };
 		DE34B0F71C86DA6400CAFD12 /* KKVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKVideoModel.m; sourceTree = "<group>"; };
+		DE35EC1D1C8D6339009061E0 /* KKUploadVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKUploadVideoViewController.h; path = UploadVideo/Controller/KKUploadVideoViewController.h; sourceTree = "<group>"; };
+		DE35EC1E1C8D6339009061E0 /* KKUploadVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKUploadVideoViewController.m; path = UploadVideo/Controller/KKUploadVideoViewController.m; sourceTree = "<group>"; };
 		DE932A8D1C7DAE7C00651712 /* KaKa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaKa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE932A911C7DAE7C00651712 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DE932A931C7DAE7C00651712 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -346,6 +349,23 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		DE35EC1B1C8D62DB009061E0 /* UploadVideo */ = {
+			isa = PBXGroup;
+			children = (
+				DE35EC1C1C8D62EF009061E0 /* Controller */,
+			);
+			name = UploadVideo;
+			sourceTree = "<group>";
+		};
+		DE35EC1C1C8D62EF009061E0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE35EC1D1C8D6339009061E0 /* KKUploadVideoViewController.h */,
+				DE35EC1E1C8D6339009061E0 /* KKUploadVideoViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		DE932A841C7DAE7C00651712 = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +417,7 @@
 		DE932AA21C7DC1FA00651712 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DE35EC1B1C8D62DB009061E0 /* UploadVideo */,
 				DE1AD0D41C7EE79A00945AF1 /* Camera */,
 				DE1AD0D81C7EE79A00945AF1 /* Friends */,
 				DE1AD0DC1C7EE79A00945AF1 /* Others */,
@@ -529,7 +550,7 @@
 				TargetAttributes = {
 					DE932A8C1C7DAE7C00651712 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 3M5S77SXDS;
+						DevelopmentTeam = K9F87G4V4A;
 					};
 				};
 			};
@@ -638,6 +659,7 @@
 				DE2F882E1C8ACCC900F4A9C2 /* KKSoundLibraryItemView.m in Sources */,
 				DEA4D1981C8724B5005F7059 /* NSArray+Log.m in Sources */,
 				DE2F88251C8ACCB900F4A9C2 /* KKAudioRecordModel.m in Sources */,
+				DE35EC1F1C8D6339009061E0 /* KKUploadVideoViewController.m in Sources */,
 				DE34B0F51C86D99D00CAFD12 /* KKVideoCell.m in Sources */,
 				682EB0D31C895D88003AA10C /* KKProfileVideoCell.m in Sources */,
 				DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */,
@@ -764,7 +786,7 @@
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = KaKa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kqy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -781,7 +803,7 @@
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = KaKa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kqy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
