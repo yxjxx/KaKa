@@ -34,6 +34,8 @@
 #define kVideoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_video_info/"
 #define kPathOfVideoInServer @"http://www.linzerlee.cn/kakadata/video/"
 #define kAudioServerAddress @"http://www.linzerlee.cn:8080/kakaweb/mobile/get_audio/"
+#define kGetPersonalVideoListServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_video_info/"
+#define kUploadVideoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/upload/video/"
 
 #define kPageSize 3
 
@@ -41,7 +43,7 @@
 #define kPasswordKey @"password"
 #define kMobileKey   @"mobile"
 
-#define kDocumentsPath  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+#define kDocumentsPath  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]
 /*Like this...
  /Users/yxj/Library/Developer/CoreSimulator/Devices/60DD9105-A013-449A-A21E-4E170BCA105F/data/Containers/Data/Application/D9D3D81E-6DA3-4192-A5A6-86514D4BE0FF/Documents
 */
