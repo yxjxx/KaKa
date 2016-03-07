@@ -106,4 +106,34 @@
 
 }
 
+- (void)uploadVideoWithAKKVideoRecordModel:(KKVideoRecordModel *)aVideoRecordModel completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    //TODO: 参数的含义和内容需要再次确认
+    params[@"vname"] = aVideoRecordModel.name;
+    params[@"mvid"] = [NSString stringWithFormat:@"%ld", aVideoRecordModel.aid];
+    params[@"timelen"] = [NSString stringWithFormat:@"%ld", aVideoRecordModel.timelen];
+    
+    [session POST:kUploadVideoServerAddress parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        // 在发送请求之前会自动调用这个 block
+//        NSURL *videoURL = [NSURL URLWithString:[kDocumentsPath stringByAppendingPathComponent:@"1.mp4"]];
+        NSURL *videoURL = [NSURL URLWithString: aVideoRecordModel.path];
+        NSLog(@"videoURL_%@", videoURL);
+        [formData appendPartWithFileURL:videoURL name:@"1.mp4"  fileName:@"1.mp4" mimeType:@"video/mp4" error:nil];
+//        NSURL *imageURL = [NSURL URLWithString:[kDocumentsPath stringByAppendingPathComponent:@"snapshot.png"]];
+        NSURL *imageURL = [NSURL URLWithString: aVideoRecordModel.snapshot];
+        NSLog(@"imageURL_%@", imageURL);
+        [formData appendPartWithFileURL:imageURL name:@"snapshot.png"  fileName:@"snapshot.png" mimeType:@"image/png" error:nil];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        NSLog(@"%@", uploadProgress);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        successBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Fail, Error: %@", error);
+        failedBlock(@"Upload video failed");
+    }];
+
+}
+
 @end

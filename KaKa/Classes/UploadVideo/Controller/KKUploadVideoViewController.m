@@ -9,6 +9,8 @@
 #import "KKUploadVideoViewController.h"
 #import "KRVideoPlayerControlView.h"
 #import "Masonry.h"
+#import "KKNetwork.h"
+#import "AppDelegate.h"
 
 @interface KKUploadVideoViewController()
 
@@ -43,7 +45,7 @@
 //    [self.videoPreviewController.videoControl setFullscreen:NO];
     
     NSURL *videoFullPath = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
-    [self playVideoWithURL:videoFullPath];
+//    [self playVideoWithURL:videoFullPath];
     
     //  所以在 mas_makeConstraints block 中用到了的控件都必须添加到 superview 上
     [self.view addSubview:self.videoPreviewController.view];
@@ -56,8 +58,25 @@
         make.width.equalTo(self.view.width).with.offset(10);
         make.height.equalTo(@30);
     }];
-    [self.videoDescTextFiled showPlaceHolder];
+    
+    [self uploadVideo];
 
+}
+
+#warning testing 
+//TODO: 第2次上传报错
+- (void)uploadVideo{
+    KKVideoRecordModel *aKKVideoRecordModel = [[KKVideoRecordModel alloc] init];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if(appDelegate.video_library_data){
+        aKKVideoRecordModel = [appDelegate.video_library_data lastObject];
+    }
+    
+    [[KKNetwork sharedInstance] uploadVideoWithAKKVideoRecordModel:aKKVideoRecordModel completeSuccessed:^(NSDictionary *responseJson) {
+        NSLog(@"Upload Success: %@", responseJson);
+    } completeFailed:^(NSString *failedStr) {
+        NSLog(@"video upload failed %@", failedStr);
+    }];
 }
 
 - (KRVideoPlayerController *)videoPreviewController{

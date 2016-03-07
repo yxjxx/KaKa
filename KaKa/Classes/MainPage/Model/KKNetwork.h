@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KKVideoRecordModel.h"
 
 typedef void(^requestSuccessed)(NSDictionary *responseJson);
 //定义了一个requestSuccessed类型的代码块，返回值void，接受一个NSDictionary*类型的参数
@@ -33,5 +34,7 @@ typedef void(^downloadAudioSuccessed)(NSString *successStr);
                     completeFailed:(requestFailed)failedBlock;
 
 - (void)getVideosOfTheUserWithKid:(NSString *)kid andPage:(NSString *)page andOrder:(NSString *)order completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock;
+
+- (void)uploadVideoWithAKKVideoRecordModel:(KKVideoRecordModel *)aVideoRecordModel completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock;
 
 @end
