@@ -11,7 +11,7 @@
 @implementation KKProfileVideoModel
 - (instancetype)initWithDict:(NSDictionary *)dict {
     if (self = [super init]) {
-        self.videoName = dict[@"videoName"];
+        self.videoName = dict[@"vname"];
         
     }
     return self;

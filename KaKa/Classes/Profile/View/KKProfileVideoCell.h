@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KKProfileVideoCell.h"
+#import "KKProfileVideoModel.h"
 
 @interface KKProfileVideoCell : UICollectionViewCell
 
-@property (nonatomic, strong) KKProfileVideoCell *aVideoModel;
+@property (nonatomic, strong) KKProfileVideoModel *aVideoModel;
 
 @end

@@ -41,7 +41,7 @@ static NSString *ID = @"videoCell";
 - (void)viewDidLoad{
     [super viewDidLoad];
 #warning testing
-    self.tabBarController.selectedIndex = 1;
+    self.tabBarController.selectedIndex = 3;
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.title = self.username ? self.username : @"Welcome";
@@ -66,12 +66,12 @@ static NSString *ID = @"videoCell";
     self.recommendVideoPageNum = 0;
     self.hotVideoPageNum = 0;
     self.recommendVideoCollectionView0.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        self.recommendVideoPageNum++;
-        [weakSelf pullUpRefresh:0 withPageNum:self.recommendVideoPageNum];
+        weakSelf.recommendVideoPageNum++;
+        [weakSelf pullUpRefresh:0 withPageNum:weakSelf.recommendVideoPageNum];
     }];
     self.hotVideoCollectionView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        self.hotVideoPageNum++;
-        [weakSelf pullUpRefresh:1 withPageNum:self.hotVideoPageNum];
+        weakSelf.hotVideoPageNum++;
+        [weakSelf pullUpRefresh:1 withPageNum:weakSelf.hotVideoPageNum];
     }];
     
     [self.recommendVideoCollectionView0.mj_header beginRefreshing];

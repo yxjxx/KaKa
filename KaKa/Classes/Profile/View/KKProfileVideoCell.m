@@ -36,15 +36,15 @@
 
 //  - (UILabel *)videoTimeLabel
 
-- (void)setAVideoModel:(KKProfileVideoCell *)aVideoModel {
+- (void)setAVideoModel:(KKProfileVideoModel *)aVideoModel {
     _aVideoModel = aVideoModel;
     
     [self setData];
 }
 
-- (void)setData {
+- (void)setData{
    //????????
-    self.videoNameLabel.text = @"videoNameLabel.text";
+    self.videoNameLabel.text = self.aVideoModel.videoName;
 
 }
 

@@ -45,7 +45,6 @@
             make.left.equalTo(self.contentView).with.offset(10);
             make.right.equalTo(self.contentView).with.offset(-10);
         }];
-        [_videoNameLabel showPlaceHolder];
     }
     return _videoNameLabel;
 }

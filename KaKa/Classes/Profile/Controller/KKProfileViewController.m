@@ -9,9 +9,11 @@
 #import "KKProfileViewController.h"
 #import "KKLoginViewController.h"
 #import "KKOptionsTableVC.h"
-#import "Constants.h"
 #import "KKProfileVideoCell.h"
 #import "KKProfileVideoModel.h"
+#import "KKNetwork.h"
+#import <SVProgressHUD.h>
+#import "MJRefresh.h"
 
 static NSString *ID = @"videoCell";
 
@@ -21,7 +23,7 @@ static NSString *ID = @"videoCell";
 @property (nonatomic, strong) UICollectionView *myVideoCollectionView1;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) NSMutableArray *myVideoArray;
-
+@property (nonatomic, assign) NSInteger pageNum;
 
 @end
 
@@ -36,8 +38,43 @@ static NSString *ID = @"videoCell";
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    self.pageNum = 0;
+    __weak typeof(self) weakSelf = self;
+    self.myVideoCollectionView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        weakSelf.pageNum++;
+        [weakSelf pullUpRefreshWithPageNum:weakSelf.pageNum];
+    }];
+    
+    [self.myVideoCollectionView1 registerClass:[KKProfileVideoCell class] forCellWithReuseIdentifier:ID];
+    
+    [self.myVideoCollectionView1.mj_footer beginRefreshing];
 }
 
+- (void)pullUpRefreshWithPageNum:(NSInteger)pageNum{
+    __weak typeof(self) weakSelf = self;
+    
+    [[KKNetwork sharedInstance] getVideosOfTheUserWithKid:@"1" andPage:[NSString stringWithFormat:@"%ld", pageNum] andOrder:@"1" completeSuccessed:^(NSDictionary *responseJson) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf pullUpRefreshSuccess:responseJson WithPageNum:pageNum];
+            [weakSelf.myVideoCollectionView1.mj_footer endRefreshing];
+        });
+    } completeFailed:^(NSString *failedStr) {
+        [SVProgressHUD showInfoWithStatus:failedStr];
+    }];
+}
+
+- (void)pullUpRefreshSuccess:(NSDictionary *)responseJson WithPageNum:(NSInteger)pageNum{
+    NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
+
+    for (NSDictionary *dict in arr) {
+        KKProfileVideoModel *theVideo = [KKProfileVideoModel videoWithDict:dict];
+        [self.myVideoArray addObject:theVideo];
+    }
+    [self.myVideoCollectionView1 reloadData];
+    
+
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -65,16 +102,15 @@ static NSString *ID = @"videoCell";
 
 - (void) setProfileCollectionView {
     [self.view addSubview:self.myVideoCollectionView1];
-    
-    
 }
 
 - (UICollectionView *) myVideoCollectionView1 {
     if (_myVideoCollectionView1 == nil) {
-        _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kScreenWidth, 150, kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
+        //TODO: 150 待修改
+        _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kMagicZero, 200, kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
         _myVideoCollectionView1.delegate = self;
         _myVideoCollectionView1.dataSource = self;
-        _myVideoCollectionView1.backgroundColor = [UIColor yellowColor];
+        _myVideoCollectionView1.backgroundColor = [UIColor whiteColor];
     }
     return _myVideoCollectionView1;
 }
@@ -161,8 +197,6 @@ static NSString *ID = @"videoCell";
     [settingMyIcon addSubview:text1post];
     [settingMyIcon addSubview:text2followers];
     [settingMyIcon addSubview:text3following];
-    
-    
 }
 
 

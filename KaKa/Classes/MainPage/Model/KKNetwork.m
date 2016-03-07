@@ -40,6 +40,28 @@
          }];
 }
 
+- (void)getVideosOfTheUserWithKid:(NSString *)kid andPage:(NSString *)page andOrder:(NSString *)order completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[@"kid"] = kid;
+    params[@"order"] = order;
+    params[@"page"] = [NSString stringWithFormat:@"%@-%d", page, kPageSize];
+    
+    [session GET:kGetPersonalVideoListServerAddress parameters:params progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             successBlock(responseObject);
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+#warning debuging
+             NSLog(@"Fail, Error: %@", error);
+             failedBlock(@"Network error");
+         }];
+
+}
+
 - (void)getAudioArrayDictWithPageNum:(NSString *)pageNum completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.responseSerializer = [AFJSONResponseSerializer serializer];
