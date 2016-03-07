@@ -67,7 +67,7 @@
 }
 
 - (void)setData{
-    //TODO: 换一张 placeholder.png
+
     [self.snapImageView sd_setImageWithURL:[NSURL URLWithString:self.aVideoModel.videoSnapshot] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     self.videoNameLabel.text = self.aVideoModel.videoVName;
 //    self.videoTimeLabel.text = @"2 hours ago";

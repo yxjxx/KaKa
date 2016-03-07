@@ -30,12 +30,19 @@ static NSString *ID = @"videoCell";
 - (void)viewDidLoad{
     [super viewDidLoad];
     //[self.navigationItem setHidesBackButton:NO];
-
+//TODO: 背景图无效
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"logBg.jpg"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"loginBackGround.jpg"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    
+    
+    [self.view addSubview:self.myVideoCollectionView1];
+    [self.myVideoCollectionView1 registerClass:[KKProfileVideoCell class] forCellWithReuseIdentifier:ID];
+    
+    
 }
 
 
@@ -64,7 +71,6 @@ static NSString *ID = @"videoCell";
 }
 
 - (void) setProfileCollectionView {
-    [self.view addSubview:self.myVideoCollectionView1];
     
     
 }
@@ -92,32 +98,46 @@ static NSString *ID = @"videoCell";
 }
 
 
-- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *) collectionView {
-    return 1;
-}
+
  
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.myVideoArray.count;
     
 }
 
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *) collectionView {
+    return 1;
+}
+
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    KKProfileVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     KKProfileVideoModel *videoModel = self.myVideoArray[indexPath.item];
-    cell.aVideoModel = videoModel;
+//    cell.aVideoModel = videoModel;
+#warning debug
+    
+
     return cell;
 }
 
 - (NSMutableArray *)myVideoArray {
     if (_myVideoArray == nil) {
         _myVideoArray = [NSMutableArray array];
+ 
+        
+#warning debug
+        
+        
+        _myVideoArray = @[@"myvideo array",@"haha"];
     }
     return _myVideoArray;
 }
 
 - (void) setTopInformation {
+    
+    
+    
     
     UIView *settingMyIcon = [[UIView alloc]init];
     settingMyIcon.size = CGSizeMake(self.view.width, 140);
@@ -131,11 +151,12 @@ static NSString *ID = @"videoCell";
     lblNickName.size = CGSizeMake(260, 40);
     lblNickName.center = CGPointMake(self.view.width / 2, 40);
     //这里传入nickName的参数
-    lblNickName.text = @"welcome, here is your nick name";
+    lblNickName.text = @"profile界面";
+    lblNickName.backgroundColor = [UIColor whiteColor];
     [settingMyIcon addSubview:lblNickName];
     
     // 右上角，setting Button.写到navigationItem.rightBarButtonItem中
-    self.view.backgroundColor = [UIColor purpleColor];
+   // self.view.backgroundColor = [UIColor purpleColor];
     UIBarButtonItem *btnOptions = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStylePlain target:self action:@selector(clickOptions) ];
     self.navigationItem.rightBarButtonItem = btnOptions;
    

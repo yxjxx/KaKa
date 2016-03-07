@@ -133,25 +133,25 @@
 
     NSDictionary *dict1 = @{
                             // CYLTabBarItemTitle : @"MainPage",
-                            CYLTabBarItemImage : @"MainPage",
-                            CYLTabBarItemSelectedImage : @"MainPage-1",
+                            CYLTabBarItemImage : @"Mainpage",
+                            CYLTabBarItemSelectedImage : @"h-Mainpage",
 
                             };
     NSDictionary *dict2 = @{
                             // CYLTabBarItemTitle : @"Voice",
                             CYLTabBarItemImage : @"Voice",
-                            CYLTabBarItemSelectedImage : @"Voice-1",
+                            CYLTabBarItemSelectedImage : @"h-Voice",
                             };
 
     NSDictionary *dict3 = @{
                             // CYLTabBarItemTitle : @"Friends",
                             CYLTabBarItemImage : @"Friends",
-                            CYLTabBarItemSelectedImage : @"Friends-1",
+                            CYLTabBarItemSelectedImage : @"h-Friends",
                             };
     NSDictionary *dict4 = @{
                             // CYLTabBarItemTitle : @"Profile",
-                            CYLTabBarItemImage : @"Profile",
-                            CYLTabBarItemSelectedImage : @"Profile-1",
+                            CYLTabBarItemImage : @"profile",
+                            CYLTabBarItemSelectedImage : @"h-profile",
                             };
 
     NSArray *tabBarItemsAttributes = @[ dict1, dict2, dict3, dict4 ];

@@ -212,7 +212,7 @@
     [self.userNameTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
     [self.passwordTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
 #warning testing
-      self.userNameTextField.text = @"13260522226";
+      self.userNameTextField.text = @"13125197350";
       self.passwordTextField.text = @"123456";
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

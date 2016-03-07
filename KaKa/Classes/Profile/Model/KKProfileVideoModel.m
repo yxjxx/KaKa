@@ -11,8 +11,7 @@
 @implementation KKProfileVideoModel
 - (instancetype)initWithDict:(NSDictionary *)dict {
     if (self = [super init]) {
-        self.videoName = dict[@"videoName"];
-        
+        [self setValuesForKeysWithDictionary:dict];
     }
     return self;
 }
@@ -24,7 +23,9 @@
 // 对象描述方法，类似于 Java 中的 toString() 方法
 - (NSString *)description
 {
-    return @"Profile,Model.KKProfileVideoModel...description";
+    
+    return [NSString stringWithFormat:@"<%@: %p> {videoPath: %@, videoName: %@}", self.class, self, self.path, self.vName];
+    
 }
 
 
