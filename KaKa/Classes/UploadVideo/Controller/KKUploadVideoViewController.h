@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KRVideoPlayerController.h"
 
 @interface KKUploadVideoViewController : UIViewController
 
