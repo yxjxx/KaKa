@@ -51,9 +51,6 @@
     
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     UIViewController *viewController = tabBarController.selectedViewController;
-    
-
-    
     [viewController presentViewController:cameraVC animated:YES completion:nil];
 
 }

@@ -76,6 +76,7 @@
 //            NSLog(@"%@", response);
             successBlock(@"downloadAudioSuccessed");
         }
+#warning debuging
         NSLog(@"%@", error);
     }];
     

@@ -51,7 +51,7 @@
 
 - (void)setData {
 //    self.leftLmageView.image = [UIImage imageWithContentsOfFile:<#(nonnull NSString *)#>];
-    self.leftLmageView.image = [UIImage imageNamed:@"home_highlight"];
+    self.leftLmageView.image = [UIImage imageNamed:@"KK_Camera"];
     self.audioCNameLabel.text = self.aAudioModel.audioCName;
     self.audioSubjectLabel.text = self.aAudioModel.audioSubject;
 }
