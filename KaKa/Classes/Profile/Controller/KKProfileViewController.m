@@ -10,6 +10,11 @@
 #import "KKLoginViewController.h"
 #import "KKOptionsTableVC.h"
 #import "Constants.h"
+#import "KKProfileVideoCell.h"
+#import "KKProfileVideoModel.h"
+
+static NSString *ID = @"videoCell";
+
 @interface KKProfileViewController() <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, assign) BOOL isLogin;
@@ -32,6 +37,7 @@
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -93,6 +99,15 @@
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.myVideoArray.count;
     
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    KKProfileVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    KKProfileVideoModel *videoModel = self.myVideoArray[indexPath.item];
+    cell.aVideoModel = videoModel;
+    return cell;
 }
 
 - (NSMutableArray *)myVideoArray {

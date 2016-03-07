@@ -30,8 +30,7 @@
     self.tableView = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    // [self.view addSubview:self.tableView];
-    
+     
     NSLog(@"view didload kkoption TableView Cell");
 }
 
@@ -63,7 +62,7 @@
         case 1: //Account 2个
             switch (row) {
                 case 0:  //重新注册1个号
-                    //          [self  ReSignUpClick];
+                    [self  ReSignUpClick];
                     // NSLog(@" 2-1 section:%d,row:%d",section,row);
                     
                     break;
@@ -207,7 +206,6 @@
         return @"Setting";
     }
 }
-
 
 - (void) testSetBackColor {
     

@@ -537,7 +537,7 @@
 				TargetAttributes = {
 					DE932A8C1C7DAE7C00651712 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = K9F87G4V4A;
+						DevelopmentTeam = 3M5S77SXDS;
 					};
 				};
 			};
@@ -774,7 +774,7 @@
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = KaKa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kqy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -791,7 +791,7 @@
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = KaKa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kqy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
