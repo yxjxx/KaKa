@@ -27,7 +27,8 @@
 //    NSURL *videoURL = [NSURL URLWithString:@"http://krtv.qiniudn.com/150522nextapp"];
 //    NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
 
-    NSURL *videoFullPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kPathOfVideoInServer, self.videoModel.videoPath]];
+    NSURL *videoFullPath = [NSURL URLWithString: self.videoModel.videoPath];
+//    NSURL *videoFullPath = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
 
     [self playVideoWithURL:videoFullPath];
 }
