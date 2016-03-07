@@ -13,15 +13,18 @@
 #import "KKNetwork.h"
 #import <SVProgressHUD.h>
 #import "MJRefresh.h"
-#import "KKLocalAudioModel.h"
+#import "KKAudioRecordModel.h"
+#import "AppDelegate.h"
+#import <AVFoundation/AVAudioPlayer.h>
 
 
-@interface KKVoiceLibraryViewController() <UITableViewDelegate, UITableViewDataSource>
+@interface KKVoiceLibraryViewController() <UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate>
 
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, strong) UITableView *audioTableView;
 @property (nonatomic, strong) NSMutableArray *audioArrays;
 @property (nonatomic, assign) NSInteger audioPageNum;
+@property (nonatomic,strong) AVAudioPlayer *audioPlayer;
 
 @end
 
@@ -144,8 +147,28 @@
     KKAudioModel *audioModel = self.audioArrays[indexPath.row];
     NSString *audioLocalName = [audioModel.audioPath lastPathComponent];
 
-    if ([[KKLocalAudioModel sharedInstance] isLocalAudioExistWithFileName:audioLocalName]) {
+    if ([[KKAudioRecordModel sharedInstance] isLocalAudioExistWithFileName:audioLocalName]) {
+//        if (self.audioPlayer.isPlaying) {
+//            
+//        }
+        
         //Play audio
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        NSString *audioFullFilePathStr = [appDelegate.audio_dir stringByAppendingPathComponent:[audioModel.audioPath lastPathComponent]];
+        NSURL *audioFullFilePath = [NSURL URLWithString:audioFullFilePathStr];
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioFullFilePath error:nil];
+        
+#warning debuging
+        NSString *msg = [NSString stringWithFormat:@"音频文件声道数:%ld\n 音频文件持续时间:%g",self.audioPlayer.numberOfChannels,self.audioPlayer.duration];
+        NSLog(@"%@",msg);
+        
+        // 设置循环播放
+        self.audioPlayer.numberOfLoops = 0;//-1 循环播放
+        self.audioPlayer.delegate = self;
+        // 开始播放
+        [self.audioPlayer play];
+        //TODO:  在 delegate 中处理中断等
+
     } else{
         [self downloadSelectedAudioWithKKAudioModel:audioModel];
     }
@@ -158,6 +181,7 @@
     [[KKNetwork sharedInstance] downloadRemoteAudioWithURL:audioRemoteURL completeSuccessed:^(NSString *successStr) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD showSuccessWithStatus:@"download success"];
+            [[KKAudioRecordModel sharedInstance] updateGlobalAudioLibraryData:audioModel];
         });
     } completeFailed:^(NSString *failedStr) {
         dispatch_async(dispatch_get_main_queue(), ^{
