@@ -8,7 +8,6 @@
 
 #import "KKUploadVideoViewController.h"
 #import "KRVideoPlayerControlView.h"
-#import "Masonry.h"
 #import "KKNetwork.h"
 #import "AppDelegate.h"
 
@@ -55,17 +54,8 @@
     NSLog(@"stored_%@", videoFullPath);
     [self playVideoWithURL:videoFullPath];
     
-    //  所以在 mas_makeConstraints block 中用到了的控件都必须添加到 superview 上
     [self.view addSubview:self.videoPreviewController.view];
     [self.view addSubview:self.videoDescTextFiled];
-    NSLog(@"%@", self.videoDescTextFiled.superview);
-    
-    [self.videoDescTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.videoPreviewController.view.bottom).with.offset(5);
-        make.left.equalTo(self.view.left).with.offset(10);
-        make.width.equalTo(self.view.width).with.offset(10);
-        make.height.equalTo(@30);
-    }];
     
 //TODO: upload video
 //    [self uploadVideo];
@@ -131,12 +121,13 @@
 - (UITextField *)videoDescTextFiled{
     if (_videoDescTextFiled == nil) {
         _videoDescTextFiled = [[UITextField alloc] init];
+        [_videoDescTextFiled setFrame:CGRectMake(5, CGRectGetMaxY(self.videoPreviewController.view.frame), kScreenWidth-10, 30)];
         _videoDescTextFiled.placeholder = @"为你的视频取一个名字吧...";
         _videoDescTextFiled.returnKeyType = UIReturnKeyDone;
         _videoDescTextFiled.clearButtonMode = UITextFieldViewModeAlways;
         _videoDescTextFiled.keyboardAppearance = UIKeyboardAppearanceDark;
         _videoDescTextFiled.delegate = self;
-        
+        _videoDescTextFiled.backgroundColor = [UIColor whiteColor];
     }
     return _videoDescTextFiled;
 }
