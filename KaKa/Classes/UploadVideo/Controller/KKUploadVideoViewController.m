@@ -10,14 +10,20 @@
 #import "KRVideoPlayerControlView.h"
 #import "KKNetwork.h"
 #import "AppDelegate.h"
+#import "KKLocalVideoCell.h"
 
-@interface KKUploadVideoViewController() <UITextFieldDelegate>
+static NSString *ID = @"localVideoCell";
+
+@interface KKUploadVideoViewController() <UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) KRVideoPlayerController *videoPreviewController;
 @property (nonatomic, strong) KRVideoPlayerControlView *videoControlView;
 @property (nonatomic, strong) UITextField *videoDescTextFiled;
 @property (nonatomic, strong) UIButton *giveupUploadButton;
 @property (nonatomic, strong) UIButton *startUploadButton;
+@property (nonatomic, strong) NSArray *allLocalVideosArray;
+@property (nonatomic, strong) UICollectionView *allLocalVideoCollectionView;
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
 @end
 
@@ -52,7 +58,7 @@
     NSLog(@"current_documents%@", mystr);
     NSURL *videoFullPath = [NSURL fileURLWithPath:mystr];
     NSLog(@"stored_%@", videoFullPath);
-    [self playVideoWithURL:videoFullPath];
+//    [self playVideoWithURL:videoFullPath];
     
     [self.view addSubview:self.videoPreviewController.view];
     [self.view addSubview:self.videoDescTextFiled];
@@ -63,6 +69,10 @@
     [self.startUploadButton sizeToFit];
     [self.giveupUploadButton addTarget:self action:@selector(clickGiveUpBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.startUploadButton addTarget:self action:@selector(clickStartUploadBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.allLocalVideoCollectionView];
+    self.allLocalVideoCollectionView.backgroundColor = [UIColor yellowColor];
+    [self.allLocalVideoCollectionView registerClass:[KKLocalVideoCell class] forCellWithReuseIdentifier:ID];
 }
 
 - (void)clickGiveUpBtn{
@@ -71,6 +81,40 @@
 
 - (void)clickStartUploadBtn{
     NSLog(@"%s", __func__);
+}
+
+- (NSArray *)allLocalVideosArray{
+    if (_allLocalVideosArray == nil) {
+        _allLocalVideosArray = [[NSArray alloc] init];
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        if(appDelegate.video_library_data){
+            _allLocalVideosArray = appDelegate.video_library_data;
+        } else{
+            return nil;
+        }
+    }
+    return _allLocalVideosArray;
+}
+
+- (UICollectionViewFlowLayout *)flowLayout{
+    if (_flowLayout == nil) {
+        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _flowLayout.itemSize = CGSizeMake(kSnapshotWidthForProfile, kSnapshotWidthForProfile);
+        _flowLayout.minimumLineSpacing = 1;
+        _flowLayout.minimumInteritemSpacing = 0;
+        _flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        
+    }
+    return _flowLayout;
+}
+
+- (UICollectionView *)allLocalVideoCollectionView{
+    if (_allLocalVideoCollectionView == nil) {
+        _allLocalVideoCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.videoDescTextFiled.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
+        _allLocalVideoCollectionView.delegate = self;
+        _allLocalVideoCollectionView.dataSource = self;
+    }
+    return _allLocalVideoCollectionView;
 }
 
 
@@ -154,6 +198,19 @@
 //    [self.videoPreviewController dismiss];
 }
 
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
 
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.allLocalVideosArray.count;
+}
+
+- (KKLocalVideoCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    KKLocalVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    KKVideoRecordModel *videoModel = self.allLocalVideosArray[indexPath.item];
+    cell.aVideoModel = videoModel;
+    return cell;
+}
 
 @end
