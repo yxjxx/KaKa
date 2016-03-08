@@ -620,8 +620,8 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         NSString *outPutPath = [NSString stringWithFormat:@"cmps-%@.mp4",[formatter stringFromDate:date]];
         
         self.cmpsRecordPath = outPutPath;
-        NSLog(@"cmpsRecordPath : %@", self.cmpsRecordPath);
-        exportSession.outputURL = [NSURL fileURLWithPath:self.cmpsRecordPath];
+        
+        exportSession.outputURL = [NSURL fileURLWithPath:[appDelegate.video_dir stringByAppendingPathComponent:self.cmpsRecordPath]];
         
         // 是否对网络进行优化
         exportSession.shouldOptimizeForNetworkUse = true;
@@ -644,6 +644,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
                     vrm.name = @"";
                     vrm.path = self.cmpsRecordPath;
                     vrm.snapshot = self.snapshotPath;
+                    
                     vrm.timelen = 0;
                     appDelegate.video_library_data[count] = vrm;
                     BOOL ret = [NSKeyedArchiver archiveRootObject:appDelegate.video_library_data toFile:appDelegate.video_library];
