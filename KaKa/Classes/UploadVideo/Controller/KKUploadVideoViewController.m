@@ -12,7 +12,7 @@
 #import "KKNetwork.h"
 #import "AppDelegate.h"
 
-@interface KKUploadVideoViewController()
+@interface KKUploadVideoViewController() <UITextFieldDelegate>
 
 @property (nonatomic, strong) KRVideoPlayerController *videoPreviewController;
 @property (nonatomic, strong) KRVideoPlayerControlView *videoControlView;
@@ -92,10 +92,23 @@
     if (_videoDescTextFiled == nil) {
         _videoDescTextFiled = [[UITextField alloc] init];
         _videoDescTextFiled.placeholder = @"为你的视频取一个名字吧...";
+        _videoDescTextFiled.returnKeyType = UIReturnKeyDone;
+        _videoDescTextFiled.clearButtonMode = UITextFieldViewModeAlways;
+        _videoDescTextFiled.keyboardAppearance = UIKeyboardAppearanceDark;
+        _videoDescTextFiled.delegate = self;
+        
     }
     return _videoDescTextFiled;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.videoDescTextFiled resignFirstResponder];
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
 
 - (void)playVideoWithURL:(NSURL *)url
 {
