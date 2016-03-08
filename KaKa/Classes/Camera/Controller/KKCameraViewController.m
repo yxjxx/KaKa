@@ -19,6 +19,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @interface KKCameraViewController () <AVCaptureFileOutputRecordingDelegate, AVAudioPlayerDelegate, KKSoundLibraryScrollDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
+
 @property (weak, nonatomic) IBOutlet KKSoundLibraryScrollView *scrollView;
 @property (nonatomic,strong) AVAudioPlayer *audioPlayer;//播放器
 @property (strong, nonatomic) AVCaptureSession *captureSession;//负责输入和输出设备之间的数据传递
@@ -36,14 +37,40 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 @implementation KKCameraViewController
 
+
 - (BOOL)prefersStatusBarHidden{
     return YES;
 }
 
 - (IBAction)closeView:(id)sender {
     // 显示Tabbar
-    self.tabBarController.tabBar.hidden=NO;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if(self.tempRecordPath){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"视频尚未保存, 是否离开" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"离开" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self saveVideo: self];
+        }];
+
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+//    self.tabBarController.tabBar.hidden=NO;
+//   [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)saveVideo:(id)sender {
+    if(self.tempRecordPath){
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        NSString *audio_path = [appDelegate.audio_dir stringByAppendingPathComponent:self.audio_model.path];
+        [self compoundVideoWithApath: audio_path WithVpath:self.tempRecordPath];
+    }
 }
 
 
@@ -66,7 +93,6 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
     // 隐藏Tabbar
     self.tabBarController.tabBar.hidden=YES;
     _scrollView.delegate = self;
@@ -183,6 +209,8 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     // 预览图层和视频方向保持一致,这个属性设置很重要，如果不设置，那么出来的视频图像可以是倒向左边的。
     captureConnection.videoOrientation=[self.captureVideoPreviewLayer connection].videoOrientation;
+    
+    [self.captureSession startRunning];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -223,7 +251,8 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 - (IBAction)selectAudio:(id)sender {
-    
+    [self closeView: self];
+    self.tabBarController.selectedIndex = 0;
 }
 
 - (IBAction)startRecord:(id)sender {
@@ -232,12 +261,15 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         return;
     }
     
+    if([self.caputureMovieFileOutput isRecording]){
+        NSLog(@"不能中断");
+        return;
+    }
+        
     [self.recordButton setSelected:![self.recordButton isSelected]];
     
     if ([(UIButton *)sender isSelected]) {
         // 设置视频输出的文件路径，这里设置为 temp 文件
-        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        
         if(nil==_tempRecordPath){
             NSString *outputFilePath=[NSTemporaryDirectory() stringByAppendingPathComponent:[self timestamp: nil]];
             _tempRecordPath = [outputFilePath stringByAppendingString:@".mov"];
@@ -248,7 +280,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         // 路径转换成 URL 要用这个方法，用 NSBundle 方法转换成 URL 的话可能会出现读取不到路径的错误
         
         NSURL *tempRecordURL = [NSURL fileURLWithPath: _tempRecordPath];
-        [self.captureSession startRunning];
+        // [self.captureSession startRunning];
         [self.caputureMovieFileOutput startRecordingToOutputFileURL:tempRecordURL recordingDelegate:self];
         [self.audioPlayer play];
         
@@ -272,12 +304,6 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     [self.caputureMovieFileOutput stopRecording];
     [self.captureSession stopRunning];
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSString *audio_path = [appDelegate.audio_dir stringByAppendingPathComponent:self.audio_model.path];
-    [self compoundVideoWithApath: audio_path WithVpath:self.tempRecordPath];
-    [self.recordButton setSelected:NO];
-    self.canRecord = YES;
-    
 }
 
 /**
@@ -403,6 +429,9 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error{
     NSLog(@"---- 录制结束 ----");
     NSLog(@"错误描述: %@", error.localizedDescription);
+    
+    [self.recordButton setSelected:NO];
+    self.canRecord = YES;
 }
 
 - (CGFloat)getfileSize:(NSString *)path{
@@ -587,7 +616,8 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         NSDate    *date = [[NSDate alloc] init];
         
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        NSString *outPutPath = [appDelegate.video_dir stringByAppendingPathComponent:[NSString stringWithFormat:@"cmps-%@.mp4",[formatter stringFromDate:date]]];
+        
+        NSString *outPutPath = [NSString stringWithFormat:@"cmps-%@.mp4",[formatter stringFromDate:date]];
         
         self.cmpsRecordPath = outPutPath;
         NSLog(@"cmpsRecordPath : %@", self.cmpsRecordPath);
@@ -611,7 +641,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
                     NSInteger count = appDelegate.video_library_data.count;
                     KKVideoRecordModel *vrm = [[KKVideoRecordModel alloc]init];
                     vrm.aid = self.audio_model.aid;
-                    vrm.name = @"你丫上瘾";
+                    vrm.name = @"";
                     vrm.path = self.cmpsRecordPath;
                     vrm.snapshot = self.snapshotPath;
                     vrm.timelen = 0;

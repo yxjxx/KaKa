@@ -84,7 +84,7 @@
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofm-Xz-C4l" customClass="KKSoundLibraryScrollView">
                     <rect key="frame" x="66" y="470" width="307" height="70"/>
-                    <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="Zc8-Wc-IE2"/>
                     </constraints>
@@ -102,6 +102,13 @@
                         <action selector="selectAudio:" destination="-1" eventType="touchUpInside" id="c82-ZY-9aJ"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkw-Yh-62s">
+                    <rect key="frame" x="265" y="607" width="86" height="30"/>
+                    <state key="normal" title="保存至本地"/>
+                    <connections>
+                        <action selector="saveVideo:" destination="-1" eventType="touchUpInside" id="X9s-pg-iaN"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -109,6 +116,7 @@
                 <constraint firstItem="WKE-pp-iFf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="78G-VG-0QS"/>
                 <constraint firstItem="P7x-dh-Lrd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="CWF-YU-gl2"/>
                 <constraint firstItem="P7x-dh-Lrd" firstAttribute="top" secondItem="MgL-UH-5ka" secondAttribute="bottom" constant="5" id="Eeh-H0-wbt"/>
+                <constraint firstAttribute="bottom" secondItem="hkw-Yh-62s" secondAttribute="bottom" constant="25" id="KK4-UH-XL7"/>
                 <constraint firstAttribute="bottom" secondItem="ZKZ-zH-TwI" secondAttribute="bottom" constant="10" id="Kuo-K4-6LY"/>
                 <constraint firstItem="BOl-ob-DDR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="MIh-3c-Vwa"/>
                 <constraint firstItem="MgL-UH-5ka" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="N3m-qU-Txf"/>

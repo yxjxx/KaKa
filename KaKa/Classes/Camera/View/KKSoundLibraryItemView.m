@@ -29,7 +29,7 @@
     if (self) {
         self = [self initDefault];
         self.frame = frame;
-        
+        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
         self.button = [UIButton buttonWithType:UIButtonTypeCustom];
         self.label = [[UILabel alloc]init];
         
