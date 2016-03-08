@@ -11,6 +11,7 @@
 #import "KKAudioRecordModel.h"
 #import "KKVideoRecordModel.h"
 #import "AppDelegate.h"
+#import "KKUploadVideoViewController.h"
 
 @import AVFoundation;
 
@@ -70,6 +71,9 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSString *audio_path = [appDelegate.audio_dir stringByAppendingPathComponent:self.audio_model.path];
         [self compoundVideoWithApath: audio_path WithVpath:self.tempRecordPath];
+    }else{
+        KKUploadVideoViewController *uvvc = [[KKUploadVideoViewController alloc] init];
+        [self presentViewController:uvvc animated:YES completion:nil];
     }
 }
 
@@ -649,9 +653,11 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
                     appDelegate.video_library_data[count] = vrm;
                     BOOL ret = [NSKeyedArchiver archiveRootObject:appDelegate.video_library_data toFile:appDelegate.video_library];
                     
+                    if(ret){
+                        KKUploadVideoViewController *uvvc = [[KKUploadVideoViewController alloc] init];
+                        [self presentViewController:uvvc animated:YES completion:nil];
+                    }
                     NSAssert(ret,@"写入本地视频库失败 : %@", appDelegate.video_library);
-
-                    [self getfileSize: self.cmpsRecordPath];
                 }
                     break;
                 case AVAssetExportSessionStatusCancelled:
