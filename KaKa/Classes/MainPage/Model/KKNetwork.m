@@ -112,7 +112,7 @@
     
     //TODO: 参数的含义和内容需要再次确认
     params[@"vname"] = aVideoRecordModel.name;
-    params[@"mvid"] = [NSString stringWithFormat:@"%ld", aVideoRecordModel.aid];
+    params[@"aid"] = [NSString stringWithFormat:@"%ld", aVideoRecordModel.aid];
     params[@"timelen"] = [NSString stringWithFormat:@"%ld", aVideoRecordModel.timelen];
     
     [session POST:kUploadVideoServerAddress parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {

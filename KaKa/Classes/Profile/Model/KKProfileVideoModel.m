@@ -25,8 +25,7 @@
 // 对象描述方法，类似于 Java 中的 toString() 方法
 - (NSString *)description
 {
-    return @"Profile,Model.KKProfileVideoModel...description";
+    return [NSString stringWithFormat:@"<%@: %p> {videoName: %@, timelen: %@}", self.class, self, self.videoName, self.timelen];
 }
-
 
 @end

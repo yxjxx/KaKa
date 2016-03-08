@@ -85,6 +85,7 @@ static NSString *ID = @"videoCell";
     
     if (self.isLogin) {
         [self setProfileView];
+#warning debuging
         NSLog(@"%@", @"is login");
         
     } else{

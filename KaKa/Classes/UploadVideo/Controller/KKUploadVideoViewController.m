@@ -44,8 +44,17 @@
     }];
 //    [self.videoPreviewController.videoControl setFullscreen:NO];
     
-    NSURL *videoFullPath = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
-//    [self playVideoWithURL:videoFullPath];
+//    NSURL *videoFullPath = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
+    KKVideoRecordModel *aKKVideoRecordModel = [[KKVideoRecordModel alloc] init];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if(appDelegate.video_library_data){
+        aKKVideoRecordModel = [appDelegate.video_library_data lastObject];
+    }
+    NSString *mystr = [[kDocumentsPath stringByAppendingPathComponent:@"video"] stringByAppendingPathComponent:[aKKVideoRecordModel.path lastPathComponent]];
+    NSLog(@"current_documents%@", mystr);
+    NSURL *videoFullPath = [NSURL fileURLWithPath:mystr];
+    NSLog(@"stored_%@", videoFullPath);
+    [self playVideoWithURL:videoFullPath];
     
     //  所以在 mas_makeConstraints block 中用到了的控件都必须添加到 superview 上
     [self.view addSubview:self.videoPreviewController.view];
@@ -59,7 +68,7 @@
         make.height.equalTo(@30);
     }];
     
-    [self uploadVideo];
+//    [self uploadVideo];
 
 }
 
