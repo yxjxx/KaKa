@@ -156,7 +156,7 @@
     self.SignUpBtn.center = CGPointMake(self.view.center.x, 360);
     
     [self.SignUpBtn setTitle:@"确认注册" forState:UIControlStateNormal];
-     [self.SignUpBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+     [self.SignUpBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.SignUpBtn.backgroundColor = [UIColor colorWithRed:217/256.0 green:99/256.0 blue:91/256.0 alpha:1];
     self.SignUpBtn.layer.masksToBounds = YES;
     self.SignUpBtn.layer.cornerRadius = 3;
