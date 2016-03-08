@@ -11,6 +11,7 @@
 @interface KKProfileVideoCell ()
 @property (nonatomic, strong) UIImageView *snapImageView;
 @property (nonatomic, strong) UILabel *videoNameLabel;
+@property (nonatomic, strong) UILabel *videoTimeLabel;
 
 @end
 
@@ -34,7 +35,14 @@
     return _videoNameLabel;
 }
 
-//  - (UILabel *)videoTimeLabel
+- (UILabel *)videoTimeLabel {
+    if (_videoTimeLabel == nil) {
+        _videoTimeLabel = [[UILabel alloc]init ];
+        _videoTimeLabel.frame = CGRectMake(0, 0, 30, 30);
+        [self.contentView addSubview:_videoTimeLabel];
+    }
+    return _videoTimeLabel;
+}  //wrong!!!!!
 
 - (void)setAVideoModel:(KKProfileVideoModel *)aVideoModel {
     _aVideoModel = aVideoModel;
@@ -45,7 +53,7 @@
 - (void)setData{
    //????????
     self.videoNameLabel.text = self.aVideoModel.videoName;
-
+    self.videoTimeLabel.text = self.aVideoModel.timelen;
 }
 
 
