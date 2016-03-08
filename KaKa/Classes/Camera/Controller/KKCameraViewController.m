@@ -572,8 +572,8 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
                 
                 NSData *imagedata =UIImagePNGRepresentation(thumbnail);
                 
-                self.snapshotPath = [appDelegate.snapshot_dir stringByAppendingPathComponent:[NSString stringWithFormat:@"sp-%@.png",[formatter stringFromDate:date]]];
-                [imagedata writeToFile:self.snapshotPath atomically:YES];
+                self.snapshotPath = [NSString stringWithFormat:@"sp-%@.png",[formatter stringFromDate:date]];
+                [imagedata writeToFile:[appDelegate.snapshot_dir stringByAppendingPathComponent:self.snapshotPath] atomically:YES];
                 
                 // 压缩
                 [self compressVideoWithVpath: self.tempRecordPath];
