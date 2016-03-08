@@ -17,15 +17,23 @@
 @property (nonatomic, strong) KRVideoPlayerController *videoPreviewController;
 @property (nonatomic, strong) KRVideoPlayerControlView *videoControlView;
 @property (nonatomic, strong) UITextField *videoDescTextFiled;
+@property (nonatomic, strong) UIButton *giveupUploadButton;
+@property (nonatomic, strong) UIButton *startUploadButton;
 
 @end
 
 @implementation KKUploadVideoViewController
 
+- (BOOL)prefersStatusBarHidden{
+    return YES;
+}
+
 - (void)viewDidLoad{
     [super viewDidLoad];
 #warning testing
-    self.view.backgroundColor = [UIColor whiteColor];
+    //TODO: color adjust
+    self.view.backgroundColor = [UIColor colorWithRed:0.07 green:0.07 blue:0.07 alpha:1];
+//    self.view.backgroundColor = [UIColor whiteColor];
     
     __weak typeof(self)weakSelf = self;
     [self.videoPreviewController setDimissCompleteBlock:^{
@@ -61,7 +69,39 @@
     
 //TODO: upload video
 //    [self uploadVideo];
+    [self.giveupUploadButton sizeToFit];
+    [self.startUploadButton sizeToFit];
+    [self.giveupUploadButton addTarget:self action:@selector(clickGiveUpBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.startUploadButton addTarget:self action:@selector(clickStartUploadBtn) forControlEvents:UIControlEventTouchUpInside];
+}
 
+- (void)clickGiveUpBtn{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)clickStartUploadBtn{
+    NSLog(@"%s", __func__);
+}
+
+
+- (UIButton *)giveupUploadButton{
+    if (_giveupUploadButton == nil) {
+        //TODO: frame adjust
+        _giveupUploadButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 32, 32)];
+        [_giveupUploadButton setTitle:@"取消" forState:UIControlStateNormal];
+        [self.view addSubview:_giveupUploadButton];
+    }
+    return _giveupUploadButton;
+}
+
+- (UIButton *)startUploadButton{
+    if (_startUploadButton == nil) {
+        //TODO: frame adjust
+        _startUploadButton = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth - 79, 5, 64, 32)];
+        [_startUploadButton setTitle:@"开始上传" forState:UIControlStateNormal];
+        [self.view addSubview:_startUploadButton];
+    }
+    return _startUploadButton;
 }
 
 #warning testing 
@@ -83,7 +123,7 @@
 - (KRVideoPlayerController *)videoPreviewController{
     if (_videoPreviewController == nil) {
         _videoPreviewController = [[KRVideoPlayerController alloc] init];
-        [_videoPreviewController setFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth)];
+        [_videoPreviewController setFrame:CGRectMake(0, kNavgationBarHeight, kScreenWidth, kScreenWidth)];
     }
     return _videoPreviewController;
 }
