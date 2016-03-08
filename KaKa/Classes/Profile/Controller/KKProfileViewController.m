@@ -156,6 +156,7 @@ static NSString *ID = @"videoCell";
     if (_settingMyIconUIView == nil) {
 
         _settingMyIconUIView = [[UIView alloc] initWithFrame:CGRectMake(0, kStatusBarHeight + kNavgationBarHeight, kScreenWidth, kProfileTopUIViewHeight)];
+        
         [self.view addSubview:_settingMyIconUIView];
     }
     return _settingMyIconUIView;
@@ -163,20 +164,11 @@ static NSString *ID = @"videoCell";
 
 
 - (void) setTopInformation {
-    
-    // 设置 self.view 的背景图片
-    UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"music"] drawInRect:self.view.bounds];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
-    /* 分割线 */
-    
-
-    self.settingMyIconUIView.backgroundColor = [UIColor yellowColor];
-    
+//TODO: RGB取色不可以？？！！
+    //self.settingMyIconUIView.backgroundColor = [UIColor colorWithRed:32 green:32 blue:32 alpha:1];
+    self.settingMyIconUIView.backgroundColor = [UIColor grayColor];
     //icon
-    //1.左边自已的头像
+    //1.中间 自已的头像
     UIImageView *imgIcon = [[UIImageView alloc]init];
     imgIcon.size = CGSizeMake(85, 85);
     imgIcon.center = CGPointMake(kScreenWidth / 2, 60);
@@ -191,32 +183,51 @@ static NSString *ID = @"videoCell";
     
    //4.1关注 数
     UILabel *noticeNumberLabel = [[UILabel alloc]init];
-    noticeNumberLabel.frame = CGRectMake(110, 40, 60, 40);
-//    numberOfInformationLabel.size = CGSizeMake(self.view.width * 0.618, 45);
-//    numberOfInformationLabel.center = CGPointMake(self.view.width * 0.691, 55);
+    noticeNumberLabel.frame = CGRectMake((kScreenWidth / 2) - 85, 40, 25, 20);
+    
     noticeNumberLabel.text = @"32";
+    noticeNumberLabel.textAlignment = NSTextAlignmentCenter;
+    [noticeNumberLabel setTextColor:[UIColor colorWithRed:243/256.0 green:233/256.0 blue:234/256.0 alpha:1]];
+   noticeNumberLabel.backgroundColor = [UIColor colorWithRed:182/256.0 green:71/256.0 blue:72/256.0 alpha:1];
     [self.settingMyIconUIView addSubview:noticeNumberLabel];
     
     //4.2关注 字
     UILabel *noticeLabel = [[UILabel alloc]init];
-    noticeLabel.frame = CGRectMake(110, 40, 60, 40);
+    noticeLabel.frame = CGRectMake((kScreenWidth / 2) - 90, 55, 45, 40);
+    //TODO: nslog ,kscrrenHeight:140707721448624
+    NSLog(@"%ld,..",kScreenHeight);
     //    numberOfInformationLabel.size = CGSizeMake(self.view.width * 0.618, 45);
     //    numberOfInformationLabel.center = CGPointMake(self.view.width * 0.691, 55);
     noticeLabel.text = @"关注";
+   
+    [noticeLabel setTextColor:[UIColor colorWithRed:243/256.0 green:233/256.0 blue:234/256.0 alpha:1]];
     [self.settingMyIconUIView addSubview:noticeLabel];
     
     //5.1 粉丝数.
     UILabel *fansNumberLabel = [[UILabel alloc]init];
 //    numberOfInformation.size = CGSizeMake(self.view.width * 0.618, 45);
 //    numberOfInformation.center = CGPointMake(self.view.width * 0.309, 55);
-    fansNumberLabel.frame = CGRectMake(170, 40, 60, 40);
-    fansNumberLabel.text = @" 粉丝";
+    fansNumberLabel.frame = CGRectMake((kScreenWidth / 2) + 65, 40, 25, 20);
+    fansNumberLabel.text = @"16";
+    
+    fansNumberLabel.textAlignment = NSTextAlignmentCenter;
+    [fansNumberLabel setTextColor:[UIColor colorWithRed:243/256.0 green:233/256.0 blue:234/256.0 alpha:1]];
+    fansNumberLabel.backgroundColor = [UIColor colorWithRed:182/256.0 green:71/256.0 blue:72/256.0 alpha:1];
     [self.settingMyIconUIView addSubview:fansNumberLabel];
+    //5.2 粉丝字.
+    UILabel *fansLabel = [[UILabel alloc]init];
+    //    numberOfInformation.size = CGSizeMake(self.view.width * 0.618, 45);
+    //    numberOfInformation.center = CGPointMake(self.view.width * 0.309, 55);
+    fansLabel.frame = CGRectMake((kScreenWidth / 2) + 60, 55, 45, 40);
+    fansLabel.text = @"粉丝";
+    [fansLabel setTextColor:[UIColor colorWithRed:243/256.0 green:233/256.0 blue:234/256.0 alpha:1]];
+    [self.settingMyIconUIView addSubview:fansLabel];
+
     
     //6 nickName:华小咔
     UILabel *nickName = [[UILabel alloc]init];
-    nickName.frame = CGRectMake(150, 90, 100, 40);
-    //myVideoLabel.backgroundColor = [UIColor yellowColor];
+    nickName.frame = CGRectMake(kScreenWidth / 2  - 30, 100, 60, 40);
+    nickName.textColor = [UIColor colorWithRed:250/256.0 green:250/256.0 blue:250/256.0 alpha:1];
     nickName.text = @"华小咔";
     [self.settingMyIconUIView addSubview:nickName];
 }
