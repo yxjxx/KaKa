@@ -26,14 +26,6 @@
     [super viewDidLoad];
 #warning testing
     self.view.backgroundColor = [UIColor whiteColor];
-//    [self.videoPreviewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(self.view);
-//        make.width.equalTo(self.view);
-//        make.height.equalTo(self.view.width);
-//        make.top.equalTo(self.view);
-//        make.left.equalTo(self.view);
-//    }];
-//    NSLog(@"%@", self.videoPreviewController.view);
     
     __weak typeof(self)weakSelf = self;
     [self.videoPreviewController setDimissCompleteBlock:^{
@@ -42,7 +34,6 @@
         // NavigationController pop when _videoController dismiss
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
-//    [self.videoPreviewController.videoControl setFullscreen:NO];
     
 //    NSURL *videoFullPath = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
     KKVideoRecordModel *aKKVideoRecordModel = [[KKVideoRecordModel alloc] init];
@@ -68,6 +59,7 @@
         make.height.equalTo(@30);
     }];
     
+//TODO: upload video
 //    [self uploadVideo];
 
 }

@@ -117,16 +117,15 @@
     
     [session POST:kUploadVideoServerAddress parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         // 在发送请求之前会自动调用这个 block
-//        NSURL *videoURL = [NSURL URLWithString:[kDocumentsPath stringByAppendingPathComponent:@"1.mp4"]];
-        NSURL *videoURL = [NSURL URLWithString: aVideoRecordModel.path];
-        NSLog(@"videoURL_%@", videoURL);
+        NSString *videoURLStr = [[kDocumentsPath stringByAppendingPathComponent:VIDEO_PATH] stringByAppendingPathComponent: aVideoRecordModel.path];
+        NSURL *videoURL = [NSURL fileURLWithPath: videoURLStr];
         [formData appendPartWithFileURL:videoURL name:@"1.mp4"  fileName:@"1.mp4" mimeType:@"video/mp4" error:nil];
-//        NSURL *imageURL = [NSURL URLWithString:[kDocumentsPath stringByAppendingPathComponent:@"snapshot.png"]];
-        NSURL *imageURL = [NSURL URLWithString: aVideoRecordModel.snapshot];
-        NSLog(@"imageURL_%@", imageURL);
+        NSString *imageURLStr = [[kDocumentsPath stringByAppendingPathComponent:SNAPSHOT_PATH] stringByAppendingPathComponent: aVideoRecordModel.snapshot];
+        NSURL *imageURL = [NSURL fileURLWithPath: imageURLStr];
         [formData appendPartWithFileURL:imageURL name:@"snapshot.png"  fileName:@"snapshot.png" mimeType:@"image/png" error:nil];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        NSLog(@"%@", uploadProgress);
+//        NSLog(@"%@", uploadProgress);
+        NSLog(@"uploading...");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         successBlock(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
