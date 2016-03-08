@@ -14,6 +14,7 @@
 #import "KKNetwork.h"
 #import <SVProgressHUD.h>
 #import "MJRefresh.h"
+#import "Constants.h"
 
 static NSString *ID = @"videoCell";
 
@@ -32,13 +33,13 @@ static NSString *ID = @"videoCell";
 - (void)viewDidLoad{
     [super viewDidLoad];
     //[self.navigationItem setHidesBackButton:NO];
-
-    UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"logBg.jpg"] drawInRect:self.view.bounds];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
-    
+//
+//    UIGraphicsBeginImageContext(self.view.frame.size);
+//    [[UIImage imageNamed:@"logBg.jpg"] drawInRect:self.view.bounds];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+//    
     self.pageNum = 0;
     __weak typeof(self) weakSelf = self;
     self.myVideoCollectionView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -89,6 +90,8 @@ static NSString *ID = @"videoCell";
         
     } else{
         KKLoginViewController *loginVC = [[KKLoginViewController alloc] init];
+        loginVC.hidesBottomBarWhenPushed=YES;//隐藏下面的tabbar
+        
         [self.navigationController pushViewController:loginVC  animated:NO];
     }
 }
@@ -156,53 +159,93 @@ static NSString *ID = @"videoCell";
 - (void) setTopInformation {
     
     UIView *settingMyIcon = [[UIView alloc]init];
-    settingMyIcon.size = CGSizeMake(self.view.width, 140);
-    settingMyIcon.center = CGPointMake(kScreenWidth / 2, 130 + kStatusBarHeight);
+//    settingMyIcon.size = CGSizeMake(self.view.width, 140);
+//    settingMyIcon.center = CGPointMake(self.view.width / 2, 140 + kStatusBarHeight);
+    settingMyIcon.frame = CGRectMake(0, kStatusBarHeight + kNavgationBarHeight, self.view.width, 150);
+    [settingMyIcon showPlaceHolder];
+    NSLog(@"self.view.width:%d,",self.view.width);
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"music"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    
+//    settingMyIcon.backgroundColor  = [UIColor yellowColor];
+//    //    settingMyIcon.frame = CGRectMake(0, kStatusBarHeight * 3, self.view.width, 150);
+//    [settingMyIcon setBackgroundColor:[UIColor purpleColor]]; 
+//    这个宽有问题
     settingMyIcon.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:settingMyIcon];
     //icon
-   
-    //nickName
-    UILabel *lblNickName = [[UILabel alloc]init];
-    lblNickName.size = CGSizeMake(260, 40);
-    lblNickName.center = CGPointMake(self.view.width / 2, 40);
-    //这里传入nickName的参数
-    lblNickName.text = @"welcome, here is your nick name";
-    [settingMyIcon addSubview:lblNickName];
+    //1.左边自已的头像
+    UIImageView *imgIcon = [[UIImageView alloc]init];
+    imgIcon.size = CGSizeMake(85, 85);
+    imgIcon.center = CGPointMake(self.view.width / 2, 60);
     
-    // 右上角，setting Button.写到navigationItem.rightBarButtonItem中
-    self.view.backgroundColor = [UIColor purpleColor];
+  //  imgIcon.frame = CGRectMake(20, 20, 80, 80);
+    //NSLog(@"settingMyIcon.frame.size.width:%d",settingMyIcon.frame.size.width );
+    [imgIcon showPlaceHolder];
+    imgIcon.image = [UIImage imageNamed:@"imageIcon"];
+    imgIcon.layer.cornerRadius = imgIcon.size.width / 2 ;
+    imgIcon.layer.masksToBounds = YES;
+    [settingMyIcon addSubview:imgIcon];
+
+    // 2 右上角，setting Button.写到navigationItem.rightBarButtonItem中
     UIBarButtonItem *btnOptions = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStylePlain target:self action:@selector(clickOptions) ];
     self.navigationItem.rightBarButtonItem = btnOptions;
-   
-    UILabel *lblNumbersOfFollowings = [[UILabel alloc]init];
-    lblNumbersOfFollowings.size = CGSizeMake(260, 30);
-    lblNumbersOfFollowings.center = CGPointMake(self.view.width / 2 + 30, 70);
-    lblNumbersOfFollowings.text = @"posts:   followers:  following:";
+//    //3. nickName
+//    UILabel *nickNameLabel = [[UILabel alloc]init];
+//    //    numberOfInformation.size = CGSizeMake(self.view.width * 0.618, 45);
+//    //    numberOfInformation.center = CGPointMake(self.view.width * 0.309, 55);
+//    nickNameLabel.frame = CGRectMake(10, 100, 130, 40);
+//    
+//    
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSString *userName = [defaults stringForKey:kUsernameKey];
+//
+//    nickNameLabel.text =userName;
+//    [nickNameLabel showPlaceHolder];
+//    [settingMyIcon addSubview:nickNameLabel];
     
-    [settingMyIcon addSubview:lblNumbersOfFollowings];
-    //posts ,follows
-    UITextField *text1post = [[UITextField alloc]init];
-    UITextField *text2followers = [[UITextField alloc]init];
-    UITextField *text3following = [[UITextField alloc]init];
-    text1post.size = CGSizeMake(80, 30);
-    text2followers.size = CGSizeMake(80, 30);
-    text3following.size = CGSizeMake(80, 30);
-    text1post.center = CGPointMake(150, 100);
-    text2followers.center = CGPointMake(230, 100);
-    text3following.center = CGPointMake(300, 100);
-    text1post.text = @"5";
-    text2followers.text = @"9";
-    text3following.text = @"0";
-    [settingMyIcon addSubview:text1post];
-    [settingMyIcon addSubview:text2followers];
-    [settingMyIcon addSubview:text3following];
+   //4.1关注 数
+    UILabel *noticeNumberLabel = [[UILabel alloc]init];
+    noticeNumberLabel.frame = CGRectMake(110, 40, 60, 40);
+//    numberOfInformationLabel.size = CGSizeMake(self.view.width * 0.618, 45);
+//    numberOfInformationLabel.center = CGPointMake(self.view.width * 0.691, 55);
+    noticeNumberLabel.text = @"32";
+    [settingMyIcon addSubview:noticeNumberLabel];
+    //4.2关注 字
+    UILabel *noticeLabel = [[UILabel alloc]init];
+    noticeLabel.frame = CGRectMake(110, 40, 60, 40);
+    //    numberOfInformationLabel.size = CGSizeMake(self.view.width * 0.618, 45);
+    //    numberOfInformationLabel.center = CGPointMake(self.view.width * 0.691, 55);
+    noticeLabel.text = @"关注";
+    [settingMyIcon addSubview:noticeLabel];
+    
+    //5.1 粉丝数.
+    UILabel *fansNumberLabel = [[UILabel alloc]init];
+//    numberOfInformation.size = CGSizeMake(self.view.width * 0.618, 45);
+//    numberOfInformation.center = CGPointMake(self.view.width * 0.309, 55);
+    fansNumberLabel.frame = CGRectMake(170, 40, 60, 40);
+    fansNumberLabel.text = @" 粉丝";
+    [settingMyIcon addSubview:fansNumberLabel];
+    
+    //6 nickName:华小咔
+    UILabel *nickName = [[UILabel alloc]init];
+    nickName.frame = CGRectMake(150, 90, 100, 40);
+    //myVideoLabel.backgroundColor = [UIColor yellowColor];
+    nickName.text = @"华小咔";
+    [settingMyIcon addSubview:nickName];
+
 }
 
 
 - (void) clickOptions {
 
     KKOptionsTableVC *optionVc = [[KKOptionsTableVC alloc]init];
+    //TODO: 如果这样，在退出这后会 push到 视频界面，且下边无法切换
+    //optionVc.hidesBottomBarWhenPushed=YES;//隐藏下面的tabbar
     [self.navigationController pushViewController:optionVc animated:YES];
     
 }
