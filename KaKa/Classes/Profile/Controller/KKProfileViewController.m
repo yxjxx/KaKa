@@ -32,6 +32,7 @@ static NSString *ID = @"videoCell";
 @implementation KKProfileViewController
 
 - (void)viewDidLoad{
+    
     [super viewDidLoad];
     self.settingMyIconUIView.backgroundColor = [UIColor blackColor];
     self.pageNum = 0;
@@ -230,6 +231,13 @@ static NSString *ID = @"videoCell";
     nickName.textColor = [UIColor colorWithRed:250/256.0 green:250/256.0 blue:250/256.0 alpha:1];
     nickName.text = @"华小咔";
     [self.settingMyIconUIView addSubview:nickName];
+    
+    //7 a black line
+    UIView *blackLineUIView = [[UIView alloc]init];
+    blackLineUIView.frame = CGRectMake(0, 148, 500, 2);
+    blackLineUIView.backgroundColor = [UIColor blackColor ];
+    
+    [self.settingMyIconUIView addSubview:blackLineUIView];
 }
 
 

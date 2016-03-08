@@ -109,8 +109,9 @@
     KKProfileViewController *fourthViewController = [[KKProfileViewController alloc] init];
     UIViewController *fourthNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:fourthViewController];
-
-
+    
+//TODO:  22,22,22RGB.设好这后 取色，并不是22,22,22
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:22/256.0 green:22/256.0 blue:22/256.0 alpha:1]];
     CYLTabBarController *tabBarController = [[CYLTabBarController alloc] init];
     [self customizeTabBarForController:tabBarController];
 
@@ -152,6 +153,7 @@
                             // CYLTabBarItemTitle : @"Profile",
                             CYLTabBarItemImage : @"Profile",
                             CYLTabBarItemSelectedImage : @"Profile-1",
+                            
                             };
 
     NSArray *tabBarItemsAttributes = @[ dict1, dict2, dict3, dict4 ];
