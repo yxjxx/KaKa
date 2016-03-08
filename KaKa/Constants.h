@@ -24,7 +24,11 @@
 #define kSegementControlHeight 40
 #define kTabBarHeight 49
 #define kMainPageTableViewHeigh kScreenHeight-kStatusBarHeight-kNavgationBarHeight-kSegementControlHeight-kTabBarHeight
+#define kProfileCollectionViewHeight  kScreenHeight-kStatusBarHeight-kNavgationBarHeight-kTabBarHeight
+#define kProfileTopUIViewHeight 150
+#define kProfileCollectionViewY kStatusBarHeight+kNavgationBarHeight+kProfileTopUIViewHeight
 #define kSnapshotWidth (kScreenWidth-1)/2
+#define kSnapshotWidthForProfile (kScreenWidth-2)/3
 
 #define kBtnFont [UIFont systemFontOfSize:15.0f]
 
@@ -37,13 +41,13 @@
 #define kGetPersonalVideoListServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_video_info/"
 #define kUploadVideoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/upload/video/"
 
-#define kPageSize 3
+#define kPageSize 4
 
 #define kUsernameKey @"username"
 #define kPasswordKey @"password"
 #define kMobileKey   @"mobile"
 
-#define kDocumentsPath  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]
+#define kDocumentsPath  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 /*Like this...
  /Users/yxj/Library/Developer/CoreSimulator/Devices/60DD9105-A013-449A-A21E-4E170BCA105F/data/Containers/Data/Application/D9D3D81E-6DA3-4192-A5A6-86514D4BE0FF/Documents
 */

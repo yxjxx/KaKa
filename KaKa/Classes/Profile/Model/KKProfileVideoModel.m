@@ -13,6 +13,7 @@
     if (self = [super init]) {
          self.videoName = dict[@"vname"];
         self.timelen = dict[@"timelen"];
+        self.snapshot = dict[@"snapshot"];
  //       [self setValuesForKeysWithDictionary:dict];
     }
     return self;

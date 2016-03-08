@@ -70,6 +70,7 @@
 //        NSLog(@"JSON: %@", responseObject);
         if ([responseObject[@"errmsg"]  isEqual: @"service success"]) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//TODO: 写入 kid responseObject[@"ext_data"][@"kid"]
             [defaults setBool:YES forKey:@"isLog"];
             [defaults setObject:responseObject[@"ext_data"][kUsernameKey] forKey:kUsernameKey];
             [defaults synchronize];

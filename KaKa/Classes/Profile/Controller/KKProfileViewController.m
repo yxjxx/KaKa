@@ -25,6 +25,7 @@ static NSString *ID = @"videoCell";
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) NSMutableArray *myVideoArray;
 @property (nonatomic, assign) NSInteger pageNum;
+@property (nonatomic, strong) UIView *settingMyIconUIView;
 
 @end
 
@@ -32,14 +33,7 @@ static NSString *ID = @"videoCell";
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    //[self.navigationItem setHidesBackButton:NO];
-//
-//    UIGraphicsBeginImageContext(self.view.frame.size);
-//    [[UIImage imageNamed:@"logBg.jpg"] drawInRect:self.view.bounds];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
-//    
+    self.settingMyIconUIView.backgroundColor = [UIColor blackColor];
     self.pageNum = 0;
     __weak typeof(self) weakSelf = self;
     self.myVideoCollectionView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -55,6 +49,7 @@ static NSString *ID = @"videoCell";
 - (void)pullUpRefreshWithPageNum:(NSInteger)pageNum{
     __weak typeof(self) weakSelf = self;
     
+    //TODO: NSUserDefault 读一下 kid ，login success 写一下
     [[KKNetwork sharedInstance] getVideosOfTheUserWithKid:@"1" andPage:[NSString stringWithFormat:@"%ld", pageNum] andOrder:@"1" completeSuccessed:^(NSDictionary *responseJson) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf pullUpRefreshSuccess:responseJson WithPageNum:pageNum];
@@ -111,7 +106,7 @@ static NSString *ID = @"videoCell";
 - (UICollectionView *) myVideoCollectionView1 {
     if (_myVideoCollectionView1 == nil) {
         //TODO: 150 待修改
-        _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kMagicZero, 200, kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
+        _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kMagicZero, kProfileCollectionViewY, kScreenWidth, kProfileCollectionViewHeight) collectionViewLayout:self.flowLayout];
         _myVideoCollectionView1.delegate = self;
         _myVideoCollectionView1.dataSource = self;
         _myVideoCollectionView1.backgroundColor = [UIColor whiteColor];
@@ -123,7 +118,7 @@ static NSString *ID = @"videoCell";
 - (UICollectionViewFlowLayout *)flowLayout {
     if (_flowLayout == nil) {
         _flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        _flowLayout.itemSize = CGSizeMake(kSnapshotWidth, kSnapshotWidth);
+        _flowLayout.itemSize = CGSizeMake(kSnapshotWidthForProfile, kSnapshotWidthForProfile);
         _flowLayout.minimumLineSpacing = 1;
         _flowLayout.minimumInteritemSpacing = 0;
         _flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -157,57 +152,42 @@ static NSString *ID = @"videoCell";
     return _myVideoArray;
 }
 
+- (UIView *)settingMyIconUIView{
+    if (_settingMyIconUIView == nil) {
+
+        _settingMyIconUIView = [[UIView alloc] initWithFrame:CGRectMake(0, kStatusBarHeight + kNavgationBarHeight, kScreenWidth, kProfileTopUIViewHeight)];
+        [self.view addSubview:_settingMyIconUIView];
+    }
+    return _settingMyIconUIView;
+}
+
+
 - (void) setTopInformation {
     
-    UIView *settingMyIcon = [[UIView alloc]init];
-//    settingMyIcon.size = CGSizeMake(self.view.width, 140);
-//    settingMyIcon.center = CGPointMake(self.view.width / 2, 140 + kStatusBarHeight);
-    settingMyIcon.frame = CGRectMake(0, kStatusBarHeight + kNavgationBarHeight, self.view.width, 150);
-    [settingMyIcon showPlaceHolder];
-    NSLog(@"self.view.width:%d,",self.view.width);
+    // 设置 self.view 的背景图片
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"music"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    /* 分割线 */
     
+
+    self.settingMyIconUIView.backgroundColor = [UIColor yellowColor];
     
-//    settingMyIcon.backgroundColor  = [UIColor yellowColor];
-//    //    settingMyIcon.frame = CGRectMake(0, kStatusBarHeight * 3, self.view.width, 150);
-//    [settingMyIcon setBackgroundColor:[UIColor purpleColor]]; 
-//    这个宽有问题
-    settingMyIcon.backgroundColor = [UIColor yellowColor];
-    [self.view addSubview:settingMyIcon];
     //icon
     //1.左边自已的头像
     UIImageView *imgIcon = [[UIImageView alloc]init];
     imgIcon.size = CGSizeMake(85, 85);
-    imgIcon.center = CGPointMake(self.view.width / 2, 60);
-    
-  //  imgIcon.frame = CGRectMake(20, 20, 80, 80);
-    //NSLog(@"settingMyIcon.frame.size.width:%d",settingMyIcon.frame.size.width );
-    [imgIcon showPlaceHolder];
+    imgIcon.center = CGPointMake(kScreenWidth / 2, 60);
     imgIcon.image = [UIImage imageNamed:@"imageIcon"];
     imgIcon.layer.cornerRadius = imgIcon.size.width / 2 ;
     imgIcon.layer.masksToBounds = YES;
-    [settingMyIcon addSubview:imgIcon];
+    [self.settingMyIconUIView addSubview:imgIcon];
 
     // 2 右上角，setting Button.写到navigationItem.rightBarButtonItem中
     UIBarButtonItem *btnOptions = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStylePlain target:self action:@selector(clickOptions) ];
     self.navigationItem.rightBarButtonItem = btnOptions;
-//    //3. nickName
-//    UILabel *nickNameLabel = [[UILabel alloc]init];
-//    //    numberOfInformation.size = CGSizeMake(self.view.width * 0.618, 45);
-//    //    numberOfInformation.center = CGPointMake(self.view.width * 0.309, 55);
-//    nickNameLabel.frame = CGRectMake(10, 100, 130, 40);
-//    
-//    
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSString *userName = [defaults stringForKey:kUsernameKey];
-//
-//    nickNameLabel.text =userName;
-//    [nickNameLabel showPlaceHolder];
-//    [settingMyIcon addSubview:nickNameLabel];
     
    //4.1关注 数
     UILabel *noticeNumberLabel = [[UILabel alloc]init];
@@ -215,14 +195,15 @@ static NSString *ID = @"videoCell";
 //    numberOfInformationLabel.size = CGSizeMake(self.view.width * 0.618, 45);
 //    numberOfInformationLabel.center = CGPointMake(self.view.width * 0.691, 55);
     noticeNumberLabel.text = @"32";
-    [settingMyIcon addSubview:noticeNumberLabel];
+    [self.settingMyIconUIView addSubview:noticeNumberLabel];
+    
     //4.2关注 字
     UILabel *noticeLabel = [[UILabel alloc]init];
     noticeLabel.frame = CGRectMake(110, 40, 60, 40);
     //    numberOfInformationLabel.size = CGSizeMake(self.view.width * 0.618, 45);
     //    numberOfInformationLabel.center = CGPointMake(self.view.width * 0.691, 55);
     noticeLabel.text = @"关注";
-    [settingMyIcon addSubview:noticeLabel];
+    [self.settingMyIconUIView addSubview:noticeLabel];
     
     //5.1 粉丝数.
     UILabel *fansNumberLabel = [[UILabel alloc]init];
@@ -230,15 +211,14 @@ static NSString *ID = @"videoCell";
 //    numberOfInformation.center = CGPointMake(self.view.width * 0.309, 55);
     fansNumberLabel.frame = CGRectMake(170, 40, 60, 40);
     fansNumberLabel.text = @" 粉丝";
-    [settingMyIcon addSubview:fansNumberLabel];
+    [self.settingMyIconUIView addSubview:fansNumberLabel];
     
     //6 nickName:华小咔
     UILabel *nickName = [[UILabel alloc]init];
     nickName.frame = CGRectMake(150, 90, 100, 40);
     //myVideoLabel.backgroundColor = [UIColor yellowColor];
     nickName.text = @"华小咔";
-    [settingMyIcon addSubview:nickName];
-
+    [self.settingMyIconUIView addSubview:nickName];
 }
 
 

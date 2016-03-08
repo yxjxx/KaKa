@@ -7,6 +7,8 @@
 //
 
 #import "KKProfileVideoCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
 
 @interface KKProfileVideoCell ()
 @property (nonatomic, strong) UIImageView *snapImageView;
@@ -20,7 +22,7 @@
 - (UIImageView *)snapImageView {
     if (_snapImageView == nil) {
         _snapImageView = [[UIImageView alloc] init];
-        _snapImageView.frame = CGRectMake(0, 0, kSnapshotWidth, kSnapshotWidth);
+        _snapImageView.frame = CGRectMake(kMagicZero, kMagicZero, kSnapshotWidthForProfile, kSnapshotWidthForProfile);
         [self.contentView addSubview:_snapImageView];
     }
     return _snapImageView;
@@ -35,14 +37,14 @@
     return _videoNameLabel;
 }
 
-- (UILabel *)videoTimeLabel {
-    if (_videoTimeLabel == nil) {
-        _videoTimeLabel = [[UILabel alloc]init ];
-        _videoTimeLabel.frame = CGRectMake(0, 0, 30, 30);
-        [self.contentView addSubview:_videoTimeLabel];
-    }
-    return _videoTimeLabel;
-}  //wrong!!!!!
+//- (UILabel *)videoTimeLabel {
+//    if (_videoTimeLabel == nil) {
+//        _videoTimeLabel = [[UILabel alloc]init ];
+//        _videoTimeLabel.frame = CGRectMake(0, 0, 30, 30);
+//        [self.contentView addSubview:_videoTimeLabel];
+//    }
+//    return _videoTimeLabel;
+//}  //wrong!!!!!
 
 - (void)setAVideoModel:(KKProfileVideoModel *)aVideoModel {
     _aVideoModel = aVideoModel;
@@ -54,6 +56,7 @@
    //????????
     self.videoNameLabel.text = self.aVideoModel.videoName;
     self.videoTimeLabel.text = self.aVideoModel.timelen;
+    [self.snapImageView sd_setImageWithURL:[NSURL URLWithString:self.aVideoModel.snapshot] placeholderImage:[UIImage imageNamed:@"placeholder"]];
 }
 
 
