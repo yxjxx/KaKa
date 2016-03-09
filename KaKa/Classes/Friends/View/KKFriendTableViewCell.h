@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KKFriendModel.h"
 
 @interface KKFriendTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) KKFriendModel *friendModel;
 
 @end
