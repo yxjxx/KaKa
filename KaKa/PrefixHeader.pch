@@ -19,5 +19,6 @@
 #define alert(msg) [[[UIAlertView alloc]initWithTitle:nil message:msg delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] show];
 #define MAS_SHORTHAND
 #import "MMPlaceHolder.h"
+#import <SVProgressHUD.h>
 
 #endif /* PrefixHeader_pch */

@@ -67,14 +67,17 @@
 }
 
 - (void)pullUpRefreshSuccess:(NSDictionary *)responseJson{
-    NSArray *arr = [(NSArray *) responseJson[@"data"] mutableCopy];
-    for (NSDictionary *dict in arr) {
-        KKAudioModel *theAudio = [KKAudioModel audioWithDict:dict];
-        [self.audioArrays addObject:theAudio];
+    if ([responseJson[@"data"] isEqual:[NSNull null]]) {
+        [SVProgressHUD showErrorWithStatus:@"No more data"];
+        return;
+    } else{
+        NSArray *arr = [(NSArray *) responseJson[@"data"] mutableCopy];
+        for (NSDictionary *dict in arr) {
+            KKAudioModel *theAudio = [KKAudioModel audioWithDict:dict];
+            [self.audioArrays addObject:theAudio];
+        }
+        [self.audioTableView reloadData];
     }
-#warning debuging
-//    NSLog(@"self.audiosArray : %@",self.audioArrays);
-    [self.audioTableView reloadData];
 }
 
 - (void)pullDownRefresh{
@@ -90,15 +93,18 @@
 }
 
 - (void) pullDownRefreshSuccess:(NSDictionary *)responseJson {
-    [self.audioArrays removeAllObjects];
-    NSArray *arr = [(NSArray *) responseJson[@"data"] mutableCopy];
-    for (NSDictionary *dict in arr) {
-        KKAudioModel *theAudio = [KKAudioModel audioWithDict:dict];
-        [self.audioArrays addObject:theAudio];
+    if ([responseJson[@"data"] isEqual:[NSNull null]]) {
+        [SVProgressHUD showErrorWithStatus:@"No more data"];
+        return;
+    } else{
+        [self.audioArrays removeAllObjects];
+        NSArray *arr = [(NSArray *) responseJson[@"data"] mutableCopy];
+        for (NSDictionary *dict in arr) {
+            KKAudioModel *theAudio = [KKAudioModel audioWithDict:dict];
+            [self.audioArrays addObject:theAudio];
+        }
+        [self.audioTableView reloadData];
     }
-#warning debuging
-//    NSLog(@"self.audiosArray : %@",self.audioArrays);
-    [self.audioTableView reloadData];
 }
 
 - (UITableView *)audioTableView {

@@ -34,7 +34,6 @@
         _videoNameLabel = [[UILabel alloc] init];
 //        _videoNameLabel.frame = CGRectMake(60, 0, 200, 30);
         _videoNameLabel.textAlignment = NSTextAlignmentCenter;
-//TODO: text color and font size
         _videoNameLabel.textColor = [UIColor whiteColor];
         _videoNameLabel.font = [UIFont systemFontOfSize:18];
         [self.contentView addSubview:_videoNameLabel];

@@ -97,21 +97,27 @@ static NSString *ID = @"videoCell";
 }
                        
 - (void)pullUpRefreshSuccess:(NSDictionary *)responseJson withSegIndex:(NSInteger)segIndex andPageNum:(NSInteger)pageNum{
-    NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
-    
-    if (segIndex == 0) {
-        for (NSDictionary *dict in arr) {
-            KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
-            [self.recommendVideosArray0 addObject:theVideo];
-        }
-        [self.recommendVideoCollectionView0 reloadData];
+    if ([responseJson[@"data"] isEqual:[NSNull null]]) {
+        [SVProgressHUD showErrorWithStatus:@"No more data"];
+        return;
     } else{
-        for (NSDictionary *dict in arr) {
-            KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
-            [self.hotVideoArray1 addObject:theVideo];
+        NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
+        
+        if (segIndex == 0) {
+            for (NSDictionary *dict in arr) {
+                KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
+                [self.recommendVideosArray0 addObject:theVideo];
+            }
+            [self.recommendVideoCollectionView0 reloadData];
+        } else{
+            for (NSDictionary *dict in arr) {
+                KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
+                [self.hotVideoArray1 addObject:theVideo];
+            }
+            [self.hotVideoCollectionView1 reloadData];
         }
-        [self.hotVideoCollectionView1 reloadData];
     }
+    
 }
 
 
@@ -132,27 +138,33 @@ static NSString *ID = @"videoCell";
 }
 
 - (void)pullDownRefreshSuccess:(NSDictionary *)responseJson withSegIndex:(NSInteger)segIndex{
-    NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
     
-    if (segIndex == 0) {
-        //TODO:  在本地缓存最新的一页数据
-//        [self cacheJsonData:arr withSegIndex:0];
-        [self.recommendVideosArray0 removeAllObjects];
-
-        for (NSDictionary *dict in arr) {
-            KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
-            [self.recommendVideosArray0 addObject:theVideo];
-        }
-        [self.recommendVideoCollectionView0 reloadData];
-        
+    if ([responseJson[@"data"] isEqual:[NSNull null]]) {
+        [SVProgressHUD showErrorWithStatus:@"No more data"];
+        return;
     } else{
-        [self.hotVideoArray1 removeAllObjects];
-
-        for (NSDictionary *dict in arr) {
-            KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
-            [self.hotVideoArray1 addObject:theVideo];
+        NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
+        
+        if (segIndex == 0) {
+            //TODO:  在本地缓存最新的一页数据
+            //        [self cacheJsonData:arr withSegIndex:0];
+            [self.recommendVideosArray0 removeAllObjects];
+            
+            for (NSDictionary *dict in arr) {
+                KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
+                [self.recommendVideosArray0 addObject:theVideo];
+            }
+            [self.recommendVideoCollectionView0 reloadData];
+            
+        } else{
+            [self.hotVideoArray1 removeAllObjects];
+            
+            for (NSDictionary *dict in arr) {
+                KKVideoModel *theVideo = [KKVideoModel videoWithDict:dict];
+                [self.hotVideoArray1 addObject:theVideo];
+            }
+            [self.hotVideoCollectionView1 reloadData];
         }
-        [self.hotVideoCollectionView1 reloadData];
     }
 
 }

@@ -74,14 +74,18 @@ static NSString *ID = @"videoCell";
 }
 
 - (void)pullUpRefreshSuccess:(NSDictionary *)responseJson WithPageNum:(NSInteger)pageNum{
-//    NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
-    NSArray *arr = (NSArray *)responseJson[@"data"];
-
-    for (NSDictionary *dict in arr) {
-        KKProfileVideoModel *theVideo = [KKProfileVideoModel videoWithDict:dict];
-        [self.myVideoArray addObject:theVideo];
+    if ([responseJson[@"data"] isEqual:[NSNull null]]) {
+        [SVProgressHUD showErrorWithStatus:@"No more data"];
+        return;
+    } else{
+        NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
+        
+        for (NSDictionary *dict in arr) {
+            KKProfileVideoModel *theVideo = [KKProfileVideoModel videoWithDict:dict];
+            [self.myVideoArray addObject:theVideo];
+        }
+        [self.myVideoCollectionView1 reloadData];
     }
-    [self.myVideoCollectionView1 reloadData];
     
 
 }
