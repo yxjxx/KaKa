@@ -155,8 +155,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSNumber *badgeNumber = @(indexPath.row + 1);
-    [self.navigationController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%@", badgeNumber]];
+//    NSNumber *badgeNumber = @(indexPath.row + 1);
+//    [self.navigationController.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%@", badgeNumber]];
     
     KKAudioModel *audioModel = self.audioArrays[indexPath.row];
     NSString *audioLocalName = [audioModel.audioPath lastPathComponent];

@@ -158,22 +158,6 @@ static NSString *ID = @"localVideoCell";
     return _startUploadButton;
 }
 
-#warning testing 
-//TODO: 第2次上传报错
-- (void)uploadVideo{
-    KKVideoRecordModel *aKKVideoRecordModel = [[KKVideoRecordModel alloc] init];
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    if(appDelegate.video_library_data){
-        aKKVideoRecordModel = [appDelegate.video_library_data lastObject];
-    }
-    
-    [[KKNetwork sharedInstance] uploadVideoWithAKKVideoRecordModel:aKKVideoRecordModel completeSuccessed:^(NSDictionary *responseJson) {
-        NSLog(@"Upload Success: %@", responseJson);
-    } completeFailed:^(NSString *failedStr) {
-        NSLog(@"video upload failed %@", failedStr);
-    }];
-}
-
 - (KRVideoPlayerController *)videoPreviewController{
     if (_videoPreviewController == nil) {
         _videoPreviewController = [[KRVideoPlayerController alloc] init];
