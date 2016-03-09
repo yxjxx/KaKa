@@ -35,7 +35,7 @@
         _videoNameLabel.textAlignment = NSTextAlignmentCenter;
         //TODO: text color and font size
         _videoNameLabel.textColor = [UIColor whiteColor];
-        _videoNameLabel.font = [UIFont systemFontOfSize:14];
+        _videoNameLabel.font = [UIFont systemFontOfSize:12];
         [self.contentView addSubview:_videoNameLabel];
         [_videoNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView.centerX);

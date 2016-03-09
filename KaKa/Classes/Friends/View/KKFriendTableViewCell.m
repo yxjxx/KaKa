@@ -59,7 +59,7 @@
 - (void)setData{
     [self.portraitImageView sd_setImageWithURL:[NSURL URLWithString:self.friendModel.portrait] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     self.usernameLabel.text = self.friendModel.username;
-    self.videoNumberLabel.text = [NSString stringWithFormat:@"%@ followers", self.friendModel.video];
+    self.videoNumberLabel.text = [NSString stringWithFormat:@"%@ followers", self.friendModel.fans];
 }
 
 - (void)setUI{
