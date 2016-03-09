@@ -24,6 +24,7 @@ static NSString *ID = @"localVideoCell";
 @property (nonatomic, strong) NSArray *allLocalVideosArray;
 @property (nonatomic, strong) UICollectionView *allLocalVideoCollectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) KKVideoRecordModel *selectedLocalVideo;
 
 @end
 
@@ -48,17 +49,11 @@ static NSString *ID = @"localVideoCell";
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
-//    NSURL *videoFullPath = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
-    KKVideoRecordModel *aKKVideoRecordModel = [[KKVideoRecordModel alloc] init];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     if(appDelegate.video_library_data){
-        aKKVideoRecordModel = [appDelegate.video_library_data lastObject];
+        self.selectedLocalVideo = [appDelegate.video_library_data lastObject];
     }
-    NSString *mystr = [[kDocumentsPath stringByAppendingPathComponent:@"video"] stringByAppendingPathComponent:[aKKVideoRecordModel.path lastPathComponent]];
-    NSLog(@"current_documents%@", mystr);
-    NSURL *videoFullPath = [NSURL fileURLWithPath:mystr];
-    NSLog(@"stored_%@", videoFullPath);
-//    [self playVideoWithURL:videoFullPath];
+    [self playLocalVideo:self.selectedLocalVideo];
     
     [self.view addSubview:self.videoPreviewController.view];
     [self.view addSubview:self.videoDescTextFiled];
@@ -74,6 +69,14 @@ static NSString *ID = @"localVideoCell";
     self.allLocalVideoCollectionView.backgroundColor = [UIColor yellowColor];
     [self.allLocalVideoCollectionView registerClass:[KKLocalVideoCell class] forCellWithReuseIdentifier:ID];
 }
+
+- (KKVideoRecordModel *)selectedLocalVideo{
+    if (_selectedLocalVideo == nil) {
+        _selectedLocalVideo = [[KKVideoRecordModel alloc] init];
+    }
+    return _selectedLocalVideo;
+}
+
 
 - (void)clickGiveUpBtn{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -211,6 +214,18 @@ static NSString *ID = @"localVideoCell";
     KKVideoRecordModel *videoModel = self.allLocalVideosArray[indexPath.item];
     cell.aVideoModel = videoModel;
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedLocalVideo = self.allLocalVideosArray[indexPath.item];
+    
+    [self playLocalVideo:self.selectedLocalVideo];
+}
+
+- (void)playLocalVideo:(KKVideoRecordModel *)selectedLocalVideo{
+    NSString *vPathStr = [[kDocumentsPath stringByAppendingPathComponent:VIDEO_PATH] stringByAppendingPathComponent:selectedLocalVideo.path];
+    NSURL *vPathURL = [NSURL fileURLWithPath:vPathStr];
+    [self playVideoWithURL:vPathURL];
 }
 
 @end
