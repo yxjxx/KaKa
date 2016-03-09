@@ -44,6 +44,7 @@
 		DE2E1AA51C8FFBFB00A11B7D /* MainPage_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2E1AA31C8FFBFB00A11B7D /* MainPage_Normal.png */; };
 		DE2E1AA91C903DF300A11B7D /* KKFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2E1AA81C903DF300A11B7D /* KKFriendTableViewCell.m */; };
 		DE2E1AAC1C903E1200A11B7D /* KKFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2E1AAB1C903E1200A11B7D /* KKFriendModel.m */; };
+		DE2E1AAF1C906A7400A11B7D /* KKFriendProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2E1AAE1C906A7400A11B7D /* KKFriendProfileViewController.m */; };
 		DE2F88191C88767700F4A9C2 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2F88181C88767700F4A9C2 /* placeholder.png */; };
 		DE2F88201C8ACC8A00F4A9C2 /* KKCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F881F1C8ACC8A00F4A9C2 /* KKCameraViewController.m */; };
 		DE2F88251C8ACCB900F4A9C2 /* KKAudioRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F88221C8ACCB900F4A9C2 /* KKAudioRecordModel.m */; };
@@ -122,6 +123,8 @@
 		DE2E1AA81C903DF300A11B7D /* KKFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKFriendTableViewCell.m; sourceTree = "<group>"; };
 		DE2E1AAA1C903E1200A11B7D /* KKFriendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKFriendModel.h; sourceTree = "<group>"; };
 		DE2E1AAB1C903E1200A11B7D /* KKFriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKFriendModel.m; sourceTree = "<group>"; };
+		DE2E1AAD1C906A7400A11B7D /* KKFriendProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKFriendProfileViewController.h; sourceTree = "<group>"; };
+		DE2E1AAE1C906A7400A11B7D /* KKFriendProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKFriendProfileViewController.m; sourceTree = "<group>"; };
 		DE2F88181C88767700F4A9C2 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		DE2F881E1C8ACC8A00F4A9C2 /* KKCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCameraViewController.h; sourceTree = "<group>"; };
 		DE2F881F1C8ACC8A00F4A9C2 /* KKCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCameraViewController.m; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 			children = (
 				DE1AD0EE1C7EE80C00945AF1 /* KKFriendsViewController.h */,
 				DE1AD0EF1C7EE80C00945AF1 /* KKFriendsViewController.m */,
+				DE2E1AAD1C906A7400A11B7D /* KKFriendProfileViewController.h */,
+				DE2E1AAE1C906A7400A11B7D /* KKFriendProfileViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -751,6 +756,7 @@
 				DE2E1AAC1C903E1200A11B7D /* KKFriendModel.m in Sources */,
 				688B16FD1C881504007573F6 /* KKAudioModel.m in Sources */,
 				DE34B0F01C85867100CAFD12 /* KKPlayVideoViewController.m in Sources */,
+				DE2E1AAF1C906A7400A11B7D /* KKFriendProfileViewController.m in Sources */,
 				DEAF9F7C1C8F216000341649 /* KKLocalVideoCell.m in Sources */,
 				DE932A921C7DAE7C00651712 /* main.m in Sources */,
 				68E262B61C86D348006E9DB3 /* KKOptionsTableVC.m in Sources */,
