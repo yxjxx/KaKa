@@ -40,9 +40,9 @@
         [_videoNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView.centerX);
             make.height.equalTo(@20);
-            make.bottom.equalTo(self.contentView);
-            make.left.equalTo(self.contentView).with.offset(10);
-            make.right.equalTo(self.contentView).with.offset(-10);
+            make.bottom.equalTo(self.contentView.bottom);
+            make.left.equalTo(self.contentView.left).with.offset(5);
+            make.right.equalTo(self.contentView.right).with.offset(-5);
         }];
     }
     return _videoNameLabel;
@@ -55,10 +55,8 @@
 }
 
 - (void)setData{
-   //????????
-    self.videoNameLabel.text = self.aVideoModel.videoName;
-    self.videoTimeLabel.text = self.aVideoModel.timelen;
     [self.snapImageView sd_setImageWithURL:[NSURL URLWithString:self.aVideoModel.snapshot] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    self.videoNameLabel.text = self.aVideoModel.videoName;
 }
 
 

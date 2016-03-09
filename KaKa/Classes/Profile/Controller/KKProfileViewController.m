@@ -122,7 +122,7 @@ static NSString *ID = @"videoCell";
 - (UICollectionView *) myVideoCollectionView1 {
     if (_myVideoCollectionView1 == nil) {
         //TODO: 150 待修改
-        _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kMagicZero, kProfileCollectionViewY, kScreenWidth, kProfileCollectionViewHeight) collectionViewLayout:self.flowLayout];
+        _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kMagicZero, kProfileCollectionViewY, kScreenWidth, kProfileCollectionViewHeight-CGRectGetHeight(self.settingMyIconUIView.frame)) collectionViewLayout:self.flowLayout];
         _myVideoCollectionView1.delegate = self;
         _myVideoCollectionView1.dataSource = self;
         _myVideoCollectionView1.backgroundColor = [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
