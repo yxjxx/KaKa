@@ -24,21 +24,25 @@
 //}
 
 + (CGFloat)multiplerInCenterY{
-    return 0.3;
+    return 0.39;
+  //  return 0.0;
 }
 
 + (instancetype)plusButton{
     KKSegueToCameraViewController *button = [[KKSegueToCameraViewController alloc] init];
     
     //TODO: KK_Camera.png 替换
-    button.layer.cornerRadius = 34;
-    button.clipsToBounds = YES;
-    [button setImage:[UIImage imageNamed:@"KK_Camera"] forState:UIControlStateNormal];
+//    button.layer.cornerRadius = 34;
+//    button.clipsToBounds = YES;
+    [button setImage:[UIImage imageNamed:@"KK_Camera_normal"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"KK_Camera_selected"] forState:UIControlStateHighlighted];
 
     
     [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:9.5];
-    [button sizeToFit];
+//    [button sizeToFit];
+     [button setSize:CGSizeMake(75, 49)];
+//    [button setBackgroundColor:[UIColor clearColor]];
 #warning debuging
     NSLog(@"%@", button);
     [button addTarget:button action:@selector(clickCamera) forControlEvents:UIControlEventTouchUpInside];

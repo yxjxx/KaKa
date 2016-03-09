@@ -41,9 +41,6 @@
     [self settingButtons];
 }
 
-- (void) textChange {
-    self.loginButton.enabled = self.userNameTextField.text.length && self.passwordTextField.text.length ;
-}
 - (void)signupClicked {
     
     KKSignupViewController *signUpVc = [[KKSignupViewController alloc] init];
@@ -216,6 +213,14 @@
       self.userNameTextField.text = @"13260522226";
       self.passwordTextField.text = @"123456";
 }
+
+- (void) textChange {
+    self.loginButton.enabled = self.userNameTextField.text.length && self.passwordTextField.text.length ;
+    if ( self.loginButton.enabled) {
+        [SVProgressHUD showErrorWithStatus:@"请输入登陆信息"];
+    }
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }

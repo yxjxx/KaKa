@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -102,9 +102,13 @@
                         <action selector="selectAudio:" destination="-1" eventType="touchUpInside" id="c82-ZY-9aJ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkw-Yh-62s">
-                    <rect key="frame" x="265" y="607" width="86" height="30"/>
-                    <state key="normal" title="保存至本地"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkw-Yh-62s">
+                    <rect key="frame" x="291" y="598" width="53" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Gdx-cc-BgR"/>
+                        <constraint firstAttribute="width" constant="48" id="lyd-Gw-nPW"/>
+                    </constraints>
+                    <state key="normal" title=" " backgroundImage="saveLocaltion.png"/>
                     <connections>
                         <action selector="saveVideo:" destination="-1" eventType="touchUpInside" id="X9s-pg-iaN"/>
                     </connections>
@@ -129,6 +133,7 @@
                 <constraint firstItem="ofm-Xz-C4l" firstAttribute="top" secondItem="MgL-UH-5ka" secondAttribute="bottom" constant="5" id="oEE-bj-XFO"/>
                 <constraint firstAttribute="trailing" secondItem="VYL-WZ-N7s" secondAttribute="trailing" constant="5" id="rrb-zx-8cW"/>
                 <constraint firstItem="MgL-UH-5ka" firstAttribute="top" secondItem="BOl-ob-DDR" secondAttribute="bottom" constant="10" id="tG4-qt-XnP"/>
+                <constraint firstAttribute="trailing" secondItem="hkw-Yh-62s" secondAttribute="trailing" constant="25" id="zEM-Mc-7ag"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -140,6 +145,7 @@
         <image name="photo" width="32" height="32"/>
         <image name="record_pause" width="96" height="96"/>
         <image name="record_run" width="96" height="96"/>
+        <image name="saveLocaltion.png" width="48" height="48"/>
         <image name="sound_library" width="48" height="48"/>
     </resources>
 </document>
