@@ -147,4 +147,31 @@
     }];
 }
 
+- (void)getFansListWithKid:(NSString *)kid completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[@"kid"] = kid;
+    params[@"sign"] = @"fans";
+    [session GET:kGetUserInfoServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        successBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failedBlock(@"Network error");
+    }];
+
+}
+
+- (void)getFollowingListWithKid:(NSString *)kid completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[@"kid"] = kid;
+    params[@"sign"] = @"attentions";
+    [session GET:kGetUserInfoServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        successBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failedBlock(@"Network error");
+    }];
+}
+
 @end

@@ -47,4 +47,12 @@ typedef void(^downloadAudioSuccessed)(NSString *successStr);
          completeSuccessed:(requestSuccessed)successBlock
             completeFailed:(requestFailed)failedBlock;
 
+- (void)getFansListWithKid:(NSString *)kid
+         completeSuccessed:(requestSuccessed)successBlock
+            completeFailed:(requestFailed)failedBlock;
+
+- (void)getFollowingListWithKid:(NSString *)kid
+         completeSuccessed:(requestSuccessed)successBlock
+                 completeFailed:(requestFailed)failedBlock;
+
 @end
