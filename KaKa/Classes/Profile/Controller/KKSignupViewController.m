@@ -185,9 +185,13 @@
     [btnFinishSignUp addTarget:self action:@selector(backToLoginIn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnFinishSignUp];
     
+    //3都为空，按钮禁用
     [self.userNameTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
     [self.passwordTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
     [self.phoneTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
+    
+    
+    
     
 //#warning testing
 //    self.userNameTextField.text = @"13125197322";
@@ -198,6 +202,9 @@
 
 - (void) textChange {
     self.SignUpBtn.enabled = self.userNameTextField.text.length && self.passwordTextField.text.length && self.phoneTextField.text.length;
+    if (self.SignUpBtn.enabled) {
+        [SVProgressHUD showErrorWithStatus:@"请输入注册信息"];
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

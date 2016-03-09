@@ -11,6 +11,7 @@
 #import "KKLoginViewController.h"
 #import "KKSignupViewController.h"
 #import "KKMainPageViewController.h"
+#import "clearVideoAndAudio.h"
 @interface KKOptionsTableVC () <UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -42,15 +43,15 @@
         case 0: //个人 3个
             switch (row) {
                 case 0:
-                    NSLog(@" 1-1 section:%ld,row:%ld",section,row);
+
                     
                     break;
                 case 1:
-                    NSLog(@" 1-2 section:%ld,row:%ld",section,row);
+
                     
                     break;
                 case 2:
-                    NSLog(@" 1-3 section:%ld,row:%ld",section,row);
+
                     
                     break;
                     
@@ -63,12 +64,12 @@
             switch (row) {
                 case 0:  //重新注册1个号
                     [self  ReSignUpClick];
-                    // NSLog(@" 2-1 section:%d,row:%d",section,row);
+
                     
                     break;
                 case 1: //退出登陆
                     [self loginOutClick];
-                    // NSLog(@" 2-2 section:%d,row:%d",section,row);
+
                     
                     break;
                     
@@ -80,17 +81,19 @@
             
         case 2: //support  清空缓存
             switch (row) {
-                case 0:
-                    NSLog(@" 3-1 section:%ld,row:%ld",section,row);
-                    
+                case 0://   清空视频缓存
+
+                    [self clearVideoFiles];
                     break;
-                case 1:
-                    NSLog(@" 3-2 section:%ld,row:%ld",section,row);
-                    
+                case 1: //清空音频文件
+
+                    [self clearAudioFiles];
+
                     break;
-                case 2:
-                    NSLog(@" 3-3 section:%ld,row:%ld",section,row);
-                    
+                case 2:  //清空所有文件
+
+                    [self clearAllFiles];
+
                     break;
                     
                 default:
@@ -100,11 +103,11 @@
             break;
             
         case 3:
-            NSLog(@"section:%ld,row:%ld",section,row);
+
             break;
             
         case 4:
-            NSLog(@"section:%ld,row:%ld",section,row);
+
             break;
             
         default:
@@ -166,11 +169,11 @@
         }
     }else if (indexPath.section == 2){//group 3,section = 2
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"清空缓存";
+            cell.textLabel.text = @"清空视频缓存";
         } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"清空我音频文件";
+            cell.textLabel.text = @"清空音频文件";
         } else {
-            cell.textLabel.text = @"清空历史记录";
+            cell.textLabel.text = @"清空所有文件";
         }
         
     } else if (indexPath.section == 3) {
@@ -220,4 +223,136 @@
     
 }
 
+
+//清空视频文件
+- (void)  clearVideoFiles {
+
+    NSString *documentsPath =[self dirDoc];
+   NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *videoDirectory1 = [documentsPath stringByAppendingPathComponent:@"video"];
+    NSString *videoDirectory2 = [documentsPath stringByAppendingPathComponent:@"snapshot"];
+    
+    for (NSString *videoFileA in videoDirectory1) {
+        //如有需要，加入条件，过滤掉不想删除的文件
+        NSString *absolutePath=[documentsPath stringByAppendingPathComponent:videoFileA];
+        [fileManager removeItemAtPath:absolutePath error:nil];
+    }
+    
+    for (NSString *videoFileB in videoDirectory2) {
+        //如有需要，加入条件，过滤掉不想删除的文件
+        NSString *absolutePath=[documentsPath stringByAppendingPathComponent:videoFileB];
+        [fileManager removeItemAtPath:absolutePath error:nil];
+    }
+    
+    
+    BOOL res=[fileManager removeItemAtPath:videoDirectory1 error:nil];
+    if (res) {
+        NSLog(@"文件删除成功");
+    }else
+        NSLog(@"文件删除失败");
+    //TODO:  视频在2个地方
+    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:videoDirectory1]?@"YES":@"NO");
+
+}
+//清空音频文件
+- (void) clearAudioFiles {
+     NSString *documentsPath =[self dirDoc];
+     NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *audioDirectory1 = [documentsPath stringByAppendingPathComponent:@"audio"];
+    NSString *audioDirectory2 = [documentsPath stringByAppendingPathComponent:@"data"];
+    
+    for (NSString *audioFileA in audioDirectory1) {
+        //如有需要，加入条件，过滤掉不想删除的文件
+        NSString *absolutePath=[documentsPath stringByAppendingPathComponent:audioFileA];
+        [fileManager removeItemAtPath:absolutePath error:nil];
+    }
+    
+    for (NSString *audioFileB in audioDirectory2) {
+        //如有需要，加入条件，过滤掉不想删除的文件
+        NSString *absolutePath=[documentsPath stringByAppendingPathComponent:audioFileB];
+        [fileManager removeItemAtPath:absolutePath error:nil];
+    }
+    
+    
+    BOOL res=[fileManager removeItemAtPath:audioDirectory1 error:nil];
+    if (res) {
+        NSLog(@"文件删除成功");
+    }else
+        NSLog(@"文件删除失败");
+    //TODO:  音频在2个地方
+    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:audioDirectory1]?@"YES":@"NO");
+    
+    
+}
+
+  //TODO: 清空所有文件
+- (void) clearAllFiles{
+    
+}
+//+(void)clearCache:(NSString *)path{
+//    NSFileManager *fileManager=[NSFileManager defaultManager];
+//    if ([fileManager fileExistsAtPath:path]) {
+//        NSArray *childerFiles=[fileManager subpathsAtPath:path];
+//        for (NSString *fileName in childerFiles) {
+//            //如有需要，加入条件，过滤掉不想删除的文件
+//            NSString *absolutePath=[path stringByAppendingPathComponent:fileName];
+//            [fileManager removeItemAtPath:absolutePath error:nil];
+//        }
+//    }
+//    [[SDImageCache sharedImageCache] cleanDisk];
+//}
+
+//删除文件
+-(void)deleteFile{
+    NSString *documentsPath =[self dirDoc];
+    NSString *testDirectory = [documentsPath stringByAppendingPathComponent:@"test"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *testPath = [testDirectory stringByAppendingPathComponent:@"test.txt"];
+    BOOL res=[fileManager removeItemAtPath:testPath error:nil];
+    if (res) {
+        NSLog(@"文件删除成功");
+    }else
+        NSLog(@"文件删除失败");
+    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:testPath]?@"YES":@"NO");
+}
+
+//获取Documents目录
+-(NSString *)dirDoc{
+    [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSLog(@"app_home_doc: %@",documentsDirectory);
+    return documentsDirectory;
+}
+//获取Library目录
+-(void)dirLib{
+    //[NSHomeDirectory() stringByAppendingPathComponent:@"Library"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *libraryDirectory = [paths objectAtIndex:0];
+    NSLog(@"app_home_lib: %@",libraryDirectory);
+}
+
+//获取Cache目录
+-(void)dirCache{
+    NSArray *cacPath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cachePath = [cacPath objectAtIndex:0];
+    NSLog(@"app_home_lib_cache: %@",cachePath);
+}
+//获取Tmp目录
+-(void)dirTmp{
+    //[NSHomeDirectory() stringByAppendingPathComponent:@"tmp"];
+    NSString *tmpDirectory = NSTemporaryDirectory();
+    NSLog(@"app_home_tmp: %@",tmpDirectory);
+}
+
+
+
+
+//获取应用沙盒根路径
+-(void)dirHome{
+    NSString *dirHome=NSHomeDirectory();
+    NSLog(@"app_home: %@",dirHome);
+}
 @end
