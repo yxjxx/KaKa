@@ -188,12 +188,12 @@
     // TabBarItem选中后的背景颜色
     NSUInteger allItemsInTabBarCount = [CYLTabBarController allItemsInTabBarCount];
     //TODO: TabBarItem选中后的背景颜色
-    [[UITabBar appearance] setSelectionIndicatorImage:[self imageFromColor:[UIColor colorWithRed:0.07 green:0.07 blue:0.07 alpha:1] forSize:CGSizeMake([UIScreen mainScreen].bounds.size.width / allItemsInTabBarCount, 49.f) withCornerRadius:0]];
+    //[[UITabBar appearance] setSelectionIndicatorImage:[self imageFromColor:[UIColor colorWithRed:0.07 green:0.07 blue:0.07 alpha:1] forSize:CGSizeMake([UIScreen mainScreen].bounds.size.width / allItemsInTabBarCount, 49.f) withCornerRadius:0]];
     
     // set the bar background color
     // 设置背景图片
-    // UITabBar *tabBarAppearance = [UITabBar appearance];
-    // [tabBarAppearance setBackgroundImage:[UIImage imageNamed:@"tabbar_background_ios7"]];
+     UITabBar *tabBarAppearance = [UITabBar appearance];
+     [tabBarAppearance setBackgroundImage:[UIImage imageNamed:@"tabbar_background"]];
 }
 
 + (UIImage *)imageFromColor:(UIColor *)color forSize:(CGSize)size withCornerRadius:(CGFloat)radius {

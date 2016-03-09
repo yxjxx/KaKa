@@ -31,7 +31,7 @@
     KKSegueToCameraViewController *button = [[KKSegueToCameraViewController alloc] init];
     
     //TODO: KK_Camera.png 替换
-    button.layer.cornerRadius = 30;
+    button.layer.cornerRadius = 34;
     button.clipsToBounds = YES;
     [button setImage:[UIImage imageNamed:@"KK_Camera"] forState:UIControlStateNormal];
 
