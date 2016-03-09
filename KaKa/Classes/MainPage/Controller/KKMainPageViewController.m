@@ -45,8 +45,9 @@ static NSString *ID = @"videoCell";
 - (void)viewDidLoad{
     [super viewDidLoad];
 #warning testing
-    self.tabBarController.selectedIndex = 3;
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.tabBarController.selectedIndex = 3;
+//    self.view.backgroundColor = [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
+    self.view.backgroundColor = [UIColor blackColor];
     
 //    [self.navigationController.tabBarItem setBadgeValue:@"3"];
     [self.view addSubview:self.segmentedControl];
@@ -194,7 +195,8 @@ static NSString *ID = @"videoCell";
         _recommendVideoCollectionView0 = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
         _recommendVideoCollectionView0.delegate = self;
         _recommendVideoCollectionView0.dataSource = self;
-        _recommendVideoCollectionView0.backgroundColor = [UIColor whiteColor];
+//        _recommendVideoCollectionView0.backgroundColor = [UIColor whiteColor];
+        _recommendVideoCollectionView0.backgroundColor = [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
     }
     return _recommendVideoCollectionView0;
 }
@@ -204,7 +206,9 @@ static NSString *ID = @"videoCell";
         _hotVideoCollectionView1 = [[UICollectionView alloc] initWithFrame:CGRectMake(kScreenWidth, CGRectGetMaxY(self.segmentedControl.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
         _hotVideoCollectionView1.delegate = self;
         _hotVideoCollectionView1.dataSource = self;
-        _hotVideoCollectionView1.backgroundColor = [UIColor whiteColor];
+//        _hotVideoCollectionView1.backgroundColor = [UIColor whiteColor];
+        _hotVideoCollectionView1.backgroundColor =  [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
+        
     }
     return _hotVideoCollectionView1;
 }
@@ -273,9 +277,15 @@ static NSString *ID = @"videoCell";
         _segmentedControl = [[HMSegmentedControl alloc] init];
         _segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"推荐", @"热门"]];
         _segmentedControl.frame = CGRectMake(kMagicZero, kStatusBarHeight + kNavgationBarHeight, kScreenWidth, kSegementControlHeight);
-//        _segmentedControl.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:1];
+        _segmentedControl.backgroundColor = [UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1];
+//        _segmentedControl.backgroundColor = [UIColor grayColor];
         _segmentedControl.selectionStyle = HMSegmentedControlBorderTypeTop;
         [_segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+        [_segmentedControl setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
+            NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor grayColor], NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:22]}];
+            return attString;
+        }];
+        _segmentedControl.selectionIndicatorColor = [UIColor colorWithRed:0.88 green:0.37 blue:0.22 alpha:1];
     }
     return _segmentedControl;
 }
