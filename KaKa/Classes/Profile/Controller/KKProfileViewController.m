@@ -63,6 +63,7 @@ static NSString *ID = @"videoCell";
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *kid = [defaults objectForKey:@"kid"];
+    //TODO: 如果 kid 为空的异常处理
     [[KKNetwork sharedInstance] getVideosOfTheUserWithKid:kid andPage:[NSString stringWithFormat:@"%ld", pageNum] andOrder:@"1" completeSuccessed:^(NSDictionary *responseJson) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf pullUpRefreshSuccess:responseJson WithPageNum:pageNum];

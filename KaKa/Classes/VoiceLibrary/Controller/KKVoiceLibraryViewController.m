@@ -139,7 +139,7 @@
     return [self.audioArrays count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (KKAudioCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *ID = @"CELL";
     KKAudioCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
