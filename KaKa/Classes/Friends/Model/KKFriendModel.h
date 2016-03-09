@@ -10,4 +10,14 @@
 
 @interface KKFriendModel : NSObject
 
+@property (nonatomic, copy) NSString *city;
+@property (nonatomic, copy) NSString *kid;
+@property (nonatomic, copy) NSString *video;
+@property (nonatomic, copy) NSString *portrait;
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *fans;
+
+- (instancetype) initWithDict:(NSDictionary *)dict;
++ (instancetype) friendWithDict:(NSDictionary *)dict;
+
 @end
