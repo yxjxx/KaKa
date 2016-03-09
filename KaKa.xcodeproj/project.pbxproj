@@ -35,6 +35,7 @@
 		68E7A25D1C8FC3100082D4B8 /* KK_Camera_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A25B1C8FC3100082D4B8 /* KK_Camera_selected.png */; };
 		68E7A2601C8FC7830082D4B8 /* Mainpage-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A25E1C8FC7830082D4B8 /* Mainpage-1.png */; };
 		68E7A2611C8FC7830082D4B8 /* Mainpage.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A25F1C8FC7830082D4B8 /* Mainpage.png */; };
+		68E7A2671C90114C0082D4B8 /* VoiceLibIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A2661C90114C0082D4B8 /* VoiceLibIcon.png */; };
 		D506E5C5A75570164E83C760 /* libPods-KaKa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF1B133E1C018C1092F575B /* libPods-KaKa.a */; };
 		DE1AD0E71C7EE7CA00945AF1 /* KKMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */; };
 		DE1AD0EA1C7EE7E600945AF1 /* KKVoiceLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E91C7EE7E600945AF1 /* KKVoiceLibraryViewController.m */; };
@@ -103,6 +104,7 @@
 		68E7A25B1C8FC3100082D4B8 /* KK_Camera_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KK_Camera_selected.png; sourceTree = "<group>"; };
 		68E7A25E1C8FC7830082D4B8 /* Mainpage-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mainpage-1.png"; sourceTree = "<group>"; };
 		68E7A25F1C8FC7830082D4B8 /* Mainpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mainpage.png; sourceTree = "<group>"; };
+		68E7A2661C90114C0082D4B8 /* VoiceLibIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceLibIcon.png; sourceTree = "<group>"; };
 		7165136B30A2177DB001C348 /* Pods-KaKa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaKa.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaKa/Pods-KaKa.release.xcconfig"; sourceTree = "<group>"; };
 		DE1AD0E51C7EE7CA00945AF1 /* KKMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMainPageViewController.h; sourceTree = "<group>"; };
 		DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainPageViewController.m; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 		DE2F88171C88765600F4A9C2 /* LocalImages */ = {
 			isa = PBXGroup;
 			children = (
+				68E7A2661C90114C0082D4B8 /* VoiceLibIcon.png */,
 				68038EEA1C8FB90700F54C8E /* KK_Camera.png */,
 				68E7A25A1C8FC3100082D4B8 /* KK_Camera_normal.png */,
 				68E7A25B1C8FC3100082D4B8 /* KK_Camera_selected.png */,
@@ -649,6 +652,7 @@
 				DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */,
 				DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */,
 				68E7A2601C8FC7830082D4B8 /* Mainpage-1.png in Resources */,
+				68E7A2671C90114C0082D4B8 /* VoiceLibIcon.png in Resources */,
 				DE2F882D1C8ACCC900F4A9C2 /* KKCameraView.xib in Resources */,
 				683607D21C8E6F730075E375 /* music@1x.png in Resources */,
 				688B16F71C87DE7A007573F6 /* logBg.jpg in Resources */,

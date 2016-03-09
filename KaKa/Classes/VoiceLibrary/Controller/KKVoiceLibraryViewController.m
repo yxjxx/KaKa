@@ -109,8 +109,16 @@
         _audioTableView = [[UITableView alloc] initWithFrame:CGRectMake(kMagicZero, tableviewFrameY, kScreenWidth, kScreenHeight-tableviewFrameY-kTabBarHeight) style:UITableViewStylePlain];
         _audioTableView.delegate = self;
         _audioTableView.dataSource = self;
+        _audioTableView.backgroundColor =  [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
+        _audioTableView.separatorColor = [UIColor colorWithRed:60/256.0 green:60/256.0 blue:60/256.0 alpha:0.8];
+        
     }
     return _audioTableView;
+}
+
+//cell 与顶的间距
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0;
 }
 - (NSMutableArray *)audioArrays {
     if (_audioArrays == nil) {
@@ -133,6 +141,7 @@
     }
     KKAudioModel *audioModel = self.audioArrays[indexPath.row];
     cell.aAudioModel = audioModel;
+    cell.backgroundColor = [UIColor colorWithRed:45/256.0 green:45/256.0 blue:45/256.0 alpha:1];
     
     return cell;
 }
@@ -191,7 +200,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    return 65;
 }
 
 

@@ -31,7 +31,10 @@
     self.tableView = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-     
+    self.tableView.separatorColor = [UIColor colorWithRed:100/256.0 green:100/256.0 blue:100/256.0 alpha:0.5];
+
+    self.tableView.backgroundColor =  [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
+    
     NSLog(@"view didload kkoption TableView Cell");
 }
 
@@ -151,6 +154,17 @@
 {
     
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    cell.backgroundColor = [UIColor colorWithRed:45/256.0 green:45/256.0 blue:45/256.0 alpha:1];
+
+    cell.textLabel.textColor  = [UIColor colorWithRed:110/256.0 green:110/256.0 blue:117/256.0 alpha:1];
+
+    //被选中的color:
+    UIView *bgView = [[UIView alloc]init];
+    bgView.backgroundColor = [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
+                              
+                              
+                              
+    cell.selectedBackgroundView = bgView;
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -184,13 +198,13 @@
         }
     }  else {
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"Linked Accounts";
+            cell.textLabel.text = @"检查更新";
         } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"Push"; //Notification Settings
+            cell.textLabel.text = @"去评分"; //Notification Settings
         } else if (indexPath.row == 2) {
-            cell.textLabel.text = @"Cellular Data Use";
+            cell.textLabel.text = @"推荐给好友";
         } else {
-            cell.textLabel.text = @"Save Original Photos";
+            cell.textLabel.text = @"我要赞助";
         }
     }
     return cell;
@@ -198,37 +212,24 @@
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"个人";
+        return @"个人信息";
     } else if(section ==1) {
-        return @"Account";
+        return @"帐号";
     } else if (section == 2){
-        return @"Support";
+        return @"清理空间";
     } else if (section == 3) {
-        return @"About";
+        return @"关于";
     } else {
-        return @"Setting";
+        return @"设置";
     }
 }
-
-- (void) testSetBackColor {
-    
-    //method 1
-    CGRect rect = [[self view] bounds];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
-    [imageView setImage:[UIImage imageNamed:@"KaBackground" ]];
-    
-    [self.view setBackgroundColor:[UIColor clearColor]];   //(1)
-    self.tableView.opaque = NO; //(2) (1,2)两行不要也行，背景图片也能显示
-    self.tableView.backgroundView = imageView;
-    
-}
-
+ 
 
 //清空视频文件
 - (void)  clearVideoFiles {
 
     NSString *documentsPath =[self dirDoc];
-   NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSString *videoDirectory1 = [documentsPath stringByAppendingPathComponent:@"video"];
     NSString *videoDirectory2 = [documentsPath stringByAppendingPathComponent:@"snapshot"];
@@ -252,107 +253,26 @@
     }else
         NSLog(@"文件删除失败");
     //TODO:  视频在2个地方
-    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:videoDirectory1]?@"YES":@"NO");
+//    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:videoDirectory1]?@"YES":@"NO");
 
 }
 //清空音频文件
 - (void) clearAudioFiles {
-     NSString *documentsPath =[self dirDoc];
-     NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    NSString *audioDirectory1 = [documentsPath stringByAppendingPathComponent:@"audio"];
-    NSString *audioDirectory2 = [documentsPath stringByAppendingPathComponent:@"data"];
-    
-    for (NSString *audioFileA in audioDirectory1) {
-        //如有需要，加入条件，过滤掉不想删除的文件
-        NSString *absolutePath=[documentsPath stringByAppendingPathComponent:audioFileA];
-        [fileManager removeItemAtPath:absolutePath error:nil];
-    }
-    
-    for (NSString *audioFileB in audioDirectory2) {
-        //如有需要，加入条件，过滤掉不想删除的文件
-        NSString *absolutePath=[documentsPath stringByAppendingPathComponent:audioFileB];
-        [fileManager removeItemAtPath:absolutePath error:nil];
-    }
-    
-    
-    BOOL res=[fileManager removeItemAtPath:audioDirectory1 error:nil];
-    if (res) {
-        NSLog(@"文件删除成功");
-    }else
-        NSLog(@"文件删除失败");
-    //TODO:  音频在2个地方
-    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:audioDirectory1]?@"YES":@"NO");
     
     
 }
-
-  //TODO: 清空所有文件
-- (void) clearAllFiles{
+- (void) clearAllFiles {
     
 }
-//+(void)clearCache:(NSString *)path{
-//    NSFileManager *fileManager=[NSFileManager defaultManager];
-//    if ([fileManager fileExistsAtPath:path]) {
-//        NSArray *childerFiles=[fileManager subpathsAtPath:path];
-//        for (NSString *fileName in childerFiles) {
-//            //如有需要，加入条件，过滤掉不想删除的文件
-//            NSString *absolutePath=[path stringByAppendingPathComponent:fileName];
-//            [fileManager removeItemAtPath:absolutePath error:nil];
-//        }
-//    }
-//    [[SDImageCache sharedImageCache] cleanDisk];
-//}
 
-//删除文件
--(void)deleteFile{
-    NSString *documentsPath =[self dirDoc];
-    NSString *testDirectory = [documentsPath stringByAppendingPathComponent:@"test"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *testPath = [testDirectory stringByAppendingPathComponent:@"test.txt"];
-    BOOL res=[fileManager removeItemAtPath:testPath error:nil];
-    if (res) {
-        NSLog(@"文件删除成功");
-    }else
-        NSLog(@"文件删除失败");
-    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:testPath]?@"YES":@"NO");
-}
 
-//获取Documents目录
 -(NSString *)dirDoc{
-    [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+     [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSLog(@"app_home_doc: %@",documentsDirectory);
     return documentsDirectory;
 }
-//获取Library目录
--(void)dirLib{
-    //[NSHomeDirectory() stringByAppendingPathComponent:@"Library"];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *libraryDirectory = [paths objectAtIndex:0];
-    NSLog(@"app_home_lib: %@",libraryDirectory);
-}
-
-//获取Cache目录
--(void)dirCache{
-    NSArray *cacPath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *cachePath = [cacPath objectAtIndex:0];
-    NSLog(@"app_home_lib_cache: %@",cachePath);
-}
-//获取Tmp目录
--(void)dirTmp{
-    //[NSHomeDirectory() stringByAppendingPathComponent:@"tmp"];
-    NSString *tmpDirectory = NSTemporaryDirectory();
-    NSLog(@"app_home_tmp: %@",tmpDirectory);
-}
 
 
-
-
-//获取应用沙盒根路径
--(void)dirHome{
-    NSString *dirHome=NSHomeDirectory();
-    NSLog(@"app_home: %@",dirHome);
-}
 @end

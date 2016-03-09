@@ -34,6 +34,8 @@ static NSString *ID = @"videoCell";
 - (void)viewDidLoad{
     
     [super viewDidLoad];
+   
+    
     self.settingMyIconUIView.backgroundColor = [UIColor blackColor];
     self.pageNum = 0;
     __weak typeof(self) weakSelf = self;
@@ -110,8 +112,8 @@ static NSString *ID = @"videoCell";
         _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kMagicZero, kProfileCollectionViewY, kScreenWidth, kProfileCollectionViewHeight) collectionViewLayout:self.flowLayout];
         _myVideoCollectionView1.delegate = self;
         _myVideoCollectionView1.dataSource = self;
-        _myVideoCollectionView1.backgroundColor = [UIColor whiteColor];
-    }
+        _myVideoCollectionView1.backgroundColor = [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
+                      }
     return _myVideoCollectionView1;
 }
 
@@ -167,7 +169,8 @@ static NSString *ID = @"videoCell";
 - (void) setTopInformation {
 //TODO: RGB取色不可以？？！！
     //self.settingMyIconUIView.backgroundColor = [UIColor colorWithRed:32 green:32 blue:32 alpha:1];
-    self.settingMyIconUIView.backgroundColor = [UIColor grayColor];
+   
+    self.settingMyIconUIView.backgroundColor = [UIColor colorWithRed:46/256.0 green:46/256.0 blue:46/256.0 alpha:1];
     //icon
     //1.中间 自已的头像
     UIImageView *imgIcon = [[UIImageView alloc]init];
@@ -187,6 +190,8 @@ static NSString *ID = @"videoCell";
     noticeNumberLabel.frame = CGRectMake((kScreenWidth / 2) - 85, 40, 25, 20);
     
     noticeNumberLabel.text = @"32";
+    noticeNumberLabel.layer.cornerRadius = 2;
+    noticeNumberLabel.layer.masksToBounds = YES;
     noticeNumberLabel.textAlignment = NSTextAlignmentCenter;
     [noticeNumberLabel setTextColor:[UIColor colorWithRed:243/256.0 green:233/256.0 blue:234/256.0 alpha:1]];
    noticeNumberLabel.backgroundColor = [UIColor colorWithRed:182/256.0 green:71/256.0 blue:72/256.0 alpha:1];
@@ -210,6 +215,9 @@ static NSString *ID = @"videoCell";
 //    numberOfInformation.center = CGPointMake(self.view.width * 0.309, 55);
     fansNumberLabel.frame = CGRectMake((kScreenWidth / 2) + 65, 40, 25, 20);
     fansNumberLabel.text = @"16";
+    
+    fansNumberLabel.layer.cornerRadius = 3;
+    fansNumberLabel.layer.masksToBounds = YES;
     
     fansNumberLabel.textAlignment = NSTextAlignmentCenter;
     [fansNumberLabel setTextColor:[UIColor colorWithRed:243/256.0 green:233/256.0 blue:234/256.0 alpha:1]];
