@@ -34,7 +34,15 @@ static NSString *ID = @"videoCell";
 - (void)viewDidLoad{
     
     [super viewDidLoad];
-   
+    //点右上角这后，"返回"
+    [self setBackFont];
+    //set NavigationBar 背景颜色&title 颜色
+   [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:23/255.0 green:23/255.0 blue:23/255.0 alpha:1.0]];
+  //  [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,nil]];
+    
+    
+//    self.navigationController.navigationItem.title = @"个人";
+
     
     self.settingMyIconUIView.backgroundColor = [UIColor blackColor];
     self.pageNum = -1;
@@ -183,6 +191,16 @@ static NSString *ID = @"videoCell";
     imgIcon.image = [UIImage imageNamed:@"imageIcon"];
     imgIcon.layer.cornerRadius = imgIcon.size.width / 2 ;
     imgIcon.layer.masksToBounds = YES;
+   // [imgIcon.layer setBorderColor:[UIColor grayColor]];
+   // UIImageView * imgvPhoto = [UIImageView alloc] init];
+    //添加边框
+    CALayer * layer = [imgIcon layer];
+    layer.borderColor = [ [UIColor grayColor] CGColor];
+    layer.borderWidth = 15.0f;
+    
+    
+    
+    [imgIcon.layer setBorderWidth:3];
     [self.settingMyIconUIView addSubview:imgIcon];
 
     // 2 右上角，setting Button.写到navigationItem.rightBarButtonItem中
@@ -259,5 +277,13 @@ static NSString *ID = @"videoCell";
     //optionVc.hidesBottomBarWhenPushed=YES;//隐藏下面的tabbar
     [self.navigationController pushViewController:optionVc animated:YES];
     
+}
+
+- (void) setBackFont {
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    backItem.title = @"返回";
+    self.navigationItem.backBarButtonItem = backItem;
+    //返回的颜色
+    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
 }
 @end
