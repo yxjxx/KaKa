@@ -39,7 +39,7 @@
  
     [self.view addSubview:self.audioTableView];    
 
-    self.audioPageNum = 0;
+    self.audioPageNum = -1;
     
     __weak typeof(self) weakSelf = self;
     self.audioTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

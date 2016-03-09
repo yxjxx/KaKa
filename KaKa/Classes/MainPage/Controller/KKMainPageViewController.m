@@ -63,8 +63,8 @@ static NSString *ID = @"videoCell";
         [weakSelf pullDownRefresh:1];
     }];
     
-    self.recommendVideoPageNum = 0;
-    self.hotVideoPageNum = 0;
+    self.recommendVideoPageNum = -1;
+    self.hotVideoPageNum = -1;
     self.recommendVideoCollectionView0.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         weakSelf.recommendVideoPageNum++;
         [weakSelf pullUpRefresh:0 withPageNum:weakSelf.recommendVideoPageNum];

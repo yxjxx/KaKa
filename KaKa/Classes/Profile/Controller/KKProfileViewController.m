@@ -35,7 +35,7 @@ static NSString *ID = @"videoCell";
     
     [super viewDidLoad];
     self.settingMyIconUIView.backgroundColor = [UIColor blackColor];
-    self.pageNum = 0;
+    self.pageNum = -1;
     __weak typeof(self) weakSelf = self;
     self.myVideoCollectionView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         weakSelf.pageNum++;
@@ -62,7 +62,8 @@ static NSString *ID = @"videoCell";
 }
 
 - (void)pullUpRefreshSuccess:(NSDictionary *)responseJson WithPageNum:(NSInteger)pageNum{
-    NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
+//    NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
+    NSArray *arr = (NSArray *)responseJson[@"data"];
 
     for (NSDictionary *dict in arr) {
         KKProfileVideoModel *theVideo = [KKProfileVideoModel videoWithDict:dict];
