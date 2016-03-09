@@ -65,7 +65,7 @@ static NSString *ID = @"localVideoCell";
     [self.startUploadButton addTarget:self action:@selector(clickStartUploadBtn) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.allLocalVideoCollectionView];
-    self.allLocalVideoCollectionView.backgroundColor = [UIColor yellowColor];
+    self.allLocalVideoCollectionView.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:1];
     [self.allLocalVideoCollectionView registerClass:[KKLocalVideoCell class] forCellWithReuseIdentifier:ID];
 }
 
@@ -92,7 +92,8 @@ static NSString *ID = @"localVideoCell";
     [[KKNetwork sharedInstance] uploadVideoWithAKKVideoRecordModel:self.selectedLocalVideo completeSuccessed:^(NSDictionary *responseJson) {
         NSLog(@"Upload Success: %@", responseJson);
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showSuccessWithStatus:@"uploading success"];
+            NSString *msg = responseJson[@"errmsg"];
+            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@, upload failed", msg]];
         });
     } completeFailed:^(NSString *failedStr) {
         NSLog(@"video upload failed %@", failedStr);
@@ -100,7 +101,6 @@ static NSString *ID = @"localVideoCell";
             [SVProgressHUD showErrorWithStatus:@"uploading failed"];
         });
     }];
-
 }
 
 - (NSArray *)allLocalVideosArray{
@@ -185,13 +185,17 @@ static NSString *ID = @"localVideoCell";
 - (UITextField *)videoDescTextFiled{
     if (_videoDescTextFiled == nil) {
         _videoDescTextFiled = [[UITextField alloc] init];
-        [_videoDescTextFiled setFrame:CGRectMake(5, CGRectGetMaxY(self.videoPreviewController.view.frame), kScreenWidth-10, 30)];
+        [_videoDescTextFiled setFrame:CGRectMake(0, CGRectGetMaxY(self.videoPreviewController.view.frame), kScreenWidth, 40)];
         _videoDescTextFiled.placeholder = @"为你的视频取一个名字吧...（必填）";
         _videoDescTextFiled.returnKeyType = UIReturnKeyDone;
         _videoDescTextFiled.clearButtonMode = UITextFieldViewModeAlways;
         _videoDescTextFiled.keyboardAppearance = UIKeyboardAppearanceDark;
         _videoDescTextFiled.delegate = self;
-        _videoDescTextFiled.backgroundColor = [UIColor whiteColor];
+//        _videoDescTextFiled.attributedPlaceholder
+#warning private api, haha
+        [_videoDescTextFiled setValue:[UIColor colorWithRed:0.79 green:0.79 blue:0.79 alpha:1] forKeyPath:@"_placeholderLabel.textColor"];
+
+        _videoDescTextFiled.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:1];
     }
     return _videoDescTextFiled;
 }
