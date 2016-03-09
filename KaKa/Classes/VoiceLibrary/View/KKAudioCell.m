@@ -19,7 +19,7 @@
 - (UIImageView *)leftLmageView {
     if (_leftLmageView == nil) {
         _leftLmageView = [[UIImageView alloc]init];
-        _leftLmageView.frame = CGRectMake(0, 0, 60, 60);
+        _leftLmageView.frame = CGRectMake(0, 0, 55, 60);
         [self.contentView addSubview:_leftLmageView];
     }
     return _leftLmageView;
@@ -28,7 +28,7 @@
 - (UILabel *)audioCNameLabel {
     if (_audioCNameLabel == nil) {
         _audioCNameLabel = [[UILabel alloc]init];
-        _audioCNameLabel.frame = CGRectMake(60, 30, 200, 30);
+        _audioCNameLabel.frame = CGRectMake(60, 5, 200, 30);
         [self.contentView addSubview:_audioCNameLabel];
     }
     return _audioCNameLabel;
@@ -37,7 +37,8 @@
 - (UILabel *)audioSubjectLabel {
     if (_audioSubjectLabel == nil) {
         _audioSubjectLabel = [[UILabel alloc]init];
-        _audioSubjectLabel.frame = CGRectMake(60, 0, 200, 30);
+        _audioSubjectLabel.frame = CGRectMake(60, 30, 200, 30);
+        _audioSubjectLabel.textColor = [UIColor grayColor];
         [self.contentView addSubview:_audioSubjectLabel];
     }
     return _audioSubjectLabel;
@@ -50,10 +51,21 @@
 
 
 - (void)setData {
-//    self.leftLmageView.image = [UIImage imageWithContentsOfFile:<#(nonnull NSString *)#>];
-    self.leftLmageView.image = [UIImage imageNamed:@"KK_Camera"];
+//    self.leftLmageView.image = [UIImage imageWithContentsOfFile:@"d"];
+    self.leftLmageView.image = [UIImage imageNamed:@"VoiceLibIcon"];
     self.audioCNameLabel.text = self.aAudioModel.audioCName;
     self.audioSubjectLabel.text = self.aAudioModel.audioSubject;
+    if ([self.audioCNameLabel.text isEqualToString:@"电视剧"]) {
+        self.audioCNameLabel.textColor = [UIColor colorWithRed:210/256.0 green:90/256.0 blue:90/256.0 alpha:0.8];
+    }
+    else if([self.audioCNameLabel.text isEqualToString:@"动画片"]) {
+        self.audioCNameLabel.textColor = [UIColor colorWithRed:210/256.0 green:160/256.0 blue:90/256.0 alpha:0.8];
+    } else if([self.audioCNameLabel.text isEqualToString:@"原创精选"]) {
+        self.audioCNameLabel.textColor = [UIColor colorWithRed:130/256.0 green:210/256.0 blue:90/256.0 alpha:0.8];
+    } else if([self.audioCNameLabel.text isEqualToString:@"电影"]) {
+        self.audioCNameLabel.textColor = [UIColor colorWithRed:90/256.0 green:180/256.0 blue:210/256.0 alpha:0.8];
+    }
+    
 }
 
 @end
