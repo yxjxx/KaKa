@@ -292,7 +292,12 @@ static NSString *ID = @"videoCell";
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    KKVideoModel *videoModel = self.recommendVideosArray0[indexPath.item];
+    KKVideoModel *videoModel = [[KKVideoModel alloc] init];
+    if (self.segIndex == 0) {
+        videoModel = self.recommendVideosArray0[indexPath.item];
+    } else{
+        videoModel = self.hotVideoArray1[indexPath.item];
+    }
     
     KKPlayVideoViewController *playVideoVC = [[KKPlayVideoViewController alloc] init];
     playVideoVC.videoModel = videoModel;
