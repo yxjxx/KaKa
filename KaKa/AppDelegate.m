@@ -134,8 +134,8 @@
 
     NSDictionary *dict1 = @{
                             // CYLTabBarItemTitle : @"MainPage",
-                            CYLTabBarItemImage : @"MainPage",
-                            CYLTabBarItemSelectedImage : @"MainPage-1",
+                            CYLTabBarItemImage : @"MainPage_Normal",
+                            CYLTabBarItemSelectedImage : @"MainPage_Height",
 
                             };
     NSDictionary *dict2 = @{

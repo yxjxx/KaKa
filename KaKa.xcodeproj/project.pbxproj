@@ -33,14 +33,14 @@
 		68E7A2591C8FC0610082D4B8 /* clearVideoAndAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E7A2581C8FC0610082D4B8 /* clearVideoAndAudio.m */; };
 		68E7A25C1C8FC3100082D4B8 /* KK_Camera_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A25A1C8FC3100082D4B8 /* KK_Camera_normal.png */; };
 		68E7A25D1C8FC3100082D4B8 /* KK_Camera_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A25B1C8FC3100082D4B8 /* KK_Camera_selected.png */; };
-		68E7A2601C8FC7830082D4B8 /* Mainpage-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A25E1C8FC7830082D4B8 /* Mainpage-1.png */; };
-		68E7A2611C8FC7830082D4B8 /* Mainpage.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A25F1C8FC7830082D4B8 /* Mainpage.png */; };
 		D506E5C5A75570164E83C760 /* libPods-KaKa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF1B133E1C018C1092F575B /* libPods-KaKa.a */; };
 		DE1AD0E71C7EE7CA00945AF1 /* KKMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */; };
 		DE1AD0EA1C7EE7E600945AF1 /* KKVoiceLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E91C7EE7E600945AF1 /* KKVoiceLibraryViewController.m */; };
 		DE1AD0F01C7EE80C00945AF1 /* KKFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0EF1C7EE80C00945AF1 /* KKFriendsViewController.m */; };
 		DE1AD0F31C7EE81800945AF1 /* KKProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0F21C7EE81800945AF1 /* KKProfileViewController.m */; };
 		DE1AD0F61C7EE8E100945AF1 /* KKMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */; };
+		DE2E1AA41C8FFBFB00A11B7D /* MainPage_Height.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2E1AA21C8FFBFB00A11B7D /* MainPage_Height.png */; };
+		DE2E1AA51C8FFBFB00A11B7D /* MainPage_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2E1AA31C8FFBFB00A11B7D /* MainPage_Normal.png */; };
 		DE2F88191C88767700F4A9C2 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2F88181C88767700F4A9C2 /* placeholder.png */; };
 		DE2F88201C8ACC8A00F4A9C2 /* KKCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F881F1C8ACC8A00F4A9C2 /* KKCameraViewController.m */; };
 		DE2F88251C8ACCB900F4A9C2 /* KKAudioRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F88221C8ACCB900F4A9C2 /* KKAudioRecordModel.m */; };
@@ -101,8 +101,6 @@
 		68E7A2581C8FC0610082D4B8 /* clearVideoAndAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clearVideoAndAudio.m; sourceTree = "<group>"; };
 		68E7A25A1C8FC3100082D4B8 /* KK_Camera_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KK_Camera_normal.png; sourceTree = "<group>"; };
 		68E7A25B1C8FC3100082D4B8 /* KK_Camera_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KK_Camera_selected.png; sourceTree = "<group>"; };
-		68E7A25E1C8FC7830082D4B8 /* Mainpage-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mainpage-1.png"; sourceTree = "<group>"; };
-		68E7A25F1C8FC7830082D4B8 /* Mainpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mainpage.png; sourceTree = "<group>"; };
 		7165136B30A2177DB001C348 /* Pods-KaKa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaKa.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaKa/Pods-KaKa.release.xcconfig"; sourceTree = "<group>"; };
 		DE1AD0E51C7EE7CA00945AF1 /* KKMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMainPageViewController.h; sourceTree = "<group>"; };
 		DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainPageViewController.m; sourceTree = "<group>"; };
@@ -114,6 +112,8 @@
 		DE1AD0F21C7EE81800945AF1 /* KKProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKProfileViewController.m; sourceTree = "<group>"; };
 		DE1AD0F41C7EE8E100945AF1 /* KKMainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMainTabBarViewController.h; sourceTree = "<group>"; };
 		DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainTabBarViewController.m; sourceTree = "<group>"; };
+		DE2E1AA21C8FFBFB00A11B7D /* MainPage_Height.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainPage_Height.png; sourceTree = "<group>"; };
+		DE2E1AA31C8FFBFB00A11B7D /* MainPage_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainPage_Normal.png; sourceTree = "<group>"; };
 		DE2F88181C88767700F4A9C2 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		DE2F881E1C8ACC8A00F4A9C2 /* KKCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCameraViewController.h; sourceTree = "<group>"; };
 		DE2F881F1C8ACC8A00F4A9C2 /* KKCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCameraViewController.m; sourceTree = "<group>"; };
@@ -361,11 +361,11 @@
 				68E7A25A1C8FC3100082D4B8 /* KK_Camera_normal.png */,
 				68E7A25B1C8FC3100082D4B8 /* KK_Camera_selected.png */,
 				68038EE81C8FB85100F54C8E /* tabbar_background.png */,
-				68E7A25E1C8FC7830082D4B8 /* Mainpage-1.png */,
-				68E7A25F1C8FC7830082D4B8 /* Mainpage.png */,
 				68038EE31C8FB37200F54C8E /* Voice-1.png */,
 				68038EDB1C8FB36A00F54C8E /* Profile-1.png */,
 				68038EDC1C8FB36A00F54C8E /* Profile.png */,
+				DE2E1AA21C8FFBFB00A11B7D /* MainPage_Height.png */,
+				DE2E1AA31C8FFBFB00A11B7D /* MainPage_Normal.png */,
 				68038EDD1C8FB36A00F54C8E /* Voice.png */,
 				68038ED61C8FB36000F54C8E /* Friends.png */,
 				68038ED81C8FB36500F54C8E /* Friends-1.png */,
@@ -601,7 +601,7 @@
 				TargetAttributes = {
 					DE932A8C1C7DAE7C00651712 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 3M5S77SXDS;
+						DevelopmentTeam = K9F87G4V4A;
 					};
 				};
 			};
@@ -629,7 +629,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE34B0F21C8589D700CAFD12 /* hehe.mov in Resources */,
-				68E7A2611C8FC7830082D4B8 /* Mainpage.png in Resources */,
 				68038ED91C8FB36500F54C8E /* Friends-1.png in Resources */,
 				68038EE11C8FB36A00F54C8E /* Voice.png in Resources */,
 				683607CB1C8E6F640075E375 /* saveLocaltion.png in Resources */,
@@ -639,6 +638,7 @@
 				683607CD1C8E6F640075E375 /* saveLocaltion@2x.png in Resources */,
 				68038EE51C8FB37200F54C8E /* Voice-1.png in Resources */,
 				68E7A25D1C8FC3100082D4B8 /* KK_Camera_selected.png in Resources */,
+				DE2E1AA51C8FFBFB00A11B7D /* MainPage_Normal.png in Resources */,
 				68038EE91C8FB85100F54C8E /* tabbar_background.png in Resources */,
 				68038EDF1C8FB36A00F54C8E /* Profile-1.png in Resources */,
 				683607D11C8E6F730075E375 /* music.png in Resources */,
@@ -648,10 +648,10 @@
 				6887BAE11C8984A3001C4EE1 /* 启动界面最终版3.png in Resources */,
 				DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */,
 				DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */,
-				68E7A2601C8FC7830082D4B8 /* Mainpage-1.png in Resources */,
 				DE2F882D1C8ACCC900F4A9C2 /* KKCameraView.xib in Resources */,
 				683607D21C8E6F730075E375 /* music@1x.png in Resources */,
 				688B16F71C87DE7A007573F6 /* logBg.jpg in Resources */,
+				DE2E1AA41C8FFBFB00A11B7D /* MainPage_Height.png in Resources */,
 				68E7A25C1C8FC3100082D4B8 /* KK_Camera_normal.png in Resources */,
 				68038EE01C8FB36A00F54C8E /* Profile.png in Resources */,
 				683607D31C8E6F730075E375 /* music@2x.png in Resources */,
@@ -850,7 +850,7 @@
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = KaKa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kqy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -867,7 +867,7 @@
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = KaKa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kqy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yxjxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
