@@ -36,7 +36,7 @@
         _videoNameLabel.textAlignment = NSTextAlignmentCenter;
 //TODO: text color and font size
         _videoNameLabel.textColor = [UIColor whiteColor];
-        _videoNameLabel.font = [UIFont systemFontOfSize:12];
+        _videoNameLabel.font = [UIFont systemFontOfSize:18];
         [self.contentView addSubview:_videoNameLabel];
         [_videoNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView.centerX);
@@ -66,7 +66,6 @@
 }
 
 - (void)setData{
-    //TODO: 换一张 placeholder.png
     [self.snapImageView sd_setImageWithURL:[NSURL URLWithString:self.aVideoModel.videoSnapshot] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     self.videoNameLabel.text = self.aVideoModel.videoVName;
 //    self.videoTimeLabel.text = @"2 hours ago";
