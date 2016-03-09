@@ -191,9 +191,8 @@ static NSString *ID = @"localVideoCell";
         _videoDescTextFiled.clearButtonMode = UITextFieldViewModeAlways;
         _videoDescTextFiled.keyboardAppearance = UIKeyboardAppearanceDark;
         _videoDescTextFiled.delegate = self;
-//        _videoDescTextFiled.attributedPlaceholder
-#warning private api, haha
-        [_videoDescTextFiled setValue:[UIColor colorWithRed:0.79 green:0.79 blue:0.79 alpha:1] forKeyPath:@"_placeholderLabel.textColor"];
+        // change placeholder text color
+        _videoDescTextFiled.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_videoDescTextFiled.placeholder attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0.79 green:0.79 blue:0.79 alpha:1]}];
 
         _videoDescTextFiled.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:1];
     }
