@@ -15,6 +15,7 @@
 #import <SVProgressHUD.h>
 #import "MJRefresh.h"
 #import "Constants.h"
+#import "KKPlayVideoViewController.h"
 
 static NSString *ID = @"videoCell";
 
@@ -150,6 +151,14 @@ static NSString *ID = @"videoCell";
     KKProfileVideoModel *videoModel = self.myVideoArray[indexPath.item];
     cell.aVideoModel = videoModel;
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    KKProfileVideoModel *videoModel = self.myVideoArray[indexPath.item];
+    
+    KKPlayVideoViewController *playVideoVC = [[KKPlayVideoViewController alloc] init];
+    playVideoVC.profileVideoModel = videoModel;
+    [self.navigationController pushViewController:playVideoVC animated:YES];
 }
 
 - (NSMutableArray *)myVideoArray {

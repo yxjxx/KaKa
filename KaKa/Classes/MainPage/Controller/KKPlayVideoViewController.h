@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "KKVideoModel.h"
+#import "KKProfileVideoModel.h"
 
 @interface KKPlayVideoViewController : UIViewController
 
 @property (nonatomic, strong) KKVideoModel *videoModel;
+@property (nonatomic, strong) KKProfileVideoModel *profileVideoModel;
 @end

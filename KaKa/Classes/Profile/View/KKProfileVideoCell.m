@@ -8,6 +8,7 @@
 
 #import "KKProfileVideoCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "Masonry.h"
 
 
 @interface KKProfileVideoCell ()
@@ -28,23 +29,24 @@
     return _snapImageView;
 }
 
-- (UILabel *)videoNameLabel {
+- (UILabel *)videoNameLabel{
     if (_videoNameLabel == nil) {
         _videoNameLabel = [[UILabel alloc] init];
-        _videoNameLabel.frame = CGRectMake(60, 0, 200, 30);
+        _videoNameLabel.textAlignment = NSTextAlignmentCenter;
+        //TODO: text color and font size
+        _videoNameLabel.textColor = [UIColor whiteColor];
+        _videoNameLabel.font = [UIFont systemFontOfSize:14];
         [self.contentView addSubview:_videoNameLabel];
+        [_videoNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.contentView.centerX);
+            make.height.equalTo(@20);
+            make.bottom.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).with.offset(10);
+            make.right.equalTo(self.contentView).with.offset(-10);
+        }];
     }
     return _videoNameLabel;
 }
-
-//- (UILabel *)videoTimeLabel {
-//    if (_videoTimeLabel == nil) {
-//        _videoTimeLabel = [[UILabel alloc]init ];
-//        _videoTimeLabel.frame = CGRectMake(0, 0, 30, 30);
-//        [self.contentView addSubview:_videoTimeLabel];
-//    }
-//    return _videoTimeLabel;
-//}  //wrong!!!!!
 
 - (void)setAVideoModel:(KKProfileVideoModel *)aVideoModel {
     _aVideoModel = aVideoModel;
