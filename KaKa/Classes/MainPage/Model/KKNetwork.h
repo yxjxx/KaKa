@@ -33,8 +33,18 @@ typedef void(^downloadAudioSuccessed)(NSString *successStr);
                  completeSuccessed:(downloadAudioSuccessed)successBlock
                     completeFailed:(requestFailed)failedBlock;
 
-- (void)getVideosOfTheUserWithKid:(NSString *)kid andPage:(NSString *)page andOrder:(NSString *)order completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock;
+- (void)getVideosOfTheUserWithKid:(NSString *)kid
+                          andPage:(NSString *)page
+                         andOrder:(NSString *)order
+                completeSuccessed:(requestSuccessed)successBlock
+                   completeFailed:(requestFailed)failedBlock;
 
-- (void)uploadVideoWithAKKVideoRecordModel:(KKVideoRecordModel *)aVideoRecordModel completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock;
+- (void)uploadVideoWithAKKVideoRecordModel:(KKVideoRecordModel *)aVideoRecordModel
+                         completeSuccessed:(requestSuccessed)successBlock
+                            completeFailed:(requestFailed)failedBlock;
+
+- (void)getUserInfoWithKid:(NSString *)kid
+         completeSuccessed:(requestSuccessed)successBlock
+            completeFailed:(requestFailed)failedBlock;
 
 @end
