@@ -11,6 +11,7 @@
 #import "KKNetwork.h"
 #import "AppDelegate.h"
 #import "KKLocalVideoCell.h"
+#import <SVProgressHUD.h>
 
 static NSString *ID = @"localVideoCell";
 
@@ -41,12 +42,10 @@ static NSString *ID = @"localVideoCell";
     self.view.backgroundColor = [UIColor colorWithRed:0.07 green:0.07 blue:0.07 alpha:1];
 //    self.view.backgroundColor = [UIColor whiteColor];
     
-    __weak typeof(self)weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     [self.videoPreviewController setDimissCompleteBlock:^{
         [weakSelf.videoPreviewController pause];
         weakSelf.videoPreviewController = nil;
-        // NavigationController pop when _videoController dismiss
-        [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -83,7 +82,25 @@ static NSString *ID = @"localVideoCell";
 }
 
 - (void)clickStartUploadBtn{
-    NSLog(@"%s", __func__);
+    if ([self.videoDescTextFiled.text isEqualToString:@""]) {
+        [SVProgressHUD showErrorWithStatus:@"为你的视频取一个名字吧...（必填）"];
+        return;
+    } else{
+        self.selectedLocalVideo.name = self.videoDescTextFiled.text;
+    }
+    [SVProgressHUD showWithStatus:@"uploading video..."];
+    [[KKNetwork sharedInstance] uploadVideoWithAKKVideoRecordModel:self.selectedLocalVideo completeSuccessed:^(NSDictionary *responseJson) {
+        NSLog(@"Upload Success: %@", responseJson);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showSuccessWithStatus:@"uploading success"];
+        });
+    } completeFailed:^(NSString *failedStr) {
+        NSLog(@"video upload failed %@", failedStr);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:@"uploading failed"];
+        });
+    }];
+
 }
 
 - (NSArray *)allLocalVideosArray{
@@ -169,7 +186,7 @@ static NSString *ID = @"localVideoCell";
     if (_videoDescTextFiled == nil) {
         _videoDescTextFiled = [[UITextField alloc] init];
         [_videoDescTextFiled setFrame:CGRectMake(5, CGRectGetMaxY(self.videoPreviewController.view.frame), kScreenWidth-10, 30)];
-        _videoDescTextFiled.placeholder = @"为你的视频取一个名字吧...";
+        _videoDescTextFiled.placeholder = @"为你的视频取一个名字吧...（必填）";
         _videoDescTextFiled.returnKeyType = UIReturnKeyDone;
         _videoDescTextFiled.clearButtonMode = UITextFieldViewModeAlways;
         _videoDescTextFiled.keyboardAppearance = UIKeyboardAppearanceDark;
