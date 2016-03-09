@@ -42,6 +42,8 @@
 		DE1AD0F61C7EE8E100945AF1 /* KKMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */; };
 		DE2E1AA41C8FFBFB00A11B7D /* MainPage_Height.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2E1AA21C8FFBFB00A11B7D /* MainPage_Height.png */; };
 		DE2E1AA51C8FFBFB00A11B7D /* MainPage_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2E1AA31C8FFBFB00A11B7D /* MainPage_Normal.png */; };
+		DE2E1AA91C903DF300A11B7D /* KKFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2E1AA81C903DF300A11B7D /* KKFriendTableViewCell.m */; };
+		DE2E1AAC1C903E1200A11B7D /* KKFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2E1AAB1C903E1200A11B7D /* KKFriendModel.m */; };
 		DE2F88191C88767700F4A9C2 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2F88181C88767700F4A9C2 /* placeholder.png */; };
 		DE2F88201C8ACC8A00F4A9C2 /* KKCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F881F1C8ACC8A00F4A9C2 /* KKCameraViewController.m */; };
 		DE2F88251C8ACCB900F4A9C2 /* KKAudioRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F88221C8ACCB900F4A9C2 /* KKAudioRecordModel.m */; };
@@ -116,6 +118,10 @@
 		DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainTabBarViewController.m; sourceTree = "<group>"; };
 		DE2E1AA21C8FFBFB00A11B7D /* MainPage_Height.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainPage_Height.png; sourceTree = "<group>"; };
 		DE2E1AA31C8FFBFB00A11B7D /* MainPage_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainPage_Normal.png; sourceTree = "<group>"; };
+		DE2E1AA71C903DF300A11B7D /* KKFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKFriendTableViewCell.h; sourceTree = "<group>"; };
+		DE2E1AA81C903DF300A11B7D /* KKFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKFriendTableViewCell.m; sourceTree = "<group>"; };
+		DE2E1AAA1C903E1200A11B7D /* KKFriendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKFriendModel.h; sourceTree = "<group>"; };
+		DE2E1AAB1C903E1200A11B7D /* KKFriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKFriendModel.m; sourceTree = "<group>"; };
 		DE2F88181C88767700F4A9C2 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		DE2F881E1C8ACC8A00F4A9C2 /* KKCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCameraViewController.h; sourceTree = "<group>"; };
 		DE2F881F1C8ACC8A00F4A9C2 /* KKCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCameraViewController.m; sourceTree = "<group>"; };
@@ -259,6 +265,8 @@
 		DE1AD0DA1C7EE79A00945AF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DE2E1AAA1C903E1200A11B7D /* KKFriendModel.h */,
+				DE2E1AAB1C903E1200A11B7D /* KKFriendModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +274,8 @@
 		DE1AD0DB1C7EE79A00945AF1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DE2E1AA71C903DF300A11B7D /* KKFriendTableViewCell.h */,
+				DE2E1AA81C903DF300A11B7D /* KKFriendTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -732,11 +742,13 @@
 				DE34B0F81C86DA6400CAFD12 /* KKVideoModel.m in Sources */,
 				DE2F882F1C8ACCC900F4A9C2 /* KKSoundLibraryScrollView.m in Sources */,
 				DE2F88261C8ACCB900F4A9C2 /* KKVideoRecordModel.m in Sources */,
+				DE2E1AA91C903DF300A11B7D /* KKFriendTableViewCell.m in Sources */,
 				68E7A2591C8FC0610082D4B8 /* clearVideoAndAudio.m in Sources */,
 				DE2F88371C8AD08100F4A9C2 /* KKSegueToCameraViewController.m in Sources */,
 				DEA4D1911C87064C005F7059 /* KKNetwork.m in Sources */,
 				DE1AD0F01C7EE80C00945AF1 /* KKFriendsViewController.m in Sources */,
 				DE1AD0F61C7EE8E100945AF1 /* KKMainTabBarViewController.m in Sources */,
+				DE2E1AAC1C903E1200A11B7D /* KKFriendModel.m in Sources */,
 				688B16FD1C881504007573F6 /* KKAudioModel.m in Sources */,
 				DE34B0F01C85867100CAFD12 /* KKPlayVideoViewController.m in Sources */,
 				DEAF9F7C1C8F216000341649 /* KKLocalVideoCell.m in Sources */,

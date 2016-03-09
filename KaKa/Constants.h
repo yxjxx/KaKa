@@ -40,6 +40,7 @@
 #define kAudioServerAddress @"http://www.linzerlee.cn:8080/kakaweb/mobile/get_audio/"
 #define kGetPersonalVideoListServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_video_info/"
 #define kUploadVideoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/upload/video/"
+#define kGetUserInfoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_userinfo/"
 
 #define kPageSize 4
 

@@ -125,7 +125,6 @@ static NSString *ID = @"videoCell";
 
 - (UICollectionView *) myVideoCollectionView1 {
     if (_myVideoCollectionView1 == nil) {
-        //TODO: 150 待修改
         _myVideoCollectionView1 = [[UICollectionView alloc]initWithFrame:CGRectMake(kMagicZero, kProfileCollectionViewY, kScreenWidth, kProfileCollectionViewHeight-CGRectGetHeight(self.settingMyIconUIView.frame)) collectionViewLayout:self.flowLayout];
         _myVideoCollectionView1.delegate = self;
         _myVideoCollectionView1.dataSource = self;
@@ -198,6 +197,7 @@ static NSString *ID = @"videoCell";
     self.settingMyIconUIView.backgroundColor = [UIColor colorWithRed:46/256.0 green:46/256.0 blue:46/256.0 alpha:1];
     //icon
     //1.中间 自已的头像
+    //TODO: Profile 页面的所有控件都改成 property，并通过网络获取自己的相关数据。没时间，放弃。
     UIImageView *imgIcon = [[UIImageView alloc]init];
     imgIcon.size = CGSizeMake(85, 85);
     imgIcon.center = CGPointMake(kScreenWidth / 2, 60);
