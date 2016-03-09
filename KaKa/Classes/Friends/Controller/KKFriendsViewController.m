@@ -10,6 +10,7 @@
 #import "KKNetwork.h"
 #import "KKFriendModel.h"
 #import "KKFriendTableViewCell.h"
+#import "KKFriendProfileViewController.h"
 
 @interface KKFriendsViewController()<UITableViewDelegate, UITableViewDataSource>
 
@@ -133,6 +134,16 @@
     cell.friendModel = aFriendModel;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    KKFriendModel *aFriendModel = self.friendsArray[indexPath.row];
+    KKFriendProfileViewController *friendPVC = [[KKFriendProfileViewController alloc] init];
+    friendPVC.friendModel = aFriendModel;
+    
+    //TODO: animation too slow
+    [self.navigationController pushViewController:friendPVC animated:NO];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
