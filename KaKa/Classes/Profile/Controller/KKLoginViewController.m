@@ -67,9 +67,9 @@
 //        NSLog(@"JSON: %@", responseObject);
         if ([responseObject[@"errmsg"]  isEqual: @"service success"]) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//TODO: 写入 kid responseObject[@"ext_data"][@"kid"]
             [defaults setBool:YES forKey:@"isLog"];
             [defaults setObject:responseObject[@"ext_data"][kUsernameKey] forKey:kUsernameKey];
+            [defaults setObject:responseObject[@"ext_data"][@"kid"] forKey:@"kid"];
             [defaults synchronize];
             //[SVProgressHUD showInfoWithStatus:@"成功登陆"];.
             [SVProgressHUD showSuccessWithStatus:@"恭喜登陆成功"];
@@ -210,7 +210,7 @@
     [self.userNameTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
     [self.passwordTextField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
 #warning testing
-      self.userNameTextField.text = @"13260522226";
+      self.userNameTextField.text = @"13125197350";
       self.passwordTextField.text = @"123456";
 }
 

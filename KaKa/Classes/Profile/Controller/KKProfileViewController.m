@@ -50,8 +50,9 @@ static NSString *ID = @"videoCell";
 - (void)pullUpRefreshWithPageNum:(NSInteger)pageNum{
     __weak typeof(self) weakSelf = self;
     
-    //TODO: NSUserDefault 读一下 kid ，login success 写一下
-    [[KKNetwork sharedInstance] getVideosOfTheUserWithKid:@"1" andPage:[NSString stringWithFormat:@"%ld", pageNum] andOrder:@"1" completeSuccessed:^(NSDictionary *responseJson) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *kid = [defaults objectForKey:@"kid"];
+    [[KKNetwork sharedInstance] getVideosOfTheUserWithKid:kid andPage:[NSString stringWithFormat:@"%ld", pageNum] andOrder:@"1" completeSuccessed:^(NSDictionary *responseJson) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf pullUpRefreshSuccess:responseJson WithPageNum:pageNum];
             [weakSelf.myVideoCollectionView1.mj_footer endRefreshing];
@@ -78,8 +79,10 @@ static NSString *ID = @"videoCell";
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
    
+#warning testing 每次重新登录，以防止上传文件失败
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.isLogin = [defaults boolForKey:@"isLog"];
+//    self.isLogin = nil;
     
     if (self.isLogin) {
         [self setProfileView];
@@ -197,7 +200,6 @@ static NSString *ID = @"videoCell";
     UILabel *noticeLabel = [[UILabel alloc]init];
     noticeLabel.frame = CGRectMake((kScreenWidth / 2) - 90, 55, 45, 40);
     //TODO: nslog ,kscrrenHeight:140707721448624
-    NSLog(@"%ld,..",kScreenHeight);
     //    numberOfInformationLabel.size = CGSizeMake(self.view.width * 0.618, 45);
     //    numberOfInformationLabel.center = CGPointMake(self.view.width * 0.691, 55);
     noticeLabel.text = @"关注";
