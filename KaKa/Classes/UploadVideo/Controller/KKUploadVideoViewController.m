@@ -201,7 +201,7 @@ static NSString *ID = @"localVideoCell";
 - (void)viewWillDisappear:(BOOL)animated{
     //    NSLog(@"%s", __func__);
     // 切换控制器的时候，dismiss 掉 videoController
-//    [self.videoPreviewController pause];
+    [self.videoPreviewController pause];
 //    [self.videoPreviewController dismiss];
 }
 
