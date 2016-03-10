@@ -22,7 +22,7 @@
 - (UIImageView *)portraitImageView{
     if (_portraitImageView == nil) {
         _portraitImageView = [[UIImageView alloc] init];
-        _portraitImageView.frame = CGRectMake(0, 2.5, 55, 60);
+        _portraitImageView.frame = CGRectMake(0, 7, 55, 51);
         [self.contentView addSubview:_portraitImageView];
     }
     return _portraitImageView;
@@ -59,13 +59,13 @@
 - (void)setData{
     [self.portraitImageView sd_setImageWithURL:[NSURL URLWithString:self.friendModel.portrait] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     self.portraitImageView.layer.masksToBounds = YES;
-    self.portraitImageView.layer.cornerRadius = 55 / 2.0;
+    self.portraitImageView.layer.cornerRadius = CGRectGetHeight(self.portraitImageView.frame) / 2.0;
 //    NSLog(@"%@...",self.portraitImageView.frame.size);
  
     
     
     self.usernameLabel.text = self.friendModel.username;
-    self.videoNumberLabel.text = [NSString stringWithFormat:@"%@ followers", self.friendModel.fans];
+    self.videoNumberLabel.text = [NSString stringWithFormat:@"%@个粉丝", self.friendModel.fans];
     
     self.usernameLabel.textColor = [UIColor grayColor];
     self.videoNumberLabel.textColor = [UIColor grayColor];
