@@ -69,7 +69,6 @@ static NSString *ID = @"videoCell";
     
     //TODO: 如果 kid 为空的异常处理
     [[KKNetwork sharedInstance] getVideosOfTheUserWithKid:self.friendModel.kid andPage:[NSString stringWithFormat:@"%ld", pageNum] andOrder:@"1" completeSuccessed:^(NSDictionary *responseJson) {
-        NSLog(@"responseJson_%@",responseJson );
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf pullUpRefreshSuccess:responseJson WithPageNum:pageNum];
             [weakSelf.myVideoCollectionView.mj_footer endRefreshing];

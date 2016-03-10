@@ -39,9 +39,6 @@
     NSURL *videoFullPath = [NSURL URLWithString: self.videoModel.videoPath];
 //    NSURL *videoFullPath = [[NSBundle mainBundle] URLForResource:@"hehe" withExtension:@"mov"];
     
-    if (!videoFullPath) {
-        videoFullPath = [NSURL URLWithString:self.profileVideoModel.videoPath];
-    }
     [self playVideoWithURL:videoFullPath];
 }
 

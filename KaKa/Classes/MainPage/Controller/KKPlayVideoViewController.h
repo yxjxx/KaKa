@@ -13,5 +13,4 @@
 @interface KKPlayVideoViewController : UIViewController
 
 @property (nonatomic, strong) KKVideoModel *videoModel;
-@property (nonatomic, strong) KKProfileVideoModel *profileVideoModel;
 @end
