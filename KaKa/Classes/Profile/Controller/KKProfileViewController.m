@@ -61,44 +61,9 @@ static NSString *ID = @"videoCell";
     
     [self.myVideoCollectionView1.mj_footer beginRefreshing];
     
-    // 刷新用户信息
-    //TODO: 如果 kid 为空的异常处理
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *kid = [defaults objectForKey:@"kid"];
-    [[KKNetwork sharedInstance] getUserInfoWithKid:kid completeSuccessed:^(NSDictionary *responseJson) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            if (![responseJson[@"errcode"] isEqual: [NSNumber numberWithInteger:0]]) {
-                
-                NSString *msg = responseJson[@"errmsg"];
-                
-                [SVProgressHUD showErrorWithStatus:msg];
-                
-                return;
-            } else if ([responseJson[@"data"] isEqual:[NSNull null]]) {
-                [SVProgressHUD showErrorWithStatus:@"No more data"];
-                return;
-            } else{
-                NSDictionary *dict = [(NSDictionary *)responseJson[@"data"] mutableCopy];
-                NSNumberFormatter * formater = [[NSNumberFormatter alloc] init];
-                //NSLog(@"dict:%@", dict);
-                for(NSString *key in [dict allKeys]){
-                    if([key isEqualToString:@"fans"]){
-                        [_fansNumberLabel setText:[formater stringFromNumber: dict[@"fans"]]];
-                    }else if([key isEqualToString:@"attentions"]){
-                        [_noticeNumberLabel setText:[formater stringFromNumber: dict[@"attentions"]]];
-                    }else if([key isEqualToString:@"portrait"]){
-                        
-                        [_imgIcon sd_setImageWithURL:[NSURL URLWithString:dict[@"portrait"]] placeholderImage:[UIImage imageNamed:@"imageIcon"]];
-                        
-                    }
-                    
-                }
-            }
-        });
-    } completeFailed:^(NSString *failedStr) {
-        [SVProgressHUD showInfoWithStatus:failedStr];
-    }];
+    
+    [self setProfileView];
+    
 }
 
 - (void)pullUpRefreshWithPageNum:(NSInteger)pageNum{
@@ -144,7 +109,43 @@ static NSString *ID = @"videoCell";
     //    self.isLogin = nil;
     
     if (self.isLogin) {
-        [self setProfileView];
+        // 刷新用户信息
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *kid = [defaults objectForKey:@"kid"];
+        [[KKNetwork sharedInstance] getUserInfoWithKid:kid completeSuccessed:^(NSDictionary *responseJson) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if (![responseJson[@"errcode"] isEqual: [NSNumber numberWithInteger:0]]) {
+                    
+                    NSString *msg = responseJson[@"errmsg"];
+                    
+                    [SVProgressHUD showErrorWithStatus:msg];
+                    
+                    return;
+                } else if ([responseJson[@"data"] isEqual:[NSNull null]]) {
+                    [SVProgressHUD showErrorWithStatus:@"No more data"];
+                    return;
+                } else{
+                    NSDictionary *dict = [(NSDictionary *)responseJson[@"data"] mutableCopy];
+                    NSNumberFormatter * formater = [[NSNumberFormatter alloc] init];
+                    //NSLog(@"dict:%@", dict);
+                    for(NSString *key in [dict allKeys]){
+                        if([key isEqualToString:@"fans"]){
+                            [_fansNumberLabel setText:[formater stringFromNumber: dict[@"fans"]]];
+                        }else if([key isEqualToString:@"attentions"]){
+                            [_noticeNumberLabel setText:[formater stringFromNumber: dict[@"attentions"]]];
+                        }else if([key isEqualToString:@"portrait"]){
+                            
+                            [_imgIcon sd_setImageWithURL:[NSURL URLWithString:dict[@"portrait"]] placeholderImage:[UIImage imageNamed:@"imageIcon"]];
+                            
+                        }
+                        
+                    }
+                }
+            });
+        } completeFailed:^(NSString *failedStr) {
+            [SVProgressHUD showInfoWithStatus:failedStr];
+        }];
 #warning debuging
         NSLog(@"%@", @"is login");
         

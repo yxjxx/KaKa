@@ -20,7 +20,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @interface KKCameraViewController () <AVCaptureFileOutputRecordingDelegate, AVAudioPlayerDelegate, KKSoundLibraryScrollDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
-
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet KKSoundLibraryScrollView *scrollView;
 @property (nonatomic,strong) AVAudioPlayer *audioPlayer;//播放器
 @property (strong, nonatomic) AVCaptureSession *captureSession;//负责输入和输出设备之间的数据传递
@@ -33,11 +33,31 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @property (strong, nonatomic) NSString * cmpsRecordPath;
 @property (strong, nonatomic) NSString * snapshotPath;
 @property (unsafe_unretained, nonatomic) BOOL canRecord;
+@property (strong, nonatomic) NSTimer *timer;
 @end
 
 
 @implementation KKCameraViewController
 
+- (BOOL)checkState{
+    if(_audio_model && _tempRecordPath){
+        return _canRecord = YES;
+    }else{
+        return NO;
+    }
+}
+
+- (void)resetState{
+    self.canRecord = NO;
+    self.tempRecordPath = nil;
+    [self.recordButton setSelected:NO];
+    [self.audioPlayer pause];
+    
+    if([self.captureSession isRunning]){
+        [self.captureSession stopRunning];
+    }
+    [self.captureSession startRunning];
+}
 
 - (BOOL)prefersStatusBarHidden{
     return YES;
@@ -104,29 +124,21 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSInteger count = appDelegate.audio_library_data.count;
     for(int i=0; i<count; ++i){
-        /*
-        KKAudioRecordModel *arm =
-        [[KKAudioRecordModel alloc]init];
-        arm.subject = @"甄嬛传";
-        arm.path = @"008f828477b88a33bc8ce71625b352f3.mp3";
-        arm.aid = i;
-        
-        appDelegate.audio_library_data[i] = arm;
-        */
         [self.scrollView addItemWithModel: appDelegate.audio_library_data[i]];
     }
-    /*
-    BOOL ret = [NSKeyedArchiver archiveRootObject:appDelegate.audio_library_data toFile:appDelegate.audio_library];
     
-    NSAssert(ret,@"写入本地视频库失败 : %@", appDelegate.audio_library);
-    */
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.3f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
+}
+
+- (void)updateTimer:(NSTimer *)sender{
+    if(_audioPlayer.duration>0){
+        [_progressView setProgress:(_audioPlayer.currentTime / _audioPlayer.duration) animated:YES];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.canRecord = NO;
     
-    self.tempRecordPath = nil;
     // 初始化会话
     _captureSession=[[AVCaptureSession alloc]init];
     /*
@@ -179,6 +191,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         }
     }
     */
+    
     // 拍摄视频输出对象
     // 初始化输出设备对象，用户获取输出数据
     _caputureMovieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
@@ -215,6 +228,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     captureConnection.videoOrientation=[self.captureVideoPreviewLayer connection].videoOrientation;
     
     [self.captureSession startRunning];
+    [self resetState];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -222,7 +236,8 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     [self.caputureMovieFileOutput stopRecording];
     [self.captureSession stopRunning];
-    self.canRecord = YES;
+    
+    [self resetState];
 }
 
 - (void)clickSoundLibraryItem:(id)sender{
@@ -260,32 +275,55 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 - (IBAction)startRecord:(id)sender {
-    if(!self.canRecord){
-        NSLog(@"未初始化");
+    [self checkState];
+    
+    if(!_audio_model){
+        [SVProgressHUD showErrorWithStatus:@"请先选择音频"];
+        NSLog(@"请先选择音频");
         return;
     }
     
     if([self.caputureMovieFileOutput isRecording]){
+        [SVProgressHUD showErrorWithStatus:@"不能中断"];
         NSLog(@"不能中断");
         return;
     }
+    
+    if(self.tempRecordPath){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"视频尚未保存, 是否保存" preferredStyle:UIAlertControllerStyleAlert];
         
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"重录" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [self resetState];
+        }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self saveVideo: self];
+        }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        return;
+    }
+    
     [self.recordButton setSelected:![self.recordButton isSelected]];
     
     if ([(UIButton *)sender isSelected]) {
         // 设置视频输出的文件路径，这里设置为 temp 文件
-        if(nil==_tempRecordPath){
-            NSString *outputFilePath=[NSTemporaryDirectory() stringByAppendingPathComponent:[self timestamp: nil]];
-            _tempRecordPath = [outputFilePath stringByAppendingString:@".mov"];
-            NSLog(@"视频输出的文件路径: %@", self.tempRecordPath);
-            
-        }
+        NSString *outputFilePath=[NSTemporaryDirectory() stringByAppendingPathComponent:[self timestamp: nil]];
+        _tempRecordPath = [outputFilePath stringByAppendingString:@".mov"];
+        NSLog(@"视频输出的文件路径: %@", self.tempRecordPath);
         
         // 路径转换成 URL 要用这个方法，用 NSBundle 方法转换成 URL 的话可能会出现读取不到路径的错误
         
         NSURL *tempRecordURL = [NSURL fileURLWithPath: _tempRecordPath];
-        // [self.captureSession startRunning];
+        if ([self.caputureMovieFileOutput isRecording]) {
+            [self.caputureMovieFileOutput stopRecording];
+        }
+        
         [self.caputureMovieFileOutput startRecordingToOutputFileURL:tempRecordURL recordingDelegate:self];
+        
         [self.audioPlayer play];
         
         
@@ -293,7 +331,6 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         // 暂停视频拍摄
         [self.caputureMovieFileOutput stopRecording];
         [self.captureSession stopRunning];
-        
         [self.audioPlayer pause];
     }
 }
@@ -435,7 +472,6 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     NSLog(@"错误描述: %@", error.localizedDescription);
     
     [self.recordButton setSelected:NO];
-    self.canRecord = YES;
 }
 
 - (CGFloat)getfileSize:(NSString *)path{

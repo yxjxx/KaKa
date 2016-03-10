@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKCameraViewController">
             <connections>
                 <outlet property="imageView" destination="MgL-UH-5ka" id="Iei-jL-zIC"/>
+                <outlet property="progressView" destination="7ZZ-NF-vsD" id="sdL-HH-At6"/>
                 <outlet property="recordButton" destination="ZKZ-zH-TwI" id="nKz-G1-TQo"/>
                 <outlet property="scrollView" destination="ofm-Xz-C4l" id="Avp-q7-nob"/>
                 <outlet property="view" destination="iN0-l3-epB" id="fZ0-GD-6ab"/>
@@ -30,13 +31,6 @@
                         <action selector="toggleCamera:" destination="-1" eventType="touchUpInside" id="xu5-s4-hDA"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MgL-UH-5ka">
-                    <rect key="frame" x="0.0" y="80" width="375" height="375"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="MgL-UH-5ka" secondAttribute="height" multiplier="1:1" id="otM-jy-Xo0"/>
-                    </constraints>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKZ-zH-TwI">
                     <rect key="frame" x="140" y="564" width="96" height="96"/>
                     <constraints>
@@ -113,17 +107,31 @@
                         <action selector="saveVideo:" destination="-1" eventType="touchUpInside" id="X9s-pg-iaN"/>
                     </connections>
                 </button>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ZZ-NF-vsD">
+                    <rect key="frame" x="0.0" y="70" width="375" height="2"/>
+                    <color key="tintColor" red="0.87058823529411766" green="0.32549019607843138" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                </progressView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MgL-UH-5ka">
+                    <rect key="frame" x="0.0" y="80" width="375" height="375"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="MgL-UH-5ka" secondAttribute="height" multiplier="1:1" id="otM-jy-Xo0"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="7ZZ-NF-vsD" secondAttribute="trailing" id="11A-04-VqI"/>
                 <constraint firstItem="ofm-Xz-C4l" firstAttribute="leading" secondItem="P7x-dh-Lrd" secondAttribute="trailing" constant="8" id="1K6-eO-SNk"/>
                 <constraint firstItem="WKE-pp-iFf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="78G-VG-0QS"/>
+                <constraint firstItem="7ZZ-NF-vsD" firstAttribute="top" secondItem="BOl-ob-DDR" secondAttribute="bottom" constant="10" id="Bbv-GU-Aaq"/>
                 <constraint firstItem="P7x-dh-Lrd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="CWF-YU-gl2"/>
                 <constraint firstItem="P7x-dh-Lrd" firstAttribute="top" secondItem="MgL-UH-5ka" secondAttribute="bottom" constant="5" id="Eeh-H0-wbt"/>
                 <constraint firstAttribute="bottom" secondItem="hkw-Yh-62s" secondAttribute="bottom" constant="25" id="KK4-UH-XL7"/>
                 <constraint firstAttribute="bottom" secondItem="ZKZ-zH-TwI" secondAttribute="bottom" constant="10" id="Kuo-K4-6LY"/>
                 <constraint firstItem="BOl-ob-DDR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="MIh-3c-Vwa"/>
                 <constraint firstItem="MgL-UH-5ka" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="N3m-qU-Txf"/>
+                <constraint firstItem="7ZZ-NF-vsD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OTx-fk-4Yj"/>
                 <constraint firstAttribute="trailing" secondItem="ofm-Xz-C4l" secondAttribute="trailing" id="SvJ-yj-gIi"/>
                 <constraint firstItem="BOl-ob-DDR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="d7b-0N-wie"/>
                 <constraint firstItem="ZKZ-zH-TwI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dSe-el-6hT"/>
@@ -132,7 +140,7 @@
                 <constraint firstItem="VYL-WZ-N7s" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="l98-PN-Xpj"/>
                 <constraint firstItem="ofm-Xz-C4l" firstAttribute="top" secondItem="MgL-UH-5ka" secondAttribute="bottom" constant="5" id="oEE-bj-XFO"/>
                 <constraint firstAttribute="trailing" secondItem="VYL-WZ-N7s" secondAttribute="trailing" constant="5" id="rrb-zx-8cW"/>
-                <constraint firstItem="MgL-UH-5ka" firstAttribute="top" secondItem="BOl-ob-DDR" secondAttribute="bottom" constant="10" id="tG4-qt-XnP"/>
+                <constraint firstItem="MgL-UH-5ka" firstAttribute="top" secondItem="7ZZ-NF-vsD" secondAttribute="bottom" id="tDq-Cr-SAH"/>
                 <constraint firstAttribute="trailing" secondItem="hkw-Yh-62s" secondAttribute="trailing" constant="25" id="zEM-Mc-7ag"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
