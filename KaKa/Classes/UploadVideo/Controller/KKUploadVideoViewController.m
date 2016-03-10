@@ -86,6 +86,7 @@ static NSString *ID = @"localVideoCell";
 
 
 - (void)clickGiveUpBtn{
+    //TODO: 放弃上传
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

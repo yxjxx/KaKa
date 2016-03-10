@@ -86,7 +86,10 @@
     NSURL *URL = [NSURL URLWithString:remoteAudioURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
-    NSURLSessionDownloadTask *dtask = [session downloadTaskWithRequest:request progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+    NSURLSessionDownloadTask *dtask = [session downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        NSLog(@"%f", downloadProgress.completedUnitCount/(CGFloat)downloadProgress.totalUnitCount);
+        [SVProgressHUD showProgress:downloadProgress.completedUnitCount/(CGFloat)downloadProgress.totalUnitCount];
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         NSURL *documentsDirectoryURL = [[[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil] URLByAppendingPathComponent:@"audio/"];
         //TODO: 需要手动创建 audio/ 文件夹
 //        NSLog(@"%@", documentsDirectoryURL);
@@ -98,8 +101,6 @@
 //            NSLog(@"%@", response);
             successBlock(@"downloadAudioSuccessed");
         }
-#warning debuging
-        NSLog(@"%@", error);
     }];
     
     [dtask resume];
@@ -124,8 +125,8 @@
         NSURL *imageURL = [NSURL fileURLWithPath: imageURLStr];
         [formData appendPartWithFileURL:imageURL name:@"snapshot.png"  fileName:@"snapshot.png" mimeType:@"image/png" error:nil];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-//        NSLog(@"%@", uploadProgress);
-        NSLog(@"uploading...");
+        NSLog(@"%f", uploadProgress.completedUnitCount/(CGFloat)uploadProgress.totalUnitCount);
+        [SVProgressHUD showProgress:uploadProgress.completedUnitCount/(CGFloat)uploadProgress.totalUnitCount];
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         successBlock(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
