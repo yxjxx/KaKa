@@ -27,6 +27,7 @@ static NSString *ID = @"videoCell";
 @property (nonatomic, strong) NSMutableArray *myVideoArray;
 @property (nonatomic, assign) NSInteger pageNum;
 @property (nonatomic, strong) UIView *settingMyIconUIView;
+@property (nonatomic, copy) NSString *userName;
 
 @end
 
@@ -38,11 +39,14 @@ static NSString *ID = @"videoCell";
     //点右上角这后，"返回"
     [self setBackFont];
     //set NavigationBar 背景颜色&title 颜色
-   [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:23/255.0 green:23/255.0 blue:23/255.0 alpha:1.0]];
-  //  [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,nil]];
+  // [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:23/255.0 green:23/255.0 blue:23/255.0 alpha:1.0]];
+
+    self.navigationItem.title = self.userName ;
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
     
     
-//    self.navigationController.navigationItem.title = @"个人";
+    
 
     
     self.settingMyIconUIView.backgroundColor = [UIColor blackColor];
@@ -268,16 +272,16 @@ static NSString *ID = @"videoCell";
     [self.settingMyIconUIView addSubview:fansLabel];
 
     
-    //6 nickName:华小咔
-    UILabel *nickName = [[UILabel alloc]init];
-    nickName.frame = CGRectMake(kScreenWidth / 2  - 30, 100, 60, 40);
-    nickName.textColor = [UIColor colorWithRed:250/256.0 green:250/256.0 blue:250/256.0 alpha:1];
-    nickName.text = @"华小咔";
-    [self.settingMyIconUIView addSubview:nickName];
-    
+//    //6 nickName:华小咔
+//    UILabel *nickName = [[UILabel alloc]init];
+//    nickName.frame = CGRectMake(kScreenWidth / 2  - 30, 100, 60, 40);
+//    nickName.textColor = [UIColor colorWithRed:250/256.0 green:250/256.0 blue:250/256.0 alpha:1];
+//    nickName.text = @"华小咔";
+//    [self.settingMyIconUIView addSubview:nickName];
+ 
     //7 a black line
     UIView *blackLineUIView = [[UIView alloc]init];
-    blackLineUIView.frame = CGRectMake(0, 148, 500, 2);
+    blackLineUIView.frame = CGRectMake(0, 118, 500, 2);
     blackLineUIView.backgroundColor = [UIColor blackColor ];
     
     [self.settingMyIconUIView addSubview:blackLineUIView];
@@ -300,4 +304,23 @@ static NSString *ID = @"videoCell";
     //返回的颜色
     self.navigationController.navigationBar.tintColor = [UIColor grayColor];
 }
+
+- (NSString *)userName {
+    if (!_userName) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        _userName = [defaults objectForKey:kUsernameKey];
+    }
+    return _userName;
+}
+
+//TODO: 这里不要用户名了,改为朋友圈
+//- (NSString *)username{
+//    if (!_username) {
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        _username = [defaults objectForKey:kUsernameKey];
+//    }
+//    return _username;
+//}
+
+
 @end

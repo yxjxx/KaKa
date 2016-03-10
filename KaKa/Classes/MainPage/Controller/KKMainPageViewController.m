@@ -40,6 +40,10 @@ static NSString *ID = @"videoCell";
 
 - (void)viewWillAppear:(BOOL)animated{
     self.navigationItem.title = self.username ? self.username : @"Welcome";
+   
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
+    
+    
 }
 
 - (void)viewDidLoad{

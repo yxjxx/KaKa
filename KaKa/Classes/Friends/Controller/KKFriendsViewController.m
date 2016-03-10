@@ -36,9 +36,12 @@
     }
 }
 
+
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.navigationItem.title = @"Friends";
+    //返回按钮，navigationItem
+    [self setNavigationItem];
+     
     
     self.kidForFriendsVC = [[NSUserDefaults standardUserDefaults] objectForKey:@"kid"];
     if (self.kidForFriendsVC == nil) {
@@ -133,6 +136,11 @@
     KKFriendModel *aFriendModel = self.friendsArray[indexPath.row];
     cell.friendModel = aFriendModel;
     
+    //被选中的color:
+    UIView *bgView = [[UIView alloc]init];
+    bgView.backgroundColor = [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
+    cell.selectedBackgroundView = bgView;
+    
     return cell;
 }
 
@@ -150,7 +158,17 @@
     return 65;
 }
 
-
-
+- (void) setNavigationItem {
+    //当前页面的 标题
+    self.navigationItem.title = @"朋友圈";
+    //返回页面的标题
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    backItem.title = @"朋友圈";
+    self.navigationItem.backBarButtonItem = backItem;
+    //返回的颜色
+    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
+}
 
 @end
