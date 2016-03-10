@@ -16,6 +16,7 @@
 #import "KKAudioRecordModel.h"
 #import "AppDelegate.h"
 #import <AVFoundation/AVAudioPlayer.h>
+#import "KKLocalFileManager.h"
 
 
 @interface KKVoiceLibraryViewController() <UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate>
@@ -147,6 +148,7 @@
         cell = [[KKAudioCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     KKAudioModel *audioModel = self.audioArrays[indexPath.row];
+    audioModel.isAudioExist = [[KKLocalFileManager sharedInstance] isLocalAudioExistWithAudioMid:audioModel.audioMid];
     cell.aAudioModel = audioModel;
     cell.backgroundColor = [UIColor colorWithRed:45/256.0 green:45/256.0 blue:45/256.0 alpha:1];
     

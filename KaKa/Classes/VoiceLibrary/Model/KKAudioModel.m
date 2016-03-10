@@ -14,11 +14,12 @@
         self.audioCid = dict[@"cid"];
         self.audioCName = dict[@"cname"];
         self.audioMid = dict[@"mid"];
+//        self.audioMid = [(NSNumber *)dict[@"kid"] stringValue];
         self.audioPath = dict[@"path"];
         self.audioSubject = dict[@"subject"];
         self.audioTimestamp = dict[@"timestamp"];
-#warning testing isAudioExist always YES
-        self.isAudioExist = YES;
+#warning 初始化
+        self.isAudioExist = NO;
     }
     return self;
 }

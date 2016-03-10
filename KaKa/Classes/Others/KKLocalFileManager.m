@@ -8,6 +8,8 @@
 
 #import "KKLocalFileManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "AppDelegate.h"
+#import "KKAudioRecordModel.h"
 
 @interface KKLocalFileManager()
 +(void)clearCache:(NSString *)path;
@@ -37,34 +39,25 @@
     
 }
 
-- (BOOL)isLocalAudioExistWithFileName:(NSString *)theAudioName{
-    
-    if ([theAudioName characterAtIndex:0] == '/') {
-        NSMutableString *mutableAudioName = [theAudioName mutableCopy];
-        [mutableAudioName deleteCharactersInRange:NSMakeRange(0, 1)];
-        theAudioName = [[NSString alloc] initWithString:mutableAudioName];
-    }
-    
-    NSArray *localAudioList = [self getLocalAudioList];
-    
-    for (NSString *audioPath in localAudioList) {
-          if ([audioPath isEqualToString:theAudioName]) {
-             return YES;
-        }
-        
-    }
-
-    return NO;
-}
-
-//TODO: 获取本地音频文件列表
-- (NSArray *)getLocalAudioList{
-    NSLog(@"%s", __func__);
-  
-    return nil;
-   
-}
-
+//- (BOOL)isLocalAudioExistWithFileName:(NSString *)theAudioName{
+//    
+//    if ([theAudioName characterAtIndex:0] == '/') {
+//        NSMutableString *mutableAudioName = [theAudioName mutableCopy];
+//        [mutableAudioName deleteCharactersInRange:NSMakeRange(0, 1)];
+//        theAudioName = [[NSString alloc] initWithString:mutableAudioName];
+//    }
+//    
+//    NSArray *localAudioList = [self getLocalAudioList];
+//    
+//    for (NSString *audioPath in localAudioList) {
+//          if ([audioPath isEqualToString:theAudioName]) {
+//             return YES;
+//        }
+//        
+//    }
+//
+//    return NO;
+//}
 
 +(void)clearCache:(NSString *)path{
     NSFileManager *fileManager=[NSFileManager defaultManager];
@@ -109,5 +102,33 @@
     NSString *dirHome=NSHomeDirectory();
     NSLog(@"app_home: %@",dirHome);
 }
+
+- (BOOL)isLocalAudioExistWithAudioMid:(NSString *)audioMid{
+//TODO: audioMid 传进来还是 long；已在字典转模型的时候强转成了 NSString？？
+    audioMid = [NSString stringWithFormat:@"%@", audioMid];
+    NSArray *localAudioMidList = [self getLocalAudioMidList];
+    for (NSString *mid in localAudioMidList) {
+        if (mid == audioMid) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
+
+//TODO: 获取本地音频文件列表
+- (NSMutableArray *)getLocalAudioMidList{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSMutableArray *localAudioMidList  = [NSMutableArray array];
+    if (appDelegate.audio_library_data) {
+        for (KKAudioRecordModel *audio in appDelegate.audio_library_data) {
+            [localAudioMidList addObject:[NSString stringWithFormat:@"%ld", (long)audio.aid]];
+        }
+    }
+    NSLog(@"localAudioMidList_%@", localAudioMidList);
+    return localAudioMidList;
+}
+
 
 @end

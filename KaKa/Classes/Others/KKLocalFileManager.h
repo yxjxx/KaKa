@@ -16,7 +16,8 @@
 - (void)deleteLocalVideoFiles;
 
  
-- (BOOL)isLocalAudioExistWithFileName:(NSString *)theAudioName;
+//- (BOOL)isLocalAudioExistWithFileName:(NSString *)theAudioName;
+- (BOOL)isLocalAudioExistWithAudioMid:(NSString *)audioMid;
 
 
 @end
