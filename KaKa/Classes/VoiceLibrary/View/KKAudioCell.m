@@ -9,13 +9,26 @@
 #import "KKAudioCell.h"
 
 @interface KKAudioCell ()
+
 @property (nonatomic, strong) UIImageView *leftLmageView;
 @property (nonatomic, strong) UILabel *audioCNameLabel;
 @property (nonatomic, strong) UILabel *audioSubjectLabel;
+@property (nonatomic, strong) UIImageView *isExistImageView;
  
 @end
 
 @implementation KKAudioCell
+
+- (UIImageView *)isExistImageView{
+    if (_isExistImageView == nil) {
+        _isExistImageView = [[UIImageView alloc] init];
+        _isExistImageView.frame = CGRectMake(kScreenWidth-65, 0, 65, 65);
+        [self.contentView addSubview:_isExistImageView];
+    }
+    return _isExistImageView;
+}
+
+
 - (UIImageView *)leftLmageView {
     if (_leftLmageView == nil) {
         _leftLmageView = [[UIImageView alloc]init];
@@ -66,6 +79,12 @@
         self.audioCNameLabel.textColor = [UIColor colorWithRed:90/256.0 green:180/256.0 blue:210/256.0 alpha:0.8];
     } else{
         self.audioCNameLabel.textColor = [UIColor colorWithRed:190/256.0 green:280/256.0 blue:210/256.0 alpha:0.8];
+    }
+    
+    if (self.aAudioModel.isAudioExist) {
+        self.isExistImageView.image = [UIImage imageNamed:@"VoiceLibIcon"];
+    } else{
+        self.isExistImageView.image = [UIImage imageNamed:@"VoiceLibIcon"];
     }
     
 }

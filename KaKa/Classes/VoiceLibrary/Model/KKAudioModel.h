@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *audioPath;//音频资源在本地存放时取最后一个'/'之后的内容做文件名
 @property (nonatomic, copy) NSString *audioSubject;
 @property (nonatomic, copy) NSString *audioTimestamp;
+@property (nonatomic, assign) BOOL isAudioExist;
 
 - (instancetype) initWithDict:(NSDictionary *)dict;
 + (instancetype) audioWithDict:(NSDictionary *)dict;

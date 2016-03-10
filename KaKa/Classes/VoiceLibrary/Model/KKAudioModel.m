@@ -17,6 +17,8 @@
         self.audioPath = dict[@"path"];
         self.audioSubject = dict[@"subject"];
         self.audioTimestamp = dict[@"timestamp"];
+#warning testing isAudioExist always YES
+        self.isAudioExist = YES;
     }
     return self;
 }
