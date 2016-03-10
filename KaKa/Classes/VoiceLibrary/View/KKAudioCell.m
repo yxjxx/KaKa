@@ -22,7 +22,7 @@
 - (UIImageView *)isExistImageView{
     if (_isExistImageView == nil) {
         _isExistImageView = [[UIImageView alloc] init];
-        _isExistImageView.frame = CGRectMake(kScreenWidth-65, 0, 65, 65);
+        _isExistImageView.frame = CGRectMake(kScreenWidth-35, 17.5, 30, 30);
         [self.contentView addSubview:_isExistImageView];
     }
     return _isExistImageView;
@@ -82,9 +82,9 @@
     }
     
     if (self.aAudioModel.isAudioExist) {
-        self.isExistImageView.image = [UIImage imageNamed:@"VoiceLibIcon"];
+        self.isExistImageView.image = [UIImage imageNamed:@"downAudio"];
     } else{
-        self.isExistImageView.image = [UIImage imageNamed:@"VoiceLibIcon"];
+        self.isExistImageView.image = [UIImage imageNamed:@"undownAudio"];
     }
     
 }
