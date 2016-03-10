@@ -13,6 +13,7 @@
 #import "MJRefresh.h"
 #import <SVProgressHUD.h>
 #import "KKNetwork.h"
+#import "KKPlayVideoInProfileViewController.h"
 
 static NSString *ID = @"videoCell";
 
@@ -209,13 +210,13 @@ static NSString *ID = @"videoCell";
     return cell;
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    KKProfileVideoModel *videoModel = self.myVideoArray[indexPath.item];
-//    
-//    KKPlayVideoViewController *playVideoVC = [[KKPlayVideoViewController alloc] init];
-//    playVideoVC.profileVideoModel = videoModel;
-//    [self.navigationController pushViewController:playVideoVC animated:YES];
-//}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    KKProfileVideoModel *videoModel = self.myVideoArray[indexPath.item];
+    
+    KKPlayVideoInProfileViewController *playVideoVC = [[KKPlayVideoInProfileViewController alloc] init];
+    playVideoVC.profileVideoModel = videoModel;
+    [self.navigationController pushViewController:playVideoVC animated:YES];
+}
 
 
 

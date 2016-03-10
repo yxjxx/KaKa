@@ -68,6 +68,7 @@
 		DEA4D1911C87064C005F7059 /* KKNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA4D1901C87064C005F7059 /* KKNetwork.m */; };
 		DEA4D1981C8724B5005F7059 /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA4D1971C8724B5005F7059 /* NSArray+Log.m */; };
 		DEAF9F7C1C8F216000341649 /* KKLocalVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF9F7B1C8F216000341649 /* KKLocalVideoCell.m */; };
+		DEFBF5AB1C910869009E1C55 /* KKPlayVideoInProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFBF5AA1C910869009E1C55 /* KKPlayVideoInProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +171,8 @@
 		DEA4D1971C8724B5005F7059 /* NSArray+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Log.m"; path = "Tools/NSArray+Log.m"; sourceTree = "<group>"; };
 		DEAF9F7A1C8F216000341649 /* KKLocalVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKLocalVideoCell.h; path = UploadVideo/View/KKLocalVideoCell.h; sourceTree = "<group>"; };
 		DEAF9F7B1C8F216000341649 /* KKLocalVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKLocalVideoCell.m; path = UploadVideo/View/KKLocalVideoCell.m; sourceTree = "<group>"; };
+		DEFBF5A91C910869009E1C55 /* KKPlayVideoInProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKPlayVideoInProfileViewController.h; sourceTree = "<group>"; };
+		DEFBF5AA1C910869009E1C55 /* KKPlayVideoInProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKPlayVideoInProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +266,8 @@
 				DE1AD0EF1C7EE80C00945AF1 /* KKFriendsViewController.m */,
 				DE2E1AAD1C906A7400A11B7D /* KKFriendProfileViewController.h */,
 				DE2E1AAE1C906A7400A11B7D /* KKFriendProfileViewController.m */,
+				DEFBF5A91C910869009E1C55 /* KKPlayVideoInProfileViewController.h */,
+				DEFBF5AA1C910869009E1C55 /* KKPlayVideoInProfileViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -749,6 +754,7 @@
 				DE2F88261C8ACCB900F4A9C2 /* KKVideoRecordModel.m in Sources */,
 				DE2E1AA91C903DF300A11B7D /* KKFriendTableViewCell.m in Sources */,
 				68E7A2591C8FC0610082D4B8 /* clearVideoAndAudio.m in Sources */,
+				DEFBF5AB1C910869009E1C55 /* KKPlayVideoInProfileViewController.m in Sources */,
 				DE2F88371C8AD08100F4A9C2 /* KKSegueToCameraViewController.m in Sources */,
 				DEA4D1911C87064C005F7059 /* KKNetwork.m in Sources */,
 				DE1AD0F01C7EE80C00945AF1 /* KKFriendsViewController.m in Sources */,
