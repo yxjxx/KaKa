@@ -72,6 +72,7 @@
 		DEAF9F7C1C8F216000341649 /* KKLocalVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF9F7B1C8F216000341649 /* KKLocalVideoCell.m */; };
 		DEFBF5AB1C910869009E1C55 /* KKPlayVideoInProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFBF5AA1C910869009E1C55 /* KKPlayVideoInProfileViewController.m */; };
 		DEFBF5AE1C91152B009E1C55 /* KKLocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFBF5AD1C91152B009E1C55 /* KKLocalFileManager.m */; };
+		DEFBF5B21C91725C009E1C55 /* KKPlayVideoVCBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFBF5B11C91725C009E1C55 /* KKPlayVideoVCBottomView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -180,6 +181,8 @@
 		DEFBF5AA1C910869009E1C55 /* KKPlayVideoInProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKPlayVideoInProfileViewController.m; sourceTree = "<group>"; };
 		DEFBF5AC1C91152B009E1C55 /* KKLocalFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLocalFileManager.h; sourceTree = "<group>"; };
 		DEFBF5AD1C91152B009E1C55 /* KKLocalFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLocalFileManager.m; sourceTree = "<group>"; };
+		DEFBF5B01C91725C009E1C55 /* KKPlayVideoVCBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKPlayVideoVCBottomView.h; path = View/KKPlayVideoVCBottomView.h; sourceTree = "<group>"; };
+		DEFBF5B11C91725C009E1C55 /* KKPlayVideoVCBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKPlayVideoVCBottomView.m; path = View/KKPlayVideoVCBottomView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,11 +303,9 @@
 		DE1AD0DC1C7EE79A00945AF1 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				DEFBF5AF1C917215009E1C55 /* View */,
 				DE2F881A1C896FEA00F4A9C2 /* Model */,
-				DE1AD0F41C7EE8E100945AF1 /* KKMainTabBarViewController.h */,
-				DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */,
-				DEFBF5AC1C91152B009E1C55 /* KKLocalFileManager.h */,
-				DEFBF5AD1C91152B009E1C55 /* KKLocalFileManager.m */,
+				DEFBF5B31C917267009E1C55 /* Controller */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -601,6 +602,26 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		DEFBF5AF1C917215009E1C55 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEFBF5B01C91725C009E1C55 /* KKPlayVideoVCBottomView.h */,
+				DEFBF5B11C91725C009E1C55 /* KKPlayVideoVCBottomView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DEFBF5B31C917267009E1C55 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE1AD0F41C7EE8E100945AF1 /* KKMainTabBarViewController.h */,
+				DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */,
+				DEFBF5AC1C91152B009E1C55 /* KKLocalFileManager.h */,
+				DEFBF5AD1C91152B009E1C55 /* KKLocalFileManager.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -763,6 +784,7 @@
 				DE34B0F51C86D99D00CAFD12 /* KKVideoCell.m in Sources */,
 				682EB0D31C895D88003AA10C /* KKProfileVideoCell.m in Sources */,
 				DE932A951C7DAE7C00651712 /* AppDelegate.m in Sources */,
+				DEFBF5B21C91725C009E1C55 /* KKPlayVideoVCBottomView.m in Sources */,
 				DE34B0F81C86DA6400CAFD12 /* KKVideoModel.m in Sources */,
 				DE2F882F1C8ACCC900F4A9C2 /* KKSoundLibraryScrollView.m in Sources */,
 				DE2F88261C8ACCB900F4A9C2 /* KKVideoRecordModel.m in Sources */,
