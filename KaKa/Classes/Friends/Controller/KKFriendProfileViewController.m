@@ -8,9 +8,15 @@
 
 #import "KKFriendProfileViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "KKProfileVideoCell.h"
+#import "KKProfileVideoModel.h"
+#import "MJRefresh.h"
+#import <SVProgressHUD.h>
+#import "KKNetwork.h"
 
+static NSString *ID = @"videoCell";
 
-@interface KKFriendProfileViewController()
+@interface KKFriendProfileViewController() <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIImageView *portraitImageView;
@@ -43,7 +49,52 @@
     self.fansNumLabel.text = self.friendModel.fans;
     [self.topView addSubview:self.fansNumLabel];
     [self.topView addSubview:self.fansStrLabel];
+    [self.view addSubview:self.myVideoCollectionView];
+    
+    self.pageNum = -1;
+    __weak typeof(self) weakSelf = self;
+    self.myVideoCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        weakSelf.pageNum++;
+        [weakSelf pullUpRefreshWithPageNum:weakSelf.pageNum];
+    }];
+    
+    [self.myVideoCollectionView registerClass:[KKProfileVideoCell class] forCellWithReuseIdentifier:ID];
+    
+    [self.myVideoCollectionView.mj_footer beginRefreshing];
 }
+
+- (void)pullUpRefreshWithPageNum:(NSInteger)pageNum{
+    __weak typeof(self) weakSelf = self;
+    
+    //TODO: 如果 kid 为空的异常处理
+    [[KKNetwork sharedInstance] getVideosOfTheUserWithKid:self.friendModel.kid andPage:[NSString stringWithFormat:@"%ld", pageNum] andOrder:@"1" completeSuccessed:^(NSDictionary *responseJson) {
+        NSLog(@"responseJson_%@",responseJson );
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf pullUpRefreshSuccess:responseJson WithPageNum:pageNum];
+            [weakSelf.myVideoCollectionView.mj_footer endRefreshing];
+        });
+    } completeFailed:^(NSString *failedStr) {
+        [SVProgressHUD showInfoWithStatus:failedStr];
+    }];
+}
+
+- (void)pullUpRefreshSuccess:(NSDictionary *)responseJson WithPageNum:(NSInteger)pageNum{
+    if ([responseJson[@"data"] isEqual:[NSNull null]]) {
+        [SVProgressHUD showErrorWithStatus:@"No more data"];
+        return;
+    } else{
+        NSArray *arr = [(NSArray *)responseJson[@"data"] mutableCopy];
+        
+        for (NSDictionary *dict in arr) {
+            KKProfileVideoModel *theVideo = [KKProfileVideoModel videoWithDict:dict];
+            [self.myVideoArray addObject:theVideo];
+        }
+        [self.myVideoCollectionView reloadData];
+    }
+    
+    
+}
+
 
 - (UIView *)topView{
     if (_topView == nil) {
@@ -111,6 +162,60 @@
     }
     return _fansStrLabel;
 }
+
+- (NSMutableArray *)myVideoArray {
+    if (_myVideoArray == nil) {
+        _myVideoArray = [NSMutableArray array];
+    }
+    return _myVideoArray;
+}
+
+
+- (UICollectionView *) myVideoCollectionView{
+    if (_myVideoCollectionView == nil) {
+        _myVideoCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(kMagicZero, kProfileCollectionViewY, kScreenWidth, kProfileCollectionViewHeight-CGRectGetHeight(self.topView.frame)) collectionViewLayout:self.flowLayout];
+        _myVideoCollectionView.delegate = self;
+        _myVideoCollectionView.dataSource = self;
+        _myVideoCollectionView.backgroundColor = [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
+    }
+    return _myVideoCollectionView;
+}
+
+- (UICollectionViewFlowLayout *)flowLayout {
+    if (_flowLayout == nil) {
+        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _flowLayout.itemSize = CGSizeMake(kSnapshotWidthForProfile, kSnapshotWidthForProfile);
+        _flowLayout.minimumLineSpacing = 1;
+        _flowLayout.minimumInteritemSpacing = 0;
+        _flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }
+    return _flowLayout;
+}
+
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *) collectionView {
+    return 1;
+}
+
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.myVideoArray.count;
+    
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    KKProfileVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    KKProfileVideoModel *videoModel = self.myVideoArray[indexPath.item];
+    cell.aVideoModel = videoModel;
+    return cell;
+}
+
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    KKProfileVideoModel *videoModel = self.myVideoArray[indexPath.item];
+//    
+//    KKPlayVideoViewController *playVideoVC = [[KKPlayVideoViewController alloc] init];
+//    playVideoVC.profileVideoModel = videoModel;
+//    [self.navigationController pushViewController:playVideoVC animated:YES];
+//}
 
 
 
