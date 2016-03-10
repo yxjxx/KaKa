@@ -34,12 +34,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-//    self.view.backgroundColor = [UIColor yellowColor];
-    self.navigationItem.title = @"声音库";
- 
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
-    
-    
+
+    [self setNavigationItemColor];
+   
     
     [self.view addSubview:self.audioTableView];
 
@@ -221,4 +218,8 @@
 //    }
 //    return _username;
 //}
+- (void)  setNavigationItemColor{
+    self.navigationItem.title = @"声音库";
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
+}
 @end

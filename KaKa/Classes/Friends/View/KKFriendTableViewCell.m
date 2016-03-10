@@ -31,7 +31,7 @@
 - (UILabel *)usernameLabel{
     if (_usernameLabel == nil) {
         _usernameLabel = [[UILabel alloc] init];
-        _usernameLabel.frame = CGRectMake(60, 5, 200, 30);
+        _usernameLabel.frame = CGRectMake(60, 15, 200, 30);
         [self.contentView addSubview:_usernameLabel];
     }
     return _usernameLabel;
@@ -42,7 +42,7 @@
         _videoNumberLabel = [[UILabel alloc] init];
 //TODO: adjust frame for this cell
         _videoNumberLabel.size = CGSizeMake(200, 60);
-        _videoNumberLabel.center = CGPointMake(kScreenWidth-100, 30);
+        _videoNumberLabel.center = CGPointMake(kScreenWidth-110, 30);
         _videoNumberLabel.textAlignment = NSTextAlignmentRight;
 //        _videoNumberLabel.frame = CGRectMake(60, 30, 200, 30);
         [self.contentView addSubview:_videoNumberLabel];

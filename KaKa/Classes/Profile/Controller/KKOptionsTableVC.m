@@ -11,7 +11,8 @@
 #import "KKLoginViewController.h"
 #import "KKSignupViewController.h"
 #import "KKMainPageViewController.h"
-#import "clearVideoAndAudio.h"
+#import "KKLocalFileManager.h"
+
 @interface KKOptionsTableVC () <UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -92,14 +93,12 @@
                     [self clearVideoFiles];
                     break;
                 case 1: //清空音频文件
-
-                    [self clearAudioFiles];
-
+                    [[KKLocalFileManager sharedInstance]deleteLocalAudioFiles];
+                    
                     break;
                 case 2:  //清空所有文件
 
-                    [self clearAllFiles];
-
+                    
                     break;
                     
                 default:
@@ -257,14 +256,7 @@
 //    NSLog(@"文件是否存在: %@",[fileManager isExecutableFileAtPath:videoDirectory1]?@"YES":@"NO");
 
 }
-//清空音频文件
-- (void) clearAudioFiles {
-    
-    
-}
-- (void) clearAllFiles {
-    
-}
+
 
 
 -(NSString *)dirDoc{

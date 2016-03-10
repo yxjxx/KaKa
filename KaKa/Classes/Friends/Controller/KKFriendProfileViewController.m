@@ -38,7 +38,7 @@ static NSString *ID = @"videoCell";
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    self.navigationItem.title = self.friendModel.username;
+    [self setNavigationItem];
     
     [self.view addSubview:self.topView];
     [self.portraitImageView sd_setImageWithURL:[NSURL URLWithString:self.friendModel.portrait] placeholderImage:[UIImage imageNamed:@"placeholder"]];
@@ -218,7 +218,12 @@ static NSString *ID = @"videoCell";
 }
 
 
-
+- (void) setNavigationItem  {
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]init];
+    backItem.title = @"返回";
+    self.navigationItem.backBarButtonItem = backItem;
+    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+}
 
 
 @end

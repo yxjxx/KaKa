@@ -39,10 +39,9 @@
 static NSString *ID = @"videoCell";
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.navigationItem.title = self.username ? self.username : @"Welcome";
    
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
-    
+    [self setNavigationItemCol];
+
     
 }
 
@@ -319,5 +318,21 @@ static NSString *ID = @"videoCell";
     playVideoVC.videoModel = videoModel;
     [self.navigationController pushViewController:playVideoVC animated:YES];
 }
-
+- (void)setNavigationItemCol {
+    //当前页面的 标题
+        self.navigationItem.title = self.username ? self.username : @"Welcome";
+        //返回页面的标题
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+        backItem.title = @"返回";
+        self.navigationItem.backBarButtonItem = backItem;
+        //返回的颜色
+        self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    
+    
+        [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
+    
+    
+      //  [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
+    
+}
 @end
