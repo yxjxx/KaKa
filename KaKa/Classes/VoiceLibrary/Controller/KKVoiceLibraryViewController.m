@@ -202,8 +202,9 @@
             [self.audioTableView reloadData];
 //            NSIndexPath *indexPath = self.audioTableView.indexPathForSelectedRow;
 //            NSLog(@"indexpath_%@", indexPath);
-//            NSArray *indexPathArray = [NSArray arrayWithObject:indexPath];
-//            [self.audioTableView reloadRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationTop];
+//            NSArray *indexPathArray = [NSArray arrayWithObjects:indexPath, nil];
+//            NSLog(@"indexpath_%@", indexPathArray);
+//            [self.audioTableView reloadRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationNone];
             [[KKAudioRecordModel sharedInstance] updateGlobalAudioLibraryData:audioModel];
         });
     } completeFailed:^(NSString *failedStr) {
