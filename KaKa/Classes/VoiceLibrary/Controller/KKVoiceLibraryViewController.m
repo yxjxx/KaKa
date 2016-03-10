@@ -164,15 +164,18 @@
     KKAudioModel *audioModel = self.audioArrays[indexPath.row];
     NSString *audioLocalName = [audioModel.audioPath lastPathComponent];
 
+    
     if ([[KKAudioRecordModel sharedInstance] isLocalAudioExistWithFileName:audioLocalName]) {
-//        if (self.audioPlayer.isPlaying) {
-//            
-//        }
         
         //Play audio
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSString *audioFullFilePathStr = [appDelegate.audio_dir stringByAppendingPathComponent:[audioModel.audioPath lastPathComponent]];
         NSURL *audioFullFilePath = [NSURL URLWithString:audioFullFilePathStr];
+        
+        if (self.audioPlayer.isPlaying && [self.audioPlayer.url isEqual: audioFullFilePath]) {
+            [self.audioPlayer pause];
+            return;
+        }
         self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioFullFilePath error:nil];
         
 #warning debuging
@@ -187,6 +190,7 @@
         //TODO:  在 delegate 中处理中断等
 
     } else{
+        [self.audioPlayer pause];
         [self downloadSelectedAudioWithKKAudioModel:audioModel];
     }
 }
@@ -230,5 +234,11 @@
 - (void)  setNavigationItemColor{
     self.navigationItem.title = @"声音库";
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    [self.audioPlayer stop];
 }
 @end
