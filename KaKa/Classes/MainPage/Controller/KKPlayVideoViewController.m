@@ -21,7 +21,30 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor purpleColor];
+#warning 临时图
+    
+    self.view.backgroundColor = [UIColor colorWithRed:46/256.0 green:46/246.0 blue:46/256.0 alpha:1];
+    UIView *tempory = [[UIView alloc]init];
+    tempory.frame = CGRectMake(0, kScreenHeight - 230, 450, 230);
+    tempory.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:tempory];
+    
+    UILabel *UpNameLbl = [[UILabel alloc]init];
+    UpNameLbl.frame = CGRectMake(10, 30, 200, 35);
+    UpNameLbl.text = @"播主：李大咔";
+    
+    UpNameLbl.textColor = [UIColor blackColor];
+    [tempory addSubview:UpNameLbl];
+    
+    UILabel *UpTimeLbl = [[UILabel alloc]init];
+    UpTimeLbl.frame = CGRectMake(10, 110, 290, 35);
+    UpTimeLbl.textColor = [UIColor blackColor];
+    UpTimeLbl.text = @"上传时间：2016年3月9日 16:56";
+    [tempory addSubview:UpTimeLbl];
+    
+    
+    //TODO:  delete this above
+    /*  temportary  */
     self.title = self.videoModel.videoVName;
     
     __weak typeof(self)weakSelf = self;

@@ -17,14 +17,10 @@
 		68038EEB1C8FB90700F54C8E /* KK_Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 68038EEA1C8FB90700F54C8E /* KK_Camera.png */; };
 		682EB0D31C895D88003AA10C /* KKProfileVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 682EB0D21C895D88003AA10C /* KKProfileVideoCell.m */; };
 		682EB0D91C895E04003AA10C /* KKProfileVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 682EB0D81C895E04003AA10C /* KKProfileVideoModel.m */; };
-		683607CB1C8E6F640075E375 /* saveLocaltion.png in Resources */ = {isa = PBXBuildFile; fileRef = 683607C81C8E6F640075E375 /* saveLocaltion.png */; };
-		683607CC1C8E6F640075E375 /* saveLocaltion@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 683607C91C8E6F640075E375 /* saveLocaltion@1x.png */; };
-		683607CD1C8E6F640075E375 /* saveLocaltion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 683607CA1C8E6F640075E375 /* saveLocaltion@2x.png */; };
 		683607D11C8E6F730075E375 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = 683607CE1C8E6F730075E375 /* music.png */; };
 		683607D21C8E6F730075E375 /* music@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 683607CF1C8E6F730075E375 /* music@1x.png */; };
 		683607D31C8E6F730075E375 /* music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 683607D01C8E6F730075E375 /* music@2x.png */; };
 		683607D51C8EB09C0075E375 /* imageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 683607D41C8EB09C0075E375 /* imageIcon.png */; };
-		6887BAE11C8984A3001C4EE1 /* 启动界面最终版3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6887BAE01C8984A3001C4EE1 /* 启动界面最终版3.png */; };
 		6887BB221C8ABCFA001C4EE1 /* loginBackGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6887BB211C8ABCFA001C4EE1 /* loginBackGround.jpg */; };
 		688B16F71C87DE7A007573F6 /* logBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 688B16F61C87DE7A007573F6 /* logBg.jpg */; };
 		688B16FA1C8814BF007573F6 /* KKAudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688B16F91C8814BF007573F6 /* KKAudioCell.m */; };
@@ -34,6 +30,12 @@
 		68E7A25C1C8FC3100082D4B8 /* KK_Camera_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A25A1C8FC3100082D4B8 /* KK_Camera_normal.png */; };
 		68E7A25D1C8FC3100082D4B8 /* KK_Camera_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A25B1C8FC3100082D4B8 /* KK_Camera_selected.png */; };
 		68E7A2671C90114C0082D4B8 /* VoiceLibIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A2661C90114C0082D4B8 /* VoiceLibIcon.png */; };
+		68E7A26B1C914B570082D4B8 /* saveLocaltion.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A2681C914B570082D4B8 /* saveLocaltion.png */; };
+		68E7A26C1C914B570082D4B8 /* saveLocaltion@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A2691C914B570082D4B8 /* saveLocaltion@1x.png */; };
+		68E7A26D1C914B570082D4B8 /* saveLocaltion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A26A1C914B570082D4B8 /* saveLocaltion@2x.png */; };
+		68E7A27E1C9154F70082D4B8 /* downAudio.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A27C1C9154F70082D4B8 /* downAudio.png */; };
+		68E7A27F1C9154F70082D4B8 /* undownAudio.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A27D1C9154F70082D4B8 /* undownAudio.png */; };
+		68E7A2811C91606C0082D4B8 /* 启动界面最终版3.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E7A2801C91606C0082D4B8 /* 启动界面最终版3.png */; };
 		D506E5C5A75570164E83C760 /* libPods-KaKa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF1B133E1C018C1092F575B /* libPods-KaKa.a */; };
 		DE1AD0E71C7EE7CA00945AF1 /* KKMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */; };
 		DE1AD0EA1C7EE7E600945AF1 /* KKVoiceLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1AD0E91C7EE7E600945AF1 /* KKVoiceLibraryViewController.m */; };
@@ -87,14 +89,10 @@
 		682EB0D21C895D88003AA10C /* KKProfileVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKProfileVideoCell.m; sourceTree = "<group>"; };
 		682EB0D71C895E04003AA10C /* KKProfileVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKProfileVideoModel.h; sourceTree = "<group>"; };
 		682EB0D81C895E04003AA10C /* KKProfileVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKProfileVideoModel.m; sourceTree = "<group>"; };
-		683607C81C8E6F640075E375 /* saveLocaltion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveLocaltion.png; sourceTree = "<group>"; };
-		683607C91C8E6F640075E375 /* saveLocaltion@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saveLocaltion@1x.png"; sourceTree = "<group>"; };
-		683607CA1C8E6F640075E375 /* saveLocaltion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saveLocaltion@2x.png"; sourceTree = "<group>"; };
 		683607CE1C8E6F730075E375 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music.png; sourceTree = "<group>"; };
 		683607CF1C8E6F730075E375 /* music@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music@1x.png"; sourceTree = "<group>"; };
 		683607D01C8E6F730075E375 /* music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music@2x.png"; sourceTree = "<group>"; };
 		683607D41C8EB09C0075E375 /* imageIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageIcon.png; sourceTree = "<group>"; };
-		6887BAE01C8984A3001C4EE1 /* 启动界面最终版3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动界面最终版3.png"; sourceTree = "<group>"; };
 		6887BB211C8ABCFA001C4EE1 /* loginBackGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = loginBackGround.jpg; path = Assets.xcassets/loginBackGround.imageset/loginBackGround.jpg; sourceTree = "<group>"; };
 		688B16F61C87DE7A007573F6 /* logBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logBg.jpg; sourceTree = "<group>"; };
 		688B16F81C8814BF007573F6 /* KKAudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAudioCell.h; sourceTree = "<group>"; };
@@ -108,6 +106,12 @@
 		68E7A25A1C8FC3100082D4B8 /* KK_Camera_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KK_Camera_normal.png; sourceTree = "<group>"; };
 		68E7A25B1C8FC3100082D4B8 /* KK_Camera_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KK_Camera_selected.png; sourceTree = "<group>"; };
 		68E7A2661C90114C0082D4B8 /* VoiceLibIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceLibIcon.png; sourceTree = "<group>"; };
+		68E7A2681C914B570082D4B8 /* saveLocaltion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveLocaltion.png; sourceTree = "<group>"; };
+		68E7A2691C914B570082D4B8 /* saveLocaltion@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saveLocaltion@1x.png"; sourceTree = "<group>"; };
+		68E7A26A1C914B570082D4B8 /* saveLocaltion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saveLocaltion@2x.png"; sourceTree = "<group>"; };
+		68E7A27C1C9154F70082D4B8 /* downAudio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downAudio.png; sourceTree = "<group>"; };
+		68E7A27D1C9154F70082D4B8 /* undownAudio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undownAudio.png; sourceTree = "<group>"; };
+		68E7A2801C91606C0082D4B8 /* 启动界面最终版3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动界面最终版3.png"; sourceTree = "<group>"; };
 		7165136B30A2177DB001C348 /* Pods-KaKa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaKa.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaKa/Pods-KaKa.release.xcconfig"; sourceTree = "<group>"; };
 		DE1AD0E51C7EE7CA00945AF1 /* KKMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMainPageViewController.h; sourceTree = "<group>"; };
 		DE1AD0E61C7EE7CA00945AF1 /* KKMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainPageViewController.m; sourceTree = "<group>"; };
@@ -401,12 +405,14 @@
 				683607CE1C8E6F730075E375 /* music.png */,
 				683607CF1C8E6F730075E375 /* music@1x.png */,
 				683607D01C8E6F730075E375 /* music@2x.png */,
-				683607C81C8E6F640075E375 /* saveLocaltion.png */,
-				683607C91C8E6F640075E375 /* saveLocaltion@1x.png */,
-				683607CA1C8E6F640075E375 /* saveLocaltion@2x.png */,
-				6887BAE01C8984A3001C4EE1 /* 启动界面最终版3.png */,
+				68E7A2681C914B570082D4B8 /* saveLocaltion.png */,
+				68E7A2691C914B570082D4B8 /* saveLocaltion@1x.png */,
+				68E7A26A1C914B570082D4B8 /* saveLocaltion@2x.png */,
 				6887BB211C8ABCFA001C4EE1 /* loginBackGround.jpg */,
 				DE2F88181C88767700F4A9C2 /* placeholder.png */,
+				68E7A27C1C9154F70082D4B8 /* downAudio.png */,
+				68E7A27D1C9154F70082D4B8 /* undownAudio.png */,
+				68E7A2801C91606C0082D4B8 /* 启动界面最终版3.png */,
 			);
 			name = LocalImages;
 			sourceTree = "<group>";
@@ -656,33 +662,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E7A27E1C9154F70082D4B8 /* downAudio.png in Resources */,
 				DE34B0F21C8589D700CAFD12 /* hehe.mov in Resources */,
 				68038ED91C8FB36500F54C8E /* Friends-1.png in Resources */,
 				68038EE11C8FB36A00F54C8E /* Voice.png in Resources */,
-				683607CB1C8E6F640075E375 /* saveLocaltion.png in Resources */,
 				6887BB221C8ABCFA001C4EE1 /* loginBackGround.jpg in Resources */,
 				683607D51C8EB09C0075E375 /* imageIcon.png in Resources */,
 				68038EEB1C8FB90700F54C8E /* KK_Camera.png in Resources */,
-				683607CD1C8E6F640075E375 /* saveLocaltion@2x.png in Resources */,
 				68038EE51C8FB37200F54C8E /* Voice-1.png in Resources */,
 				68E7A25D1C8FC3100082D4B8 /* KK_Camera_selected.png in Resources */,
 				DE2E1AA51C8FFBFB00A11B7D /* MainPage_Normal.png in Resources */,
 				68038EE91C8FB85100F54C8E /* tabbar_background.png in Resources */,
 				68038EDF1C8FB36A00F54C8E /* Profile-1.png in Resources */,
 				683607D11C8E6F730075E375 /* music.png in Resources */,
-				683607CC1C8E6F640075E375 /* saveLocaltion@1x.png in Resources */,
+				68E7A27F1C9154F70082D4B8 /* undownAudio.png in Resources */,
+				68E7A26B1C914B570082D4B8 /* saveLocaltion.png in Resources */,
 				68038ED71C8FB36000F54C8E /* Friends.png in Resources */,
 				DE2F88191C88767700F4A9C2 /* placeholder.png in Resources */,
-				6887BAE11C8984A3001C4EE1 /* 启动界面最终版3.png in Resources */,
 				DE932A971C7DAE7C00651712 /* Assets.xcassets in Resources */,
 				DE932A9A1C7DAE7C00651712 /* LaunchScreen.storyboard in Resources */,
+				68E7A2811C91606C0082D4B8 /* 启动界面最终版3.png in Resources */,
 				68E7A2671C90114C0082D4B8 /* VoiceLibIcon.png in Resources */,
 				DE2F882D1C8ACCC900F4A9C2 /* KKCameraView.xib in Resources */,
 				683607D21C8E6F730075E375 /* music@1x.png in Resources */,
+				68E7A26D1C914B570082D4B8 /* saveLocaltion@2x.png in Resources */,
 				688B16F71C87DE7A007573F6 /* logBg.jpg in Resources */,
 				DE2E1AA41C8FFBFB00A11B7D /* MainPage_Height.png in Resources */,
 				68E7A25C1C8FC3100082D4B8 /* KK_Camera_normal.png in Resources */,
 				68038EE01C8FB36A00F54C8E /* Profile.png in Resources */,
+				68E7A26C1C914B570082D4B8 /* saveLocaltion@1x.png in Resources */,
 				683607D31C8E6F730075E375 /* music@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -878,6 +886,7 @@
 			baseConfigurationReference = 58859CDCD39C028723358FBF /* Pods-KaKa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -895,6 +904,7 @@
 			baseConfigurationReference = 7165136B30A2177DB001C348 /* Pods-KaKa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
