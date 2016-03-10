@@ -13,5 +13,10 @@
 + (KKLocalFileManager *)sharedInstance;
 
 - (void)deleteLocalAudioFiles;
+- (void)deleteLocalVideoFiles;
+
+ 
+- (BOOL)isLocalAudioExistWithFileName:(NSString *)theAudioName;
+
 
 @end

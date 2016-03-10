@@ -38,16 +38,6 @@ static NSString *ID = @"videoCell";
     [super viewDidLoad];
     //点右上角这后，"返回"
     [self setBackFont];
-    //set NavigationBar 背景颜色&title 颜色
-  // [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:23/255.0 green:23/255.0 blue:23/255.0 alpha:1.0]];
-
-    self.navigationItem.title = self.userName ;
-    
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
-    
-    
-    
-
     
     self.settingMyIconUIView.backgroundColor = [UIColor blackColor];
     self.pageNum = -1;
@@ -303,6 +293,13 @@ static NSString *ID = @"videoCell";
     self.navigationItem.backBarButtonItem = backItem;
     //返回的颜色
     self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    
+    //set NavigationBar 背景颜色&title 颜色
+    // [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:23/255.0 green:23/255.0 blue:23/255.0 alpha:1.0]];
+    self.navigationItem.title = self.userName ;
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
+    
 }
 
 - (NSString *)userName {
