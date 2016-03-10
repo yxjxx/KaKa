@@ -8,19 +8,31 @@
 
 #import "KKPlayVideoViewController.h"
 #import "KRVideoPlayerController.h"
+#import "KKPlayVideoVCBottomView.h"
 
 @interface KKPlayVideoViewController()
 
 @property (nonatomic, strong) KRVideoPlayerController *videoController;
+
+@property (nonatomic, strong) KKPlayVideoVCBottomView *bottomView;
 
 @end
 
 
 @implementation KKPlayVideoViewController
 
+- (KKPlayVideoVCBottomView *)bottomView{
+    if (_bottomView == nil) {
+        _bottomView = [[KKPlayVideoVCBottomView alloc] init];
+//        _bottomView.frame = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    }
+    return _bottomView;
+}
+
+
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
+    [self.view addSubview:self.bottomView];
 #warning 临时图
     
     self.view.backgroundColor = [UIColor colorWithRed:46/256.0 green:46/246.0 blue:46/256.0 alpha:1];
