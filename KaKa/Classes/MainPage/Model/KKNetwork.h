@@ -55,4 +55,9 @@ typedef void(^downloadAudioSuccessed)(NSString *successStr);
          completeSuccessed:(requestSuccessed)successBlock
                  completeFailed:(requestFailed)failedBlock;
 
+- (void)loginWithMobile:(NSString *)mobile
+           andPasswordMD5:(NSString *)passwordMD5
+        completeSuccessed:(requestSuccessed)successBlock
+           completeFailed:(requestFailed)failedBlock;
+
 @end

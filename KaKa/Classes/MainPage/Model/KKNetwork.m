@@ -175,4 +175,19 @@
     }];
 }
 
+- (void)loginWithMobile:(NSString *)mobile andPasswordMD5:(NSString *)passwordMD5 completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+
+    params[kMobileKey] = mobile;
+    params[kPasswordKey] = passwordMD5;
+    
+    [session POST:kLoginServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        successBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Fail, Error: %@", error);
+        failedBlock(@"网络错误");
+    }];
+}
+
 @end
