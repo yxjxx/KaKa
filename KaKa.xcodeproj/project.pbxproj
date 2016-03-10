@@ -69,6 +69,7 @@
 		DEA4D1981C8724B5005F7059 /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA4D1971C8724B5005F7059 /* NSArray+Log.m */; };
 		DEAF9F7C1C8F216000341649 /* KKLocalVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF9F7B1C8F216000341649 /* KKLocalVideoCell.m */; };
 		DEFBF5AB1C910869009E1C55 /* KKPlayVideoInProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFBF5AA1C910869009E1C55 /* KKPlayVideoInProfileViewController.m */; };
+		DEFBF5AE1C91152B009E1C55 /* KKLocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFBF5AD1C91152B009E1C55 /* KKLocalFileManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +174,8 @@
 		DEAF9F7B1C8F216000341649 /* KKLocalVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKLocalVideoCell.m; path = UploadVideo/View/KKLocalVideoCell.m; sourceTree = "<group>"; };
 		DEFBF5A91C910869009E1C55 /* KKPlayVideoInProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKPlayVideoInProfileViewController.h; sourceTree = "<group>"; };
 		DEFBF5AA1C910869009E1C55 /* KKPlayVideoInProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKPlayVideoInProfileViewController.m; sourceTree = "<group>"; };
+		DEFBF5AC1C91152B009E1C55 /* KKLocalFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLocalFileManager.h; sourceTree = "<group>"; };
+		DEFBF5AD1C91152B009E1C55 /* KKLocalFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLocalFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +299,8 @@
 				DE2F881A1C896FEA00F4A9C2 /* Model */,
 				DE1AD0F41C7EE8E100945AF1 /* KKMainTabBarViewController.h */,
 				DE1AD0F51C7EE8E100945AF1 /* KKMainTabBarViewController.m */,
+				DEFBF5AC1C91152B009E1C55 /* KKLocalFileManager.h */,
+				DEFBF5AD1C91152B009E1C55 /* KKLocalFileManager.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -744,6 +749,7 @@
 				DE1AD0EA1C7EE7E600945AF1 /* KKVoiceLibraryViewController.m in Sources */,
 				DE2F882E1C8ACCC900F4A9C2 /* KKSoundLibraryItemView.m in Sources */,
 				DEA4D1981C8724B5005F7059 /* NSArray+Log.m in Sources */,
+				DEFBF5AE1C91152B009E1C55 /* KKLocalFileManager.m in Sources */,
 				DE2F88251C8ACCB900F4A9C2 /* KKAudioRecordModel.m in Sources */,
 				DE35EC1F1C8D6339009061E0 /* KKUploadVideoViewController.m in Sources */,
 				DE34B0F51C86D99D00CAFD12 /* KKVideoCell.m in Sources */,
