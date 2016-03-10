@@ -90,15 +90,14 @@
             switch (row) {
                 case 0://   清空视频缓存
 
-                    [self clearVideoFiles];
+                    [[KKLocalFileManager sharedInstance] deleteLocalVideoFiles];
                     break;
                 case 1: //清空音频文件
-                    [[KKLocalFileManager sharedInstance]deleteLocalAudioFiles];
-                    
+                    [[KKLocalFileManager sharedInstance] deleteLocalAudioFiles];
                     break;
                 case 2:  //清空所有文件
-
-                    
+                    [[KKLocalFileManager sharedInstance] deleteLocalVideoFiles];
+                    [[KKLocalFileManager sharedInstance] deleteLocalAudioFiles];
                     break;
                     
                 default:

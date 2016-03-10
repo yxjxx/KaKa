@@ -11,7 +11,8 @@
 #import "AppDelegate.h"
 #import "KKAudioRecordModel.h"
 
-@interface KKLocalFileManager()
+@interface KKLocalFileManager() <NSFileManagerDelegate>
+
 +(void)clearCache:(NSString *)path;
 -(void)deleteFile;
 //获取Documents目录
@@ -33,31 +34,63 @@
 
 - (void)deleteLocalAudioFiles{
     NSLog(@"%s", __func__);
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    fileManager.delegate = self;
+    //删除 audio 目录下的所有文件
+    NSString *audioFolder = [kDocumentsPath stringByAppendingPathComponent:AUDIO_PATH];
+    for (NSString *audioName in [fileManager contentsOfDirectoryAtPath:audioFolder error:nil]) {
+        [fileManager removeItemAtPath:[audioFolder stringByAppendingPathComponent:audioName] error:nil];
+    }
+    //删除 data/audio_library.data
+    NSString *audioLibInData = [[kDocumentsPath stringByAppendingPathComponent:DATA_PATH] stringByAppendingPathComponent:AUDIO_LIBRARY];
+    [fileManager removeItemAtPath:audioLibInData error:nil];
+    
+    //清空内存中的数据
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate.audio_library_data removeAllObjects];
+    
+    [SVProgressHUD showSuccessWithStatus:@"清空音频成功"];
 }
 
 - (void)deleteLocalVideoFiles {
+    NSLog(@"%s", __func__);
+//    [SVProgressHUD showProgress:10.0f];
+    BOOL isSuccess = YES;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    fileManager.delegate = self;
+    //删除 video 目录下的所有文件
+    NSString *videoFolder = [kDocumentsPath stringByAppendingPathComponent:VIDEO_PATH];
+    for (NSString *videoName in [fileManager contentsOfDirectoryAtPath:videoFolder error:nil]) {
+        if(0 == [fileManager removeItemAtPath:[videoFolder stringByAppendingPathComponent:videoName] error:nil]){
+            isSuccess = NO;
+        }
+    }
+    //删除 data/video_library.data
+    NSString *videoLibInData = [[kDocumentsPath stringByAppendingPathComponent:DATA_PATH] stringByAppendingPathComponent:VIDEO_LIBRARY];
+    if(0 == [fileManager removeItemAtPath:videoLibInData error:nil]){
+        isSuccess = NO;
+    }
+    //删除 snapshot 目录下的所有文件
+    NSString *snapshotFolder = [kDocumentsPath stringByAppendingPathComponent:SNAPSHOT_PATH];
+    for (NSString *snapshotName in [fileManager contentsOfDirectoryAtPath:snapshotFolder error:nil]) {
+        //TODO: 懒得写了
+        [fileManager removeItemAtPath:[snapshotFolder stringByAppendingPathComponent:snapshotName] error:nil];
+    }
     
+    //清空内存中的数据
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate.video_library_data removeAllObjects];
+    
+    [SVProgressHUD showSuccessWithStatus:@"清空视频成功"];
 }
 
-//- (BOOL)isLocalAudioExistWithFileName:(NSString *)theAudioName{
-//    
-//    if ([theAudioName characterAtIndex:0] == '/') {
-//        NSMutableString *mutableAudioName = [theAudioName mutableCopy];
-//        [mutableAudioName deleteCharactersInRange:NSMakeRange(0, 1)];
-//        theAudioName = [[NSString alloc] initWithString:mutableAudioName];
-//    }
-//    
-//    NSArray *localAudioList = [self getLocalAudioList];
-//    
-//    for (NSString *audioPath in localAudioList) {
-//          if ([audioPath isEqualToString:theAudioName]) {
-//             return YES;
-//        }
-//        
-//    }
-//
-//    return NO;
-//}
+- (BOOL)fileManager:(NSFileManager *)fileManager shouldProceedAfterError:(NSError *)error removingItemAtPath:(NSString *)path{
+    NSLog(@"%s", __func__);
+    NSLog(@"%@", [NSString stringWithFormat:@"%@", error]);
+    [SVProgressHUD showErrorWithStatus:@"Something wrong, or maybe not..^_^"];
+    return YES;
+}
+
 
 +(void)clearCache:(NSString *)path{
     NSFileManager *fileManager=[NSFileManager defaultManager];
