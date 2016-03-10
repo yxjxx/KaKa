@@ -42,31 +42,39 @@ static NSString *ID = @"localVideoCell";
     self.view.backgroundColor = [UIColor colorWithRed:0.07 green:0.07 blue:0.07 alpha:1];
 //    self.view.backgroundColor = [UIColor whiteColor];
     
+    [self.view addSubview:self.videoDescTextFiled];
+    
+    [self.giveupUploadButton addTarget:self action:@selector(clickGiveUpBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.startUploadButton addTarget:self action:@selector(clickStartUploadBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.allLocalVideoCollectionView];
+    
     __weak typeof(self) weakSelf = self;
     [self.videoPreviewController setDimissCompleteBlock:^{
         [weakSelf.videoPreviewController pause];
         weakSelf.videoPreviewController = nil;
     }];
+
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     if(appDelegate.video_library_data){
         self.selectedLocalVideo = [appDelegate.video_library_data lastObject];
+        
+        // 这一行代码 This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+        //    [self playLocalVideo:self.selectedLocalVideo];
+        //解决办法
+        NSString *vPathStr = [[kDocumentsPath stringByAppendingPathComponent:VIDEO_PATH] stringByAppendingPathComponent:self.selectedLocalVideo.path];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf playVideoWithURL:[NSURL fileURLWithPath:vPathStr]];
+            [weakSelf.view addSubview:weakSelf.videoPreviewController.view];
+        });
+//        [self playVideoWithURL:[NSURL fileURLWithPath:vPathStr]];
     }
-    [self playLocalVideo:self.selectedLocalVideo];
     
-    [self.view addSubview:self.videoPreviewController.view];
-    [self.view addSubview:self.videoDescTextFiled];
-    
-//TODO: upload video
-//    [self uploadVideo];
-    [self.giveupUploadButton sizeToFit];
-    [self.startUploadButton sizeToFit];
-    [self.giveupUploadButton addTarget:self action:@selector(clickGiveUpBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.startUploadButton addTarget:self action:@selector(clickStartUploadBtn) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:self.allLocalVideoCollectionView];
-    self.allLocalVideoCollectionView.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:1];
+    //add videoPreviewController.view 必须在 showinwindow 之后
+//    [self.view addSubview:self.videoPreviewController.view];
     [self.allLocalVideoCollectionView registerClass:[KKLocalVideoCell class] forCellWithReuseIdentifier:ID];
+
 }
 
 - (KKVideoRecordModel *)selectedLocalVideo{
@@ -233,8 +241,7 @@ static NSString *ID = @"localVideoCell";
 
 - (void)playLocalVideo:(KKVideoRecordModel *)selectedLocalVideo{
     NSString *vPathStr = [[kDocumentsPath stringByAppendingPathComponent:VIDEO_PATH] stringByAppendingPathComponent:selectedLocalVideo.path];
-    NSURL *vPathURL = [NSURL fileURLWithPath:vPathStr];
-    [self playVideoWithURL:vPathURL];
+    self.videoPreviewController.contentURL = [NSURL fileURLWithPath:vPathStr];
 }
 
 @end
