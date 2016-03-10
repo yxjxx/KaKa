@@ -126,7 +126,6 @@
             [localAudioMidList addObject:[NSString stringWithFormat:@"%ld", (long)audio.aid]];
         }
     }
-    NSLog(@"localAudioMidList_%@", localAudioMidList);
     return localAudioMidList;
 }
 
