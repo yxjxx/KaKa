@@ -218,13 +218,15 @@ static NSString *ID = @"localVideoCell";
 
 - (KKLocalVideoCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     KKLocalVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    KKVideoRecordModel *videoModel = self.allLocalVideosArray[indexPath.item];
+    // 把 uicollectionviewcell 逆序显示
+    KKVideoRecordModel *videoModel = self.allLocalVideosArray[self.allLocalVideosArray.count-indexPath.item-1];
+//    KKVideoRecordModel *videoModel = self.allLocalVideosArray[indexPath.item];
     cell.aVideoModel = videoModel;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    self.selectedLocalVideo = self.allLocalVideosArray[indexPath.item];
+    self.selectedLocalVideo = self.allLocalVideosArray[self.allLocalVideosArray.count-indexPath.item-1];
     
     [self playLocalVideo:self.selectedLocalVideo];
 }
