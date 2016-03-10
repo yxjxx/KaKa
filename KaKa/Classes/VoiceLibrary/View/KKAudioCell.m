@@ -64,6 +64,8 @@
         self.audioCNameLabel.textColor = [UIColor colorWithRed:130/256.0 green:210/256.0 blue:90/256.0 alpha:0.8];
     } else if([self.audioCNameLabel.text isEqualToString:@"电影"]) {
         self.audioCNameLabel.textColor = [UIColor colorWithRed:90/256.0 green:180/256.0 blue:210/256.0 alpha:0.8];
+    } else{
+        self.audioCNameLabel.textColor = [UIColor colorWithRed:190/256.0 green:280/256.0 blue:210/256.0 alpha:0.8];
     }
     
 }
