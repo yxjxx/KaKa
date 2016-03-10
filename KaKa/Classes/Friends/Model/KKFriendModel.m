@@ -19,7 +19,7 @@
         self.portrait = dict[@"portrait"];
         self.username = dict[@"username"];
         self.fans = [(NSNumber *)dict[@"fans"] stringValue];
-
+        self.attentions = [(NSNumber *)dict[@"attentions"] stringValue];
     }
     return self;
 }

@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *portrait;
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *fans;
+@property (nonatomic, copy) NSString *attentions;
 
 - (instancetype) initWithDict:(NSDictionary *)dict;
 + (instancetype) friendWithDict:(NSDictionary *)dict;

@@ -58,8 +58,8 @@
         return;
     } else{
         __weak typeof(self) weakSelf = self;
-        //TODO: modify to getFollowing
-        [[KKNetwork sharedInstance] getFansListWithKid:self.kidForFriendsVC completeSuccessed:^(NSDictionary *responseJson) {
+        //TODO: modify to getFollowing and segement following & fans
+        [[KKNetwork sharedInstance] getFollowingListWithKid:self.kidForFriendsVC completeSuccessed:^(NSDictionary *responseJson) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf pullFriendsListSuccess:responseJson];
             });

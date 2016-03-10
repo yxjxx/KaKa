@@ -44,7 +44,7 @@ static NSString *ID = @"videoCell";
     [self.portraitImageView sd_setImageWithURL:[NSURL URLWithString:self.friendModel.portrait] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     [self.topView addSubview:self.portraitImageView];
     //TODO: followingNum数据修改
-    self.followingNumLabel.text = self.friendModel.fans;
+    self.followingNumLabel.text = self.friendModel.attentions;
     [self.topView addSubview:self.followingNumLabel];
     [self.topView addSubview:self.followingStrLabel];
     self.fansNumLabel.text = self.friendModel.fans;
