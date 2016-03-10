@@ -130,9 +130,10 @@ static NSString *ID = @"localVideoCell";
 
 - (UICollectionView *)allLocalVideoCollectionView{
     if (_allLocalVideoCollectionView == nil) {
-        _allLocalVideoCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.videoDescTextFiled.frame), kScreenWidth, kMainPageTableViewHeigh) collectionViewLayout:self.flowLayout];
+        _allLocalVideoCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.videoDescTextFiled.frame), kScreenWidth, kScreenHeight-CGRectGetMaxY(self.videoDescTextFiled.frame) ) collectionViewLayout:self.flowLayout];
         _allLocalVideoCollectionView.delegate = self;
         _allLocalVideoCollectionView.dataSource = self;
+        _allLocalVideoCollectionView.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:1];
     }
     return _allLocalVideoCollectionView;
 }
@@ -143,6 +144,7 @@ static NSString *ID = @"localVideoCell";
         //TODO: frame adjust
         _giveupUploadButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 32, 32)];
         [_giveupUploadButton setTitle:@"取消" forState:UIControlStateNormal];
+        [_giveupUploadButton sizeToFit];
         [self.view addSubview:_giveupUploadButton];
     }
     return _giveupUploadButton;
@@ -153,6 +155,7 @@ static NSString *ID = @"localVideoCell";
         //TODO: frame adjust
         _startUploadButton = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth - 79, 5, 64, 32)];
         [_startUploadButton setTitle:@"开始上传" forState:UIControlStateNormal];
+        [_startUploadButton sizeToFit];
         [self.view addSubview:_startUploadButton];
     }
     return _startUploadButton;
