@@ -198,6 +198,7 @@
     [[KKNetwork sharedInstance] downloadRemoteAudioWithURL:audioRemoteURL completeSuccessed:^(NSString *successStr) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD showSuccessWithStatus:@"download success"];
+            //TODO: audioTableView reload only one row
             [self.audioTableView reloadData];
 //            NSIndexPath *indexPath = self.audioTableView.indexPathForSelectedRow;
 //            NSLog(@"indexpath_%@", indexPath);
