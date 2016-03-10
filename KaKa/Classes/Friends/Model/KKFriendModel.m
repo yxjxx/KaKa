@@ -14,11 +14,12 @@
     self = [super init];
     if (self) {
 //        self.city = dict[@"city"];
-        self.kid = [NSString stringWithFormat:@"%d", (int)dict[@"kid"]];
-        self.video = [NSString stringWithFormat:@"%d", (int)dict[@"video"]];
+        self.kid = [(NSNumber *)dict[@"kid"] stringValue];
+        self.video = [(NSNumber *)dict[@"video"] stringValue];
         self.portrait = dict[@"portrait"];
         self.username = dict[@"username"];
-        self.fans = [NSString stringWithFormat:@"%d", (int)dict[@"fans"]];
+        self.fans = [(NSNumber *)dict[@"fans"] stringValue];
+
     }
     return self;
 }
