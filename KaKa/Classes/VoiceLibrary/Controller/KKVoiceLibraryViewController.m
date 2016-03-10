@@ -35,9 +35,13 @@
     [super viewDidLoad];
     
 //    self.view.backgroundColor = [UIColor yellowColor];
-    self.navigationItem.title = self.username;
+    self.navigationItem.title = @"声音库";
  
-    [self.view addSubview:self.audioTableView];    
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:116/256.0 green:116/256.0 blue:117/256.0 alpha:1],UITextAttributeTextColor,nil]];
+    
+    
+    
+    [self.view addSubview:self.audioTableView];
 
     self.audioPageNum = 0;
     
@@ -209,12 +213,12 @@
     return 65;
 }
 
-
-- (NSString *)username{
-    if (!_username) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        _username = [defaults objectForKey:kUsernameKey];
-    }
-    return _username;
-}
+//TODO: 这里不要用户名了,改为朋友圈
+//- (NSString *)username{
+//    if (!_username) {
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        _username = [defaults objectForKey:kUsernameKey];
+//    }
+//    return _username;
+//}
 @end

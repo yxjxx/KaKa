@@ -25,7 +25,7 @@
 #define kTabBarHeight 49
 #define kMainPageTableViewHeigh kScreenHeight-kStatusBarHeight-kNavgationBarHeight-kSegementControlHeight-kTabBarHeight
 #define kProfileCollectionViewHeight  kScreenHeight-kStatusBarHeight-kNavgationBarHeight-kTabBarHeight
-#define kProfileTopUIViewHeight 150
+#define kProfileTopUIViewHeight 120
 #define kProfileCollectionViewY kStatusBarHeight+kNavgationBarHeight+kProfileTopUIViewHeight
 #define kSnapshotWidth (kScreenWidth-1)/2
 #define kSnapshotWidthForProfile (kScreenWidth-2)/3

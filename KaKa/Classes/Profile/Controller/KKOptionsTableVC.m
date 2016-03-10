@@ -165,9 +165,6 @@
     //被选中的color:
     UIView *bgView = [[UIView alloc]init];
     bgView.backgroundColor = [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
-                              
-                              
-                              
     cell.selectedBackgroundView = bgView;
     
     if (indexPath.section == 0) {
