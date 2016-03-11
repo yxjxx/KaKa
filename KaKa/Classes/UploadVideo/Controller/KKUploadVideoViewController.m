@@ -105,7 +105,7 @@ static NSString *ID = @"localVideoCell";
             NSLog(@"%@", responseJson);
             if ([(NSNumber *)responseJson[@"errcode"] intValue] == 0) {
                 NSLog(@"登录成功");
-                [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+//                [SVProgressHUD showSuccessWithStatus:@"登录成功"];
             } else{
                 [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"登录失败"]];
                 return;
