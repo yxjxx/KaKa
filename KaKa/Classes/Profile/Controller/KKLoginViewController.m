@@ -63,6 +63,7 @@
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.responseSerializer = [AFJSONResponseSerializer serializer];
     
+    __weak typeof(self) weakSelf = self;
     [session POST:kLoginServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        NSLog(@"JSON: %@", responseObject);
         if ([responseObject[@"errmsg"]  isEqual: @"service success"]) {
@@ -70,11 +71,13 @@
             [defaults setBool:YES forKey:@"isLog"];
             [defaults setObject:responseObject[@"ext_data"][kUsernameKey] forKey:kUsernameKey];
             [defaults setObject:responseObject[@"ext_data"][@"kid"] forKey:@"kid"];
+            [defaults setObject:params[kPasswordKey] forKey:@"passwordMD5"];
+            [defaults setObject:params[kMobileKey] forKey:@"mobile"];
             [defaults synchronize];
             //[SVProgressHUD showInfoWithStatus:@"成功登陆"];.
             [SVProgressHUD showSuccessWithStatus:@"恭喜登陆成功"];
             //SVProgressHUD showImage:[UIImage imageNamed:@"logBg.jpg"] status:@"ok"
-            [self loginSuccess];
+            [weakSelf loginSuccess];
         }  else {
             [SVProgressHUD showErrorWithStatus:@"密码或帖号错了"];
         }

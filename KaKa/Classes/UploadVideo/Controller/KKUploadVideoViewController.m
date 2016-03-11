@@ -58,6 +58,7 @@ static NSString *ID = @"localVideoCell";
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     if(appDelegate.video_library_data){
+        //TODO: 处理数组为空的异常
         self.selectedLocalVideo = [appDelegate.video_library_data lastObject];
         
         // 这一行代码 This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
@@ -91,18 +92,44 @@ static NSString *ID = @"localVideoCell";
 }
 
 - (void)clickStartUploadBtn{
+    
+//TODO: delete testing 
+    self.videoDescTextFiled.text = @"可以重复吗";
     if ([self.videoDescTextFiled.text isEqualToString:@""]) {
         [SVProgressHUD showErrorWithStatus:@"为你的视频取一个名字吧...（必填）"];
         return;
     } else{
+        //每次上传视频之前先发一个登录请求到服务端
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *mobile = [defaults objectForKey:@"mobile"];
+        NSString *passwordMD5 = [defaults objectForKey:@"passwordMD5"];
+        
+        [[KKNetwork sharedInstance] loginWithMobile:mobile andPasswordMD5:passwordMD5 completeSuccessed:^(NSDictionary *responseJson) {
+            NSLog(@"%@", responseJson);
+            if ([(NSNumber *)responseJson[@"errcode"] intValue] == 0) {
+                NSLog(@"登录成功");
+                [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+            } else{
+                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"登录失败"]];
+                return;
+            }
+        } completeFailed:^(NSString *failedStr) {
+            NSLog(@"failed, %@", failedStr);
+        }];
+        
         self.selectedLocalVideo.name = self.videoDescTextFiled.text;
     }
-    [SVProgressHUD showWithStatus:@"uploading video..."];
+    [SVProgressHUD showWithStatus:@"开始上传视频"];
     [[KKNetwork sharedInstance] uploadVideoWithAKKVideoRecordModel:self.selectedLocalVideo completeSuccessed:^(NSDictionary *responseJson) {
         NSLog(@"Upload Success: %@", responseJson);
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *msg = responseJson[@"errmsg"];
-            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@, upload failed", msg]];
+//            NSString *msg = responseJson[@"errmsg"];
+            //TODO: 通过 errorcode 来判断失败类型
+            if ([(NSNumber *)responseJson[@"errcode"] intValue] == 0) {
+                [SVProgressHUD showSuccessWithStatus:@"上传成功"];
+            } else{
+                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"上传失败, 未登录"]];
+            }
         });
     } completeFailed:^(NSString *failedStr) {
         NSLog(@"video upload failed %@", failedStr);
