@@ -21,15 +21,15 @@
 }
 
 - (void)getVideoArrayDictWithOrder:(NSString *)order page:(NSString *)page completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
-    
+
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.responseSerializer = [AFJSONResponseSerializer serializer];
-    
+
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
+
     params[@"order"] = order;
     params[@"page"] = [NSString stringWithFormat:@"%@-%d", page, kPageSize];
-    
+
     [session GET:kVideoServerAddress parameters:params progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              successBlock(responseObject);
@@ -41,16 +41,16 @@
 }
 
 - (void)getVideosOfTheUserWithKid:(NSString *)kid andPage:(NSString *)page andOrder:(NSString *)order completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
-    
+
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.responseSerializer = [AFJSONResponseSerializer serializer];
-    
+
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
+
     params[@"kid"] = kid;
     params[@"order"] = order;
     params[@"page"] = [NSString stringWithFormat:@"%@-%d", page, kPageSize];
-    
+
     [session GET:kGetPersonalVideoListServerAddress parameters:params progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              successBlock(responseObject);
@@ -65,10 +65,10 @@
 - (void)getAudioArrayDictWithPageNum:(NSString *)pageNum completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.responseSerializer = [AFJSONResponseSerializer serializer];
-    
+
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"page"] = [NSString stringWithFormat:@"%@-%d", pageNum, kPageSize];
-    
+
     [session GET:kAudioServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         successBlock(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -79,13 +79,13 @@
 }
 
 - (void)downloadRemoteAudioWithURL:(NSString *)remoteAudioURL completeSuccessed:(downloadAudioSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
-    
+
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.responseSerializer = [AFJSONResponseSerializer serializer];
-    
+
     NSURL *URL = [NSURL URLWithString:remoteAudioURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    
+
     NSURLSessionDownloadTask *dtask = [session downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"%f", downloadProgress.completedUnitCount/(CGFloat)downloadProgress.totalUnitCount);
         [SVProgressHUD showProgress:downloadProgress.completedUnitCount/(CGFloat)downloadProgress.totalUnitCount];
@@ -102,7 +102,7 @@
             successBlock(@"downloadAudioSuccessed");
         }
     }];
-    
+
     [dtask resume];
 
 }
@@ -110,12 +110,12 @@
 - (void)uploadVideoWithAKKVideoRecordModel:(KKVideoRecordModel *)aVideoRecordModel completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
+
     //TODO: 参数的含义和内容需要再次确认
     params[@"vname"] = aVideoRecordModel.name;
     params[@"aid"] = [NSString stringWithFormat:@"%ld", aVideoRecordModel.aid];
     params[@"timelen"] = [NSString stringWithFormat:@"%ld", aVideoRecordModel.timelen];
-    
+
     [session POST:kUploadVideoServerAddress parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         // 在发送请求之前会自动调用这个 block
         NSString *videoURLStr = [[kDocumentsPath stringByAppendingPathComponent:VIDEO_PATH] stringByAppendingPathComponent: aVideoRecordModel.path];
@@ -139,7 +139,7 @@
 - (void)getUserInfoWithKid:(NSString *)kid completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
+
     params[@"kid"] = kid;
     [session GET:kGetUserInfoServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         successBlock(responseObject);
@@ -151,7 +151,7 @@
 - (void)getFansListWithKid:(NSString *)kid completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
+
     params[@"kid"] = kid;
     params[@"sign"] = @"fans";
     [session GET:kGetUserInfoServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -165,7 +165,7 @@
 - (void)getFollowingListWithKid:(NSString *)kid completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
+
     params[@"kid"] = kid;
     params[@"sign"] = @"attentions";
     [session GET:kGetUserInfoServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -175,18 +175,35 @@
     }];
 }
 
+
 - (void)loginWithMobile:(NSString *)mobile andPasswordMD5:(NSString *)passwordMD5 completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
     params[kMobileKey] = mobile;
     params[kPasswordKey] = passwordMD5;
-    
+
     [session POST:kLoginServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         successBlock(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Fail, Error: %@", error);
         failedBlock(@"网络错误");
+    }];
+}
+
+- (void)setZanWithKid:(NSString *)kid withVid:(NSString *)vid withFlag:(BOOL)flag completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+
+    params[@"kid"] = kid;
+    params[@"vid"] = vid;
+    params[@"flag"] = @"true";
+
+    [session POST:kSetVideoInfoServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        successBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failedBlock(@"Network error");
+
     }];
 }
 

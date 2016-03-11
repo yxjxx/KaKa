@@ -90,6 +90,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     if(self.tempRecordPath){
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSString *audio_path = [appDelegate.audio_dir stringByAppendingPathComponent:self.audio_model.path];
+        [SVProgressHUD showProgress:0.0];
         [self compoundVideoWithApath: audio_path WithVpath:self.tempRecordPath];
     }else{
         KKUploadVideoViewController *uvvc = [[KKUploadVideoViewController alloc] init];
@@ -132,7 +133,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (void)updateTimer:(NSTimer *)sender{
     if(_audioPlayer.duration>0){
-        [_progressView setProgress:(_audioPlayer.currentTime / _audioPlayer.duration) animated:YES];
+        [_progressView setProgress:(_audioPlayer.currentTime / _audioPlayer.duration) animated:NO];
     }
 }
 
@@ -615,6 +616,7 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
                 self.snapshotPath = [NSString stringWithFormat:@"sp-%@.png",[formatter stringFromDate:date]];
                 [imagedata writeToFile:[appDelegate.snapshot_dir stringByAppendingPathComponent:self.snapshotPath] atomically:YES];
                 
+                [SVProgressHUD showProgress:0.5];
                 // 压缩
                 [self compressVideoWithVpath: self.tempRecordPath];
                 
@@ -631,6 +633,10 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
                 break;
         }
     }];
+    
+    if(!self.tempRecordPath){
+        [SVProgressHUD showErrorWithStatus:@"视频合成失败"];
+    }
 }
 
 
@@ -678,6 +684,8 @@ typedef void (^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
                 case AVAssetExportSessionStatusCompleted:
                 {
                     NSLog(@"cmps exporting completed");
+                    [SVProgressHUD showProgress:1.0];
+                    [SVProgressHUD showSuccessWithStatus:@"已保存至本地"];
                     NSInteger count = appDelegate.video_library_data.count;
                     KKVideoRecordModel *vrm = [[KKVideoRecordModel alloc]init];
                     vrm.aid = self.audio_model.aid;

@@ -41,6 +41,7 @@
 #define kGetPersonalVideoListServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_video_info/"
 #define kUploadVideoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/upload/video/"
 #define kGetUserInfoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_userinfo/"
+#define kSetVideoInfoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/set_videoinfo/"
 
 #define kPageSize 4
 
