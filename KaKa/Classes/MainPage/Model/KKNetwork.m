@@ -174,4 +174,19 @@
     }];
 }
 
+- (void)setZanWithKid:(NSString *)kid withVid:(NSString *)vid withFlag:(BOOL)flag completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[@"kid"] = kid;
+    params[@"vid"] = vid;
+    params[@"flag"] = @"true";
+    
+    [session POST:kSetVideoInfoServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        successBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failedBlock(@"Network error");
+    }];
+}
+
 @end
