@@ -15,6 +15,13 @@
         self.timelen = dict[@"timelen"];
         self.snapshot = dict[@"snapshot"];
         self.videoPath = dict[@"path"];
+        self.vid = dict[@"vid"];
+        self.zan = dict[@"zan"];
+        self.kid = dict[@"kid"];
+        self.timestamp = dict[@"timestamp"];
+        self.hint = dict[@"hint"];
+        self.favorite = dict[@"favorite"];
+        //服务端的 long 型，使用前 [(NSNumber *)dict[@"kid"] stringValue]; 转换一下
  //       [self setValuesForKeysWithDictionary:dict];
     }
     return self;
