@@ -48,7 +48,7 @@ static NSString *ID = @"videoCell";
 - (void)viewDidLoad{
     [super viewDidLoad];
 #warning testing
-//    self.tabBarController.selectedIndex = 3;
+//    self.tabBarController.selectedIndex = 1;
 //    self.view.backgroundColor = [UIColor colorWithRed:30/256.0 green:30/256.0 blue:30/256.0 alpha:1];
     self.view.backgroundColor = [UIColor blackColor];
     

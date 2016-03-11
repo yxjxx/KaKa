@@ -43,7 +43,7 @@
 #define kGetUserInfoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/get_userinfo/"
 #define kSetVideoInfoServerAddress @"http://www.linzerlee.cn:8080/kakaweb/home/set_video_info/"
 
-#define kPageSize 4
+#define kPageSize 6
 
 #define kUsernameKey @"username"
 #define kPasswordKey @"password"

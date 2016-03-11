@@ -92,9 +92,6 @@ static NSString *ID = @"localVideoCell";
 }
 
 - (void)clickStartUploadBtn{
-    
-//TODO: delete testing 
-    self.videoDescTextFiled.text = @"可以重复吗";
     if ([self.videoDescTextFiled.text isEqualToString:@""]) {
         [SVProgressHUD showErrorWithStatus:@"为你的视频取一个名字吧...（必填）"];
         return;
