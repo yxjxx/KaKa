@@ -61,5 +61,7 @@ typedef void(^downloadAudioSuccessed)(NSString *successStr);
         completeSuccessed:(requestSuccessed)successBlock
            completeFailed:(requestFailed)failedBlock;
 
-- (void)setZanWithKid:(NSString *)kid withVid:(NSString *)vid withFlag:(BOOL)flag completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock;
+- (void)setZanWithVid:(NSString *)vid withFlag:(NSString *)flag completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock;
+
+- (void)setFavWithVid:(NSString *)vid withFlag:(NSString *)flag completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock;
 @end

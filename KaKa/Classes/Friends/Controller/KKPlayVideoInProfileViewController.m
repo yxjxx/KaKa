@@ -20,11 +20,17 @@
 
 - (void)zanClick:(id)sender{
     UIButton * zanBtn = (UIButton *)sender;
-    [zanBtn setSelected:![zanBtn isSelected]];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *vid = [(NSNumber *)_profileVideoModel.vid stringValue];
     NSString *kid = [defaults objectForKey:@"kid"];
-    [[KKNetwork sharedInstance] setZanWithKid:kid withVid:@"1" withFlag:@"true" completeSuccessed:^(NSDictionary *responseJson) {
+    NSString *flag=nil;
+    if(![zanBtn isSelected]){
+        flag = @"true";
+    }else{
+        flag = @"false";
+    }
+    [[KKNetwork sharedInstance] setZanWithVid:vid withFlag:flag completeSuccessed:^(NSDictionary *responseJson) {
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if (![responseJson[@"errcode"] isEqual: [NSNumber numberWithInteger:0]]) {
@@ -38,6 +44,7 @@
                 [SVProgressHUD showErrorWithStatus:@"No more data"];
                 return;
             } else{
+                [zanBtn setSelected:![zanBtn isSelected]];
                 NSDictionary *dict = [(NSDictionary *)responseJson[@"data"] mutableCopy];
                 NSLog(@"dict:%@", dict);
             }
@@ -50,7 +57,39 @@
 
 - (void)favClick:(id)sender{
     UIButton * favBtn = (UIButton *)sender;
-    [favBtn setSelected:![favBtn isSelected]];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *vid = [(NSNumber *)_profileVideoModel.vid stringValue];
+    NSString *kid = [defaults objectForKey:@"kid"];
+    NSString *flag=nil;
+    if(![favBtn isSelected]){
+        flag = @"true";
+    }else{
+        flag = @"false";
+    }
+    [[KKNetwork sharedInstance] setFavWithVid:vid withFlag:flag completeSuccessed:^(NSDictionary *responseJson) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (![responseJson[@"errcode"] isEqual: [NSNumber numberWithInteger:0]]) {
+                
+                NSString *msg = responseJson[@"errmsg"];
+                
+                [SVProgressHUD showErrorWithStatus:msg];
+                
+                return;
+            } else if ([responseJson[@"data"] isEqual:[NSNull null]]) {
+                [SVProgressHUD showErrorWithStatus:@"No more data"];
+                return;
+            } else{
+                [favBtn setSelected:![favBtn isSelected]];
+                
+                NSDictionary *dict = [(NSDictionary *)responseJson[@"data"] mutableCopy];
+                NSLog(@"dict:%@", dict);
+            }
+        });
+    } completeFailed:^(NSString *failedStr) {
+        [SVProgressHUD showInfoWithStatus:failedStr];
+    }];
 }
 
 - (void)cmtClick:(id)sender{
@@ -121,8 +160,7 @@
     
     UILabel *zanLbl = [[UILabel alloc]init];
     zanLbl.frame = CGRectMake(40, 90, 55, 32);
-    // zanLbl.text = _profileVideoModel.timestamp;
-    zanLbl.text = @"115";
+    zanLbl.text = [(NSNumber *)_profileVideoModel.zan stringValue];
     zanLbl.font = [UIFont systemFontOfSize:20.0f];
     zanLbl.textColor = [UIColor colorWithRed:128/256.0 green:128/256.0 blue:128/256.0 alpha:1];
     [tempory addSubview:zanLbl];
@@ -136,8 +174,7 @@
     
     UILabel *favLbl = [[UILabel alloc]init];
     favLbl.frame = CGRectMake(150, 90, 55, 32);
-    // zanLbl.text = _profileVideoModel.timestamp;
-    favLbl.text = @"105";
+    favLbl.text = [(NSNumber *)_profileVideoModel.favorite stringValue];
     favLbl.font = [UIFont systemFontOfSize:20.0f];
     favLbl.textColor = [UIColor colorWithRed:128/256.0 green:128/256.0 blue:128/256.0 alpha:1];
     [tempory addSubview:favLbl];
@@ -150,8 +187,7 @@
     
     UILabel *cmtLbl = [[UILabel alloc]init];
     cmtLbl.frame = CGRectMake(260, 90, 55, 32);
-    // zanLbl.text = _profileVideoModel.timestamp;
-    cmtLbl.text = @"345";
+    cmtLbl.text = [(NSNumber *)_profileVideoModel.timestamp stringValue];
     cmtLbl.font = [UIFont systemFontOfSize:20.0f];
     cmtLbl.textColor = [UIColor colorWithRed:128/256.0 green:128/256.0 blue:128/256.0 alpha:1];
     [tempory addSubview:cmtLbl];

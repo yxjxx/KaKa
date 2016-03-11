@@ -191,19 +191,33 @@
     }];
 }
 
-- (void)setZanWithKid:(NSString *)kid withVid:(NSString *)vid withFlag:(BOOL)flag completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+- (void)setZanWithVid:(NSString *)vid withFlag:(NSString *)flag completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-    params[@"kid"] = kid;
     params[@"vid"] = vid;
-    params[@"flag"] = @"true";
+    params[@"sign"] = @"zan";
+    params[@"flag"] = @"flag";
 
     [session POST:kSetVideoInfoServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         successBlock(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failedBlock(@"Network error");
+    }];
+}
 
+- (void)setFavWithVid:(NSString *)vid withFlag:(NSString *)flag completeSuccessed:(requestSuccessed)successBlock completeFailed:(requestFailed)failedBlock{
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[@"vid"] = vid;
+    params[@"sign"] = @"fav";
+    params[@"flag"] = @"flag";
+    
+    [session POST:kSetVideoInfoServerAddress parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        successBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failedBlock(@"Network error");
     }];
 }
 
